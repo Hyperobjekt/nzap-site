@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import UIKit from 'uikit';
 
-const rawData = require('../../../data/data.json');
+const rawData = require('../../../data/filter-data.json');
 
 const NzapFilter = (props) => {
 
@@ -29,7 +29,10 @@ const NzapFilter = (props) => {
     let catArr = [...activeCategories, category];
     let subCatArr = rawData.categories
       .filter(e => catArr.includes(e.label))
-      .map(e => e.subcategories)
+      .map(e => {
+        console.log(e)
+        return e.subcategories;
+      })
       .flat()
       .map(e => e.label)
       .map((e, i) =>

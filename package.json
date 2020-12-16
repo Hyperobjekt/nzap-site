@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "csv:json": "node _scripts/csv-to-json data/nzap-sample.csv",
+    "reshape": "node _scripts/reshape-data data/nzap-sample.json"
   },
   "dependencies": {
     "bootstrap": "^4.5.3",
+    "neat-csv": "^6.0.0",
     "next": "10.0.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
