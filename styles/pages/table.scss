@@ -4,7 +4,7 @@
       @include font($large, $regular, $dark-color);
       &:hover {
         @include font($large, $regular, $accent-color);
-        transform: scale(1.25);
+        transform: scale(1.1);
       }
     }
   }

@@ -3,7 +3,7 @@
 }
 
 .select {
-  min-width: 200px;
+  min-width: 220px;
   .icon {
     right: 10px;
   }
@@ -12,6 +12,10 @@
   &:hover {
     background: $background-color;
   }
+}
+.options.active {
+  background: $background-color;
+  color: $accent-color;
 }
 #dropdown-states-menu,
 #dropdown-categories-menu {
