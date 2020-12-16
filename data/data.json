@@ -1,0 +1,124 @@
+{
+  "usStates": [
+    "Alaska",
+    "Alabama",
+    "Arkansas",
+    "Arizona",
+    "California",
+    "Colorado",
+    "Connecticut",
+    "District of Columbia",
+    "Delaware",
+    "Florida",
+    "Georgia",
+    "Hawaii",
+    "Iowa",
+    "Idaho",
+    "Illinois",
+    "Indiana",
+    "Kansas",
+    "Kentucky",
+    "Louisiana",
+    "Massachusetts",
+    "Maryland",
+    "Maine",
+    "Michigan",
+    "Minnesota",
+    "Missouri",
+    "Mississippi",
+    "Montana",
+    "North Carolina",
+    " North Dakota",
+    "Nebraska",
+    "New Hampshire",
+    "New Jersey",
+    "New Mexico",
+    "Nevada",
+    "New York",
+    "Ohio",
+    "Oklahoma",
+    "Oregon",
+    "Pennsylvania",
+    "Rhode Island",
+    "South Carolina",
+    "South Dakota",
+    "Tennessee",
+    "Texas",
+    "Utah",
+    "Virginia",
+    "Vermont",
+    "Washington",
+    "Wisconsin",
+    "West Virginia",
+    "Wyoming"
+  ],
+  "categories": [
+    {
+      "label": "Mammals",
+      "subcategories": [
+        {
+          "label": "Horse"
+        },
+        {
+          "label": "Whale"
+        },
+        {
+          "label": "Ape"
+        },
+        {
+          "label": "Dog"
+        },
+        {
+          "label": "Pig"
+        },
+        {
+          "label": "Cat"
+        },
+        {
+          "label": "Goat"
+        },
+        {
+          "label": "Giraffe"
+        }
+      ]
+    },
+    {
+      "label": "Birds",
+      "subcategories": [
+        {
+          "label": "Owl"
+        },
+        {
+          "label": "Eagle"
+        },
+        {
+          "label": "Robin"
+        },
+        {
+          "label": "Pigeon"
+        },
+        {
+          "label": "Flamigo"
+        },
+        {
+          "label": "Hawk"
+        },
+        {
+          "label": "Sparrow"
+        },
+        {
+          "label": "Crane"
+        }
+      ]
+    }
+  ],
+  "years": [
+    2020,
+    2025,
+    2030,
+    2035,
+    2040,
+    2045,
+    2050
+  ]
+}

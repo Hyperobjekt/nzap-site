@@ -1,0 +1,188 @@
+@import "_variables";
+@import "_mixins";
+
+.uk-button {
+  @include transition(0.3s);
+  border-radius: $default-corner-radius;
+  text-transform: unset;
+  min-width: 100%;
+  margin: auto;
+  line-height: 35px;
+  padding: 0px 15px;
+  @include font($small, $thick, $light-color);
+
+  &:hover {
+    box-shadow: 0 2px 5px lighten($dark-color, 60%);
+  }
+}
+
+.uk-button.important {
+  @include font($small, $thick, $light-color, true);
+}
+
+.uk-button.no-shadow {
+  @include transition(0.3s);
+  border-radius: $default-corner-radius;
+  min-width: 100%;
+  color: $light-color !important;
+  box-shadow: none;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.uk-accordion-title {
+  font-size: 1rem !important;
+}
+
+.uk-accordion-content {
+  margin-top: 10px;
+}
+
+.progress-bar {
+  background-color: inherit;
+}
+
+.uk-modal {
+  padding-top: 100px !important;
+
+  .uk-modal-body {
+    padding: 0;
+  }
+
+  .uk-modal-dialog {
+    border-radius: $default-corner-radius;
+    width: 900px !important;
+  }
+  .uk-modal-dialog.small-modal {
+    border-radius: $default-corner-radius;
+    width: 350px !important;
+  }
+}
+
+button:disabled,
+button[disabled]{
+  cursor: no-drop;
+}
+
+.uk-button.text {
+  @include font($small, $bold, $dark-color);
+  background: none; // because of the dropdown
+  box-shadow: none;
+
+  &:hover {
+    @include font($small, $bold, $primary-color);
+  }
+}
+
+.uk-button.light {
+  color: $dark-color !important;
+  box-shadow: none;
+  background: none;
+  border: 1px $neutral-color solid;
+
+  &:hover {
+    box-shadow: 0 2px 5px lighten($dark-color, 60%);
+  }
+}
+
+.uk-button-neutral {
+  background-color: $neutral-color;
+  border-bottom: 1px rgba(darken($neutral-color, 10%), 0.8) solid;
+  &:hover {
+    background-color: darken($neutral-color, 10%);
+    border-bottom: 1px rgba(lighten($neutral-color, 10%), 0.8) solid;
+    color: $light-color;
+  }
+}
+
+.uk-button-primary {
+  background-color: $primary-color;
+  border-bottom: 1px rgba(darken($primary-color, 10%), 0.8) solid;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    border-bottom: 1px rgba(lighten($primary-color, 10%), 0.8) solid;
+    //color: darken($primary-color, 20%);
+  }
+}
+
+.uk-button-select {
+  background-color: $light-color;
+  border: 2px $primary-color solid;
+  box-shadow: none;
+  width: 100%;
+  border-radius: $default-corner-radius;
+  @include font($small, $regular, $dark-color);
+  text-transform: unset;
+  padding: inherit;
+
+  &:hover {
+    background-color: $background-color;
+    box-shadow: none;
+  }
+}
+
+.uk-button-primary.loud {
+  background-color: #f95860;
+  //color: $light;
+  border: 1px solid transparent;
+  background-image: linear-gradient(100deg, #fe8155 0, #f95460 35%, #ed7aa3 100%);
+
+  &:hover {
+    background-color: lighten($primary-color, 10%);
+    background-image: linear-gradient(100deg, #fe8155 0, #f95460 35%, #ed7aa3 100%);
+    //color: darken($primary-color, 20%);
+  }
+}
+
+.uk-button-secondary {
+  background-color: $secondary-color;
+  border-bottom: 1px rgba(darken($secondary-color, 10%), 0.8) solid;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($secondary-color, 10%);
+    border-bottom: 1px rgba(lighten($secondary-color, 10%), 0.8) solid;
+    //color: darken($secondary-color, 20%);
+  }
+}
+
+.uk-input,
+.uk-select,
+.uk-textarea {
+  color: inherit;
+  @include radius($default-corner-radius, $default-corner-radius, $default-corner-radius, $default-corner-radius);
+  border: none;
+  background: $background-color;
+  border-bottom: 2px $neutral-color solid;
+}
+
+::placeholder {
+  @include font($small, $regular, $neutral-color);
+  opacity: 1;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  @include font($small, $regular, $neutral-color);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  @include font($small, $regular, $neutral-color);
+}
+
+.uk-dropdown {
+  box-shadow: none;
+}
+
+.uk-dropdown.uk-open {
+  display: block;
+  padding: 10px;
+  // max-height: 400px;
+  overflow: auto;
+}

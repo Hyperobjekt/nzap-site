@@ -1,0 +1,101 @@
+.filter-holder {
+  background: $background-color;
+}
+
+.select {
+  min-width: 200px;
+  .icon {
+    right: 10px;
+  }
+}
+.options {
+  &:hover {
+    background: $background-color;
+  }
+}
+#dropdown-states-menu,
+#dropdown-categories-menu {
+  min-width: 200px;
+  max-height: 200px;
+  overflow: auto;
+}
+
+.toggle.year {
+  background: $dark-color;
+  border-radius: 30px;
+  .by-year {
+    color: $dark-color;
+    z-index: 9999;
+  }
+  .by-scenario {
+    color: $light-color;
+    z-index: 9999;
+  }
+  .background {
+    background: $light-color;
+    left: 5px;
+    top: 5px;
+    right: 120px;
+    bottom: 5px;
+  }
+}
+
+.toggle.scenario {
+  background: $dark-color;
+  border-radius: 30px;
+  .by-year {
+    color: $light-color;
+    z-index: 9999;
+  }
+  .by-scenario {
+    color: $dark-color;
+    z-index: 9999;
+  }
+  .background {
+    background: $light-color;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+    left: 85px;
+  }
+}
+
+.category-filters {
+  .filter-label {
+    @include font($small, $thick, $neutral-color);
+  }
+  .category-input {
+    input {
+      background: none;
+      height: inherit;
+    }
+  }
+  .category {
+    @include font($small, $thick, $dark-color);
+    &:hover {
+      @include font($small, $thick, $accent-color);
+    }
+    .icon {
+      top: -1px;
+      right: 2px;
+    }
+  }
+  .sub-category {
+    @include font($small, $thick, $dark-color);
+    &:hover {
+      @include font($small, $thick, $accent-color);
+    }
+  }
+}
+
+.category-filters.show {
+  height: 210px;
+  overflow: hidden;
+}
+.category-filters.hide {
+  height: 1px;
+  overflow: hidden;
+}
+.hide-extra {
+  @include font($small, $thick, $neutral-color);
+}

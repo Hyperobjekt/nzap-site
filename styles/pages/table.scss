@@ -1,0 +1,11 @@
+.table-holder {
+  .years {
+    .year {
+      @include font($large, $regular, $dark-color);
+      &:hover {
+        @include font($large, $regular, $accent-color);
+        transform: scale(1.25);
+      }
+    }
+  }
+}
