@@ -11,15 +11,15 @@ const NzapFilter = (props) => {
   })
 
   const [usState, setUsState] = useState(rawData.usStates[0]);
-  const [byGroup, setByGroup] = useState('year');
-  const [categories, setCategories] = useState(rawData.categories.map(e => e.label))
+  // const [byGroup, setByGroup] = useState('year');
+  const [categories, setCategories] = useState(rawData.categories)
   const [activeCategories, setActiveCategories] = useState([])
   const [subcategories, setSubCategories] = useState([]);
   const [domActiveCategories, setDomActiveCategories] = useState([]);
-  const [showMoreFilters, setShowMoreFilters] = useState(false)
+  const [showMoreFilters, setShowMoreFilters] = useState(true)
 
   let domStates = rawData.usStates.map((usState, i) => <li onClick={() => { updateState(usState) }} className="pt-1 pb-1 pl-1 pr-1 clickable options" key={i}>{usState}</li>);
-  let domCategories = categories.map((category, i) => <li onClick={() => { updateActiveCategory(category) }} className="pt-1 pb-1 pl-1 pr-1 clickable options" key={i}>{category}</li>);
+  let domCategories = categories.map((category, i) => <li onClick={() => { updateActiveCategory(category.label) }} className="pt-1 pb-1 pl-1 pr-1 clickable options" key={i}>{category.label} ({category.subcategories.length})</li>);
 
   function updateState(usState) {
     UIKit.dropdown('#dropdown-states-menu').hide();
@@ -50,10 +50,10 @@ const NzapFilter = (props) => {
     setSubCategories(subCatArr);
     setDomActiveCategories(domActiveCatArr);
   }
-  function toggleGroup() {
-    if (byGroup === 'year') setByGroup('scenario');
-    if (byGroup === 'scenario') setByGroup('year');
-  }
+  // function toggleGroup() {
+  //   if (byGroup === 'year') setByGroup('scenario');
+  //   if (byGroup === 'scenario') setByGroup('year');
+  // }
   function toggleFilters() {
     setShowMoreFilters(!showMoreFilters)
   }
@@ -101,16 +101,6 @@ const NzapFilter = (props) => {
                   </svg>
                 </span>
                 <span>CSV</span>
-              </div>
-              <div className="d-inline-block">
-                <div onClick={toggleGroup}
-                  className={
-                    byGroup === 'year' ? 'd-block position-relative text-center pt-2 pb-2 clickable toggle year' : 'd-block position-relative text-center pt-2 pb-2 clickable toggle scenario'
-                  }>
-                  <div className="d-inline-block position-relative pl-3 pr-2 mr-1 tween by-year">By Year</div>
-                  <div className="d-inline-block position-relative pl-2 pr-3 ml-1 tween by-scenario">By Scenario</div>
-                  <div className="position-absolute nzap-deep-radius tween background"></div>
-                </div>
               </div>
             </div>
           </div>

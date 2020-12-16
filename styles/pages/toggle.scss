@@ -1,0 +1,42 @@
+.toggle {
+  width: 215px;
+}
+.toggle.year {
+  background: $dark-color;
+  border-radius: 30px;
+  .by-year {
+    color: $dark-color;
+    z-index: 9;
+  }
+  .by-scenario {
+    color: $light-color;
+    z-index: 9;
+  }
+  .background {
+    background: $light-color;
+    left: 5px;
+    top: 5px;
+    right: 120px;
+    bottom: 5px;
+  }
+}
+
+.toggle.scenario {
+  background: $dark-color;
+  border-radius: 30px;
+  .by-year {
+    color: $light-color;
+    z-index: 9;
+  }
+  .by-scenario {
+    color: $dark-color;
+    z-index: 9;
+  }
+  .background {
+    background: $light-color;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+    left: 85px;
+  }
+}

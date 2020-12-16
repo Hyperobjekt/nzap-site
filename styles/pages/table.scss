@@ -1,6 +1,6 @@
 .table-holder {
-  .years {
-    .year {
+  .group-by {
+    .group-values {
       @include font($large, $regular, $dark-color);
       &:hover {
         @include font($large, $regular, $accent-color);

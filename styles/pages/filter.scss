@@ -20,46 +20,6 @@
   overflow: auto;
 }
 
-.toggle.year {
-  background: $dark-color;
-  border-radius: 30px;
-  .by-year {
-    color: $dark-color;
-    z-index: 9999;
-  }
-  .by-scenario {
-    color: $light-color;
-    z-index: 9999;
-  }
-  .background {
-    background: $light-color;
-    left: 5px;
-    top: 5px;
-    right: 120px;
-    bottom: 5px;
-  }
-}
-
-.toggle.scenario {
-  background: $dark-color;
-  border-radius: 30px;
-  .by-year {
-    color: $light-color;
-    z-index: 9999;
-  }
-  .by-scenario {
-    color: $dark-color;
-    z-index: 9999;
-  }
-  .background {
-    background: $light-color;
-    right: 5px;
-    top: 5px;
-    bottom: 5px;
-    left: 85px;
-  }
-}
-
 .category-filters {
   .filter-label {
     @include font($small, $thick, $neutral-color);
@@ -89,11 +49,11 @@
 }
 
 .category-filters.show {
-  height: 210px;
-  overflow: hidden;
+  max-height: 500px;
+  // overflow: auto;
 }
 .category-filters.hide {
-  height: 1px;
+  max-height: 0;
   overflow: hidden;
 }
 .hide-extra {
