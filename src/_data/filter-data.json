@@ -1,0 +1,394 @@
+{
+  "usStates": [
+    {
+      "label": "National",
+      "slug": "national"
+    },
+    {
+      "label": "Alabama",
+      "slug": "alabama"
+    },
+    {
+      "label": "Arizona",
+      "slug": "arizona"
+    },
+    {
+      "label": "Arkansas",
+      "slug": "arkansas"
+    },
+    {
+      "label": "California",
+      "slug": "california"
+    },
+    {
+      "label": "Colorado",
+      "slug": "colorado"
+    },
+    {
+      "label": "Connecticut",
+      "slug": "connecticut"
+    },
+    {
+      "label": "Delaware",
+      "slug": "delaware"
+    },
+    {
+      "label": "District Of Columbia",
+      "slug": "district-of-columbia"
+    },
+    {
+      "label": "Florida",
+      "slug": "florida"
+    },
+    {
+      "label": "Georgia",
+      "slug": "georgia"
+    },
+    {
+      "label": "Idaho",
+      "slug": "idaho"
+    },
+    {
+      "label": "Illinois",
+      "slug": "illinois"
+    },
+    {
+      "label": "Indiana",
+      "slug": "indiana"
+    },
+    {
+      "label": "Iowa",
+      "slug": "iowa"
+    },
+    {
+      "label": "Kansas",
+      "slug": "kansas"
+    },
+    {
+      "label": "Kentucky",
+      "slug": "kentucky"
+    },
+    {
+      "label": "Louisiana",
+      "slug": "louisiana"
+    },
+    {
+      "label": "Maine",
+      "slug": "maine"
+    },
+    {
+      "label": "Maryland",
+      "slug": "maryland"
+    },
+    {
+      "label": "Massachusetts",
+      "slug": "massachusetts"
+    },
+    {
+      "label": "Michigan",
+      "slug": "michigan"
+    },
+    {
+      "label": "Minnesota",
+      "slug": "minnesota"
+    },
+    {
+      "label": "Mississippi",
+      "slug": "mississippi"
+    },
+    {
+      "label": "Missouri",
+      "slug": "missouri"
+    },
+    {
+      "label": "Montana",
+      "slug": "montana"
+    },
+    {
+      "label": "Nebraska",
+      "slug": "nebraska"
+    },
+    {
+      "label": "Nevada",
+      "slug": "nevada"
+    },
+    {
+      "label": "New Hampshire",
+      "slug": "new-hampshire"
+    },
+    {
+      "label": "New Jersey",
+      "slug": "new-jersey"
+    },
+    {
+      "label": "New Mexico",
+      "slug": "new-mexico"
+    },
+    {
+      "label": "New York",
+      "slug": "new-york"
+    },
+    {
+      "label": "North Carolina",
+      "slug": "north-carolina"
+    },
+    {
+      "label": "North Dakota",
+      "slug": "north-dakota"
+    },
+    {
+      "label": "Ohio",
+      "slug": "ohio"
+    },
+    {
+      "label": "Oklahoma",
+      "slug": "oklahoma"
+    },
+    {
+      "label": "Oregon",
+      "slug": "oregon"
+    },
+    {
+      "label": "Pennsylvania",
+      "slug": "pennsylvania"
+    },
+    {
+      "label": "Rhode Island",
+      "slug": "rhode-island"
+    },
+    {
+      "label": "South Carolina",
+      "slug": "south-carolina"
+    },
+    {
+      "label": "South Dakota",
+      "slug": "south-dakota"
+    },
+    {
+      "label": "Tennessee",
+      "slug": "tennessee"
+    },
+    {
+      "label": "Texas",
+      "slug": "texas"
+    },
+    {
+      "label": "Utah",
+      "slug": "utah"
+    },
+    {
+      "label": "Vermont",
+      "slug": "vermont"
+    },
+    {
+      "label": "Virginia",
+      "slug": "virginia"
+    },
+    {
+      "label": "Washington",
+      "slug": "washington"
+    },
+    {
+      "label": "West Virginia",
+      "slug": "west-virginia"
+    },
+    {
+      "label": "Wisconsin",
+      "slug": "wisconsin"
+    },
+    {
+      "label": "Wyoming",
+      "slug": "wyoming"
+    }
+  ],
+  "years": [
+    {
+      "label": "2020",
+      "slug": "2020"
+    },
+    {
+      "label": "2025",
+      "slug": "2025"
+    },
+    {
+      "label": "2030",
+      "slug": "2030"
+    },
+    {
+      "label": "2035",
+      "slug": "2035"
+    },
+    {
+      "label": "2040",
+      "slug": "2040"
+    },
+    {
+      "label": "2045",
+      "slug": "2045"
+    },
+    {
+      "label": "2050",
+      "slug": "2050"
+    },
+    {
+      "label": "years",
+      "slug": "years"
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "REF",
+      "slug": "ref"
+    },
+    {
+      "label": "E+",
+      "slug": "e"
+    },
+    {
+      "label": "E-",
+      "slug": "e"
+    },
+    {
+      "label": "RE+",
+      "slug": "re"
+    },
+    {
+      "label": "RE-",
+      "slug": "re"
+    },
+    {
+      "label": "B+",
+      "slug": "b"
+    },
+    {
+      "label": "lowandhigh",
+      "slug": "lowandhigh"
+    },
+    {
+      "label": "na",
+      "slug": "na"
+    },
+    {
+      "label": "yes",
+      "slug": "yes"
+    },
+    {
+      "label": "low",
+      "slug": "low"
+    },
+    {
+      "label": "high",
+      "slug": "high"
+    },
+    {
+      "label": "B+(E+",
+      "slug": "be"
+    },
+    {
+      "label": "RE+)",
+      "slug": "re"
+    },
+    {
+      "label": "depends",
+      "slug": "depends"
+    }
+  ],
+  "categories": [
+    {
+      "label": "High level",
+      "slug": "high-level",
+      "subcategories": []
+    },
+    {
+      "label": "End-use energy, stocks, and investments",
+      "slug": "end-use-energy-stocks-and-investments",
+      "subcategories": [
+        {
+          "label": "Transportation sector",
+          "slug": "transportation-sector"
+        },
+        {
+          "label": "Residential sector",
+          "slug": "residential-sector"
+        },
+        {
+          "label": "Commercial sector",
+          "slug": "commercial-sector"
+        },
+        {
+          "label": "Industrial sector",
+          "slug": "industrial-sector"
+        }
+      ]
+    },
+    {
+      "label": "Electricity supply system",
+      "slug": "electricity-supply-system",
+      "subcategories": [
+        {
+          "label": "Solar and wind projects",
+          "slug": "solar-and-wind-projects"
+        },
+        {
+          "label": "Project locations",
+          "slug": "project-locations"
+        }
+      ]
+    },
+    {
+      "label": "Hydrogen systems",
+      "slug": "hydrogen-systems",
+      "subcategories": []
+    },
+    {
+      "label": "Bioenergy systems",
+      "slug": "bioenergy-systems",
+      "subcategories": [
+        {
+          "label": "Other bioenergy industry numbers",
+          "slug": "other-bioenergy-industry-numbers"
+        }
+      ]
+    },
+    {
+      "label": "CO2 Industry",
+      "slug": "co2-industry",
+      "subcategories": []
+    },
+    {
+      "label": "Fossil fuels",
+      "slug": "fossil-fuels",
+      "subcategories": []
+    },
+    {
+      "label": "Non-CO2 emissions and Land Sinks",
+      "slug": "non-co2-emissions-and-land-sinks",
+      "subcategories": []
+    },
+    {
+      "label": "Air pollution damages",
+      "slug": "air-pollution-damages",
+      "subcategories": []
+    },
+    {
+      "label": "Employment",
+      "slug": "employment",
+      "subcategories": []
+    },
+    {
+      "label": "Annual capital investments (B$)",
+      "slug": "annual-capital-investments-b",
+      "subcategories": []
+    },
+    {
+      "label": "BACKGROUND",
+      "slug": "background",
+      "subcategories": []
+    },
+    {
+      "label": "INPUT DATA",
+      "slug": "input-data",
+      "subcategories": []
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+@import "variables";
+
+.display-2 {
+  line-height: 0.9em !important;
+}
+
+.btn-light.disabled,
+.btn-light:disabled {
+  color: $dark-color !important;
+  background-color: $neutral-color !important;
+  cursor: no-drop;
+}
+
+button:focus {
+  outline: none;
+}
+
+.navbar-light .navbar-toggler {
+  border: none;
+}
+.dropdown-menu {
+  border: none;
+}

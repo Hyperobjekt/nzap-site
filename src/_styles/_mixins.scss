@@ -1,0 +1,28 @@
+@mixin transition($speed) {
+  -webkit-transition: all $speed ease-out;
+  -moz-transition: all $speed ease-out;
+  -o-transition: all $speed ease-out;
+  transition: all $speed ease-out;
+}
+
+@mixin font($size, $weight, $color, $important:null) {
+  @if ($important) {
+    $important: !important;
+  }
+
+  @else {}
+
+  font-size: $size $important;
+  font-weight: $weight $important;
+  color: $color $important;
+}
+
+@mixin radius($tl, $tr, $br, $bl) {
+  border-top-left-radius: $tl;
+  border-top-right-radius: $tr;
+  border-bottom-right-radius: $br;
+  border-bottom-left-radius: $bl;
+}
+
+
+//.box { @include transition(0.3s); }

@@ -1,0 +1,527 @@
+@import "_variables";
+@import "_mixins";
+
+h1,
+.uk-h1,
+h2,
+.uk-h2,
+h3,
+.uk-h3,
+h4,
+.uk-h4,
+h5,
+.uk-h5,
+h6,
+.uk-h6,
+.uk-heading-small,
+.uk-heading-medium,
+.uk-heading-large,
+.uk-heading-xlarge,
+.uk-heading-2xlarge {
+  font-weight: $bold !important;
+  // color: $dark-color !important;
+}
+
+textarea.textarea,
+select,
+input,
+button {
+  outline: none;
+  border: 1px $neutral-color solid !important;
+}
+
+textarea:focus,
+select:focus,
+input:focus,
+button:focus,
+a:focus {
+  outline: none;
+}
+
+html,
+body {
+  font-family: $font-family-sans-serif;
+  font-size: 17px/1.4em;
+  color: $dark-color;
+  background: $background-color !important;
+  // height: 100vh;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+span.close {
+  @include transition(0.3s);
+  color: lighten($dark-color, 40%);
+
+  &:hover {
+    color: lighten($dark-color, 10%);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+  /* make scrollbar transparent */
+}
+
+[contenteditable="true"]:empty:before {
+  content: attr(placeholder);
+  pointer-events: none;
+  color: $neutral-color;
+  display: block;
+  /* For Firefox */
+}
+
+.color-dark {
+  color: $dark-color;
+}
+.color-neutral {
+  color: $neutral-color;
+}
+.color-light {
+  color: $light-color;
+}
+.color-primary {
+  color: $primary-color;
+}
+.color-secondary {
+  color: $secondary-color;
+}
+.color-accent {
+  color: $accent-color;
+}
+.color-positive {
+  color: $positive-color;
+}
+.color-negative {
+  color: $negative-color;
+}
+.color-background {
+  color: $background-color;
+}
+
+.bg-dark {
+  background: $dark-color;
+}
+.bg-neutral {
+  background: $neutral-color;
+}
+.bg-light {
+  background: $light-color;
+}
+.bg-primary {
+  background: $primary-color;
+}
+.bg-secondary {
+  background: $secondary-color;
+}
+.bg-accent {
+  background: $accent-color;
+}
+.bg-positive {
+  background: $positive-color;
+}
+.bg-negative {
+  background: $negative-color;
+}
+.bg-background {
+  background: $background-color;
+}
+
+.border-dark {
+  border-color: $dark-color;
+}
+.border-neutral {
+  border-color: $neutral-color;
+}
+.border-light {
+  border-color: $light-color;
+}
+.border-primary {
+  border-color: $primary-color;
+}
+.border-secondary {
+  border-color: $secondary-color;
+}
+.border-accent {
+  border-color: $accent-color;
+}
+.border-positive {
+  border-color: $positive-color;
+}
+.border-negative {
+  border-color: $negative-color;
+}
+.border-background {
+  border-color: $background-color;
+}
+
+.fill-dark {
+  fill: $dark-color;
+}
+.fill-neutral {
+  fill: $neutral-color;
+}
+.fill-light {
+  fill: $light-color;
+}
+.fill-primary {
+  fill: $primary-color;
+}
+.fill-secondary {
+  fill: $secondary-color;
+}
+.fill-accent {
+  fill: $accent-color;
+}
+.fill-positive {
+  fill: $positive-color;
+}
+.fill-negative {
+  fill: $negative-color;
+}
+.fill-background {
+  fill: $background-color;
+}
+
+.no-outline {
+  outline: none;
+}
+.nzap-grid {
+  .nzap-grid-row {
+    min-height: 75px;
+
+    .nzap-grid-cell {
+      span.dot-tl,
+      span.dot-tr,
+      span.dot-bl,
+      span.dot-br {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: $neutral-color;
+      }
+
+      span.dot-tl {
+        top: -2px;
+        left: -2px;
+      }
+
+      span.dot-tr {
+        top: -2px;
+        right: -2px;
+      }
+
+      span.dot-bl {
+        bottom: -2px;
+        left: -2px;
+      }
+
+      span.dot-br {
+        bottom: -2px;
+        right: -2px;
+      }
+
+      &:hover {
+        background: $light-color;
+      }
+    }
+  }
+}
+
+.nzap-neumorph {
+  box-shadow: 10px 10px 12px lighten($neutral-color, 25%), -10px -10px 12px $light-color;
+}
+
+.nzap-application-secondary-nav {
+  background: $light-color;
+  z-index: 2;
+
+  .title {
+    @include font($small, $bold, $primary-color);
+  }
+}
+
+.nzap-setting {
+  .nzap-nzap-setting-nav {
+  }
+}
+
+.nzap-background {
+  background: $background-color;
+}
+
+.nzap-heavy-blur {
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.nzap-light-blur {
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
+}
+
+.nzap-blur {
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
+}
+
+.nzap-canvas {
+  background: $background-color;
+}
+
+.nzap-deep-radius {
+  border-radius: $deep-radius;
+}
+
+.nzap-radius {
+  border-radius: $default-corner-radius;
+}
+
+.nzap-radius-tl {
+  border-top-left-radius: $default-corner-radius;
+}
+
+.nzap-radius-tr {
+  border-top-right-radius: $default-corner-radius;
+}
+
+.nzap-radius-bl {
+  border-bottom-left-radius: $default-corner-radius;
+}
+
+.nzap-radius-br {
+  border-bottom-right-radius: $default-corner-radius;
+}
+
+.nzap-shadow {
+  box-shadow: 0 4px 3px 3px $background-color !important;
+}
+
+.nzap-border {
+  border-style: solid !important;
+  border-width: 2px !important;
+}
+.nzap-border-left {
+  border-left-style: solid !important;
+  border-left-width: 2px !important;
+}
+.nzap-border-right {
+  border-right-style: solid !important;
+  border-right-width: 2px !important;
+}
+.nzap-border-top {
+  border-top-style: solid !important;
+  border-top-width: 2px !important;
+}
+.nzap-border-bottom {
+  border-bottom-style: solid !important;
+  border-bottom-width: 2px !important;
+}
+
+.highlight {
+  box-shadow: 0px 0px 20px $accent-color;
+  border: 2px $accent-color solid;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.no-background {
+  background: none !important;
+}
+
+.tween {
+  @include transition(0.2s);
+}
+
+.clickable {
+  cursor: pointer;
+  @include transition(0.2s);
+
+  &:hover {
+  }
+}
+
+.highlightable {
+  @include transition(0.2s);
+
+  &:hover {
+    // opacity: 0.9;
+    background-color: $accent-color;
+  }
+}
+
+.close {
+  float: initial !important;
+  font-size: initial !important;
+  font-weight: initial !important;
+  line-height: initial !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.nzap-title,
+.nzap-title-1 {
+  @include font($large, $bold, $primary-color);
+  border-bottom: 3px $primary-color solid;
+  display: inline-block;
+  // width: 35px;
+  white-space: nowrap;
+  opacity: 0.9;
+  @include transition(0.3s);
+}
+
+.nzap-title-2 {
+  text-transform: uppercase;
+  @include font($small, $bold, $dark-color);
+  white-space: nowrap;
+}
+
+.nzap-title-3 {
+  font-size: 0.8em;
+  font-weight: 600;
+  display: inline-block;
+  color: $primary-color;
+  // border-bottom: 2px $primary-color solid;
+  // text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+.chrome-picker {
+  margin-bottom: 15px;
+  border: 1px $neutral-color solid;
+  box-shadow: none !important;
+}
+
+.atf {
+}
+
+.btf {
+}
+
+// Add to component Value Add
+// Value Add Component
+.value-add {
+  .value-add-image {
+  }
+
+  .value-add-label {
+    font-weight: 900;
+    min-height: 84px;
+    font-size: 1.1em;
+
+    .supporting {
+      font-size: 0.8em;
+    }
+  }
+
+  .value-add-description {
+    font-size: 0.9em;
+    min-height: 90px;
+  }
+}
+
+// ENd of Value Add Component
+
+// Add to component Subscription Plan
+// Subscription Plan component
+.subscription-plan {
+  border: 1px lighten($dark-color, 60%) solid;
+
+  .head {
+    border-bottom: 1px lighten($dark-color, 60%) solid;
+  }
+
+  .body {
+    min-height: 265px;
+
+    .features {
+      .feature.noline {
+        border-bottom: none;
+      }
+
+      .feature {
+        border-bottom: 1px lighten($dark-color, 60%) solid;
+      }
+    }
+  }
+}
+
+// End of Subscription Plan component
+
+.text-bold {
+  font-weight: 600;
+}
+
+.text-thin {
+  font-weight: 100;
+}
+
+.image-backdrop-primary {
+  width: 100%;
+  box-shadow: -25px 30px 0px $primary-color;
+}
+
+.image-backdrop-secondary {
+  width: 100%;
+  box-shadow: -25px 30px 0px $dark-color;
+}
+
+.btn-pill {
+  border: 2px $dark-color solid;
+  color: $dark-color;
+  border-radius: 20px;
+  padding: 3px 8px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+//
+//.font-thin {
+//  letter-spacing: 2px;
+//  font-weight: 100;
+//}
+//
+//.font-regular {
+//  font-size: 1.1rem;
+//  font-weight: 400;
+//}
+//
+//.font-bold {
+//  letter-spacing: 2px;
+//  font-weight: 700;
+//}
+//
+//.font-black {
+//  font-weight: 900;
+//  letter-spacing: 2px;
+//}
+//
+//.form-block {
+//  padding: 0 0 20px 0;
+//  max-width: 1200px;
+//}
+//
+//.form-label,
+//.table-label {
+//  text-transform: uppercase;
+//  font-size: 0.8em;
+//  color: #777;
+//  font-weight: 600;
+//}
+//
+//.text-clickable {
+//  font-weight: 600;
+//  color: #317d99;
+//  cursor: pointer;
+//}
