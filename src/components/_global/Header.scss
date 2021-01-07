@@ -1,0 +1,6 @@
+@import "../../_styles/variables";
+@import "../../_styles/mixins";
+
+.nzap-header {
+  border-top: 8px $accent-color solid;
+}

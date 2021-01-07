@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Select, Collapse } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
-import './exploreFilter.scss';
+import './ExploreFilter.scss';
 
 const { Option } = Select;
 const { Panel } = Collapse;
@@ -40,21 +40,39 @@ const assembleSubcategories = categories => {
   })
 }
 
+const getQueryString = (query) => {
+  return "?" + Object.keys(query).map((key, i) => {
+    const element = query[key];
+    return element.length ? `${key}=${element.join(',')}` : null;
+  }).filter(e => e).join('&')
+
+}
 
 const ExploreFilter = () => {
+  useEffect(() => { })
 
+  const [query, setQuery] = useState(getQuery())
   const [filterDraw, setFilterDraw] = useState(true);
   const [categories, setCategories] = useState(assembleCategories());
+  const [usState, setUsState] = useState('none');
   const [subcategories, setSubCategories] = useState(assembleSubcategories(categories));
   const filterHeader = <><span className="pl-0">Filter</span><DownOutlined rotate={filterDraw ? 180 : 0} className="align-baseline pl-4 clickable" /> </>;
-  useEffect(() => { })
+
+  const usStateChange = (event) => {
+    setUsState(event);
+    query.state = [event];
+    setQuery(query)
+    let queryString = getQueryString(query);
+    console.log(queryString)
+  }
+
 
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-12">
-          <Select defaultValue="none" style={{ width: 250 }}>
+          <Select defaultValue={usState} style={{ width: 250 }} onChange={usStateChange}>
             <Option value="none">Select a State or National</Option>
             {filterShape.usStates.map((usState, i) => <Option key={i} value={usState.slug}>{usState.label}</Option>)}
           </Select>
