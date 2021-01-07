@@ -9,10 +9,11 @@ const Header = () => {
     <div className="container">
       <div className="row pt-5 pb-5">
         <div className="col-4 project-title">
-          Net Zero America Project
+          NET-ZERO AMERICA
         </div>
         <div className="col-8 text-right">
           <nav>
+            <NavLink className="pr-2 pl-2" to="/" activeStyle={activeStyle} exact>Explore the Data</NavLink>
             <NavLink className="pr-2 pl-2" to="/" activeStyle={activeStyle} exact>Publications</NavLink>
             <NavLink className="pr-2 pl-2" to="/explore" activeStyle={activeStyle}>Media</NavLink>
             <NavLink className="pl-2" to="/explore" activeStyle={activeStyle}>About</NavLink>

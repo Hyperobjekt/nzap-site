@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Select, Collapse } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
+import './exploreFilter.scss';
 
 const { Option } = Select;
 const { Panel } = Collapse;
@@ -68,16 +69,26 @@ const ExploreFilter = () => {
 
               <div className="container-fluid pl-0">
                 <div className="row">
-                  <div className="col-12 categories">
+                  <div className="col-12 filter-categories">
                     <div className="d-block filter-label">Categories</div>
                     <div className="d-block filter-data">
-                      {categories.map((category, i) => <div key={i} className="d-inline-block pl-2 pr-2 pt-2 pb-2 mb-2 mr-2 category">{category.label}</div>)}
+                      {categories.map((category, i) => {
+                        const categoryClass = category.active
+                          ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category active"
+                          : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category";
+                        return <div key={i} className={categoryClass}>{category.label}</div>
+                      })}
                     </div>
                   </div>
-                  <div className="col-12 subcategories">
+                  <div className="col-12 filter-categories">
                     <div className="d-block filter-label">Subcategories</div>
                     <div className="d-block filter-data">
-                      {subcategories.map((subcategory, i) => <div key={i} className="d-inline-block pl-2 pr-2 pt-2 pb-2 mb-2 mr-2 subcategory">{subcategory.label}</div>)}
+                      {subcategories.map((subcategory, i) => {
+                        const subcategoryClass = subcategory.active
+                          ? "d-inline-block pl-2 pr-2 pt-2 pb-2 mb-2 mr-2 nzap-radius clickable filter-category active"
+                          : "d-inline-block pl-2 pr-2 pt-2 pb-2 mb-2 mr-2 nzap-radius clickable filter-category"
+                        return <div key={i} className={subcategoryClass}>{subcategory.label}</div>
+                      })}
                     </div>
                   </div>
 
