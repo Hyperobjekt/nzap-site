@@ -1,4 +1,5 @@
 export default {
   scenarios: [],
-  apiCallsInProgress: 0
+  apiCallsInProgress: 0,
+  query: {}
 }
