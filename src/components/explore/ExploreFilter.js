@@ -11,7 +11,7 @@ const { Panel } = Collapse;
 
 const filterShape = require('../../_data/filter-data.json');
 
-const getQuery = () => {
+const getQueryObject = () => {
   let query = {};
   ['state', 'years', 'categories', 'subcategories', 'examine'].forEach(q => {
     let val = new URLSearchParams(useLocation().search).get(q);
@@ -20,50 +20,69 @@ const getQuery = () => {
   return query
 }
 
-const assembleCategories = () => {
-  const query = getQuery();
-  return filterShape.categories.map(e => {
-    e.active = query.categories.indexOf(e.slug) > -1;
-    return e;
-  })
-}
-
-const assembleSubcategories = categories => {
-  const query = getQuery();
-  let subcategories = categories
-    .filter(category => category.active)
-    .map(category => category.subcategories)
-    .flat()
-  return subcategories.map(e => {
-    e.active = query.subcategories.indexOf(e.slug) > -1;
-    return e;
-  })
-}
-
-const getQueryString = (query) => {
-  return "?" + Object.keys(query).map((key, i) => {
-    const element = query[key];
-    return element.length ? `${key}=${element.join(',')}` : null;
-  }).filter(e => e).join('&')
-
-}
 
 const ExploreFilter = () => {
-  useEffect(() => { })
-
-  const [query, setQuery] = useState(getQuery())
   const [filterDraw, setFilterDraw] = useState(true);
+  const [queryObject, setQueryObject] = useState(getQueryObject())
+  const [usState, setUsState] = useState(new URLSearchParams(useLocation().search).get('state'));
   const [categories, setCategories] = useState(assembleCategories());
-  const [usState, setUsState] = useState('none');
   const [subcategories, setSubCategories] = useState(assembleSubcategories(categories));
   const filterHeader = <><span className="pl-0">Filter</span><DownOutlined rotate={filterDraw ? 180 : 0} className="align-baseline pl-4 clickable" /> </>;
+  useEffect(() => { })
 
-  const usStateChange = (event) => {
-    setUsState(event);
-    query.state = [event];
-    setQuery(query)
-    let queryString = getQueryString(query);
-    console.log(queryString)
+
+  function getQueryString() {
+    return "?" + Object.keys(queryObject).map((key) => {
+      const element = queryObject[key];
+      return element.length ? `${key}=${element.join(',')}` : null;
+    }).filter(e => e).join('&')
+  }
+
+  function usStateChange(usStateSlug) {
+    setUsState(usStateSlug);
+    queryObject.state = [usStateSlug];
+    setQueryObject(queryObject)
+    window.history.replaceState(null, null, getQueryString())
+  }
+
+  function updateCategories(slug) {
+    let newCategories = [...categories].map(category => {
+      if (category.slug === slug) category.active = !category.active;
+      return category;
+    })
+    queryObject.categories = newCategories.filter(category => category.active).map(category => category.slug);
+    setQueryObject(queryObject)
+    setCategories(newCategories);
+    return window.history.replaceState(null, null, getQueryString())
+  }
+
+  function updateSubcategories(slug) {
+    let newSubcategories = [...subcategories].map(subcategory => {
+      if (subcategory.slug === slug) subcategory.active = !subcategory.active;
+      return subcategory;
+    })
+    queryObject.subcategories = newSubcategories.filter(subcategory => subcategory.active).map(subcategory => subcategory.slug);
+    setQueryObject(queryObject)
+    setSubCategories(newSubcategories)
+    return window.history.replaceState(null, null, getQueryString())
+  }
+
+  function assembleCategories() {
+    return filterShape.categories.map(e => {
+      e.active = queryObject.categories.indexOf(e.slug) > -1;
+      return e;
+    })
+  }
+
+  function assembleSubcategories(categories) {
+    let subcategories = categories
+      .filter(category => category.active)
+      .map(category => category.subcategories)
+      .flat()
+    return subcategories.map(e => {
+      e.active = queryObject.subcategories.indexOf(e.slug) > -1;
+      return e;
+    })
   }
 
 
@@ -80,7 +99,7 @@ const ExploreFilter = () => {
         <div className="col-12">
           <Collapse
             bordered={false}
-            defaultActiveKey={[]}
+            defaultActiveKey={filterDraw ? ['1'] : []}
             expandIcon={({ isActive }) => setFilterDraw(isActive)}
             className="site-collapse-custom-collapse">
             <Panel header={filterHeader} key="1" className="site-collapse-custom-panel" >
@@ -94,7 +113,7 @@ const ExploreFilter = () => {
                         const categoryClass = category.active
                           ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category active"
                           : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category";
-                        return <div key={i} className={categoryClass}>{category.label}</div>
+                        return <div key={i} className={categoryClass} onClick={() => { return updateCategories(category.slug) }}>{category.label}</div>
                       })}
                     </div>
                   </div>
@@ -105,7 +124,7 @@ const ExploreFilter = () => {
                         const subcategoryClass = subcategory.active
                           ? "d-inline-block pl-2 pr-2 pt-2 pb-2 mb-2 mr-2 nzap-radius clickable filter-category active"
                           : "d-inline-block pl-2 pr-2 pt-2 pb-2 mb-2 mr-2 nzap-radius clickable filter-category"
-                        return <div key={i} className={subcategoryClass}>{subcategory.label}</div>
+                        return <div key={i} className={subcategoryClass} onClick={() => { return updateSubcategories(subcategory.slug) }}>{subcategory.label}</div>
                       })}
                     </div>
                   </div>
@@ -121,6 +140,9 @@ const ExploreFilter = () => {
     </div>
   )
 }
+
+
+
 function mapStateToProps(state) {
   return {
     scenarios: state.scenarios,
