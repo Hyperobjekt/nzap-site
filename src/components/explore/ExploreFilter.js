@@ -14,7 +14,7 @@ const filterShape = require('../../_data/filter-data.json');
 
 // const getQueryObject = () => {
 //   let obj = {};
-//   ['state', 'years', 'categories', 'subcategories', 'examine'].forEach(q => {
+//   ['state', 'years', 'levelOneFilters', 'levelTwoFilters', 'examine'].forEach(q => {
 //     let val = new URLSearchParams(useLocation().search).get(q);
 //     obj[q] = val ? val.split(',') : []
 //   });
@@ -25,18 +25,18 @@ const filterShape = require('../../_data/filter-data.json');
 const ExploreFilter = ({ query, loadQuery }) => {
   const [filterDraw, setFilterDraw] = useState(localStorage.filterDraw === 'true');
   const [usState, setUsState] = useState(query.state ? query.state[0] : null);
-  const [categories, setCategories] = useState([]);
-  const [subcategories, setSubCategories] = useState([]);
+  const [levelOneFilters, setLevelOneFilters] = useState([]);
+  const [levelTwoFilters, setLevelTwoFilters] = useState([]);
   const filterHeader = <><span className="pl-0">Filter</span><DownOutlined rotate={filterDraw ? 180 : 0} className="align-baseline pl-4 clickable" /> </>;
 
   useEffect(() => {
 
     if (!usState && query.state) setUsState(query.state[0] || 'none')
-    if (query.categories && !categories.length) setCategories(assembleCategories());
-    let activeSubcategories = categories.filter(category => category.active && category.subcategories.length).length
-    console.log(activeSubcategories, subcategories.length)
-    if (activeSubcategories && !subcategories.length) setSubCategories(assembleSubcategories());
-    if (!activeSubcategories && subcategories.length) setSubCategories([]);
+    if (query.categories && !levelOneFilters.length) setLevelOneFilters(assembleCategories());
+    let activeSubcategories = levelOneFilters.filter(category => category.active && category.levelTwoFilters.length).map(category => category.levelTwoFilters).flat();
+    if (activeSubcategories.length !== levelTwoFilters.length) setLevelTwoFilters(assembleSubcategories());
+    // if (activeSubcategories && !levelTwoFilters.length) setLevelTwoFilters(assembleSubcategories());
+    // if (!activeSubcategories && levelTwoFilters.length) setLevelTwoFilters([]);
   })
 
 
@@ -55,41 +55,41 @@ const ExploreFilter = ({ query, loadQuery }) => {
   }
 
   function updateCategories(slug) {
-    let newCategories = [...categories].map(category => {
+    let newCategories = [...levelOneFilters].map(category => {
       if (category.slug === slug) category.active = !category.active;
       return category;
     })
     let queryObject = { ...query, categories: newCategories.filter(category => category.active).map(category => category.slug) };
     loadQuery(queryObject)
-    setCategories(newCategories);
+    setLevelOneFilters(newCategories);
     return window.history.replaceState(null, null, getQueryString(queryObject))
   }
 
   function updateSubcategories(slug) {
-    let newSubcategories = [...subcategories].map(subcategory => {
+    let newSubcategories = [...levelTwoFilters].map(subcategory => {
       if (subcategory.slug === slug) subcategory.active = !subcategory.active;
       return subcategory;
     })
     let queryObject = { ...query, subcategories: newSubcategories.filter(subcategory => subcategory.active).map(subcategory => subcategory.slug) }
     loadQuery(query)
-    setSubCategories(newSubcategories)
+    setLevelTwoFilters(newSubcategories)
     return window.history.replaceState(null, null, getQueryString(queryObject))
   }
 
   function assembleCategories() {
-    return filterShape.categories.map(e => {
+    return filterShape.levelOneFilters.map(e => {
       e.active = query.categories.indexOf(e.slug) > -1;
       return e;
     })
   }
 
   function assembleSubcategories() {
-    if (!categories.length) return [];
-    let subcategories = categories
+    if (!levelOneFilters.length) return [];
+    let levelTwoFilters = levelOneFilters
       .filter(category => category.active)
-      .map(category => category.subcategories)
+      .map(category => category.levelTwoFilters)
       .flat()
-    return subcategories.map(e => {
+    return levelTwoFilters.map(e => {
       e.active = query.subcategories.indexOf(e.slug) > -1;
       return e;
     })
@@ -126,7 +126,7 @@ const ExploreFilter = ({ query, loadQuery }) => {
                   <div className="col-12 filter-categories">
                     <div className="d-block filter-label">Categories</div>
                     <div className="d-block filter-data">
-                      {categories.map((category, i) => {
+                      {levelOneFilters.map((category, i) => {
                         const categoryClass = category.active
                           ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category active"
                           : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category";
@@ -135,9 +135,9 @@ const ExploreFilter = ({ query, loadQuery }) => {
                     </div>
                   </div>
                   <div className="col-12 filter-categories">
-                    <div className="d-block filter-label">Subcategories</div>
+                    {levelTwoFilters.length ? <div className="d-block filter-label">Subcategories</div> : null}
                     <div className="d-block filter-data">
-                      {subcategories.map((subcategory, i) => {
+                      {levelTwoFilters.map((subcategory, i) => {
                         const subcategoryClass = subcategory.active
                           ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-2 mr-2 nzap-radius clickable filter-category active"
                           : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-2 mr-2 nzap-radius clickable filter-category"

@@ -8,8 +8,8 @@
     "start:dev": "webpack-dev-server --config webpack.config.dev.js --port 3000",
     "prestart:api": "node tools/createMockDb.js",
     "start:api": "node tools/apiServer.js",
-    "csv:json": "node src/_scripts/csv-to-json src/_data/nzap-sample.csv",
-    "reshape": "node src/_scripts/reshape-data src/_data/nzap-sample.json"
+    "csv:json": "node src/_scripts/csv-to-json src/_data/nzap_data.csv",
+    "reshape": "node src/_scripts/reshape-data src/_data/nzap_data.json"
   },
   "keywords": [],
   "dependencies": {
