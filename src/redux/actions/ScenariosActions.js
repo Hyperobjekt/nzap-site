@@ -20,9 +20,10 @@ export function deleteScenarioAction(scenario) {
 }
 
 
-export function loadScenarios() {
+export function loadScenarios(query) {
   return function (dispatch) {
     dispatch(beginApiCall())
+    console.log(query)
     return scenariosApi.getScenarios().then(scenarios => {
       dispatch(loadScenariosActionSuccess(scenarios))
     }).catch(err => {

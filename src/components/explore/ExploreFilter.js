@@ -30,7 +30,6 @@ const ExploreFilter = ({ query, loadQuery }) => {
   const filterHeader = <><span className="pl-0">Filter</span><DownOutlined rotate={filterDraw ? 180 : 0} className="align-baseline pl-4 clickable" /> </>;
 
   useEffect(() => {
-
     if (!usState && query.state) setUsState(query.state[0] || 'none')
     if (query.categories && !levelOneFilters.length) setLevelOneFilters(assembleCategories());
     let activeSubcategories = levelOneFilters.filter(category => category.active && category.levelTwoFilters.length).map(category => category.levelTwoFilters).flat();
@@ -71,7 +70,7 @@ const ExploreFilter = ({ query, loadQuery }) => {
       return subcategory;
     })
     let queryObject = { ...query, subcategories: newSubcategories.filter(subcategory => subcategory.active).map(subcategory => subcategory.slug) }
-    loadQuery(query)
+    loadQuery(queryObject)
     setLevelTwoFilters(newSubcategories)
     return window.history.replaceState(null, null, getQueryString(queryObject))
   }

@@ -24,18 +24,30 @@ const getQueryObject = (location) => {
   return obj
 }
 
-const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios, ...props }) => {
+
+const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios }) => {
   const location = useLocation();
+  const [queryString, setQueryString] = useState('');
   useEffect(() => {
-    if (scenarios.length === 0) loadScenarios().catch(error => {
+    let qObject = getQueryObject(location)
+    if (scenarios.length === 0 || queryString !== getQueryString(query)) loadScenarios(qObject).catch(error => {
       console.log(">> Loading scenarios failed" + error);
-    });
-    loadQuery(getQueryObject(location));
-  }, [props.scenarios])
+    })
+
+    if (Object.keys(query).length === 0 || queryString !== getQueryString(query)) {
+      setQueryString(getQueryString(qObject))
+      loadQuery(qObject);
+    }
+  }, [scenarios, query])
+
+  function getQueryString(queryObject) {
+    return "?" + Object.keys(queryObject).map((key) => {
+      const element = queryObject[key];
+      return element.length ? `${key}=${element.join(',')}` : null;
+    }).filter(e => e).join('&')
+  }
 
   const [explorer, setExplorer] = useState('year');
-
-
   return (<div>
     <div className="container">
       <div className="row">
@@ -52,7 +64,6 @@ const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios, ..
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <pre>{JSON.stringify(query)}</pre>
             {explorer === 'pathway' ? <ExploreByPathway scenarios={scenarios} /> : <ExploreByYear scenarios={scenarios} />}
           </div>
         </div>
