@@ -1,18 +1,3 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import rootReducer from "./reducers";
-import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
-import thunk from "redux-thunk";
-
-export default function configureStore(initialState) {
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // dev tools 🙄
-  return createStore(
-    rootReducer,
-    initialState,
-    composeEnhancers(
-      applyMiddleware(
-        thunk,
-        reduxImmutableStateInvariant() // ⚠️ prevent mutations middleware
-      )
-    )
-  )
-}
+process.env.NODE_ENV === 'production'
+  ? module.exports = require('./configureStore.prod')
+  : module.exports = require('./configureStore.dev')
