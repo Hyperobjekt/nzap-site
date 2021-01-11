@@ -1,0 +1,17 @@
+@import "_variables";
+@import "_mixins";
+
+.ant-collapse-header {
+  padding-left: 0 !important;
+}
+
+.ant-collapse-borderless {
+  background: none;
+  .ant-collapse-item {
+    border: none !important;
+  }
+}
+
+.ant-collapse-content-box {
+  padding-left: 0 !important;
+}

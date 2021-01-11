@@ -1,0 +1,15 @@
+@import "../../_styles/variables";
+@import "../../_styles/mixins";
+
+.filter-categories {
+  .filter-category {
+    border: 2px $neutral-color solid;
+    background: $background-color;
+    color: $neutral-color;
+  }
+  .filter-category.active {
+    border: 2px $dark-color solid;
+    background: $light-color;
+    color: $dark-color;
+  }
+}
