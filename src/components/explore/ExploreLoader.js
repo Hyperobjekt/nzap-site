@@ -24,20 +24,23 @@ const getQueryObject = (location) => {
   return obj
 }
 
+const handleError = error => {
+  console.log(">> Loading scenarios failed" + error);
+}
 
 const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios }) => {
   const location = useLocation();
   const [queryString, setQueryString] = useState('');
   useEffect(() => {
     let qObject = getQueryObject(location)
-    if (scenarios.length === 0 || queryString !== getQueryString(query)) loadScenarios(qObject).catch(error => {
-      console.log(">> Loading scenarios failed" + error);
-    })
 
+    if (scenarios.length === 0 && Object.keys(query).length === 0) loadScenarios(qObject).catch(handleError)
+    if (Object.keys(query).length !== 0 && queryString !== getQueryString(query)) loadScenarios(query).catch(handleError)
     if (Object.keys(query).length === 0 || queryString !== getQueryString(query)) {
       setQueryString(getQueryString(qObject))
       loadQuery(qObject);
     }
+
   }, [scenarios, query])
 
   function getQueryString(queryObject) {
@@ -81,6 +84,7 @@ ExploreLoader.propTypes = {
 }
 
 function mapStateToProps(state) {
+  console.log(state.apiCallsInProgress)
   return {
     scenarios: state.scenarios,
     loading: state.apiCallsInProgress > 0,

@@ -1,9 +1,12 @@
 import { handleResponse, handleError } from "./apiUtils";
 const baseUrl = process.env.API_URL + "/scenarios/";
 
-export function getScenarios(id = null) {
-  let url = id ? `${baseUrl}${id}` : `${baseUrl}?_limit=20`;
-  return fetch(url)
+export function getScenarios(query = null) {
+  return fetch(baseUrl, {
+    method: 'POST',
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(query)
+  })
     .then(handleResponse)
     .catch(handleError);
 }
