@@ -30,6 +30,7 @@ const ExploreFilter = ({ query, loadQuery }) => {
   const filterHeader = <><span className="pl-0">Filter</span><DownOutlined rotate={filterDraw ? 180 : 0} className="align-baseline pl-4 clickable" /> </>;
 
   useEffect(() => {
+    console.log('filtering...')
     if (!usState && query.state) setUsState(query.state[0] || 'none')
     if (query.categories && !levelOneFilters.length) setLevelOneFilters(assembleCategories());
     let activeSubcategories = levelOneFilters.filter(category => category.active && category.levelTwoFilters.length).map(category => category.levelTwoFilters).flat();
@@ -58,7 +59,14 @@ const ExploreFilter = ({ query, loadQuery }) => {
       if (category.slug === slug) category.active = !category.active;
       return category;
     })
-    let queryObject = { ...query, categories: newCategories.filter(category => category.active).map(category => category.slug) };
+    let categories = newCategories.filter(category => category.active).map(category => category.slug);
+    let subcategories = newCategories
+      .filter(category => category.active)
+      .map(category => category.levelTwoFilters)
+      .flat()
+      .map(category => category.slug)
+      .filter(category => query.subcategories.indexOf(category) > -1)
+    let queryObject = { ...query, categories, subcategories };
     loadQuery(queryObject)
     setLevelOneFilters(newCategories);
     return window.history.replaceState(null, null, getQueryString(queryObject))
@@ -69,7 +77,8 @@ const ExploreFilter = ({ query, loadQuery }) => {
       if (subcategory.slug === slug) subcategory.active = !subcategory.active;
       return subcategory;
     })
-    let queryObject = { ...query, subcategories: newSubcategories.filter(subcategory => subcategory.active).map(subcategory => subcategory.slug) }
+    let subcategories = newSubcategories.filter(subcategory => subcategory.active).map(subcategory => subcategory.slug)
+    let queryObject = { ...query, subcategories }
     loadQuery(queryObject)
     setLevelTwoFilters(newSubcategories)
     return window.history.replaceState(null, null, getQueryString(queryObject))
@@ -84,14 +93,13 @@ const ExploreFilter = ({ query, loadQuery }) => {
 
   function assembleSubcategories() {
     if (!levelOneFilters.length) return [];
-    let levelTwoFilters = levelOneFilters
+    return levelOneFilters
       .filter(category => category.active)
       .map(category => category.levelTwoFilters)
-      .flat()
-    return levelTwoFilters.map(e => {
-      e.active = query.subcategories.indexOf(e.slug) > -1;
-      return e;
-    })
+      .flat().map(e => {
+        e.active = query.subcategories.indexOf(e.slug) > -1;
+        return e;
+      })
   }
 
   function updateFilterDraw(isActive) {
@@ -134,9 +142,9 @@ const ExploreFilter = ({ query, loadQuery }) => {
                     </div>
                   </div>
                   <div className="col-12 filter-categories">
-                    {levelTwoFilters.length ? <div className="d-block filter-label">Subcategories</div> : null}
+                    {levelTwoFilters.filter(subcategory => subcategory.slug).length ? <div className="d-block filter-label">Subcategories</div> : null}
                     <div className="d-block filter-data">
-                      {levelTwoFilters.map((subcategory, i) => {
+                      {levelTwoFilters.filter(subcategory => subcategory.slug).map((subcategory, i) => {
                         const subcategoryClass = subcategory.active
                           ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-2 mr-2 nzap-radius clickable filter-category active"
                           : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-2 mr-2 nzap-radius clickable filter-category"

@@ -39,7 +39,7 @@ const getAssembledQuery = (query) => {
   }
   if (categories.$or.length) assembled.$and.push(categories)
   if (subcategories.$or.length) assembled.$and.push(subcategories)
-  console.log(JSON.stringify(assembled, 0, 2))
+  console.log(JSON.stringify(assembled))
   return assembled;
 }
 

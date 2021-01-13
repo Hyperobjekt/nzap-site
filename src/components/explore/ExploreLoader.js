@@ -84,7 +84,6 @@ ExploreLoader.propTypes = {
 }
 
 function mapStateToProps(state) {
-  console.log(state.apiCallsInProgress)
   return {
     scenarios: state.scenarios,
     loading: state.apiCallsInProgress > 0,
