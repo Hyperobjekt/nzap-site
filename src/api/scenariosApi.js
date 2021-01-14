@@ -1,5 +1,5 @@
 import { handleResponse, handleError } from "./apiUtils";
-const baseUrl = process.env.API_URL + "/scenarios/";
+const baseUrl = process.env.API_URL + "/scenarios";
 
 export function getScenarios(query = null) {
   return fetch(baseUrl, {

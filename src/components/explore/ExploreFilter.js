@@ -166,7 +166,7 @@ const ExploreFilter = ({ query, loadQuery, filters }) => {
           </Collapse>
         </div>
         <div className="col-12 pt-3">
-          <div className="d-table w-100">
+          <div className="d-table text-center w-100">
             {filters.years.map((year, i) => <div key={i} className="d-table-cell clickable" onClick={() => { yearChange(year.slug) }}>{year.label}</div>)}
           </div>
         </div>

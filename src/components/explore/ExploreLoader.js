@@ -28,7 +28,7 @@ const handleError = error => {
   console.log(">> Loading scenarios failed" + error);
 }
 
-const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios }) => {
+const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios, count }) => {
   const filters = require('../../_data/filter-data.json');
   const location = useLocation();
   const [queryString, setQueryString] = useState('');
@@ -71,6 +71,14 @@ const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios }) 
             {explorer === 'pathway' ? <ExploreByPathway scenarios={scenarios} filters={filters} /> : <ExploreByYear scenarios={scenarios} filters={filters} />}
           </div>
         </div>
+        <div className="row">
+          <div className="col-6 links">
+            ...
+          </div>
+          <div className="col-6 text-right nzap-pagination">
+            {count}
+          </div>
+        </div>
       </div>
     )}
   </div>)
@@ -79,6 +87,7 @@ const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios }) 
 ExploreLoader.propTypes = {
   scenarios: PropTypes.array.isRequired,
   query: PropTypes.object.isRequired,
+  count: PropTypes.number.isRequired,
   loadScenarios: PropTypes.func.isRequired,
   loadQuery: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired
@@ -88,7 +97,8 @@ function mapStateToProps(state) {
   return {
     scenarios: state.scenarios,
     loading: state.apiCallsInProgress > 0,
-    query: state.query
+    query: state.query,
+    count: state.count
   }
 }
 

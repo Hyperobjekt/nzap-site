@@ -1,6 +1,7 @@
 import * as types from "./actionTypes";
 import * as scenariosApi from "../../api/scenariosApi";
 import { beginApiCall } from './apiStatusActions';
+import { setCountAction } from './CountActions';
 
 // Export Action creators
 export function createScenarioAction(scenario) {
@@ -50,7 +51,8 @@ export function loadScenarios(query) {
     dispatch(beginApiCall())
     let assembledQuery = getAssembledQuery(query);
     return scenariosApi.getScenarios(assembledQuery).then(scenarios => {
-      dispatch(loadScenariosActionSuccess(scenarios))
+      dispatch(loadScenariosActionSuccess(scenarios.data))
+      dispatch(setCountAction(scenarios.count))
     }).catch(err => {
       dispatch(loadScenariosActionFailure())
       throw err;
