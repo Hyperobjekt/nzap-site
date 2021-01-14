@@ -29,7 +29,7 @@ const handleError = error => {
 }
 
 const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios, count }) => {
-  const filters = require('../../_data/filter-data.json');
+  const filters = require('../../_data/nzap_filters.json');
   const location = useLocation();
   const [queryString, setQueryString] = useState('');
   useEffect(() => {
@@ -73,10 +73,10 @@ const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios, co
         </div>
         <div className="row">
           <div className="col-6 links">
-            ...
+            Download
           </div>
           <div className="col-6 text-right nzap-pagination">
-            {count}
+            total: {count}
           </div>
         </div>
       </div>

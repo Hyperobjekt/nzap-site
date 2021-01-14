@@ -6,7 +6,7 @@ import './ExploreByYear.scss';
 function getTableHeader(filtersScenarios) {
   let reject = ['yes', 'low', 'high', '']
   return {
-    headers: filtersScenarios.filter(scenario => reject.indexOf(scenario.slug) === -1).sort((a, b) => a.slug > a.slug ? 1 : -1),
+    headers: filtersScenarios.filter(scenario => reject.indexOf(scenario.slug) === -1).sort((a, b) => a.slug > b.slug ? 1 : -1),
   }
 }
 function getTableBody(scenarios) {
