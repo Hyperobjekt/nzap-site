@@ -10,8 +10,8 @@ export function createScenarioAction(scenario) {
 export function loadScenariosActionSuccess(scenarios = null) {
   return { type: types.LOAD_SCENARIOS_ACTION_SUCCESS, scenarios }
 }
-export function loadScenariosActionFailure(scenarios = null) {
-  return { type: types.LOAD_SCENARIOS_ACTION_FAILURE, scenarios: [] }
+export function loadScenariosActionFailure(scenarios = []) {
+  return { type: types.LOAD_SCENARIOS_ACTION_FAILURE, scenarios }
 }
 
 export function updateScenarioAction(scenario) {
@@ -35,11 +35,12 @@ const getAssembledQuery = (query) => {
   let assembled = {
     $and: [{
       _geo: query.state[0] || 'national'
+    }, {
+      _year: query.year[0] || '2020'
     }]
   }
   if (categories.$or.length) assembled.$and.push(categories)
   if (subcategories.$or.length) assembled.$and.push(subcategories)
-  console.log(JSON.stringify(assembled))
   return assembled;
 }
 

@@ -17,7 +17,7 @@ const { TabPane } = Tabs;
 
 const getQueryObject = (location) => {
   let obj = {};
-  ['state', 'years', 'categories', 'subcategories', 'examine'].forEach(q => {
+  ['state', 'year', 'categories', 'subcategories', 'examine'].forEach(q => {
     let val = new URLSearchParams(location.search).get(q);
     obj[q] = val ? val.split(',') : []
   });
@@ -29,6 +29,7 @@ const handleError = error => {
 }
 
 const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios }) => {
+  const filters = require('../../_data/filter-data.json');
   const location = useLocation();
   const [queryString, setQueryString] = useState('');
   useEffect(() => {
@@ -62,12 +63,12 @@ const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios }) 
         </div>
       </div>
     </div>
-    <ExploreFilter />
+    <ExploreFilter filters={filters} />
     {loading ? <Spinner /> : (
       <div className="container">
         <div className="row">
           <div className="col-12">
-            {explorer === 'pathway' ? <ExploreByPathway scenarios={scenarios} /> : <ExploreByYear scenarios={scenarios} />}
+            {explorer === 'pathway' ? <ExploreByPathway scenarios={scenarios} filters={filters} /> : <ExploreByYear scenarios={scenarios} filters={filters} />}
           </div>
         </div>
       </div>

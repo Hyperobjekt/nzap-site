@@ -10,7 +10,7 @@ import './ExploreFilter.scss';
 const { Option } = Select;
 const { Panel } = Collapse;
 
-const filterShape = require('../../_data/filter-data.json');
+
 
 // const getQueryObject = () => {
 //   let obj = {};
@@ -22,7 +22,7 @@ const filterShape = require('../../_data/filter-data.json');
 // }
 
 
-const ExploreFilter = ({ query, loadQuery }) => {
+const ExploreFilter = ({ query, loadQuery, filters }) => {
   const [filterDraw, setFilterDraw] = useState(localStorage.filterDraw === 'true');
   const [usState, setUsState] = useState(query.state ? query.state[0] : null);
   const [levelOneFilters, setLevelOneFilters] = useState([]);
@@ -30,7 +30,6 @@ const ExploreFilter = ({ query, loadQuery }) => {
   const filterHeader = <><span className="pl-0">Filter</span><DownOutlined rotate={filterDraw ? 180 : 0} className="align-baseline pl-4 clickable" /> </>;
 
   useEffect(() => {
-    console.log('filtering...')
     if (!usState && query.state) setUsState(query.state[0] || 'none')
     if (query.categories && !levelOneFilters.length) setLevelOneFilters(assembleCategories());
     let activeSubcategories = levelOneFilters.filter(category => category.active && category.levelTwoFilters.length).map(category => category.levelTwoFilters).flat();
@@ -51,6 +50,12 @@ const ExploreFilter = ({ query, loadQuery }) => {
     let queryObject = { ...query, state: [usStateSlug] };
     loadQuery(queryObject)
     setUsState(usStateSlug);
+    return window.history.replaceState(null, null, getQueryString(queryObject))
+  }
+
+  function yearChange(year) {
+    let queryObject = { ...query, year: [year] };
+    loadQuery(queryObject);
     return window.history.replaceState(null, null, getQueryString(queryObject))
   }
 
@@ -85,7 +90,7 @@ const ExploreFilter = ({ query, loadQuery }) => {
   }
 
   function assembleCategories() {
-    return filterShape.levelOneFilters.map(e => {
+    return filters.levelOneFilters.map(e => {
       e.active = query.categories.indexOf(e.slug) > -1;
       return e;
     })
@@ -116,7 +121,7 @@ const ExploreFilter = ({ query, loadQuery }) => {
           {
             usState ? <Select defaultValue={usState} style={{ width: 250 }} onChange={usStateChange}>
               <Option value="none">Select a State or National</Option>
-              {filterShape.usStates.map((usState, i) => <Option key={i} value={usState.slug}>{usState.label}</Option>)}
+              {filters.usStates.map((usState, i) => <Option key={i} value={usState.slug}>{usState.label}</Option>)}
             </Select> : ''
           }
         </div>
@@ -160,12 +165,18 @@ const ExploreFilter = ({ query, loadQuery }) => {
 
           </Collapse>
         </div>
+        <div className="col-12 pt-3">
+          <div className="d-table w-100">
+            {filters.years.map((year, i) => <div key={i} className="d-table-cell clickable" onClick={() => { yearChange(year.slug) }}>{year.label}</div>)}
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
 ExploreFilter.propTypes = {
+  filters: PropTypes.object.isRequired,
   query: PropTypes.object.isRequired,
   loadQuery: PropTypes.func.isRequired
 }

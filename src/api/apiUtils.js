@@ -1,5 +1,3 @@
-import { compose } from "redux";
-
 export async function handleResponse(response) {
   let data = response.json();
   if (response.ok) return data;
