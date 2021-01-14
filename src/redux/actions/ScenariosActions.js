@@ -1,6 +1,7 @@
 import * as types from "./actionTypes";
 import * as scenariosApi from "../../api/scenariosApi";
 import { beginApiCall } from './apiStatusActions';
+import { setCountAction } from './CountActions';
 
 // Export Action creators
 export function createScenarioAction(scenario) {
@@ -9,6 +10,9 @@ export function createScenarioAction(scenario) {
 
 export function loadScenariosActionSuccess(scenarios = null) {
   return { type: types.LOAD_SCENARIOS_ACTION_SUCCESS, scenarios }
+}
+export function loadScenariosActionFailure(scenarios = []) {
+  return { type: types.LOAD_SCENARIOS_ACTION_FAILURE, scenarios }
 }
 
 export function updateScenarioAction(scenario) {
@@ -20,13 +24,37 @@ export function deleteScenarioAction(scenario) {
 }
 
 
+
+const getAssembledQuery = (query) => {
+
+  let categories = {
+    $or: query.categories.map(category => ({ _filter_level_1: category }))
+  }
+  let subcategories = {
+    $or: query.subcategories.map(category => ({ _filter_level_2: category }))
+  }
+  let assembled = {
+    $and: [{
+      _geo: query.state[0] || 'national'
+    }, {
+      _year: query.year[0] || '2020'
+    }]
+  }
+  if (categories.$or.length) assembled.$and.push(categories)
+  if (subcategories.$or.length) assembled.$and.push(subcategories)
+  return assembled;
+}
+
+
 export function loadScenarios(query) {
   return function (dispatch) {
     dispatch(beginApiCall())
-    console.log(query)
-    return scenariosApi.getScenarios().then(scenarios => {
-      dispatch(loadScenariosActionSuccess(scenarios))
+    let assembledQuery = getAssembledQuery(query);
+    return scenariosApi.getScenarios(assembledQuery).then(scenarios => {
+      dispatch(loadScenariosActionSuccess(scenarios.data))
+      dispatch(setCountAction(scenarios.count))
     }).catch(err => {
+      dispatch(loadScenariosActionFailure())
       throw err;
     })
   }

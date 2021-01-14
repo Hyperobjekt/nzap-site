@@ -1,5 +1,6 @@
 export async function handleResponse(response) {
-  if (response.ok) return response.json();
+  let data = response.json();
+  if (response.ok) return data;
   if (response.status === 400) {
     const error = await response.text();
     throw new Error(error);

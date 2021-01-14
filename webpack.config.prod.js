@@ -21,7 +21,7 @@ module.exports = {
     new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-      "process.env.API_URL": JSON.stringify("http://localhost:3001")
+      "process.env.API_URL": JSON.stringify("https://net-zero-america.nn.r.appspot.com/v1")
     }),
     new HtmlWebpackPlugin({
       template: "src/index.html",

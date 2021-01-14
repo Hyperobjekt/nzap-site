@@ -4,17 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "run-p clean:build",
-    "clean:build": "rimraf ./build mkdir build",
+    "start": "",
+    "dev": "webpack-dev-server --config webpack.config.dev.js --port 3000",
     "build": "webpack --config webpack.config.prod.js",
-    "postbuild": "run-p start:api serve:build",
+    "prebuild": "run-p clean:build",
     "serve:build": "http-server ./build",
-    "start": "run-p start:dev start:api",
-    "start:dev": "webpack-dev-server --config webpack.config.dev.js --port 3000",
-    "prestart:api": "node tools/createMockDb.js",
-    "start:api": "node tools/apiServer.js",
-    "csv:json": "node src/_scripts/csv-to-json src/_data/nzap_data.csv",
-    "reshape": "node src/_scripts/reshape-data src/_data/nzap_data.json"
+    "clean:build": "rimraf ./build mkdir build",
+    "data:mk_json": "node src/_scripts/mk_json src/_data/nzap_data.csv",
+    "data:mk_filters": "node src/_scripts/mk_filters src/_data/nzap_data.json"
   },
   "keywords": [],
   "dependencies": {
@@ -51,6 +48,7 @@
     "jest": "24.5.0",
     "json-server": "0.14.2",
     "mini-css-extract-plugin": "0.5.0",
+    "neat-csv": "^6.0.1",
     "node-fetch": "^2.3.0",
     "node-sass": "^5.0.0",
     "npm-run-all": "4.1.5",
