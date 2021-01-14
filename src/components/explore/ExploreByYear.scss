@@ -1,0 +1,15 @@
+@import "../../_styles/variables";
+@import "../../_styles/mixins";
+
+.nzap-table {
+  .nzap-table-row {
+    .nzap-table-header-cell.lead {
+      width: 28%;
+    }
+    .nzap-table-header-cell {
+      width: 12%;
+    }
+    .nzap-table-cell {
+    }
+  }
+}
