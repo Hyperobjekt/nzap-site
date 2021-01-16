@@ -18,7 +18,7 @@
 # misc
 .DS_Store
 *.pem
-/src/_data/nzap_filters.json
+# /src/_data/nzap_filters.json
 /src/_data/nzap_data.json
 db.json
 
