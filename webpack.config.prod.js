@@ -58,5 +58,12 @@ module.exports = {
         loader: "sass-loader"
       }]
     }]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
   }
 }
