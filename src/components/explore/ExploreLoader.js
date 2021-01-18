@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { Tabs } from 'antd';
 import { loadScenarios } from '../../redux/actions/ScenariosActions';
 import { loadQuery } from '../../redux/actions/QueryActions';
+import { loadFilters } from '../../redux/actions/FiltersActions';
 
 import Spinner from '../_global/Spinner';
 import ExploreFilter from './ExploreFilter';
@@ -28,21 +29,21 @@ const handleError = error => {
   console.log(">> Loading scenarios failed" + error);
 }
 
-const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios, count }) => {
-  const filters = require('../../_data/nzap_filters.json');
+const ExploreLoader = ({ loading, filters, scenarios, query, loadQuery, loadScenarios, loadFilters, count }) => {
   const location = useLocation();
   const [queryString, setQueryString] = useState('');
   useEffect(() => {
     let qObject = getQueryObject(location)
-
-    if (scenarios.length === 0 && Object.keys(query).length === 0) loadScenarios(qObject).catch(handleError)
+    if (scenarios.length === 0 && Object.keys(query).length === 0) {
+      loadScenarios(qObject).catch(handleError)
+      loadFilters().catch(handleError)
+    }
     if (Object.keys(query).length !== 0 && queryString !== getQueryString(query)) loadScenarios(query).catch(handleError)
     if (Object.keys(query).length === 0 || queryString !== getQueryString(query)) {
       setQueryString(getQueryString(qObject))
       loadQuery(qObject);
     }
-
-  }, [scenarios, query])
+  }, [scenarios, query, filters])
 
   function getQueryString(queryObject) {
     return "?" + Object.keys(queryObject).map((key) => {
@@ -63,13 +64,13 @@ const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios, co
         </div>
       </div>
     </div>
-    <ExploreFilter filters={filters} />
+    {Object.keys(filters).length ? <ExploreFilter filters={filters} /> : null}
     {loading ? <Spinner /> : (
       <div className="container">
         <div className="row">
-          <div className="col-12">
+          {Object.keys(filters).length ? <div className="col-12">
             {explorer === 'pathway' ? <ExploreByPathway scenarios={scenarios} filters={filters} /> : <ExploreByYear scenarios={scenarios} filters={filters} />}
-          </div>
+          </div> : null}
         </div>
         <div className="row">
           <div className="col-6 links">
@@ -87,9 +88,11 @@ const ExploreLoader = ({ loading, scenarios, query, loadQuery, loadScenarios, co
 ExploreLoader.propTypes = {
   scenarios: PropTypes.array.isRequired,
   query: PropTypes.object.isRequired,
+  filters: PropTypes.object.isRequired,
   count: PropTypes.number.isRequired,
   loadScenarios: PropTypes.func.isRequired,
   loadQuery: PropTypes.func.isRequired,
+  loadFilters: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired
 }
 
@@ -98,11 +101,12 @@ function mapStateToProps(state) {
     scenarios: state.scenarios,
     loading: state.apiCallsInProgress > 0,
     query: state.query,
+    filters: state.filters,
     count: state.count
   }
 }
 
-const mapDispatchToProps = { loadScenarios, loadQuery }
+const mapDispatchToProps = { loadScenarios, loadQuery, loadFilters }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExploreLoader);
 

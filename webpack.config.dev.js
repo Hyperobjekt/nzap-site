@@ -49,6 +49,18 @@ module.exports = {
       }, {
         loader: "sass-loader"
       }]
+    }, {
+      test: /\.(jpg|jpeg|gif|png|woff|woff2|svg)$/,
+      use: [
+        {
+          loader: "file-loader",
+          options: {
+            name: "[name].[ext]",
+            outputPath: "img",
+            esModule: false
+          }
+        }
+      ]
     }]
   }
 }
