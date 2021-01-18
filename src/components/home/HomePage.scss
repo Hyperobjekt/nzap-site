@@ -1,0 +1,55 @@
+@import "../../_styles/variables";
+@import "../../_styles/mixins";
+
+.to-data-explorer {
+  left: -100px;
+  top: 40px;
+  img {
+    width: 40px;
+  }
+}
+
+.atf {
+  .nzap-jumbotron {
+    background: none;
+    .intro-image {
+      right: 80px;
+      top: 20px;
+      border-radius: 30px;
+      height: 178px;
+    }
+  }
+}
+.quotable {
+  .icon-holder {
+    img {
+      width: 10px;
+    }
+  }
+  .quote-holder {
+    max-width: 90%;
+    .quote {
+    }
+    .by {
+    }
+  }
+}
+
+.approaches {
+  .approach {
+    .image-header {
+      height: 50px;
+      overflow: hidden;
+      img {
+        top: -135%;
+        width: 100%;
+      }
+    }
+    .scenario {
+    }
+    .title {
+      .highlight {
+      }
+    }
+  }
+}

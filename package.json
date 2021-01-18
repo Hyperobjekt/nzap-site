@@ -9,9 +9,7 @@
     "build": "webpack --config webpack.config.prod.js",
     "prebuild": "run-p clean:build",
     "serve:build": "http-server ./build",
-    "clean:build": "rimraf ./build mkdir build",
-    "data:mk_json": "node src/_scripts/mk_json src/_data/nzap_data.csv",
-    "data:mk_filters": "node src/_scripts/mk_filters src/_data/nzap_data.json"
+    "clean:build": "rimraf ./build mkdir build"
   },
   "keywords": [],
   "dependencies": {
@@ -43,6 +41,7 @@
     "eslint-plugin-import": "2.16.0",
     "eslint-plugin-react": "7.12.4",
     "fetch-mock": "7.3.1",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "3.2.0",
     "http-server": "0.9.0",
     "jest": "24.5.0",
@@ -61,6 +60,7 @@
     "sass-loader": "^10.1.0",
     "slug": "^4.0.2",
     "style-loader": "0.23.1",
+    "url-loader": "^4.1.1",
     "webpack": "4.29.6",
     "webpack-bundle-analyzer": "3.1.0",
     "webpack-cli": "3.3.0",
@@ -107,7 +107,9 @@
       },
       "import/resolver": {
         "node": {
-          "paths": ["src"]
+          "paths": [
+            "src"
+          ]
         }
       }
     },
