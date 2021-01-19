@@ -12,6 +12,8 @@ import ExploreFilter from './ExploreFilter';
 import ExploreByPathway from './ExploreByPathway';
 import ExploreByYear from './ExploreByYear';
 
+import './ExploreLoader.scss'
+
 
 const { TabPane } = Tabs;
 
@@ -54,12 +56,14 @@ const ExploreLoader = ({ loading, filters, scenarios, query, loadQuery, loadScen
 
   const [explorer, setExplorer] = useState('year');
   return (<div>
-    <div className="container">
+    <div className="nzap-explore-loader">
       <div className="row">
-        <div className="col-12">
+        <div className="col-12 pt-5 filter-section-label" id="explore">Explore the Data</div>
+        <div className="col-12 pt-3">
+          <div className="d-block mb-3 filter-explore-by">Examine by</div>
           <Tabs defaultActiveKey="1" onChange={setExplorer}>
-            <TabPane tab="Examine by Year" key="year" />
-            <TabPane tab="Examine by Pathway" key="pathway" />
+            <TabPane tab="YEAR" key="year" />
+            <TabPane tab="PATHWAY" key="pathway" />
           </Tabs>
         </div>
       </div>

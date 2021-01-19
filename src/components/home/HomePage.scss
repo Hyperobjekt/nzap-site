@@ -8,6 +8,12 @@
   img {
     width: 30px;
   }
+  a {
+    @include font($font-family-primary, $font-weight-semi-bold, $small, $highlight-color);
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .atf {

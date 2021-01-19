@@ -1,0 +1,41 @@
+@import "../../_styles/variables";
+@import "../../_styles/mixins";
+
+.nzap-explore-loader {
+  .filter-section-label {
+    @include font($font-family-primary, $font-weight-regular, $large, $highlight-color);
+  }
+  .filter-explore-by {
+    @include font($font-family-primary, $font-weight-regular, $small, $ground-color);
+  }
+}
+
+.ant-tabs-nav-list {
+  margin-left: 30px;
+}
+.ant-tabs-nav-wrap {
+  border-bottom: 2px $accent-color solid;
+  overflow: inherit !important;
+}
+.ant-tabs-tab {
+  bottom: -2px;
+  padding: 5px 20px;
+  margin: 0px 5px;
+  border-bottom: 2px $piano-color solid;
+  .ant-tabs-tab-btn {
+    @include font($font-family-primary, $font-weight-semi-bold, $small, $mezzoforte-color);
+  }
+}
+.ant-tabs-tab-active {
+  background: $accent-color;
+  border-bottom: 2px transparent solid;
+  border-radius: 8px 8px 0px 0px;
+  .ant-tabs-tab-btn {
+    @include font($font-family-primary, $font-weight-semi-bold, $small, $light-color);
+  }
+}
+.ant-tabs-ink-bar {
+  // bottom: -2px !important;
+
+  display: none;
+}

@@ -17,9 +17,11 @@ const HomePage = () => (
       <div className="col-12 position-relative">
 
         <div className="d-block position-absolute text-center text-uppercase to-data-explorer">
-          <div className="d-block">Explore<br />the data</div>
           <div className="d-block">
-            <img src={scrollDownIcon} alt="" />
+            <a href="#explore">Explore<br />the data</a>
+          </div>
+          <div className="d-block">
+            <a href="#explore"><img src={scrollDownIcon} alt="" /></a>
           </div>
         </div>
 
@@ -151,8 +153,10 @@ const HomePage = () => (
 
     </div>
 
-    {/* Explore... */}
-    <div className="row"><div className="col-12"><ExploreLoader /></div></div>
+
+    <div className="row">
+      <div className="col-12"><ExploreLoader /></div>
+    </div>
   </div>
 
 );
