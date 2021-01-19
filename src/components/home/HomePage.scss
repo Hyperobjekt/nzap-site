@@ -20,10 +20,9 @@
   .nzap-jumbotron {
     background: none;
     .intro-image {
-      right: 80px;
-      top: 20px;
-      border-radius: 30px;
-      height: 178px;
+      right: 70px;
+      top: -15px;
+      height: 320px;
     }
     .title {
       @include font($font-family-primary, $font-weight-light, $xxlarge, $highlight-color);

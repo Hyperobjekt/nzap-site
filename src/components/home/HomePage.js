@@ -1,7 +1,7 @@
 import React from "react";
 import ExploreLoader from "../explore/ExploreLoader";
 import './HomePage.scss';
-import introImage from '../../assets/images/home/corn-stover.jpg';
+import introImage from '../../assets/images/home/main-image.png';
 import scenarioImage1 from '../../assets/images/home/scenario1.jpg'
 import scenarioImage2 from '../../assets/images/home/scenario2.jpg'
 import scenarioImage3 from '../../assets/images/home/scenario3.jpg'
@@ -28,7 +28,7 @@ const HomePage = () => (
         <div className="row">
           <div className="col-12 pt-5 atf">
 
-            <div className="d-block nzap-jumbotron">
+            <div className="d-block pt-4 nzap-jumbotron">
               <img className="position-absolute intro-image" src={introImage} alt="" />
               <div className="d-block display-3 text-uppercase pt-5 mt-5 title">Net-Zero America:</div>
               <div className="d-block lead display-4 subtitle">Potential Pathways, <br />Infrastructure, and Impacts</div>
