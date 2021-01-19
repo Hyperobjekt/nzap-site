@@ -5,17 +5,24 @@
   transition: all $speed ease-out;
 }
 
-@mixin font($size, $weight, $color, $important:null) {
-  @if ($important) {
-    $important: !important;
-  }
-
-  @else {}
-
-  font-size: $size $important;
-  font-weight: $weight $important;
-  color: $color $important;
+@mixin font($family, $weight, $size, $color) {
+  font-family: $family !important;
+  font-weight: $weight !important;
+  font-size: $size !important;
+  color: $color !important;
 }
+
+// @mixin font($size, $weight, $color, $important:null) {
+//   @if ($important) {
+//     $important: !important;
+//   }
+
+//   @else {}
+
+//   font-size: $size $important;
+//   font-weight: $weight $important;
+//   color: $color $important;
+// }
 
 @mixin radius($tl, $tr, $br, $bl) {
   border-top-left-radius: $tl;
@@ -23,6 +30,5 @@
   border-bottom-right-radius: $br;
   border-bottom-left-radius: $bl;
 }
-
 
 //.box { @include transition(0.3s); }

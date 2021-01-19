@@ -18,8 +18,8 @@ h6,
 .uk-heading-large,
 .uk-heading-xlarge,
 .uk-heading-2xlarge {
-  font-weight: $bold !important;
-  // color: $dark-color !important;
+  font-weight: $font-weight-bold !important;
+  // color: $ground-color !important;
 }
 
 textarea.textarea,
@@ -27,7 +27,7 @@ select,
 input,
 button {
   outline: none;
-  border: 1px $neutral-color solid !important;
+  border: 1px $base-color solid !important;
 }
 
 textarea:focus,
@@ -40,10 +40,10 @@ a:focus {
 
 html,
 body {
-  font-family: $font-family-sans-serif;
+  font-family: $font-family-primary !important;
   font-size: 17px/1.4em;
-  color: $dark-color;
-  // background: $background-color !important;
+  color: $ground-color;
+  // background: $pianissimo-color !important;
   // height: 100vh;
   scroll-behavior: smooth;
 }
@@ -58,10 +58,10 @@ a {
 
 span.close {
   @include transition(0.3s);
-  color: lighten($dark-color, 40%);
+  color: lighten($ground-color, 40%);
 
   &:hover {
-    color: lighten($dark-color, 10%);
+    color: lighten($ground-color, 10%);
   }
 }
 
@@ -74,25 +74,25 @@ span.close {
 [contenteditable="true"]:empty:before {
   content: attr(placeholder);
   pointer-events: none;
-  color: $neutral-color;
+  color: $base-color;
   display: block;
   /* For Firefox */
 }
 
 .color-dark {
-  color: $dark-color;
+  color: $ground-color;
 }
 .color-neutral {
-  color: $neutral-color;
+  color: $base-color;
 }
 .color-light {
   color: $light-color;
 }
 .color-primary {
-  color: $primary-color;
+  color: $highlight-color;
 }
 .color-secondary {
-  color: $secondary-color;
+  color: $base-color;
 }
 .color-accent {
   color: $accent-color;
@@ -104,23 +104,23 @@ span.close {
   color: $negative-color;
 }
 .color-background {
-  color: $background-color;
+  color: $pianissimo-color;
 }
 
 .bg-dark {
-  background: $dark-color;
+  background: $ground-color;
 }
 .bg-neutral {
-  background: $neutral-color;
+  background: $base-color;
 }
 .bg-light {
   background: $light-color;
 }
 .bg-primary {
-  background: $primary-color;
+  background: $highlight-color;
 }
 .bg-secondary {
-  background: $secondary-color;
+  background: $base-color;
 }
 .bg-accent {
   background: $accent-color;
@@ -132,23 +132,23 @@ span.close {
   background: $negative-color;
 }
 .bg-background {
-  background: $background-color;
+  background: $pianissimo-color;
 }
 
 .border-dark {
-  border-color: $dark-color;
+  border-color: $ground-color;
 }
 .border-neutral {
-  border-color: $neutral-color;
+  border-color: $base-color;
 }
 .border-light {
   border-color: $light-color;
 }
 .border-primary {
-  border-color: $primary-color;
+  border-color: $highlight-color;
 }
 .border-secondary {
-  border-color: $secondary-color;
+  border-color: $base-color;
 }
 .border-accent {
   border-color: $accent-color;
@@ -160,23 +160,23 @@ span.close {
   border-color: $negative-color;
 }
 .border-background {
-  border-color: $background-color;
+  border-color: $pianissimo-color;
 }
 
 .fill-dark {
-  fill: $dark-color;
+  fill: $ground-color;
 }
 .fill-neutral {
-  fill: $neutral-color;
+  fill: $base-color;
 }
 .fill-light {
   fill: $light-color;
 }
 .fill-primary {
-  fill: $primary-color;
+  fill: $highlight-color;
 }
 .fill-secondary {
-  fill: $secondary-color;
+  fill: $base-color;
 }
 .fill-accent {
   fill: $accent-color;
@@ -188,7 +188,7 @@ span.close {
   fill: $negative-color;
 }
 .fill-background {
-  fill: $background-color;
+  fill: $pianissimo-color;
 }
 
 .no-outline {
@@ -206,7 +206,7 @@ span.close {
         width: 4px;
         height: 4px;
         border-radius: 50%;
-        background-color: $neutral-color;
+        background-color: $base-color;
       }
 
       span.dot-tl {
@@ -237,7 +237,7 @@ span.close {
 }
 
 .nzap-neumorph {
-  box-shadow: 10px 10px 12px lighten($neutral-color, 25%), -10px -10px 12px $light-color;
+  box-shadow: 10px 10px 12px lighten($base-color, 25%), -10px -10px 12px $light-color;
 }
 
 .nzap-application-secondary-nav {
@@ -245,7 +245,7 @@ span.close {
   z-index: 2;
 
   .title {
-    @include font($small, $bold, $primary-color);
+    // @include font($small, $font-weight-bold, $highlight-color);
   }
 }
 
@@ -255,7 +255,7 @@ span.close {
 }
 
 .nzap-background {
-  background: $background-color;
+  background: $pianissimo-color;
 }
 
 .nzap-heavy-blur {
@@ -274,7 +274,7 @@ span.close {
 }
 
 .nzap-canvas {
-  background: $background-color;
+  background: $pianissimo-color;
 }
 
 .nzap-deep-radius {
@@ -302,7 +302,7 @@ span.close {
 }
 
 .nzap-shadow {
-  box-shadow: 0 4px 3px 3px $background-color !important;
+  box-shadow: 0 4px 3px 3px $pianissimo-color !important;
 }
 
 .nzap-border {
@@ -371,8 +371,8 @@ span.close {
 
 .nzap-title,
 .nzap-title-1 {
-  @include font($large, $bold, $primary-color);
-  border-bottom: 3px $primary-color solid;
+  // @include font($large, $font-weight-bold, $highlight-color);
+  border-bottom: 3px $highlight-color solid;
   display: inline-block;
   // width: 35px;
   white-space: nowrap;
@@ -382,7 +382,7 @@ span.close {
 
 .nzap-title-2 {
   text-transform: uppercase;
-  @include font($small, $bold, $dark-color);
+  // @include font($small, $font-weight-bold, $ground-color);
   white-space: nowrap;
 }
 
@@ -390,8 +390,8 @@ span.close {
   font-size: 0.8em;
   font-weight: 600;
   display: inline-block;
-  color: $primary-color;
-  // border-bottom: 2px $primary-color solid;
+  color: $highlight-color;
+  // border-bottom: 2px $highlight-color solid;
   // text-transform: uppercase;
   white-space: nowrap;
   opacity: 0.9;
@@ -399,7 +399,7 @@ span.close {
 
 .chrome-picker {
   margin-bottom: 15px;
-  border: 1px $neutral-color solid;
+  border: 1px $base-color solid;
   box-shadow: none !important;
 }
 
@@ -436,10 +436,10 @@ span.close {
 // Add to component Subscription Plan
 // Subscription Plan component
 .subscription-plan {
-  border: 1px lighten($dark-color, 60%) solid;
+  border: 1px lighten($ground-color, 60%) solid;
 
   .head {
-    border-bottom: 1px lighten($dark-color, 60%) solid;
+    border-bottom: 1px lighten($ground-color, 60%) solid;
   }
 
   .body {
@@ -451,7 +451,7 @@ span.close {
       }
 
       .feature {
-        border-bottom: 1px lighten($dark-color, 60%) solid;
+        border-bottom: 1px lighten($ground-color, 60%) solid;
       }
     }
   }
@@ -469,17 +469,17 @@ span.close {
 
 .image-backdrop-primary {
   width: 100%;
-  box-shadow: -25px 30px 0px $primary-color;
+  box-shadow: -25px 30px 0px $highlight-color;
 }
 
 .image-backdrop-secondary {
   width: 100%;
-  box-shadow: -25px 30px 0px $dark-color;
+  box-shadow: -25px 30px 0px $ground-color;
 }
 
 .btn-pill {
-  border: 2px $dark-color solid;
-  color: $dark-color;
+  border: 2px $ground-color solid;
+  color: $ground-color;
   border-radius: 20px;
   padding: 3px 8px;
   font-size: 0.8em;

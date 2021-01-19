@@ -2,10 +2,11 @@
 @import "../../_styles/mixins";
 
 .to-data-explorer {
+  @include font($font-family-primary, $font-weight-semi-bold, $small, $highlight-color);
   left: -100px;
   top: 40px;
   img {
-    width: 40px;
+    width: 30px;
   }
 }
 
@@ -18,6 +19,20 @@
       border-radius: 30px;
       height: 178px;
     }
+    .title {
+      @include font($font-family-primary, $font-weight-light, $xxlarge, $highlight-color);
+    }
+    .subtitle {
+      @include font($font-family-primary, $font-weight-semi-bold, $xlarge, $base-color);
+    }
+    .introduction {
+      p {
+        @include font($font-family-primary, $font-weight-regular, $medium, $ground-color);
+        span.highlight {
+          @include font($font-family-primary, $font-weight-semi-bold, $medium, $base-color);
+        }
+      }
+    }
   }
 }
 .quotable {
@@ -29,26 +44,44 @@
   .quote-holder {
     max-width: 90%;
     .quote {
+      @include font($font-family-secondary, $font-weight-regular, $large, $base-color);
+      font-style: italic;
     }
     .by {
+      @include font($font-family-primary, $font-weight-regular, $small, $ground-color);
     }
   }
 }
 
-.approaches {
-  .approach {
-    .image-header {
-      height: 50px;
-      overflow: hidden;
-      img {
-        top: -135%;
-        width: 100%;
+.solutions {
+  h3.label {
+    @include font($font-family-primary, $font-weight-regular, $medium, $highlight-color);
+  }
+  .approaches {
+    .approach {
+      .image-header {
+        height: 50px;
+        overflow: hidden;
+        img {
+          top: -135%;
+          width: 100%;
+        }
       }
-    }
-    .scenario {
-    }
-    .title {
-      .highlight {
+      .scenario {
+        @include font($font-family-primary, $font-weight-bold, $small, $highlight-color);
+      }
+      .title {
+        .highlight {
+          @include font($font-family-primary, $font-weight-bold, $large, $accent-color);
+        }
+        .label {
+          @include font($font-family-primary, $font-weight-light, $large, $highlight-color);
+        }
+      }
+      ul.features {
+        li {
+          @include font($font-family-primary, $font-weight-regular, $small, $ground-color);
+        }
       }
     }
   }
