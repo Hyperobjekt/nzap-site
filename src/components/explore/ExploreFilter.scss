@@ -3,13 +3,13 @@
 
 .filter-categories {
   .filter-category {
-    border: 2px $neutral-color solid;
-    background: $background-color;
-    color: $neutral-color;
+    border: 2px $mezzoforte-color solid;
+    background: $pianissimo-color;
+    color: $mezzoforte-color;
   }
   .filter-category.active {
-    border: 2px $dark-color solid;
+    border: 2px $ground-color solid;
     background: $light-color;
-    color: $dark-color;
+    color: $ground-color;
   }
 }

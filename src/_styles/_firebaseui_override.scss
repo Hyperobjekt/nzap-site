@@ -6,18 +6,17 @@
 }
 
 .firebaseui-list-item {
-
   .firebaseui-idp-button,
   .firebaseui-tenant-button {
     max-width: initial;
 
     &:hover {
-      box-shadow: 0 4px 3px 3px $background-color !important;
+      box-shadow: 0 4px 3px 3px $pianissimo-color !important;
     }
   }
 
   .firebaseui-idp-button.firebaseui-idp-google {
-    border: 1px $neutral-color solid;
+    border: 1px $base-color solid;
   }
 }
 

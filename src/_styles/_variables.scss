@@ -1,65 +1,68 @@
+// NZAP Theming
+
 // Colors
-$dark-color: #333333;
-$neutral-color: #95b5cc;
+$ground-color: #323438;
+$base-color: #585973;
+$highlight-color: #5690a8;
+$accent-color: #ed6d0b;
+$mezzoforte-color: #81848c;
+$piano-color: #d5d7e0;
+$pianissimo-color: #e7e8f2;
 $light-color: #ffffff;
-$primary-color: #4059ad;
-$secondary-color: #40ad94;
-$accent-color: #ff9534; //#E9BF56;
 $positive-color: #4fcb78;
 $negative-color: #ff3b3b;
-$background-color: #f5f8fa; //#F5F8FA;
 
-// Font Size
+// Fonts
+
+// Families
+$font-family-primary: protipo, sans-serif;
+$font-family-primary-narrow: protipo-narrow, sans-serif;
+$font-family-primary-wide: protipo-wide, sans-serif;
+$font-family-secondary: proforma, sans-serif;
+
+// Weights
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-semi-bold: 500;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+// Sizes
 $xxlarge: 50px;
-$xlarge: 30px;
-$large: 20px;
+$xlarge: 40px;
+$large: 25px;
 $medium: 16px;
 $small: 12px;
 $xsmall: 9px;
 
-// Font Weight
-$regular: 500;
-$thick: 600;
-$bold: 700;
-$font-family-sans-serif: protipo, sans-serif;
-
+// Radius
 $default-corner-radius: 4px;
 $deep-radius: 15px;
 
-// // Bootstrap Variables
-// $body-bg: #000;
-// $body-color: #111;
-// $white-color: #fff;
+// // Colors
+// $ground-color: #333333;
+// $base-color: #95b5cc;
+// $light-color: #ffffff;
+// $highlight-color: #4059ad;
+// $base-color: #40ad94;
+// $accent-color: #ff9534; //#E9BF56;
+// $pianissimo-color: #f5f8fa; //#F5F8FA;
 
-// Protipo Light
-// font-family: protipo, sans-serif;
-// font-weight: 300;
-// font-style: normal;
-// Protipo Regular
-// font-family: protipo, sans-serif;
-// font-weight: 400;
-// font-style: normal;
-// Protipo Semibold
-// font-family: protipo, sans-serif;
-// font-weight: 500;
-// font-style: normal;
-// Protipo Narrow Light
-// font-family: protipo-narrow, sans-serif;
-// font-weight: 300;
-// font-style: normal;
-// Protipo Narrow Bold
-// font-family: protipo-narrow, sans-serif;
-// font-weight: 700;
-// font-style: normal;
-// Protipo Wide Light
-// font-family: protipo-wide, sans-serif;
-// font-weight: 300;
-// font-style: normal;
-// Protipo Wide Medium
-// font-family: protipo-wide, sans-serif;
-// font-weight: 500;
-// font-style: normal;
-// Protipo Wide Extrabold
-// font-family: protipo-wide, sans-serif;
-// font-weight: 800;
-// font-style: normal;
+// // Fonts
+
+// // Font Size
+// $xxlarge: 50px;
+// $xlarge: 30px;
+// $large: 20px;
+// $medium: 16px;
+// $small: 12px;
+// $xsmall: 9px;
+
+// // Font Weight
+// $regular: 500;
+// $thick: 600;
+// $font-weight-bold: 700;
+// $font-family-sans-serif: protipo, sans-serif;
+
+// $default-corner-radius: 4px;
+// $deep-radius: 15px;

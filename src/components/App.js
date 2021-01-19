@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <div className="container-fluid">
+    <>
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
@@ -17,7 +17,7 @@ function App() {
         <Route component={FourOhFour} />
       </Switch>
       <ToastContainer autoClose={3000} hideProgressBar />
-    </div>
+    </>
   );
 }
 

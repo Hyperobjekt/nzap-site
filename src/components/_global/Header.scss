@@ -2,5 +2,15 @@
 @import "../../_styles/mixins";
 
 .nzap-header {
-  border-top: 8px $accent-color solid;
+  border-top: 8px $ground-color solid;
+  .project-title {
+    a {
+      @include font($font-family-primary-narrow, $font-weight-light, $medium, $mezzoforte-color);
+    }
+  }
+  .nzap-navigation {
+    a {
+      @include font($font-family-primary-wide, $font-weight-semi-bold, $medium, $mezzoforte-color);
+    }
+  }
 }
