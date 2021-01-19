@@ -153,8 +153,10 @@ const HomePage = () => (
 
     </div>
 
-    {/* Explore... */}
-    <div className="row"><div className="col-12" id="explore"><ExploreLoader /></div></div>
+
+    <div className="row">
+      <div className="col-12"><ExploreLoader /></div>
+    </div>
   </div>
 
 );

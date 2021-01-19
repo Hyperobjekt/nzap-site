@@ -114,10 +114,9 @@ const ExploreFilter = ({ query, loadQuery, filters }) => {
 
 
   return (
-    <div className="container">
+    <div className="container nzap-filters">
       <div className="row">
         <div className="col-12">
-
           {
             usState ? <Select defaultValue={usState} style={{ width: 250 }} onChange={usStateChange}>
               <Option value="none">Select a State or National</Option>
