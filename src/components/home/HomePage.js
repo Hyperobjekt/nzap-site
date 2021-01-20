@@ -2,11 +2,11 @@ import React from "react";
 import ExploreLoader from "../explore/ExploreLoader";
 import './HomePage.scss';
 import introImage from '../../assets/images/home/main-image.png';
-import scenarioImage1 from '../../assets/images/home/scenario1.jpg'
-import scenarioImage2 from '../../assets/images/home/scenario2.jpg'
-import scenarioImage3 from '../../assets/images/home/scenario3.jpg'
-import scenarioImage4 from '../../assets/images/home/scenario4.jpg'
-import scenarioImage5 from '../../assets/images/home/scenario5.jpg'
+import scenarioImage1 from '../../assets/images/home/scenario1.png'
+import scenarioImage2 from '../../assets/images/home/scenario2.png'
+import scenarioImage3 from '../../assets/images/home/scenario3.png'
+import scenarioImage4 from '../../assets/images/home/scenario4.png'
+import scenarioImage5 from '../../assets/images/home/scenario5.png'
 import scrollDownIcon from '../../assets/images/icons/scroll-down.svg'
 import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
 

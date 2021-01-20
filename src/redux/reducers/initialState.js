@@ -2,6 +2,17 @@ export default {
   scenarios: [],
   count: 0,
   apiCallsInProgress: 0,
-  query: {},
-  filters: {}
+  query: {
+    state: '',
+    year: '',
+    pathway: '',
+    categories: [],
+    subcategories: []
+  },
+  filters: {
+    usStates: [],
+    years: [],
+    levelOneFilters: [],
+    levelTwoFilters: []
+  }
 }

@@ -26,7 +26,6 @@ export function deleteScenarioAction(scenario) {
 
 
 const getAssembledQuery = (query) => {
-
   let categories = {
     $or: query.categories.map(category => ({ _filter_level_1: category }))
   }
@@ -35,9 +34,9 @@ const getAssembledQuery = (query) => {
   }
   let assembled = {
     $and: [{
-      _geo: query.state[0] || 'national'
+      _geo: query.state || 'national'
     }, {
-      _year: query.year[0] || '2020'
+      _year: query.year || '2020'
     }]
   }
   if (categories.$or.length) assembled.$and.push(categories)

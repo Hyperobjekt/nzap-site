@@ -6,13 +6,12 @@
 
 .filter-categories {
   .filter-category {
-    border: 2px $mezzoforte-color solid;
+    border: 1px $piano-color solid;
     background: $pianissimo-color;
-    color: $mezzoforte-color;
+    @include font($font-family-primary-narrow, $font-weight-light, $small, $mezzoforte-color);
   }
   .filter-category.active {
-    border: 2px $ground-color solid;
+    border: 1px $ground-color solid;
     background: $light-color;
-    color: $ground-color;
   }
 }
