@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import './ExploreByYear.scss';
 
 function getTableHeader(filtersScenarios) {
-  console.log(filtersScenarios)
   let reject = ['yes', 'low', 'high', ''];
   let labels = {
     ref: 'Business as usual',
