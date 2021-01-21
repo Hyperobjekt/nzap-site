@@ -14,13 +14,16 @@ const { Option } = Select;
 const { Panel } = Collapse;
 
 
-const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOneFilter, setLevelTwoFilter, loadFiltersActionSuccess, loadScenarios }) => {
+const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, setLevelOneFilter, setLevelTwoFilter, loadFiltersActionSuccess, loadScenarios }) => {
   const [isFilterDrawOpen, toggleFilterDraw] = useState(localStorage.isFilterDrawOpen === 'true');
   const filterHeader = <><span className="pl-0">Filter</span><DownOutlined rotate={isFilterDrawOpen ? 180 : 0} className="align-baseline pl-4 clickable" /> </>;
 
   useEffect(() => {
     if (!query.state) setQuery({ ...query, state: 'national' })
-    if (filters.levelOneFilters.length) loadFiltersActionSuccess(filters, query)
+    if (filters.levelOneFilters.length) {
+      loadScenarios(query)
+      loadFiltersActionSuccess(filters, query)
+    }
   }, [query])
 
 
@@ -28,31 +31,41 @@ const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOne
     let queryObject = { ...query, state: usStateSlug };
     setQuery(queryObject)
     setUsStateFilter(usStateSlug)
-    loadScenarios(queryObject)
     return window.history.replaceState(null, null, getQueryString(queryObject))
   }
 
   function yearChange(year) {
-    let queryObject = { ...query, year: year };
+    let queryObject = { ...query, year };
     setQuery(queryObject);
-    loadScenarios(queryObject)
+    return window.history.replaceState(null, null, getQueryString(queryObject))
+  }
+  function yearPathway(pathway) {
+    let queryObject = { ...query, pathway };
+    setQuery(queryObject);
     return window.history.replaceState(null, null, getQueryString(queryObject))
   }
 
   function updateCategories(slug) {
-    let categorySlugs = [...query.categories, slug];
+    let categorySlugs;
+    if (!query.categories.includes(slug)) categorySlugs = [...query.categories, slug];
+    if (query.categories.includes(slug)) {
+      categorySlugs = [...query.categories]
+      categorySlugs.splice(query.categories.indexOf(slug), 1)
+    }
     let queryObject = { ...query, categories: categorySlugs };
     setQuery(queryObject)
-    loadScenarios(queryObject)
-    setLevelOneFilter(queryObject.categories);
     return window.history.replaceState(null, null, getQueryString(queryObject))
   }
 
   function updateSubcategories(slug) {
-    let subcategorySlugs = [...query.subcategories, slug];
+    let subcategorySlugs;
+    if (!query.subcategories.includes(slug)) subcategorySlugs = [...query.subcategories, slug];
+    if (query.subcategories.includes(slug)) {
+      subcategorySlugs = [...query.subcategories]
+      subcategorySlugs.splice(query.subcategories.indexOf(slug), 1)
+    }
     let queryObject = { ...query, subcategories: subcategorySlugs };
     setQuery(queryObject);
-    loadScenarios(queryObject);
     setLevelTwoFilter(queryObject.subcategories);
     return window.history.replaceState(null, null, getQueryString(queryObject));
   }
@@ -60,6 +73,33 @@ const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOne
   function updateFilterDraw(isActive) {
     localStorage.setItem('isFilterDrawOpen', isActive);
     toggleFilterDraw(isActive);
+  }
+
+  const examiner = () => {
+    if (!filters.years || !filters.scenarios) return;
+
+    let reject = ['', 'high', 'low', 'yes']
+    let years = [...filters.years].sort((a, b) => a.slug < b.slug ? -1 : 1);
+    let pathways = [...filters.scenarios].sort((a, b) => a.slug < b.slug ? -1 : 1).filter(e => !reject.includes(e.slug))
+
+    if (explorer === 'year') return <div className="d-table text-center w-100 years">
+      {years.map((year, i) =>
+        <div key={i} className={(query.year || '2020') === year.slug ? 'd-table-cell pl-3 pr-3 clickable year active' : 'd-table-cell pl-3 pr-3 clickable year'} onClick={() => { yearChange(year.slug) }}>
+          <div className="tile tween pt-1">
+            {year.label}
+          </div>
+        </div>
+      )}
+    </div>
+    if (explorer === 'pathway') return <div className="d-table text-center w-100 years">
+      {pathways.map((pathway, i) =>
+        <div key={i} className={(query.pathway || 'ref') === pathway.slug ? 'd-table-cell pl-3 pr-3 clickable year active' : 'd-table-cell pl-3 pr-3 clickable year'} onClick={() => { yearPathway(pathway.slug) }}>
+          <div className="tile tween pt-1">
+            {pathway.label}
+          </div>
+        </div>
+      )}
+    </div>
   }
 
   return (
@@ -114,15 +154,7 @@ const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOne
             <div className="col-12 pl-0 pr-0 examiner position-relative pt-3">
               <div className="position-absolute" id="left-corner"></div>
               <div className="position-absolute" id="right-corner"></div>
-              <div className="d-table text-center w-100 years">
-                {filters.years.map((year, i) =>
-                  <div key={i} className={(query.year || '2020') === year.slug ? 'd-table-cell pl-3 pr-3 clickable year active' : 'd-table-cell pl-3 pr-3 clickable year'} onClick={() => { yearChange(year.slug) }}>
-                    <div className="tile tween pt-1">
-                      {year.label}
-                    </div>
-                  </div>
-                )}
-              </div>
+              {examiner()}
             </div>
           </div>
         </div>
@@ -133,6 +165,7 @@ const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOne
 }
 
 ExploreFilter.propTypes = {
+  explorer: PropTypes.string.isRequired,
   filters: PropTypes.object.isRequired,
   query: PropTypes.object.isRequired,
   setQuery: PropTypes.func.isRequired,

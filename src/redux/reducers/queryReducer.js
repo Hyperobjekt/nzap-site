@@ -2,7 +2,7 @@ import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
 
 
-const removeDuplicates = arr => [...new Set(arr)]
+// const removeDuplicates = arr => [...new Set(arr)]
 
 
 
@@ -14,8 +14,8 @@ export default function queryReducer(state = initialState.query, action) {
         state: action.query.state,
         year: action.query.year,
         pathway: action.query.pathway,
-        categories: removeDuplicates([...state.categories, ...action.query.categories]),
-        subcategories: removeDuplicates([...state.subcategories, ...action.query.subcategories])
+        categories: [...action.query.categories],
+        subcategories: [...action.query.subcategories]
       }
     default:
       return state;

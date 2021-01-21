@@ -32,12 +32,16 @@ const getAssembledQuery = (query) => {
   let subcategories = {
     $or: query.subcategories.map(category => ({ _filter_level_2: category }))
   }
+
+  let examiner = query.pathway && !query.year
+    ? { _scenario: query.pathway || 'ref' }
+    : { _year: query.year || '2020' }
+
+
   let assembled = {
     $and: [{
       _geo: query.state || 'national'
-    }, {
-      _year: query.year || '2020'
-    }]
+    }, examiner]
   }
   if (categories.$or.length) assembled.$and.push(categories)
   if (subcategories.$or.length) assembled.$and.push(subcategories)

@@ -1,22 +1,34 @@
 import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
 
+const extractL1Filters = action => {
+  return [...action.filters.levelOneFilters]
+    .map(e => ({ ...e, active: action.query.categories.indexOf(e.slug) > -1 }))
+}
+const extractL2Filters = action => {
+  return [...action.filters.levelOneFilters]
+    .filter(e => action.query.categories.indexOf(e.slug) > -1)
+    .map(e => e.levelTwoFilters).flat()
+    .map(e => ({ ...e, active: action.query.subcategories.indexOf(e.slug) > -1 }))
+}
+const extractUsStates = action => {
+  return action.filters.usStates.map(e => ({ ...e, active: action.query.state === e.slug }))
+}
+const extractYears = action => {
+  return action.filters.years.map(e => ({ ...e, active: action.query.year === e.slug }));
+}
 
 export default function filtersReducer(state = initialState.filters, action) {
   switch (action.type) {
     case types.LOAD_FILTERS_ACTION_SUCCESS:
-      var levelOneFilters = [...action.filters.levelOneFilters]
-        .map(e => ({ ...e, active: action.query.categories.indexOf(e.slug) > -1 }))
-      var levelTwoFilters = [...action.filters.levelOneFilters]
-        .filter(e => action.query.categories.indexOf(e.slug) > -1)
-        .map(e => e.levelTwoFilters).flat()
-        .map(e => ({ ...e, active: action.query.subcategories.indexOf(e.slug) > -1 }))
-      var usStates = action.filters.usStates.map(e => ({ ...e, active: action.query.state === e.slug }))
-      var years = action.filters.years.map(e => ({ ...e, active: action.query.year === e.slug }))
-      var filters = { ...state.filters, ...action.filters, levelOneFilters, levelTwoFilters, usStates, years }
-      return filters
-
-
+      return {
+        ...state.filters,
+        ...action.filters,
+        levelOneFilters: extractL1Filters(action),
+        levelTwoFilters: extractL2Filters(action),
+        usStates: extractUsStates(action),
+        years: extractYears(action)
+      }
     case types.SET_US_STATE_FILTER:
       return {
         ...state,
