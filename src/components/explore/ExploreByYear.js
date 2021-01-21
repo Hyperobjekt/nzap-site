@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import './ExploreByYear.scss';
 
 function getTableHeader(filtersScenarios) {
-  let reject = ['yes', 'low', 'high', '']
+  console.log(filtersScenarios)
+  let reject = ['yes', 'low', 'high', ''];
+  let labels = {
+    ref: 'Business as usual',
+    'e-positive': "High Electrification",
+    'e-negative': 'Less high Electrification',
+    'e-b-positive': 'High Biomass',
+    'ere-negative': 'Renewable Constrained'
+  }
   return {
-    headers: filtersScenarios.filter(scenario => reject.indexOf(scenario.slug) === -1).sort((a, b) => a.slug > b.slug ? 1 : -1),
+    headers: filtersScenarios
+      .filter(scenario => reject.indexOf(scenario.slug) === -1)
+      .sort((a, b) => a.slug > b.slug ? 1 : -1)
+      .map(e => ({ ...e, altName: labels[e.slug] })),
   }
 }
 function getTableBody(scenarios) {
@@ -35,7 +47,6 @@ function getTableBody(scenarios) {
 const ExploreByYear = ({ filters, scenarios }) => {
 
   const [table, setTable] = useState(getTableHeader(filters.scenarios))
-
   useEffect(() => {
     setTable({ ...table, body: getTableBody(scenarios) })
   }, [scenarios])
@@ -45,8 +56,8 @@ const ExploreByYear = ({ filters, scenarios }) => {
     return keys.map((key, i) => {
       let row = table.body[key];
       return <div key={i} className="d-table-row nzap-table-row">
-        <div className="d-table-cell nzap-table-cell">{row.category}, {row.subcategory}</div>
-        {table.headers.map((header, i) => <div key={i} className="d-table-cell nzap-table-cell">{row[header.slug] || "---"}</div>)}
+        <div className="d-table-cell pt-2 pb-2 pl-2 pr-2 nzap-table-cell lead">{row.category}, {row.subcategory}</div>
+        {table.headers.map((header, i) => <div key={i} className="d-table-cell nzap-table-cell pl-2 pr-2">{row[header.slug] || "---"}</div>)}
       </div>
     })
   }
@@ -57,11 +68,13 @@ const ExploreByYear = ({ filters, scenarios }) => {
 
         <div className="d-table w-100 nzap-table">
           <div className="d-table-row nzap-table-row">
-            <div className="d-table-cell pt-2 pb-2 nzap-table-header-cell lead">Categories & Subcategories</div>
-            {table.headers.map((header, i) => <div key={i} className="d-table-cell pt-2 pb-2 nzap-table-header-cell">{header.label}</div>)}
+            <div className="d-table-cell pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell lead">Categories &amp; Subcategories</div>
+            {table.headers.map((header, i) => <div key={i} className="d-table-cell pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell"><span className="label">{header.label}</span> <span className="alt-name">{header.altName}</span></div>)}
           </div>
           {table.body ? renderBody(table) : null}
         </div>
+
+
       </div>
     </div>
   </div>)
@@ -70,4 +83,14 @@ ExploreByYear.propTypes = {
   filters: PropTypes.object.isRequired,
   scenarios: PropTypes.array.isRequired,
 }
-export default ExploreByYear
+
+function mapStateToProps(state) {
+  return {
+    filters: state.filters,
+    scenarios: state.scenarios
+  }
+}
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExploreByYear);
