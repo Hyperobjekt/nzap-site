@@ -9,14 +9,20 @@ export const getQueryObject = (location) => {
   return obj
 }
 
+
 export const getQueryString = queryObject => {
-  let str = "?" + Object.keys(queryObject).map((key) => {
+  const removeDuplicates = arr => [...new Set(arr)]
+  queryObject.categories = removeDuplicates(queryObject.categories)
+  queryObject.subcategories = removeDuplicates(queryObject.subcategories)
+  return "?" + Object.keys(queryObject).map((key) => {
     const element = queryObject[key];
-    if (typeof element === 'string') return element || null
-    return element.length ? `${key}=${element.join(',')}` : null;
-  }).filter(e => e).join('&');
-  return str;
+    if (!element || !element.length) return null;
+    if (typeof element !== 'string' && element.length) return `${key}=${element.join(',')}`
+    if (typeof element === 'string') return `${key}=${element}`
+  }).filter(e => e).join('&')
 }
+
+
 
 export const handleError = error => {
   console.log(">> Loading scenarios failed" + error);

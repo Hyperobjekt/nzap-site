@@ -9,12 +9,12 @@ import { loadFilters } from '../../redux/actions/FiltersActions';
 import Spinner from '../_global/Spinner';
 import ExploreFilter from './ExploreFilter';
 import { getQueryObject, handleError } from '../../_helpers'
-// import ExploreByPathway from './ExploreByPathway';
-// import ExploreByYear from './ExploreByYear';
+import ExploreByPathway from './ExploreByPathway';
+import ExploreByYear from './ExploreByYear';
 import './ExploreLoader.scss'
 const { TabPane } = Tabs;
 
-const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios }) => {
+const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, scenarios }) => {
   const location = useLocation();
   const [explorer, setExplorer] = useState('year');
 
@@ -42,9 +42,10 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios })
     {loading ? <Spinner /> : (
       <div className="container">
         <div className="row">
-          <div className="col-12">
-            {/* {explorer === 'pathway' ? <ExploreByPathway scenarios={scenarios} /> : <ExploreByYear scenarios={scenarios} />} */}
-          </div>
+          {
+            scenarios.length ? <div className="col-12">
+              {explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
+            </div> : null}
         </div>
         <div className="row">
           <div className="col-6 links">

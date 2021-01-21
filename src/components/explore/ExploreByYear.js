@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import './ExploreByYear.scss';
@@ -10,6 +11,7 @@ function getTableHeader(filtersScenarios) {
   }
 }
 function getTableBody(scenarios) {
+  console.log(scenarios)
   let obj = {}
   scenarios.forEach(e => {
     let key = `${e._filter_level_1}-${e._filter_level_2}-${e._variable_name}`;
@@ -34,8 +36,7 @@ function getTableBody(scenarios) {
 
 const ExploreByYear = ({ filters, scenarios }) => {
 
-  const [table, setTable] = useState(getTableHeader(filters.scenarios))
-
+  const [table, setTable] = useState(getTableHeader(scenarios))
   useEffect(() => {
     setTable({ ...table, body: getTableBody(scenarios) })
   }, [scenarios])
@@ -58,7 +59,7 @@ const ExploreByYear = ({ filters, scenarios }) => {
         <div className="d-table w-100 nzap-table">
           <div className="d-table-row nzap-table-row">
             <div className="d-table-cell pt-2 pb-2 nzap-table-header-cell lead">Categories & Subcategories</div>
-            {table.headers.map((header, i) => <div key={i} className="d-table-cell pt-2 pb-2 nzap-table-header-cell">{header.label}</div>)}
+            {table.headers.map((header, i) => <div key={i} className="d-table-cell pt-2 pb-2 nzap-table-header-cell"> {header.label}</div>)}
           </div>
           {table.body ? renderBody(table) : null}
         </div>
@@ -70,4 +71,14 @@ ExploreByYear.propTypes = {
   filters: PropTypes.object.isRequired,
   scenarios: PropTypes.array.isRequired,
 }
-export default ExploreByYear
+
+function mapStateToProps(state) {
+  return {
+    filters: state.filters,
+    scenarios: state.scenarios
+  }
+}
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExploreByYear);
