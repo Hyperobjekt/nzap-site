@@ -106,11 +106,24 @@ const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOne
             </Panel>
           </Collapse>
         </div>
-        <div className="col-12 pt-3">
-          <div className="d-table text-center w-100">
-            {filters.years.map((year, i) => <div key={i} className="d-table-cell clickable" onClick={() => { yearChange(year.slug) }}>{year.label}</div>)}
+        <div className="col-12 pl-4 pr-4">
+          <div className="row">
+            <div className="col-12 pl-0 pr-0 examiner position-relative pt-3">
+              <div className="position-absolute" id="left-corner"></div>
+              <div className="position-absolute" id="right-corner"></div>
+              <div className="d-table text-center w-100 years">
+                {filters.years.map((year, i) =>
+                  <div key={i} className={(query.year || '2020') === year.slug ? 'd-table-cell pl-3 pr-3 clickable year active' : 'd-table-cell pl-3 pr-3 clickable year'} onClick={() => { yearChange(year.slug) }}>
+                    <div className="tile tween pt-1">
+                      {year.label}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   )

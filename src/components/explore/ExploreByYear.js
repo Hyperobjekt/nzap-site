@@ -62,22 +62,20 @@ const ExploreByYear = ({ filters, scenarios }) => {
     })
   }
 
-  return (<div className="container">
-    <div className="row">
-      <div className="col-12">
+  return (
+    <div className="col-12">
 
-        <div className="d-table w-100 nzap-table">
-          <div className="d-table-row nzap-table-row">
-            <div className="d-table-cell pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell lead">Categories &amp; Subcategories</div>
-            {table.headers.map((header, i) => <div key={i} className="d-table-cell pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell"><span className="label">{header.label}</span> <span className="alt-name">{header.altName}</span></div>)}
-          </div>
-          {table.body ? renderBody(table) : null}
+      <div className="d-table w-100 nzap-table">
+        <div className="d-table-row nzap-table-row">
+          <div className="d-table-cell pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell lead">Categories &amp; Subcategories</div>
+          {table.headers.map((header, i) => <div key={i} className="d-table-cell pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell"><span className="label">{header.label}</span> <span className="alt-name">{header.altName}</span></div>)}
         </div>
-
-
+        {table.body ? renderBody(table) : null}
       </div>
+
+
     </div>
-  </div>)
+  )
 }
 ExploreByYear.propTypes = {
   filters: PropTypes.object.isRequired,
