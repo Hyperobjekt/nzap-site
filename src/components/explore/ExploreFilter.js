@@ -65,12 +65,15 @@ const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOne
   return (
     <div className="container nzap-filters">
       <div className="row">
-        <div className="col-12">
-          {query.state ? <Select defaultValue={query.state} style={{ width: 250 }} onChange={usStateChange}>
+        <div className="col-12 pl-0 pt-4 pb-3">
+          <div className="d-block pb-2 scope">
+            Scope (select state or national)
+          </div>
+          {query.state ? <Select className="nzap-radius" showArrow={false} defaultValue={query.state} style={{ width: 250 }} onChange={usStateChange}>
             {filters.usStates.map((usState, i) => <Option key={i} value={usState.slug}>{usState.label}</Option>)}
           </Select> : null}
         </div>
-        <div className="col-12">
+        <div className="col-12 pb-3 pl-0">
           <Collapse
             bordered={false}
             defaultActiveKey={isFilterDrawOpen ? ['1'] : []}
@@ -80,8 +83,8 @@ const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOne
               <div className="container-fluid pl-0">
                 <div className="row">
                   <div className="col-12 filter-categories">
-                    <div className="d-block filter-label">Categories</div>
-                    <div className="d-block filter-data">
+                    <div className="d-block pl-2 filter-label pb-2">Categories</div>
+                    <div className="d-block pl-2 filter-data">
                       {filters.levelOneFilters.map((category, i) => {
                         const categoryClass = category.active
                           ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category active"
@@ -91,8 +94,8 @@ const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOne
                     </div>
                   </div>
                   <div className="col-12 filter-categories">
-                    {filters.levelTwoFilters.filter(subcategory => subcategory.slug).length ? <div className="d-block filter-label">Subcategories</div> : null}
-                    <div className="d-block filter-data">
+                    {filters.levelTwoFilters.filter(subcategory => subcategory.slug).length ? <div className="d-block filter-label pl-2 pb-2">Subcategories</div> : null}
+                    <div className="d-block pl-2 filter-data">
                       {filters.levelTwoFilters.filter(subcategory => subcategory.slug).map((subcategory, i) => {
                         const subcategoryClass = subcategory.active
                           ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-2 mr-2 nzap-radius clickable filter-category active"
