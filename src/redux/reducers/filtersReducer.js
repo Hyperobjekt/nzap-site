@@ -5,7 +5,6 @@ import initialState from "./initialState";
 export default function filtersReducer(state = initialState.filters, action) {
   switch (action.type) {
     case types.LOAD_FILTERS_ACTION_SUCCESS:
-      console.log(action.query)
       var levelOneFilters = [...action.filters.levelOneFilters]
         .map(e => ({ ...e, active: action.query.categories.indexOf(e.slug) > -1 }))
       var levelTwoFilters = [...action.filters.levelOneFilters]

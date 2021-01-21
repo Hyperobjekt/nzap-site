@@ -1,6 +1,11 @@
 @import "../../_styles/variables";
 @import "../../_styles/mixins";
 
+.nzap-table-holder {
+  height: 600px;
+  overflow: auto;
+  margin-bottom: 100px;
+}
 .nzap-explore-loader {
   .filter-section-label {
     @include font($font-family-primary, $font-weight-regular, $large, $highlight-color);

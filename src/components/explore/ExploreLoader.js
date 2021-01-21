@@ -14,7 +14,7 @@ import ExploreByYear from './ExploreByYear';
 import './ExploreLoader.scss'
 const { TabPane } = Tabs;
 
-const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, scenarios }) => {
+const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, scenarios, query }) => {
   const location = useLocation();
   const [explorer, setExplorer] = useState('year');
 
@@ -39,26 +39,36 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
       </div>
     </div>
     <ExploreFilter />
-    {loading ? <Spinner /> : (
-      <div className="container">
-        <div className="row">
-          {
-            scenarios.length ? <div className="col-12">
-              {explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
-            </div> : null}
-        </div>
-        <div className="row">
-          <div className="col-6 links">
-            Download
+    <div className="row">
+      <div className="col-12 nzap-table-holder">
+        {loading ? <Spinner /> : (
+          <div className="container">
+            <div className="row">
+              {scenarios.length ? <div className="col-12">
+                {explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
+              </div> : null}
+            </div>
+            <div className="row">
+              <div className="col-6 links">
+                Download
+              </div>
+              <div className="col-6 text-right nzap-pagination">
+                total: {count}
+              </div>
+            </div>
           </div>
-          <div className="col-6 text-right nzap-pagination">
-            total: {count}
-          </div>
-        </div>
+        )}
       </div>
-    )}
+    </div>
   </div>)
 }
+
+
+
+
+
+
+
 
 ExploreLoader.propTypes = {
   scenarios: PropTypes.array.isRequired,

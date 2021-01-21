@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import { Select, Collapse } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { setQuery } from '../../redux/actions/QueryActions';
-import { setUsStateFilter, setLevelOneFilter, setLevelTwoFilter, loadFiltersActionSuccess } from '../../redux/actions/FiltersActions'
+import { setUsStateFilter, setLevelOneFilter, setLevelTwoFilter, loadFiltersActionSuccess } from '../../redux/actions/FiltersActions';
+import { loadScenarios } from '../../redux/actions/ScenariosActions';
 import { getQueryString } from '../../_helpers'
 import 'antd/dist/antd.css';
 import './ExploreFilter.scss';
@@ -13,7 +14,7 @@ const { Option } = Select;
 const { Panel } = Collapse;
 
 
-const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOneFilter, setLevelTwoFilter, loadFiltersActionSuccess }) => {
+const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOneFilter, setLevelTwoFilter, loadFiltersActionSuccess, loadScenarios }) => {
   const [isFilterDrawOpen, toggleFilterDraw] = useState(localStorage.isFilterDrawOpen === 'true');
   const filterHeader = <><span className="pl-0">Filter</span><DownOutlined rotate={isFilterDrawOpen ? 180 : 0} className="align-baseline pl-4 clickable" /> </>;
 
@@ -27,19 +28,22 @@ const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOne
     let queryObject = { ...query, state: usStateSlug };
     setQuery(queryObject)
     setUsStateFilter(usStateSlug)
+    loadScenarios(queryObject)
     return window.history.replaceState(null, null, getQueryString(queryObject))
   }
 
-  // function yearChange(year) {
-  //   let queryObject = { ...query, year: [year] };
-  //   setQuery(queryObject);
-  //   return window.history.replaceState(null, null, getQueryString(queryObject))
-  // }
+  function yearChange(year) {
+    let queryObject = { ...query, year: year };
+    setQuery(queryObject);
+    loadScenarios(queryObject)
+    return window.history.replaceState(null, null, getQueryString(queryObject))
+  }
 
   function updateCategories(slug) {
     let categorySlugs = [...query.categories, slug];
     let queryObject = { ...query, categories: categorySlugs };
     setQuery(queryObject)
+    loadScenarios(queryObject)
     setLevelOneFilter(queryObject.categories);
     return window.history.replaceState(null, null, getQueryString(queryObject))
   }
@@ -47,7 +51,8 @@ const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOne
   function updateSubcategories(slug) {
     let subcategorySlugs = [...query.subcategories, slug];
     let queryObject = { ...query, subcategories: subcategorySlugs };
-    setQuery(queryObject)
+    setQuery(queryObject);
+    loadScenarios(queryObject);
     setLevelTwoFilter(queryObject.subcategories);
     return window.history.replaceState(null, null, getQueryString(queryObject));
   }
@@ -101,6 +106,11 @@ const ExploreFilter = ({ query, setQuery, filters, setUsStateFilter, setLevelOne
             </Panel>
           </Collapse>
         </div>
+        <div className="col-12 pt-3">
+          <div className="d-table text-center w-100">
+            {filters.years.map((year, i) => <div key={i} className="d-table-cell clickable" onClick={() => { yearChange(year.slug) }}>{year.label}</div>)}
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -113,7 +123,8 @@ ExploreFilter.propTypes = {
   setUsStateFilter: PropTypes.func.isRequired,
   setLevelOneFilter: PropTypes.func.isRequired,
   setLevelTwoFilter: PropTypes.func.isRequired,
-  loadFiltersActionSuccess: PropTypes.func.isRequired
+  loadFiltersActionSuccess: PropTypes.func.isRequired,
+  loadScenarios: PropTypes.func.isRequired
 }
 
 
@@ -124,6 +135,6 @@ function mapStateToProps(state) {
   }
 }
 
-const mapDispatchToProps = { setQuery, setUsStateFilter, setLevelOneFilter, setLevelTwoFilter, loadFiltersActionSuccess }
+const mapDispatchToProps = { setQuery, setUsStateFilter, setLevelOneFilter, setLevelTwoFilter, loadFiltersActionSuccess, loadScenarios }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExploreFilter);
