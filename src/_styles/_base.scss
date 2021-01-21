@@ -56,6 +56,9 @@ a {
     text-decoration: none;
   }
 }
+pre {
+  @include font(monospace, $font-weight-regular, $small, $base-color);
+}
 
 span.close {
   @include transition(0.3s);

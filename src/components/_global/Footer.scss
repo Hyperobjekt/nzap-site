@@ -1,0 +1,17 @@
+@import "../../_styles/variables";
+@import "../../_styles/mixins";
+
+.nzap-footer {
+  border-top: 4px $accent-color solid;
+  .footer-logo {
+    img {
+      max-width: 120px;
+    }
+  }
+  .footer-navigation {
+    @include font($font-family-primary, $font-weight-regular, $small, $mezzoforte-color);
+    a {
+      @include font($font-family-primary, $font-weight-regular, $small, $mezzoforte-color);
+    }
+  }
+}

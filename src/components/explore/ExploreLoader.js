@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { Download } from 'react-bootstrap-icons'
 import PropTypes from "prop-types";
 import { Tabs } from 'antd';
 import { loadScenarios } from '../../redux/actions/ScenariosActions';
@@ -14,7 +15,7 @@ import ExploreByYear from './ExploreByYear';
 import './ExploreLoader.scss'
 const { TabPane } = Tabs;
 
-const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, scenarios, query }) => {
+const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, scenarios, query, filters }) => {
   const location = useLocation();
   const [explorer, setExplorer] = useState(localStorage.explorer || 'year');
 
@@ -49,26 +50,42 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
       </div>
     </div>
     <ExploreFilter explorer={explorer} />
-    <div className="row">
-      <div className="col-12 nzap-table-holder">
-        {loading ? <Spinner /> : (
-          <div className="container">
-            <div className="row">
-              {scenarios.length ? <div className="col-12">
-                {explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
-              </div> : null}
-            </div>
-            <div className="row">
-              <div className="col-6 links">
-                Download
+    <div className="container">
+      <div className="row">
+        <div className="col-12 nzap-table-holder">
+          {loading ? <Spinner /> : (
+            <div className="container">
+              <div className="row">
+                {scenarios.length ? <div className="col-12">
+                  {explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
+                </div> : null}
               </div>
-              <div className="col-6 text-right nzap-pagination">
-                total: {count}
+            </div>
+          )}
+        </div>
+        <div className="col-12 pl-4 pr-4">
+          <div className="row">
+            <div className="col-12 pl-0 pr-0 nzap-table-footer position-relative pt-3">
+              <div className="position-absolute" id="left-corner"></div>
+              <div className="position-absolute" id="right-corner"></div>
+              <div className="row">
+                <div className="col-6 links">
+                  <div className="d-block pt-2"><button className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download this table as csv </span><Download className="" /></button></div>
+                  <div className="d-block pt-3">
+                    <button className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius">
+                      download the fact sheet for {filters.usStates.filter(e => e.slug === query.state)[0] ? filters.usStates.filter(e => e.slug === query.state)[0].label : ''}
+                    </button>
+                  </div>
+                </div>
+                <div className="col-6 text-right nzap-pagination">
+                  total: {count}
+                </div>
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
+
     </div>
   </div>)
 }
@@ -87,6 +104,7 @@ ExploreLoader.propTypes = {
   loadScenarios: PropTypes.func.isRequired,
   setQuery: PropTypes.func.isRequired,
   loadFilters: PropTypes.func.isRequired,
+  filters: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired
 }
 
@@ -95,6 +113,7 @@ function mapStateToProps(state) {
     scenarios: state.scenarios,
     loading: state.apiCallsInProgress > 0,
     query: state.query,
+    filters: state.filters,
     count: state.count
   }
 }
