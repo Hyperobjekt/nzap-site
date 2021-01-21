@@ -98,8 +98,8 @@ const ExploreByYear = ({ filters, scenarios }) => {
       let l2 = Object.keys(l1Row)
       return l2.map((l2Key, l2Index) => {
         let l2Row = l1Row[l2Key]
-        return <div key={l2Index} className="nzap-table-row">
-          {l2Row.label}
+        return <div key={l2Index} className="nzap-table-row d-table w-100">
+          <div className="d-table-row"> <div className="d-table-cell">{l2Row.label}</div></div>
           {l2Key !== "label" ? renderVariableNames(l2Row) : null}
         </div>
       })
