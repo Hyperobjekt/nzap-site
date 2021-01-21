@@ -15,8 +15,8 @@ export const setPathwayFilter = filters => ({ type: types.SET_PATHWAY_FILTER, fi
 
 export function loadFilters(query, filters = null) {
   return function (dispatch) {
+    dispatch(beginApiCall())
     if (!filters) {
-      dispatch(beginApiCall())
       return filtersApi.getFilters().then(filters => {
         dispatch(loadFiltersActionSuccess(filters, query))
       }).catch(err => {

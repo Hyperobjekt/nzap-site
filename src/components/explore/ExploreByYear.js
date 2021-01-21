@@ -14,7 +14,7 @@ function getTableHeader(filtersScenarios) {
     'ere-negative': 'Renewable Constrained'
   }
   return {
-    headers: filtersScenarios
+    headers: [...filtersScenarios]
       .filter(scenario => reject.indexOf(scenario.slug) === -1)
       .sort((a, b) => a.slug > b.slug ? 1 : -1)
       .map(e => ({ ...e, altName: labels[e.slug] })),
