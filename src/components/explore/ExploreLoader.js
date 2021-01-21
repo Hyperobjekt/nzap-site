@@ -49,26 +49,37 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
       </div>
     </div>
     <ExploreFilter explorer={explorer} />
-    <div className="row">
-      <div className="col-12 nzap-table-holder">
-        {loading ? <Spinner /> : (
-          <div className="container">
-            <div className="row">
-              {scenarios.length ? <div className="col-12">
-                {explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
-              </div> : null}
-            </div>
-            <div className="row">
-              <div className="col-6 links">
-                Download
+    <div className="container">
+      <div className="row">
+        <div className="col-12 nzap-table-holder">
+          {loading ? <Spinner /> : (
+            <div className="container">
+              <div className="row">
+                {scenarios.length ? <div className="col-12">
+                  {explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
+                </div> : null}
               </div>
-              <div className="col-6 text-right nzap-pagination">
-                total: {count}
+            </div>
+          )}
+        </div>
+        <div className="col-12 pl-4 pr-4">
+          <div className="row">
+            <div className="col-12 pl-0 pr-0 nzap-table-footer position-relative pt-3">
+              <div className="position-absolute" id="left-corner"></div>
+              <div className="position-absolute" id="right-corner"></div>
+              <div className="row">
+                <div className="col-6 links">
+                  Download
+                </div>
+                <div className="col-6 text-right nzap-pagination">
+                  total: {count}
+                </div>
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
+
     </div>
   </div>)
 }

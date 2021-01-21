@@ -4,7 +4,27 @@
 .nzap-table-holder {
   height: 600px;
   overflow: auto;
-  margin-bottom: 100px;
+}
+.nzap-table-footer {
+  border-top: 2px $piano-color solid;
+  #left-corner {
+    width: 12px;
+    height: 12px;
+    border-bottom-left-radius: $default-corner-radius;
+    border-bottom: 2px $piano-color solid;
+    border-left: 2px $piano-color solid;
+    top: -12px;
+    left: -12px;
+  }
+  #right-corner {
+    width: 12px;
+    height: 12px;
+    border-bottom-right-radius: $default-corner-radius;
+    border-bottom: 2px $piano-color solid;
+    border-right: 2px $piano-color solid;
+    top: -12px;
+    right: -12px;
+  }
 }
 .nzap-explore-loader {
   .filter-section-label {

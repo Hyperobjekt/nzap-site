@@ -12,7 +12,7 @@ import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
 
 
 const HomePage = () => (
-  <div className="container">
+  <div className="container pb-5">
     <div className="row">
       <div className="col-12 position-relative">
 
@@ -62,7 +62,6 @@ const HomePage = () => (
 
       </div>
     </div>
-
 
     <div className="row">
       <div className="col-12 solutions">
