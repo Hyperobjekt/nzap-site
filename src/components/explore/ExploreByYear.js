@@ -98,18 +98,22 @@ const ExploreByYear = ({ filters, scenarios }) => {
       let l2 = Object.keys(l1Row)
       return l2.map((l2Key, l2Index) => {
         let l2Row = l1Row[l2Key]
-        return <div key={l2Index} className="nzap-table-row">
-          {l2Row.label}
-          {l2Key !== "label" ? renderVariableNames(l2Row) : null}
-        </div>
+        if (l2Key === "label") return;
+        return <React.Fragment key={l2Index}>
+          <div className="d-block position-relative pt-1 pb-1 pl-3 mb-2 nzap-radius l2-label"> {l2Row.label}</div>
+          <div key={l2Index} className="nzap-table-row d-table w-100">
+            {renderVariableNames(l2Row)}
+          </div>
+        </React.Fragment>
       })
     }
 
     return l1.map((l1Key, l1Index) => {
       let l1Row = table.body[l1Key];
+      if (l1Key === "label") return;
       return <div key={l1Index} className="nzap-table-row">
-        {l1Row.label}
-        {l1Key !== "label" ? renderLevelTwo(l1Row) : null}
+        <div className="d-block position-relative text-uppercase pt-1 pb-1 pl-3 mb-2 nzap-radius l1-label">{l1Row.label}</div>
+        {renderLevelTwo(l1Row)}
       </div>
     })
   }
@@ -120,7 +124,7 @@ const ExploreByYear = ({ filters, scenarios }) => {
 
       <div className="w-100 nzap-table">
         <div className="nzap-table-row">
-          <div className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-inline-block align-top lead">Categories &amp; Subcategories</div>
+          <div className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-inline-block align-base lead">Categories &amp; Subcategories</div>
           {table.headers.filter(e => e.altName).map((header, i) => <div key={i} className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-inline-block align-top"><span className="label">{header.label}</span> <span className="alt-name">{header.altName}</span></div>)}
         </div>
       </div>
