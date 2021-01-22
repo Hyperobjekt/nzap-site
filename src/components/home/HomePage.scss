@@ -17,28 +17,28 @@
 }
 
 .atf {
-  .nzap-jumbotron {
-    background: none;
-    .intro-image {
-      right: 70px;
-      top: -15px;
-      height: 320px;
-    }
-    .title {
-      @include font($font-family-primary, $font-weight-light, $xxlarge, $highlight-color);
-    }
-    .subtitle {
-      @include font($font-family-primary, $font-weight-semi-bold, $xlarge, $base-color);
-    }
-    .introduction {
-      p {
-        @include font($font-family-primary, $font-weight-regular, $medium, $ground-color);
-        span.highlight {
-          @include font($font-family-primary, $font-weight-semi-bold, $medium, $base-color);
-        }
+  // .nzap-jumbotron {
+  background: none;
+  .intro-image {
+    height: 320px;
+    left: -24px;
+    top: -42px;
+  }
+  .title {
+    @include font($font-family-primary, $font-weight-light, $xxlarge, $highlight-color);
+  }
+  .subtitle {
+    @include font($font-family-primary, $font-weight-semi-bold, $xlarge, $base-color);
+  }
+  .introduction {
+    p {
+      @include font($font-family-primary, $font-weight-regular, $medium, $ground-color);
+      span.highlight {
+        @include font($font-family-primary, $font-weight-semi-bold, $medium, $base-color);
       }
     }
   }
+  // }
 }
 .quotable {
   .icon-holder {

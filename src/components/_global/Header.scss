@@ -6,11 +6,62 @@
   .project-title {
     a {
       @include font($font-family-primary-narrow, $font-weight-light, $medium, $mezzoforte-color);
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
   .nzap-navigation {
     a {
       @include font($font-family-primary-wide, $font-weight-semi-bold, $medium, $mezzoforte-color);
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
+}
+
+ul.draw {
+  list-style: none;
+  li {
+    a {
+      @include font($font-family-primary-narrow, $font-weight-light, $large, $mezzoforte-color);
+    }
+  }
+}
+
+.nav-icon {
+  left: 0;
+  width: 40px;
+  z-index: 999999999;
+}
+
+.nav-icon:after,
+.nav-icon:before,
+.nav-icon div {
+  background-color: $accent-color;
+  content: "";
+  display: block;
+  height: 2px;
+  margin: 9px 0;
+  transition: all 0.2s ease-in-out;
+}
+.nav-icon.active {
+  left: -165px;
+}
+.nav-icon.active:after,
+.nav-icon.active:before,
+.nav-icon.active div {
+  background-color: $piano-color;
+}
+.nav-icon.active:before {
+  transform: translateY(11px) rotate(135deg);
+}
+
+.nav-icon.active:after {
+  transform: translateY(-11px) rotate(-135deg);
+}
+
+.nav-icon.active div {
+  transform: scale(0);
 }
