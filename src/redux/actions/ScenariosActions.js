@@ -45,6 +45,8 @@ const getAssembledQuery = (query) => {
   }
   if (categories.$or.length) assembled.$and.push(categories)
   if (subcategories.$or.length) assembled.$and.push(subcategories)
+  if (query.limit) assembled.limit = query.limit;
+  if (query.skip) assembled.skip = query.skip;
   return assembled;
 }
 

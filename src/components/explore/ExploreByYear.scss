@@ -9,10 +9,14 @@
 
 .l1-label {
   background: $base-color;
+}
+.l1-label.lead {
   @include font($font-family-primary, $font-weight-semi-bold, $medium, $light-color);
 }
 .l2-label {
   background: $piano-color;
+}
+.l2-label.lead {
   @include font($font-family-primary, $font-weight-regular, $medium, $ground-color);
 }
 

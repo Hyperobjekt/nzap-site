@@ -58,6 +58,7 @@ a {
 }
 pre {
   @include font(monospace, $font-weight-regular, $small, $base-color);
+  text-align: left !important;
 }
 
 span.close {

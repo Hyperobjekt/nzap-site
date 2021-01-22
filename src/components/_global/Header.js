@@ -11,11 +11,11 @@ const Header = () => {
       <div className="row">
         <div className="col-12">
           <div className="container">
-            <div className="row pt-2 pb-5">
-              <div className="col-4 project-title">
-                <NavLink className="pr-2 pl-2" to="/" exact>NET-ZERO AMERICA</NavLink>
+            <div className="row pt-2 pb-md-5">
+              <div className="col-12 pl-0 col-md-4 project-title">
+                <NavLink className="pr-2 pl-md-2" to="/" exact>NET-ZERO AMERICA</NavLink>
               </div>
-              <div className="col-8 text-right">
+              <div className="d-none d-md-block col-md-8 text-right">
                 <nav className="nzap-navigation">
                   <NavLink className="pr-2 pl-2" to="/#explore" activeStyle={activeStyle} exact>Explore the Data</NavLink>
                   <NavLink className="pr-2 pl-2" to="/publications" activeStyle={activeStyle} exact>Publications</NavLink>
