@@ -68,3 +68,25 @@
   background: $light-color;
   border: 1px $ground-color solid;
 }
+
+.ant-pagination-item {
+  @include font($font-family-primary, $font-weight-light, $medium, $ground-color);
+  margin: unset;
+  border: none;
+  min-width: unset;
+  height: unset;
+  a {
+    border-bottom: 2px transparent solid;
+  }
+}
+.ant-pagination-item-active {
+  margin: unset;
+  a {
+    border-bottom: 2px $accent-color solid;
+  }
+}
+.ant-pagination-prev .ant-pagination-item-link,
+.ant-pagination-next .ant-pagination-item-link {
+  border: none !important;
+  margin-top: -3px;
+}

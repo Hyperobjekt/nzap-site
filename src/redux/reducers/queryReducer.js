@@ -11,6 +11,8 @@ export default function queryReducer(state = initialState.query, action) {
     case types.SET_QUERY_ACTION:
       return {
         ...state,
+        skip: action.query.skip,
+        limit: action.query.limit,
         state: action.query.state,
         year: action.query.year,
         pathway: action.query.pathway,

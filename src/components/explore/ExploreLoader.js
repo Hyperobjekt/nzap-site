@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Download } from 'react-bootstrap-icons'
 import PropTypes from "prop-types";
-import { Tabs } from 'antd';
+import { Tabs, Pagination } from 'antd';
 import { loadScenarios } from '../../redux/actions/ScenariosActions';
 import { setQuery } from '../../redux/actions/QueryActions';
 import { loadFilters } from '../../redux/actions/FiltersActions';
@@ -18,6 +18,7 @@ const { TabPane } = Tabs;
 const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, scenarios, query, filters }) => {
   const location = useLocation();
   const [explorer, setExplorer] = useState(localStorage.explorer || 'year');
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     let queryObject = getQueryObject(location)
@@ -28,6 +29,13 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
     setQuery(queryObject);
     return window.history.replaceState(null, null, getQueryString(queryObject))
   }, [explorer])
+
+  const changePage = page => {
+    setCurrentPage(page)
+    let queryObject = { ...query, skip: page };
+    setQuery(queryObject);
+    console.log(page, query, queryObject)
+  }
 
   const changeExplorer = tab => {
     localStorage.setItem('explorer', tab);
@@ -78,7 +86,8 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
                   </div>
                 </div>
                 <div className="col-6 text-right nzap-pagination">
-                  total: {count}
+                  <Pagination total={count} current={currentPage} showSizeChanger={false} defaultPageSize={200} onChange={changePage} />
+                  [work in progress...]
                 </div>
               </div>
             </div>
