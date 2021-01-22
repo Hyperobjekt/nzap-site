@@ -34,7 +34,6 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
     setCurrentPage(page)
     let queryObject = { ...query, skip: page };
     setQuery(queryObject);
-    console.log(page, query, queryObject)
   }
 
   const changeExplorer = tab => {
@@ -58,44 +57,40 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
       </div>
     </div>
     <ExploreFilter explorer={explorer} />
-    <div className="container">
-      <div className="row">
-        <div className="col-12 nzap-table-holder">
-          {loading ? <Spinner /> : (
-            <div className="container">
-              <div className="row">
-                {scenarios.length ? <div className="col-12">
-                  {explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
-                </div> : null}
-              </div>
-            </div>
-          )}
-        </div>
-        <div className="col-12 pl-4 pr-4">
+    <div className="row">
+      <div className="col-12">
+        {loading ? <Spinner /> : (
           <div className="row">
-            <div className="col-12 pl-0 pr-0 nzap-table-footer position-relative pt-3">
-              <div className="position-absolute" id="left-corner"></div>
-              <div className="position-absolute" id="right-corner"></div>
-              <div className="row">
-                <div className="col-6 links">
-                  <div className="d-block pt-2"><button className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download this table as csv </span><Download className="" /></button></div>
-                  <div className="d-block pt-3">
-                    <button className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius">
-                      download the fact sheet for {filters.usStates.filter(e => e.slug === query.state)[0] ? filters.usStates.filter(e => e.slug === query.state)[0].label : ''}
-                    </button>
-                  </div>
+            {scenarios.length ? <div className="col-12 nzap-table-holder">
+              {explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
+            </div> : null}
+          </div>
+        )}
+      </div>
+      <div className="col-12 pl-4 pr-4">
+        <div className="row">
+          <div className="col-12 pl-0 pr-0 nzap-table-footer position-relative pt-3">
+            <div className="position-absolute" id="left-corner"></div>
+            <div className="position-absolute" id="right-corner"></div>
+            <div className="row">
+              <div className="col-12 col-md-6 pt-4 pt-md-2 text-center text-md-left order-12 order-md-1 links">
+                <div className="d-block pt-2"><button className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download this table as csv </span><Download className="" /></button></div>
+                <div className="d-block pt-3">
+                  <button className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius">
+                    download the fact sheet for {filters.usStates.filter(e => e.slug === query.state)[0] ? filters.usStates.filter(e => e.slug === query.state)[0].label : ''}
+                  </button>
                 </div>
-                <div className="col-6 text-right nzap-pagination">
-                  <Pagination total={count} current={currentPage} showSizeChanger={false} defaultPageSize={200} onChange={changePage} />
-                  [work in progress...]
-                </div>
+              </div>
+              <div className="col-12 col-md-6 pt-3 pt-md-2 text-center text-md-right order-1 order-md-12 nzap-pagination">
+                <Pagination total={count} current={currentPage} showSizeChanger={false} defaultPageSize={200} onChange={changePage} />
+                  [work in progress...]{count}
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
+
   </div>)
 }
 

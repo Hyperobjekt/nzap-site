@@ -26,11 +26,11 @@ const HomePage = () => (
         </div>
 
         <div className="row">
-          <div className="col-12 pt-5 atf">
+          <div className="col-12 pt-md-5 atf">
 
             <div className="d-block pt-4 nzap-jumbotron">
-              <img className="position-absolute intro-image" src={introImage} alt="" />
-              <div className="d-block display-3 text-uppercase pt-5 mt-5 title">Net-Zero America:</div>
+              <img className="position-absolute intro-image d-none d-md-blockf" src={introImage} alt="" />
+              <div className="d-block display-3 text-uppercase pt-md-5 mt-md-f5 title">Net-Zero America:</div>
               <div className="d-block lead display-4 subtitle">Potential Pathways, <br />Infrastructure, and Impacts</div>
               <div className="d-block pr-3 pt-4 introduction">
                 <p className="pt-4">Using state-of-the-art modeling tools, a new study from Princeton’s Andlinger Center For Energy + The Environment provides <span className="highlight">five plausible scenarios for the U.S. to reach net-zero emissions by 2050</span>, each one featuring historically unprecedented rates of deployment for multiple technologies.</p>
@@ -40,19 +40,19 @@ const HomePage = () => (
 
           </div>
 
-          <div className="col-11 pl-3 pr-5 pt-4 pb-5 quotable">
+          <div className="col-12 col-md-11 pl-3 pr-5 pt-2 pt-md-4 pb-5 quotable">
 
-            <div className="d-inline-block icon-holder align-top pt-2">
+            <div className="d-none d-md-inline-block icon-holder align-top pt-2">
               <img src={blockquoteIcon} alt="" />
             </div>
-            <div className="d-inline-block quote-holder pl-4">
+            <div className="d-inline-block quote-holder pl-md-4">
               <div className="d-block quote">
-                “With multiple plausible and affordable pathways available, <br />
-                the societal conversation can now turn from ‘if ’ to ‘how’ and <br />
+                “With multiple plausible and affordable pathways available, <br className="d-none d-md-block" />
+                the societal conversation can now turn from ‘if ’ to ‘how’ and <br className="d-none d-md-block" />
                 focus on the choices.”
               </div>
               <div className="d-block pt-2 by">
-                <span><b>John P. Holdren,</b> Science Advisor to President Obama</span>
+                <span><b>John P. Holdren,</b> <br className="d-md-none d-block" />Science Advisor to President Obama</span>
               </div>
             </div>
 

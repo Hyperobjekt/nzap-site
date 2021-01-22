@@ -82,7 +82,7 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
     let years = [...filters.years].sort((a, b) => a.slug < b.slug ? -1 : 1);
     let pathways = [...filters.scenarios].sort((a, b) => a.slug < b.slug ? -1 : 1).filter(e => !reject.includes(e.slug))
 
-    if (explorer === 'year') return <div className="d-table text-center w-100 years">
+    if (explorer === 'year') return <div className="d-none d-md-table text-center w-100 years">
       {years.map((year, i) =>
         <div key={i} className={(query.year || '2020') === year.slug ? 'd-table-cell pl-3 pr-3 clickable year active' : 'd-table-cell pl-3 pr-3 clickable year'} onClick={() => { yearChange(year.slug) }}>
           <div className="tile tween pt-1">
@@ -151,7 +151,7 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
         </div>
         <div className="col-12 pl-4 pr-4">
           <div className="row">
-            <div className="col-12 pl-0 pr-0 examiner position-relative pt-3">
+            <div className="d-none d-md-block col-12 pl-0 pr-0 examiner position-relative pt-3">
               <div className="position-absolute" id="left-corner"></div>
               <div className="position-absolute" id="right-corner"></div>
               {examiner()}
