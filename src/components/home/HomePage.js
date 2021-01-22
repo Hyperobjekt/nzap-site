@@ -26,18 +26,24 @@ const HomePage = () => (
         </div>
 
         <div className="row">
-          <div className="col-12 pt-md-5 atf">
-
-            <div className="d-block pt-4 nzap-jumbotron">
-              <img className="position-absolute intro-image d-none d-md-blockf" src={introImage} alt="" />
-              <div className="d-block display-3 text-uppercase pt-md-5 mt-md-f5 title">Net-Zero America:</div>
-              <div className="d-block lead display-4 subtitle">Potential Pathways, <br />Infrastructure, and Impacts</div>
-              <div className="d-block pr-3 pt-4 introduction">
-                <p className="pt-4">The Net-Zero America research quantifies five distinct technological pathways, all using technologies known today, by which the United States could decarbonize its entire economy. The study is the first to map with high geographic specificity the infrastructure that needs to be built and the investments required to run the country without emitting more greenhouse gases into the atmosphere than are removed from it each year. It quantifies inherent challenges and opportunities with different pathways, and the granularity allows state-level assessments of implications for land use, employment, air pollution-related health impacts, capital mobilization, incumbent fossil fuel industries, and new clean-energy industries.</p>
-                <p className="pt-2">With multiple plausible and affordable pathways available, the societal conversation can now turn from “if” to “how” and focus on the choices the nation and its myriad stakeholders wish to make to shape the energy transition. Insights from this study can inform this conversation.  This website presents the pathways in an interactive context to enable policy makers and other stakeholders to extract specific results that are most useful to them. The site should be used in conjunction with the Net-Zero America final report to fully understand the data contained herein.</p>
+          <div className="col-12 pt-5 atf">
+            <div className="row">
+              <div className="col-12 pt-3 pt-md-5 col-md-7">
+                <div className="d-block display-3 text-uppercase pt-md-5 mt-md-5 title">Net-Zero America:</div>
+                <div className="d-block lead display-4 subtitle">Potential Pathways, <br />Infrastructure, and Impacts</div>
+              </div>
+              <div className="col-12 col-md-5">
+                <img className="position-relative intro-image d-none d-md-block" src={introImage} alt="" />
               </div>
             </div>
-
+            <div className="row">
+              <div className="col-12">
+                <div className="d-block pr-3 pt-4 introduction">
+                  <p className="pt-md-4">The Net-Zero America research quantifies five distinct technological pathways, all using technologies known today, by which the United States could decarbonize its entire economy. The study is the first to map with high geographic specificity the infrastructure that needs to be built and the investments required to run the country without emitting more greenhouse gases into the atmosphere than are removed from it each year. It quantifies inherent challenges and opportunities with different pathways, and the granularity allows state-level assessments of implications for land use, employment, air pollution-related health impacts, capital mobilization, incumbent fossil fuel industries, and new clean-energy industries.</p>
+                  <p className="pt-2">With multiple plausible and affordable pathways available, the societal conversation can now turn from “if” to “how” and focus on the choices the nation and its myriad stakeholders wish to make to shape the energy transition. Insights from this study can inform this conversation.  This website presents the pathways in an interactive context to enable policy makers and other stakeholders to extract specific results that are most useful to them. The site should be used in conjunction with the Net-Zero America final report to fully understand the data contained herein.</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="col-12 col-md-11 pl-3 pr-5 pt-2 pt-md-4 pb-5 quotable">

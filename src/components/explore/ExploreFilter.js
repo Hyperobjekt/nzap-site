@@ -152,8 +152,8 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
         <div className="col-12 pl-4 pr-4">
           <div className="row">
             <div className="d-none d-md-block col-12 pl-0 pr-0 examiner position-relative pt-3">
-              <div className="position-absolute" id="left-corner"></div>
-              <div className="position-absolute" id="right-corner"></div>
+              <div className="d-none d-md-block position-absolute" id="left-corner"></div>
+              <div className="d-none d-md-block position-absolute" id="right-corner"></div>
               {examiner()}
             </div>
           </div>
