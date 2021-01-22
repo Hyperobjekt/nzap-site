@@ -3,28 +3,29 @@
 
 .nzap-table {
   .nzap-table-row {
-    .nzap-table-header-cell.lead {
-      width: 28%;
-      @include font($font-family-primary-narrow, $font-weight-light, $small, $mezzoforte-color);
-    }
-    .nzap-table-header-cell {
-      width: 12%;
-      span.label {
-        @include font($font-family-primary, $font-weight-extra-bold, $small, $accent-color);
-      }
-      span.alt-name {
-        @include font($font-family-primary, $font-weight-regular, $small, $base-color);
-      }
-    }
-    .nzap-table-cell.lead {
-      @include font($font-family-primary-narrow, $font-weight-regular, $small, $base-color);
-      width: 28%;
-      border-left: none;
-    }
-    .nzap-table-cell {
-      width: 12%;
-      @include font($font-family-primary, $font-weight-semi-bold, $small, $ground-color);
-      border-left: 1px $ground-color solid;
-    }
   }
+}
+
+.nzap-table-header-cell.pathway.lead {
+  width: 33%;
+  @include font($font-family-primary-narrow, $font-weight-light, $small, $mezzoforte-color);
+}
+.nzap-table-header-cell.pathway {
+  width: 10%;
+  span.label {
+    @include font($font-family-primary, $font-weight-extra-bold, $small, $accent-color);
+  }
+  span.alt-name {
+    @include font($font-family-primary, $font-weight-regular, $small, $base-color);
+  }
+}
+.nzap-table-cell.pathway.lead {
+  @include font($font-family-primary-narrow, $font-weight-regular, $small, $base-color);
+  width: 33%;
+  border-left: none;
+}
+.nzap-table-cell.pathway {
+  width: 10%;
+  @include font($font-family-primary, $font-weight-semi-bold, $small, $ground-color);
+  border-left: 1px $ground-color solid;
 }
