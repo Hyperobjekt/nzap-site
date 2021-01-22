@@ -35,31 +35,6 @@ function getTableBody(scenarios) {
       value: e.value
     }
   })
-  // scenarios.forEach(e => {
-  //   let key = `${e._filter_level_1}-${e._filter_level_2}`;
-  //   obj[key][e._variable_name] = {}
-  // })
-  // scenarios.forEach(e => {
-  //   let key = `${e._filter_level_1}-${e._filter_level_2}`;
-  //   obj[key][e._variable_name][e._scenario] = {}
-  // })
-  // scenarios.forEach(e => {
-  //   let key = `${e._filter_level_1}-${e._filter_level_2}-${e._variable_name}`;
-  //   obj[key] = {
-  //     category: e.filter_level_1,
-  //     subcategory: e.filter_level_2,
-  //     variableName: e.variable_name,
-  //   }
-  // })
-  // scenarios.forEach(e => {
-  //   let key = `${e._filter_level_1}-${e._filter_level_2}-${e._variable_name}`;
-  //   if (e._scenario === 'e-positive') obj[key][e._scenario] = e.value
-  //   if (e._scenario === 'e-negative') obj[key][e._scenario] = e.value
-  //   if (e._scenario === 're-positive') obj[key][e._scenario] = e.value
-  //   if (e._scenario === 're-negative') obj[key][e._scenario] = e.value
-  //   if (e._scenario === 'b-positive') obj[key][e._scenario] = e.value
-  //   if (e._scenario === 'ref') obj[key][e._scenario] = e.value
-  // })
   return obj
 }
 

@@ -6,22 +6,24 @@ import './ExploreByPathway.scss';
 
 function getTableHeader(filtersYears) {
   return {
-    headers: [...filtersYears].sort((a, b) => a.slug > b.slug ? 1 : -1)
+    headers: [...filtersYears]
+      .filter(e => Number(e.slug) % 5 === 0)
+      .sort((a, b) => a.slug > b.slug ? 1 : -1)
   }
 }
 function getTableBody(scenarios) {
   let obj = {}
   scenarios.forEach(e => {
-    let key = `${e._filter_level_1}-${e._filter_level_2}-${e._variable_name}`;
-    obj[key] = {
+    obj[e._filter_level_1] = obj[e._filter_level_1] || { label: e.filter_level_1 }
+    obj[e._filter_level_1][e._filter_level_2] = obj[e._filter_level_1][e._filter_level_2] || { label: e.filter_level_2 }
+    obj[e._filter_level_1][e._filter_level_2][e._variable_name] = obj[e._filter_level_1][e._filter_level_2][e._variable_name] || { label: e.variable_name }
+    obj[e._filter_level_1][e._filter_level_2][e._variable_name][e._year] = obj[e._filter_level_1][e._filter_level_2][e._variable_name][e._year] || {
       category: e.filter_level_1,
       subcategory: e.filter_level_2,
       variableName: e.variable_name,
+      scenario: e.scenario,
+      value: e.value
     }
-  })
-  scenarios.forEach(e => {
-    let key = `${e._filter_level_1}-${e._filter_level_2}-${e._variable_name}`;
-    obj[key][e._year] = e.value
   })
   return obj
 }
@@ -35,28 +37,62 @@ const ExploreByPathway = ({ filters, scenarios }) => {
   }, [scenarios])
 
   const renderBody = (table) => {
-    let keys = Object.keys(table.body);
-    return keys.map((key, i) => {
-      let row = table.body[key];
-      return <div key={i} className="d-table-row nzap-table-row">
-        <div className="d-table-cell pt-2 pb-2 pl-2 pr-2 nzap-table-cell lead">{row.category}, {row.subcategory}</div>
-        {table.headers.map((header, i) => <div key={i} className="d-table-cell nzap-table-cell pl-2 pr-2">{row[header.slug] || "---"}</div>)}
+    let headers = [...table.headers]
+    let headerKeys = headers.map(e => e.slug)
+    headerKeys.unshift("")
+    let l1 = Object.keys(table.body);
+    const renderCells = varNameRow => {
+      return headerKeys.map((e, i) => {
+        if (i === 0) return <div key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 pathway lead">{varNameRow.label}</div>
+        if (!varNameRow[e]) return <div key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pathway pb-2">---</div>
+        return <div key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pathway pb-2">{varNameRow[e].value}</div>
+      })
+    }
+
+    const renderVariableNames = l2Row => {
+      let varName = Object.keys(l2Row);
+      return varName.map((varNameKey, varNameIndex) => {
+        let varNameRow = l2Row[varNameKey]
+        return <div key={varNameIndex} className="nzap-table-row d-table-row">
+          {varNameKey !== 'label' ? renderCells(varNameRow) : null}
+        </div>
+      })
+    }
+
+    const renderLevelTwo = l1Row => {
+      let l2 = Object.keys(l1Row)
+      return l2.map((l2Key, l2Index) => {
+        let l2Row = l1Row[l2Key]
+        if (l2Key === "label") return;
+        return <React.Fragment key={l2Index}>
+          <div className="d-block position-relative pt-1 pb-1 pl-3 mb-2 nzap-radius l2-label"> {l2Row.label}</div>
+          <div key={l2Index} className="nzap-table-row d-table w-100">
+            {renderVariableNames(l2Row)}
+          </div>
+        </React.Fragment>
+      })
+    }
+
+    return l1.map((l1Key, l1Index) => {
+      let l1Row = table.body[l1Key];
+      if (l1Key === "label") return;
+      return <div key={l1Index} className="nzap-table-row">
+        <div className="d-block position-relative text-uppercase pt-1 pb-1 pl-3 mb-2 nzap-radius l1-label">{l1Row.label}</div>
+        {renderLevelTwo(l1Row)}
       </div>
     })
   }
 
+
   return (
     <div className="col-12">
-
-      <div className="d-table w-100 nzap-table">
-        <div className="d-table-row nzap-table-row">
-          <div className="d-table-cell pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell lead">Categories &amp; Subcategories</div>
-          {table.headers.map((header, i) => <div key={i} className="d-table-cell pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell"><span className="label">{header.label}</span> <span className="alt-name">{header.altName}</span></div>)}
+      <div className="w-100 nzap-table">
+        <div className="nzap-table-row">
+          <div className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-inline-block align-base pathway lead">Categories &amp; Subcategories</div>
+          {table.headers.map((header, i) => <div key={i} className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell pathway d-inline-block align-top"><span className="label">{header.label}</span> <span className="alt-name">{header.altName}</span></div>)}
         </div>
-        {table.body ? renderBody(table) : null}
       </div>
-
-
+      {table.body ? renderBody(table) : null}
     </div>
   )
 }
