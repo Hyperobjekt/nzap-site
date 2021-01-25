@@ -1,6 +1,11 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import HomePage from "./home/HomePage";
+
+import LandingPage from "./static/Landing";
+import TheReportPage from "./static/TheReport";
+import FactSheetPage from "./static/FactSheet";
+import MediaPage from "./static/Media";
+import AboutPage from "./static/About";
 
 import Header from "./_global/Header";
 import Footer from "./_global/Footer";
@@ -13,8 +18,11 @@ function App() {
     <>
       <Header />
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        {/* <Route path="/explore" component={ExploreLoader} /> */}
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/the-report" component={TheReportPage} />
+        <Route path="/fact-sheet" component={FactSheetPage} />
+        <Route path="/media" component={MediaPage} />
+        <Route path="/about" component={AboutPage} />
         <Route component={FourOhFour} />
       </Switch>
       <ToastContainer autoClose={3000} hideProgressBar />

@@ -1,6 +1,9 @@
 @import "../../_styles/variables";
 @import "../../_styles/mixins";
 
+.explore-jump-holder {
+  top: 0;
+}
 .to-data-explorer {
   @include font($font-family-primary, $font-weight-semi-bold, $small, $highlight-color);
   left: -100px;

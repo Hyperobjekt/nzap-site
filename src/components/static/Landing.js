@@ -1,6 +1,6 @@
 import React from "react";
 import ExploreLoader from "../explore/ExploreLoader";
-import './HomePage.scss';
+import './Landing.scss';
 import introImage from '../../assets/images/home/main-image.png';
 import scenarioImage1 from '../../assets/images/home/scenario1.png'
 import scenarioImage2 from '../../assets/images/home/scenario2.png'
@@ -11,17 +11,19 @@ import scrollDownIcon from '../../assets/images/icons/scroll-down.svg'
 import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
 
 
-const HomePage = () => (
+const LandingPage = () => (
   <div className="container pb-5">
     <div className="row">
       <div className="col-12 position-relative">
 
-        <div className="d-block position-absolute text-center text-uppercase to-data-explorer">
-          <div className="d-block">
-            <a href="#explore">Explore<br />the data</a>
-          </div>
-          <div className="d-block">
-            <a href="#explore"><img src={scrollDownIcon} alt="" /></a>
+        <div className="d-block position-sticky explore-jump-holder">
+          <div className="d-block position-absolute text-center text-uppercase to-data-explorer">
+            <div className="d-block">
+              <a href="#explore">Explore<br />the data</a>
+            </div>
+            <div className="d-block">
+              <a href="#explore"><img src={scrollDownIcon} alt="" /></a>
+            </div>
           </div>
         </div>
 
@@ -158,4 +160,4 @@ const HomePage = () => (
 
 );
 
-export default HomePage;
+export default LandingPage;

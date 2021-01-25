@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Select, Collapse } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { setQuery } from '../../redux/actions/QueryActions';
-import { setUsStateFilter, setLevelOneFilter, setLevelTwoFilter, loadFiltersActionSuccess } from '../../redux/actions/FiltersActions';
+import { setUsStateFilter, setLevelTwoFilter, loadFiltersActionSuccess } from '../../redux/actions/FiltersActions';
 import { loadScenarios } from '../../redux/actions/ScenariosActions';
 import { getQueryString } from '../../_helpers'
 import 'antd/dist/antd.css';
