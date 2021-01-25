@@ -16,12 +16,14 @@ const HomePage = () => (
     <div className="row">
       <div className="col-12 position-relative">
 
-        <div className="d-block position-absolute text-center text-uppercase to-data-explorer">
-          <div className="d-block">
-            <a href="#explore">Explore<br />the data</a>
-          </div>
-          <div className="d-block">
-            <a href="#explore"><img src={scrollDownIcon} alt="" /></a>
+        <div className="d-block position-sticky explore-jump-holder">
+          <div className="d-block position-absolute text-center text-uppercase to-data-explorer">
+            <div className="d-block">
+              <a href="#explore">Explore<br />the data</a>
+            </div>
+            <div className="d-block">
+              <a href="#explore"><img src={scrollDownIcon} alt="" /></a>
+            </div>
           </div>
         </div>
 
