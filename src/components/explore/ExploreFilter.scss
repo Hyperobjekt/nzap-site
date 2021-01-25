@@ -61,6 +61,7 @@
     border-left: 2px $highlight-color solid;
     bottom: -10px;
     left: -12px;
+    z-index: 4;
   }
   #right-corner {
     width: 12px;
@@ -70,5 +71,6 @@
     border-right: 2px $highlight-color solid;
     bottom: -10px;
     right: -12px;
+    z-index: 4;
   }
 }

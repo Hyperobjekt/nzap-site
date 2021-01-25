@@ -31,8 +31,10 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
   }, [explorer])
 
   const changePage = page => {
+    var myDiv = document.getElementById('nzap-table-holder');
+    myDiv.scrollTop = 0;
     setCurrentPage(page)
-    let queryObject = { ...query, skip: page };
+    let queryObject = { ...query, skip: page * 200, limit: 200 };
     setQuery(queryObject);
   }
 
@@ -61,7 +63,7 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
       <div className="col-12">
         {loading ? <Spinner /> : (
           <div className="row">
-            {scenarios.length ? <div className="col-12 nzap-table-holder">
+            {scenarios.length ? <div className="col-12 nzap-table-holder" id="nzap-table-holder">
               {explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
             </div> : null}
           </div>

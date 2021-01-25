@@ -1,9 +1,19 @@
 @import "../../_styles/variables";
 @import "../../_styles/mixins";
 
+.table-header-holder {
+  top: 0;
+  background: $light-color;
+}
+.table-body-holder {
+}
+
 .nzap-table {
   .nzap-table-row {
     white-space: nowrap;
+    &:hover {
+      background: $pianissimo-color;
+    }
   }
 }
 
@@ -24,6 +34,9 @@
   width: 28%;
   white-space: normal;
   @include font($font-family-primary-narrow, $font-weight-light, $small, $mezzoforte-color);
+  &:hover {
+    background: $light-color;
+  }
 }
 .nzap-table-header-cell {
   width: 12%;
@@ -37,6 +50,7 @@
 }
 .nzap-table-cell.lead {
   @include font($font-family-primary-narrow, $font-weight-regular, $small, $base-color);
+  white-space: break-spaces;
   width: 28%;
   border-left: none;
 }
