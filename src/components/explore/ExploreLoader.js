@@ -87,7 +87,6 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
 
           <div className="col-12 col-md-6 pt-3 pt-md-2 text-center text-md-right order-1 order-md-12 nzap-pagination">
             <Pagination total={count} current={currentPage} showSizeChanger={false} defaultPageSize={200} onChange={changePage} />
-                  [work in progress...]{count}
           </div>
         </div>
 
