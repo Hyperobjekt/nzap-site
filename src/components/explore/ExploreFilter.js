@@ -14,7 +14,7 @@ const { Option } = Select;
 const { Panel } = Collapse;
 
 
-const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, setLevelOneFilter, setLevelTwoFilter, loadFiltersActionSuccess, loadScenarios }) => {
+const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, setLevelTwoFilter, loadFiltersActionSuccess, loadScenarios }) => {
   const [isFilterDrawOpen, toggleFilterDraw] = useState(localStorage.isFilterDrawOpen === 'true');
   const filterHeader = <><span className="pl-0">Filter</span><DownOutlined rotate={isFilterDrawOpen ? 180 : 0} className="align-baseline pl-4 clickable" /> </>;
 
@@ -170,7 +170,6 @@ ExploreFilter.propTypes = {
   query: PropTypes.object.isRequired,
   setQuery: PropTypes.func.isRequired,
   setUsStateFilter: PropTypes.func.isRequired,
-  setLevelOneFilter: PropTypes.func.isRequired,
   setLevelTwoFilter: PropTypes.func.isRequired,
   loadFiltersActionSuccess: PropTypes.func.isRequired,
   loadScenarios: PropTypes.func.isRequired
@@ -184,6 +183,6 @@ function mapStateToProps(state) {
   }
 }
 
-const mapDispatchToProps = { setQuery, setUsStateFilter, setLevelOneFilter, setLevelTwoFilter, loadFiltersActionSuccess, loadScenarios }
+const mapDispatchToProps = { setQuery, setUsStateFilter, setLevelTwoFilter, loadFiltersActionSuccess, loadScenarios }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExploreFilter);

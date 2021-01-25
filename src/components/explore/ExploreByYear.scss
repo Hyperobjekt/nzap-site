@@ -20,17 +20,17 @@
 .l1-label {
   background: $base-color;
 }
-.l1-label.lead {
+.l1-label.year-lead {
   @include font($font-family-primary, $font-weight-semi-bold, $medium, $light-color);
 }
 .l2-label {
   background: $piano-color;
 }
-.l2-label.lead {
+.l2-label.year-lead {
   @include font($font-family-primary, $font-weight-regular, $medium, $ground-color);
 }
 
-.nzap-table-header-cell.lead {
+.nzap-table-header-cell.year-lead {
   width: 28%;
   white-space: normal;
   @include font($font-family-primary-narrow, $font-weight-light, $small, $mezzoforte-color);
@@ -48,7 +48,7 @@
     @include font($font-family-primary, $font-weight-regular, $small, $base-color);
   }
 }
-.nzap-table-cell.lead {
+.nzap-table-cell.year-lead {
   @include font($font-family-primary-narrow, $font-weight-regular, $small, $base-color);
   white-space: break-spaces;
   width: 28%;
