@@ -63,7 +63,7 @@ const ExploreByYear = ({ filters, scenarios }) => {
       let varName = Object.keys(l2Row);
       return varName.map((varNameKey, varNameIndex) => {
         let varNameRow = l2Row[varNameKey]
-        return <tr key={varNameIndex} className="d-table-row nzap-table-row">
+        return <tr key={varNameIndex} className="d-table-row nzap-table-row tween">
           {varNameKey !== 'label' ? renderCells(varNameRow) : null}
         </tr>
       })
@@ -98,17 +98,24 @@ const ExploreByYear = ({ filters, scenarios }) => {
 
   return (
     <React.Fragment>
-      <table className="d-table w-100 nzap-table">
-        <thead>
-          <tr className="d-table-row nzap-table-row">
-            <th className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-table-cell align-base lead">Categories &amp; Subcategories</th>
-            {table.headers.filter(e => e.altName).map((header, i) => <th key={i} className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-table-cell align-top"><span className="label">{header.label}</span> <span className="alt-name d-none d-md-inline-block">{header.altName}</span></th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {table.body ? renderBody(table) : null}
-        </tbody>
-      </table>
+      <div className="table-header-holder position-sticky">
+        <table className="d-table w-100 nzap-table">
+          <thead>
+            <tr className="d-table-row nzap-table-header-row">
+              <th className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-table-cell align-base lead">Categories &amp; Subcategories</th>
+              {table.headers.filter(e => e.altName).map((header, i) => <th key={i} className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-table-cell align-top"><span className="label">{header.label}</span> <span className="alt-name d-none d-md-inline-block">{header.altName}</span></th>)}
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div className="table-body-holder">
+        <table className="d-table w-100 nzap-table">
+          <tbody>
+            {table.body ? renderBody(table) : null}
+          </tbody>
+        </table>
+      </div>
 
     </React.Fragment>
   )
