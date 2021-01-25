@@ -26,7 +26,12 @@ function getTableBody(scenarios) {
   scenarios.forEach(e => {
     obj[e._filter_level_1] = obj[e._filter_level_1] || { label: e.filter_level_1 }
     obj[e._filter_level_1][e._filter_level_2] = obj[e._filter_level_1][e._filter_level_2] || { label: e.filter_level_2 }
-    obj[e._filter_level_1][e._filter_level_2][e._variable_name] = obj[e._filter_level_1][e._filter_level_2][e._variable_name] || { label: e.variable_name }
+    obj[e._filter_level_1][e._filter_level_2][e._variable_name] = obj[e._filter_level_1][e._filter_level_2][e._variable_name] || {
+      label: e.variable_name,
+      unit: e.unit,
+      unit_alt: e._unit_alt ? e.unit_alt : '',
+      unit_alt_equation: e.unit_alt_equation
+    }
     obj[e._filter_level_1][e._filter_level_2][e._variable_name][e._scenario] = obj[e._filter_level_1][e._filter_level_2][e._variable_name][e._scenario] || {
       category: e.filter_level_1,
       subcategory: e.filter_level_2,
@@ -48,12 +53,12 @@ const ExploreByYear = ({ filters, scenarios }) => {
 
   const renderBody = (table) => {
     let headers = [...table.headers].filter(e => e.altName);
-    let headerKeys = headers.map(e => e.slug)
-    headerKeys.unshift("")
+    let headerKeys = headers.map(e => e.slug);
     let l1 = Object.keys(table.body);
     const renderCells = varNameRow => {
       return headerKeys.map((e, i) => {
-        if (i === 0) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 year-lead">{varNameRow.label}</td>
+        let unit = varNameRow ? `(${varNameRow.unit})` : "";
+        if (i === 0) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 year-lead">{varNameRow.label} {unit}</td>
         if (!varNameRow[e]) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2">---</td>
         return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2">{varNameRow[e].value}</td>
       })
