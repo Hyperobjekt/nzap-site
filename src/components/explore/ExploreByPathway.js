@@ -43,9 +43,9 @@ const ExploreByPathway = ({ filters, scenarios }) => {
     let l1 = Object.keys(table.body);
     const renderCells = varNameRow => {
       return headerKeys.map((e, i) => {
-        if (i === 0) return <div key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 pathway lead">{varNameRow.label}</div>
-        if (!varNameRow[e]) return <div key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pathway pb-2">---</div>
-        return <div key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pathway pb-2">{varNameRow[e].value}</div>
+        if (i === 0) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 pathway pathway-lead">{varNameRow.label}</td>
+        if (!varNameRow[e]) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pathway pb-2">---</td>
+        return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pathway pb-2">{varNameRow[e].value}</td>
       })
     }
 
@@ -53,9 +53,9 @@ const ExploreByPathway = ({ filters, scenarios }) => {
       let varName = Object.keys(l2Row);
       return varName.map((varNameKey, varNameIndex) => {
         let varNameRow = l2Row[varNameKey]
-        return <div key={varNameIndex} className="nzap-table-row d-table-row">
+        return <tr key={varNameIndex} className="d-table-row nzap-table-row tween">
           {varNameKey !== 'label' ? renderCells(varNameRow) : null}
-        </div>
+        </tr>
       })
     }
 
@@ -65,10 +65,10 @@ const ExploreByPathway = ({ filters, scenarios }) => {
         let l2Row = l1Row[l2Key]
         if (l2Key === "label") return;
         return <React.Fragment key={l2Index}>
-          <div className="d-block position-relative pt-1 pb-1 pl-3 mb-2 nzap-radius l2-label"> {l2Row.label}</div>
-          <div key={l2Index} className="nzap-table-row d-table w-100">
-            {renderVariableNames(l2Row)}
-          </div>
+          <tr className="d-table-row position-relative text-uppercase pt-1 pb-1 pl-3 mb-2">
+            <td className="d-table-cell pb-2" colSpan={table.headers.length + 1}><div className="l2-label pl-2 pt-1 pb-1 nzap-radius pathway-lead">{l2Row.label}</div> </td>
+          </tr>
+          {renderVariableNames(l2Row)}
         </React.Fragment>
       })
     }
@@ -76,24 +76,38 @@ const ExploreByPathway = ({ filters, scenarios }) => {
     return l1.map((l1Key, l1Index) => {
       let l1Row = table.body[l1Key];
       if (l1Key === "label") return;
-      return <div key={l1Index} className="nzap-table-row">
-        <div className="d-block position-relative text-uppercase pt-1 pb-1 pl-3 mb-2 nzap-radius l1-label">{l1Row.label}</div>
+      return <React.Fragment key={l1Index} >
+        <tr className="d-table-row position-relative text-uppercase pt-1 pb-1 pl-3 mb-2">
+          <td className="d-table-cell pb-2" colSpan={table.headers.length + 1}><div className="l1-label pl-2 pt-1 pb-1 nzap-radius pathway-lead">{l1Row.label}</div> </td>
+        </tr>
         {renderLevelTwo(l1Row)}
-      </div>
+      </React.Fragment>
     })
   }
 
 
   return (
-    <div className="col-12">
-      <div className="w-100 nzap-table">
-        <div className="nzap-table-row">
-          <div className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-inline-block align-base pathway lead">Categories &amp; Subcategories</div>
-          {table.headers.map((header, i) => <div key={i} className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell pathway d-inline-block align-top"><span className="label">{header.label}</span> <span className="alt-name">{header.altName}</span></div>)}
-        </div>
+    <React.Fragment>
+      <div className="table-header-holder position-sticky">
+        <table className="d-table w-100 nzap-table">
+          <thead>
+            <tr className="d-table-row nzap-table-header-row">
+              <th className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-table-cell align-base pathway-lead">Categories &amp; Subcategories</th>
+              {table.headers.map((header, i) => <th key={i} className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-table-cell align-top"><span className="label">{header.label}</span> <span className="alt-name d-none d-md-inline-block">{header.altName}</span></th>)}
+            </tr>
+          </thead>
+        </table>
       </div>
-      {table.body ? renderBody(table) : null}
-    </div>
+
+      <div className="table-body-holder">
+        <table className="d-table w-100 nzap-table">
+          <tbody>
+            {table.body ? renderBody(table) : null}
+          </tbody>
+        </table>
+      </div>
+
+    </React.Fragment>
   )
 }
 ExploreByPathway.propTypes = {

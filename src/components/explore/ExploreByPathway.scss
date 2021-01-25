@@ -1,17 +1,46 @@
 @import "../../_styles/variables";
 @import "../../_styles/mixins";
 
+.table-header-holder {
+  top: 0;
+  background: $light-color;
+}
+.table-body-holder {
+}
+
 .nzap-table {
   .nzap-table-row {
+    white-space: nowrap;
+    &:hover {
+      background: $pianissimo-color;
+    }
   }
 }
 
-.nzap-table-header-cell.pathway.lead {
-  width: 33%;
-  @include font($font-family-primary-narrow, $font-weight-light, $small, $mezzoforte-color);
+.l1-label {
+  background: $base-color;
 }
-.nzap-table-header-cell.pathway {
-  width: 10%;
+.l1-label.pathway-lead {
+  @include font($font-family-primary, $font-weight-semi-bold, $medium, $light-color);
+}
+.l2-label {
+  background: $piano-color;
+}
+.l2-label.pathway-lead {
+  @include font($font-family-primary, $font-weight-regular, $medium, $ground-color);
+}
+
+.nzap-table-header-cell.pathway-lead {
+  width: 16%;
+  white-space: normal;
+  @include font($font-family-primary-narrow, $font-weight-light, $small, $mezzoforte-color);
+  &:hover {
+    background: $light-color;
+  }
+}
+.nzap-table-header-cell {
+  width: 12%;
+  white-space: normal;
   span.label {
     @include font($font-family-primary, $font-weight-extra-bold, $small, $accent-color);
   }
@@ -19,13 +48,14 @@
     @include font($font-family-primary, $font-weight-regular, $small, $base-color);
   }
 }
-.nzap-table-cell.pathway.lead {
+.nzap-table-cell.pathway-lead {
   @include font($font-family-primary-narrow, $font-weight-regular, $small, $base-color);
-  width: 33%;
+  white-space: break-spaces;
+  width: 16%;
   border-left: none;
 }
-.nzap-table-cell.pathway {
-  width: 10%;
+.nzap-table-cell {
+  width: 12%;
   @include font($font-family-primary, $font-weight-semi-bold, $small, $ground-color);
   border-left: 1px $ground-color solid;
 }

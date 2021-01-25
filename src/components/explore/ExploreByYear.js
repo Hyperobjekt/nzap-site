@@ -53,7 +53,7 @@ const ExploreByYear = ({ filters, scenarios }) => {
     let l1 = Object.keys(table.body);
     const renderCells = varNameRow => {
       return headerKeys.map((e, i) => {
-        if (i === 0) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 lead">{varNameRow.label}</td>
+        if (i === 0) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 year-lead">{varNameRow.label}</td>
         if (!varNameRow[e]) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2">---</td>
         return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2">{varNameRow[e].value}</td>
       })
@@ -76,7 +76,7 @@ const ExploreByYear = ({ filters, scenarios }) => {
         if (l2Key === "label") return;
         return <React.Fragment key={l2Index}>
           <tr className="d-table-row position-relative text-uppercase pt-1 pb-1 pl-3 mb-2">
-            <td className="d-table-cell pb-2" colSpan={table.headers.filter(e => e.altName).length + 1}><div className="l2-label pl-2 pt-1 pb-1 nzap-radius lead">{l2Row.label}</div> </td>
+            <td className="d-table-cell pb-2" colSpan={table.headers.filter(e => e.altName).length + 1}><div className="l2-label pl-2 pt-1 pb-1 nzap-radius year-lead">{l2Row.label}</div> </td>
           </tr>
           {renderVariableNames(l2Row)}
         </React.Fragment>
@@ -88,7 +88,7 @@ const ExploreByYear = ({ filters, scenarios }) => {
       if (l1Key === "label") return;
       return <React.Fragment key={l1Index} >
         <tr className="d-table-row position-relative text-uppercase pt-1 pb-1 pl-3 mb-2">
-          <td className="d-table-cell pb-2" colSpan={table.headers.filter(e => e.altName).length + 1}><div className="l1-label pl-2 pt-1 pb-1 nzap-radius lead">{l1Row.label}</div> </td>
+          <td className="d-table-cell pb-2" colSpan={table.headers.filter(e => e.altName).length + 1}><div className="l1-label pl-2 pt-1 pb-1 nzap-radius year-lead">{l1Row.label}</div> </td>
         </tr>
         {renderLevelTwo(l1Row)}
       </React.Fragment>
@@ -102,7 +102,7 @@ const ExploreByYear = ({ filters, scenarios }) => {
         <table className="d-table w-100 nzap-table">
           <thead>
             <tr className="d-table-row nzap-table-header-row">
-              <th className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-table-cell align-base lead">Categories &amp; Subcategories</th>
+              <th className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-table-cell align-base year-lead">Categories &amp; Subcategories</th>
               {table.headers.filter(e => e.altName).map((header, i) => <th key={i} className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-table-cell align-top"><span className="label">{header.label}</span> <span className="alt-name d-none d-md-inline-block">{header.altName}</span></th>)}
             </tr>
           </thead>
