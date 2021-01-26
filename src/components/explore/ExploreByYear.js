@@ -51,16 +51,29 @@ const ExploreByYear = ({ filters, scenarios }) => {
     setTable({ ...table, body: getTableBody(scenarios) })
   }, [scenarios])
 
+  const format = (data, unitData) => {
+    let isNumber = !isNaN(Number(data.value))
+    if (isNumber) return Number(data.value).toFixed(3);
+    return data.value
+  }
+
   const renderBody = (table) => {
     let headers = [...table.headers].filter(e => e.altName);
     let headerKeys = headers.map(e => e.slug);
+    headerKeys.unshift("")
     let l1 = Object.keys(table.body);
     const renderCells = varNameRow => {
       return headerKeys.map((e, i) => {
-        let unit = varNameRow ? `(${varNameRow.unit})` : "";
-        if (i === 0) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 year-lead">{varNameRow.label} {unit}</td>
+        let unitData = {};
+        if (varNameRow) {
+          unitData.unit = varNameRow.unit;
+          unitData.unit_alt = varNameRow.unit_alt;
+          unitData.unit_alt_equation = varNameRow.unit_alt_equation;
+        }
+
+        if (i === 0) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 year-lead">{varNameRow.label} {unitData.unit ? `(${unitData.unit})` : null}</td>
         if (!varNameRow[e]) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2">---</td>
-        return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2">{varNameRow[e].value}</td>
+        return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2">{format(varNameRow[e], unitData)}</td>
       })
     }
 

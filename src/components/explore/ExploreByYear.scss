@@ -56,6 +56,7 @@
 }
 .nzap-table-cell {
   width: 12%;
+  white-space: normal;
   @include font($font-family-primary, $font-weight-semi-bold, $small, $ground-color);
   border-left: 1px $ground-color solid;
 }
