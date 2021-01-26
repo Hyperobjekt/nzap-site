@@ -1,0 +1,42 @@
+@import "../../_styles/variables";
+@import "../../_styles/mixins";
+
+.atf.the-report {
+  // .nzap-jumbotron {
+  background: none;
+  .intro-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  .title {
+    @include font($font-family-primary, $font-weight-light, $xxlarge, $highlight-color);
+  }
+  .subtitle {
+    bottom: 0;
+    @include font($font-family-primary, $font-weight-semi-bold, $xlarge, $base-color);
+  }
+  .introduction {
+    p {
+      @include font($font-family-primary, $font-weight-regular, $medium, $ground-color);
+      span.highlight {
+        @include font($font-family-primary, $font-weight-semi-bold, $medium, $base-color);
+      }
+    }
+  }
+  // }
+}
+
+.annexes-label {
+  @include font($font-family-primary-narrow, $font-weight-light, $medium, $highlight-color);
+}
+.annexes {
+  .annex {
+    .tag {
+      @include font($font-family-primary, $font-weight-bold, $small, $highlight-color);
+    }
+    .title {
+      @include font($font-family-primary, $font-weight-light, $large, $highlight-color);
+    }
+  }
+}
