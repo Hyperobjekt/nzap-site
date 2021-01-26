@@ -1,0 +1,12 @@
+@import "../../_styles/variables";
+@import "../../_styles/mixins";
+
+//
+
+.fact-states {
+  .fact-state {
+    a {
+      @include font($font-family-primary, $font-weight-light, $medium, $highlight-color);
+    }
+  }
+}
