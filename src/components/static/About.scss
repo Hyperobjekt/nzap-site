@@ -1,0 +1,38 @@
+@import "../../_styles/variables";
+@import "../../_styles/mixins";
+
+//
+
+.section-a {
+  @include font($font-family-primary, $font-weight-light, $medium, $ground-color);
+  .image {
+    width: 100px;
+    height: 100px;
+    background: $piano-color;
+    border-radius: 50%;
+    img {
+    }
+  }
+  .title {
+    @include font($font-family-primary, $font-weight-light, $large, $highlight-color);
+  }
+  .description {
+  }
+}
+
+.section-b {
+  @include font($font-family-primary, $font-weight-light, $small, $ground-color);
+  .image {
+    width: 80px;
+    height: 80px;
+    background: $piano-color;
+    border-radius: 50%;
+    img {
+    }
+  }
+  .title {
+    @include font($font-family-primary, $font-weight-light, $medium, $highlight-color);
+  }
+  .description {
+  }
+}
