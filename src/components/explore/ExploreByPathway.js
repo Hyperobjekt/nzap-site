@@ -38,8 +38,8 @@ const ExploreByPathway = ({ filters, scenarios }) => {
 
   const format = (data, unitData) => {
     let isNumber = !isNaN(Number(data.value))
-    if (isNumber) return Number(data.value).toFixed(3);
-    return data.value
+    if (isNumber) return Number(data.value).toFixed(3).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return data.value;
   }
 
   const renderBody = (table) => {
