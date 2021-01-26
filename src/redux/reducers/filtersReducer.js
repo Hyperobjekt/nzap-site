@@ -2,9 +2,12 @@ import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
 
 const extractL1Filters = action => {
-  if (!action.query) return [...action.filters.levelOneFilters]
-  return [...action.filters.levelOneFilters]
+  if (!action.query) return [...action.filters.levelOneFilters];
+  let l1f = [...action.filters.levelOneFilters]
     .map(e => ({ ...e, active: action.query.categories.indexOf(e.slug) > -1 }))
+  let impact = l1f.filter(e => e.slug === "impacts")
+  let nonimpact = l1f.filter(e => e.slug !== "impacts")
+  return [...nonimpact, ...impact]
 }
 const extractL2Filters = action => {
   if (!action.query) return [...action.filters.levelOneFilters]
