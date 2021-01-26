@@ -1,0 +1,17 @@
+@import "../../_styles/variables";
+@import "../../_styles/mixins";
+
+//
+
+.name-drop {
+  @include font($font-family-primary, $font-weight-light, $medium, $ground-color);
+  .image {
+    img {
+    }
+  }
+  .publication {
+    @include font($font-family-primary, $font-weight-light, $large, $highlight-color);
+  }
+  .snippet {
+  }
+}
