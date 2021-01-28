@@ -63,7 +63,7 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
       <div className="col-12">
         {loading ? <Spinner /> : (
           <div className="row">
-            {scenarios.length ? <div className="col-12 nzap-table-holder" id="nzap-table-holder">
+            {scenarios.length ? <div className="col-12 nzap-table-holder" id="nzap-table-holder" role="button" tabIndex={0}>
               {explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
             </div> : null}
           </div>
@@ -72,8 +72,8 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
       <div className="col-12 pl-4 pr-4">
         <div className="row">
           <div className="col-12 pl-0 pr-0 nzap-table-footer position-relative pt-3">
-            <div className="d-none d-md-block position-absolute" id="left-corner"></div>
-            <div className="d-none d-md-block position-absolute" id="right-corner"></div>
+            <div className="d-none d-md-block position-absolute" id="bottom-left-corner"></div>
+            <div className="d-none d-md-block position-absolute" id="bottom-right-corner"></div>
           </div>
         </div>
         <div className="row">

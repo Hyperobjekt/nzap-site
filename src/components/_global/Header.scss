@@ -5,7 +5,7 @@
   border-top: 8px $ground-color solid;
   .project-title {
     a {
-      @include font($font-family-primary-narrow, $font-weight-light, $medium, $mezzoforte-color);
+      @include font($font-family-primary-narrow, $font-weight-light, $medium, $base-color);
       &:hover {
         text-decoration: none;
       }
@@ -13,7 +13,7 @@
   }
   .nzap-navigation {
     a {
-      @include font($font-family-primary-wide, $font-weight-semi-bold, $medium, $mezzoforte-color);
+      @include font($font-family-primary-wide, $font-weight-semi-bold, $medium, $base-color);
       &:hover {
         text-decoration: none;
       }

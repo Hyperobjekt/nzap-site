@@ -84,7 +84,7 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
 
     if (explorer === 'year') return <div className="d-none d-md-table text-center w-100 years">
       {years.map((year, i) =>
-        <div key={i} className={(query.year || '2020') === year.slug ? 'd-table-cell pl-3 pr-3 clickable year active' : 'd-table-cell pl-3 pr-3 clickable year'} onClick={() => { yearChange(year.slug) }}>
+        <div role="button" tabIndex={0} key={i} className={(query.year || '2020') === year.slug ? 'd-table-cell pl-3 pr-3 clickable year active' : 'd-table-cell pl-3 pr-3 clickable year'} onKeyDown={() => { yearChange(year.slug) }} onClick={() => { yearChange(year.slug) }}>
           <div className="tile tween pt-1">
             {year.label}
           </div>
@@ -93,7 +93,7 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
     </div>
     if (explorer === 'pathway') return <div className="d-table text-center w-100 years">
       {pathways.map((pathway, i) =>
-        <div key={i} className={(query.pathway || 'ref') === pathway.slug ? 'd-table-cell pl-3 pr-3 clickable year active' : 'd-table-cell pl-3 pr-3 clickable year'} onClick={() => { yearPathway(pathway.slug) }}>
+        <div role="button" tabIndex={0} key={i} className={(query.pathway || 'ref') === pathway.slug ? 'd-table-cell pl-3 pr-3 clickable year active' : 'd-table-cell pl-3 pr-3 clickable year'} onKeyDown={() => { yearPathway(pathway.slug) }} onClick={() => { yearPathway(pathway.slug) }}>
           <div className="tile tween pt-1">
             {pathway.label}
           </div>
@@ -106,11 +106,11 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
     <div className="container nzap-filters">
       <div className="row">
         <div className="col-12 pl-0 pt-4 pb-3">
-          <div className="d-block pb-2 scope">
+          <label htmlFor="geo-scope" className="d-block pb-2 scope">
             Scope (select state or national)
-          </div>
-          {query.state ? <Select className="nzap-radius" showArrow={false} defaultValue={query.state} style={{ width: 250 }} onChange={usStateChange}>
-            {filters.usStates.map((usState, i) => <Option key={i} value={usState.slug}>{usState.label}</Option>)}
+          </label>
+          {query.state ? <Select className="nzap-radius" id="geo-scope" showArrow={false} defaultValue={query.state} style={{ width: 250 }} onChange={usStateChange} aria-activedescendant={null} aria-expanded="false">
+            {filters.usStates.map((usState, i) => <Option key={i} id={usState.slug} value={usState.slug}>{usState.label}</Option>)}
           </Select> : null}
         </div>
         <div className="col-12 pb-3 pl-0">
@@ -129,7 +129,7 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
                         const categoryClass = category.active
                           ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category active"
                           : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category";
-                        return <div key={i} className={categoryClass} onClick={() => { return updateCategories(category.slug) }}>{category.label}</div>
+                        return <div role="button" tabIndex={0} key={i} className={categoryClass} onKeyDown={() => { return updateCategories(category.slug) }} onClick={() => { return updateCategories(category.slug) }}>{category.label}</div>
                       })}
                     </div>
                   </div>
@@ -140,7 +140,7 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
                         const subcategoryClass = subcategory.active
                           ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-2 mr-2 nzap-radius clickable filter-category active"
                           : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-2 mr-2 nzap-radius clickable filter-category"
-                        return <div key={i} className={subcategoryClass} onClick={() => { return updateSubcategories(subcategory.slug) }}>{subcategory.label}</div>
+                        return <div role="button" tabIndex={0} key={i} className={subcategoryClass} onKeyDown={() => { return updateSubcategories(subcategory.slug) }} onClick={() => { return updateSubcategories(subcategory.slug) }}>{subcategory.label}</div>
                       })}
                     </div>
                   </div>
@@ -152,8 +152,8 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
         <div className="col-12 pl-4 pr-4">
           <div className="row">
             <div className="d-none d-md-block col-12 pl-0 pr-0 examiner position-relative pt-3">
-              <div className="d-none d-md-block position-absolute" id="left-corner"></div>
-              <div className="d-none d-md-block position-absolute" id="right-corner"></div>
+              <div className="d-none d-md-block position-absolute" id="top-left-corner"></div>
+              <div className="d-none d-md-block position-absolute" id="top-right-corner"></div>
               {examiner()}
             </div>
           </div>

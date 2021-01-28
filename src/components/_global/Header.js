@@ -35,14 +35,14 @@ const Header = () => {
               </div>
               <div className="col-4 d-md-none text-right">
                 <div className="d-inline-block">
-                  <div className={drawOpen ? 'nav-icon tween position-relative active' : 'nav-icon tween position-relative'} onClick={() => { toggleDraw(!drawOpen) }}>
+                  <div role="button" tabIndex={0} className={drawOpen ? 'nav-icon tween position-relative active' : 'nav-icon tween position-relative'} onKeyDown={() => { toggleDraw(!drawOpen) }} onClick={() => { toggleDraw(!drawOpen) }}>
                     <div></div>
                   </div>
                 </div>
               </div>
 
               <div className="d-none d-md-block col-md-8 text-right">
-                <nav className="nzap-navigation">
+                <nav aria-label="header-navigation" className="nzap-navigation" role="navigation">
                   <NavLink className="pr-2 pl-2" to="/the-report" activeStyle={activeStyle} exact>The Report</NavLink>
                   <NavLink className="pr-2 pl-2" to="/fact-sheet" activeStyle={activeStyle} exact>Fact Sheet</NavLink>
                   <NavLink className="pr-2 pl-2" to="/media" activeStyle={activeStyle} exact>Media</NavLink>

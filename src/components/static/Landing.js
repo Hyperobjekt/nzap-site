@@ -22,7 +22,7 @@ const LandingPage = () => (
               <a href="#explore">Explore<br />the data</a>
             </div>
             <div className="d-block">
-              <a href="#explore"><img src={scrollDownIcon} alt="" /></a>
+              <a href="#explore"><img src={scrollDownIcon} alt="explore the data anchor" /></a>
             </div>
           </div>
         </div>
@@ -31,8 +31,8 @@ const LandingPage = () => (
           <div className="col-12 pt-5 atf">
             <div className="row">
               <div className="col-12 pt-3 pt-md-5 col-md-7">
-                <div className="d-block display-3 text-uppercase pt-md-5 mt-md-5 title">Net-Zero America:</div>
-                <div className="d-block lead display-4 subtitle">Potential Pathways, <br />Infrastructure, and Impacts</div>
+                <h1 className="d-block display-3 text-uppercase pt-md-5 mt-md-5 title">Net-Zero America:</h1>
+                <h2 className="d-block lead display-4 subtitle">Potential Pathways, <br />Infrastructure, and Impacts</h2>
               </div>
               <div className="col-12 col-md-5">
                 <img className="position-relative intro-image d-none d-md-block" src={introImage} alt="" />
@@ -77,7 +77,7 @@ const LandingPage = () => (
             <div className="image-header position-relative">
               <img className="position-absolute" src={scenarioImage1} alt="" />
             </div>
-            <h6 className="scenario pt-2">Scenario 1</h6>
+            <h4 className="scenario pt-2">Scenario 1</h4>
             <h4 className="title">
               <span className="highlight">E+</span><span className="pl-1 label">High<br />Electrification</span>
             </h4>
@@ -91,7 +91,7 @@ const LandingPage = () => (
             <div className="image-header position-relative">
               <img className="position-absolute" src={scenarioImage2} alt="" />
             </div>
-            <h6 className="scenario pt-2">Scenario 2</h6>
+            <h4 className="scenario pt-2">Scenario 2</h4>
             <h4 className="title">
               <span className="highlight">E-</span><span className="pl-1 label">Less-High<br />Electrification</span>
             </h4>
@@ -105,7 +105,7 @@ const LandingPage = () => (
             <div className="image-header position-relative">
               <img className="position-absolute" src={scenarioImage3} alt="" />
             </div>
-            <h6 className="scenario pt-2">Scenario 3</h6>
+            <h4 className="scenario pt-2">Scenario 3</h4>
             <h4 className="title">
               <span className="highlight">E- B+</span><span className="pl-1 label">High<br />Biomass</span>
             </h4>
@@ -119,7 +119,7 @@ const LandingPage = () => (
             <div className="image-header position-relative">
               <img className="position-absolute" src={scenarioImage4} alt="" />
             </div>
-            <h6 className="scenario pt-2">Scenario 4</h6>
+            <h4 className="scenario pt-2">Scenario 4</h4>
             <h4 className="title">
               <span className="highlight">E+ RE-</span><span className="pl-1 label">Renewable<br />Constrained</span>
             </h4>
@@ -135,7 +135,7 @@ const LandingPage = () => (
             <div className="image-header position-relative">
               <img className="position-absolute" src={scenarioImage5} alt="" />
             </div>
-            <h6 className="scenario pt-2">Scenario 5</h6>
+            <h4 className="scenario pt-2">Scenario 5</h4>
             <h4 className="title">
               <span className="highlight">E+ RE+</span><span className="pl-1 label">100%<br />Renewable</span>
             </h4>

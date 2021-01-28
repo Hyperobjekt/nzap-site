@@ -9,9 +9,9 @@
     }
   }
   .footer-navigation {
-    @include font($font-family-primary, $font-weight-regular, $small, $mezzoforte-color);
+    @include font($font-family-primary, $font-weight-regular, $small, $base-color);
     a {
-      @include font($font-family-primary, $font-weight-regular, $small, $mezzoforte-color);
+      @include font($font-family-primary, $font-weight-regular, $small, $base-color);
     }
   }
 }
