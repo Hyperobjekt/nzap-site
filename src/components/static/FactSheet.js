@@ -15,7 +15,7 @@ const FactSheetPage = ({ filters, loadFilters }) => {
 
   const loadStates = states => {
     return states.map((state, i) => <div className="col-3 pt-2 pb-2 fact-state" key={i}>
-      <a href="">{state.label}</a>
+      <a href="/">{state.label}</a>
     </div>)
   }
 

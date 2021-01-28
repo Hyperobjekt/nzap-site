@@ -33,7 +33,7 @@
 .nzap-table-header-cell.year-lead {
   width: 28%;
   white-space: normal;
-  @include font($font-family-primary-narrow, $font-weight-light, $small, $mezzoforte-color);
+  @include font($font-family-primary-narrow, $font-weight-light, $small, $base-color);
   &:hover {
     background: $light-color;
   }
@@ -42,7 +42,7 @@
   width: 12%;
   white-space: normal;
   span.label {
-    @include font($font-family-primary, $font-weight-extra-bold, $small, $accent-color);
+    @include font($font-family-primary, $font-weight-extra-bold, $small, $dark-accent-color);
   }
   span.alt-name {
     @include font($font-family-primary, $font-weight-regular, $small, $base-color);

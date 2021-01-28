@@ -37,9 +37,10 @@
     "cssnano": "4.1.10",
     "enzyme": "3.9.0",
     "enzyme-adapter-react-16": "1.11.2",
-    "eslint": "5.15.2",
+    "eslint": "^5.15.2",
     "eslint-loader": "2.1.2",
     "eslint-plugin-import": "2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "7.12.4",
     "fetch-mock": "7.3.1",
     "file-loader": "^6.2.0",
@@ -76,11 +77,15 @@
     ]
   },
   "eslintConfig": {
+    "plugins": [
+      "jsx-a11y"
+    ],
     "extends": [
       "eslint:recommended",
       "plugin:react/recommended",
       "plugin:import/errors",
-      "plugin:import/warnings"
+      "plugin:import/warnings",
+      "plugin:jsx-a11y/recommended"
     ],
     "parser": "babel-eslint",
     "parserOptions": {
