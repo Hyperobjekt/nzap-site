@@ -25,7 +25,7 @@ export function deleteScenarioAction(scenario) {
 
 
 
-const getAssembledQuery = (query) => {
+export const getAssembledQuery = (query) => {
   let categories = {
     $or: query.categories.map(category => ({ _filter_level_1: category }))
   }

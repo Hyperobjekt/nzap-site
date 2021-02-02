@@ -83,7 +83,10 @@ span.close {
   display: block;
   /* For Firefox */
 }
-
+[role="button"]:focus {
+  // outline: thin solid lighten($piano-color, 4%);
+  outline: none;
+}
 .color-dark {
   color: $ground-color;
 }
