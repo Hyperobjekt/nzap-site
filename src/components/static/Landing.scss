@@ -35,18 +35,24 @@
   }
   .introduction {
     p {
-      @include font($font-family-primary, $font-weight-regular, $medium, $ground-color);
+      @include font($font-family-primary, $font-weight-regular, $medium, $para-color);
+      line-height: 1.6;
       span.highlight {
         @include font($font-family-primary, $font-weight-semi-bold, $medium, $base-color);
+      }
+      a {
+        color: #be5709;
       }
     }
   }
   // }
 }
 .quotable {
+  background-color: #f7f9fb;
+  border-radius: 6px;
   .icon-holder {
     img {
-      width: 10px;
+      width: 14px;
     }
   }
   .quote-holder {
@@ -56,14 +62,15 @@
       font-style: italic;
     }
     .by {
-      @include font($font-family-primary, $font-weight-regular, $small, $ground-color);
+      @include font($font-family-primary, $font-weight-regular, $small14, $base-color);
+      padding-top: 16px;
     }
   }
 }
 
 .solutions {
   h3.label {
-    @include font($font-family-primary, $font-weight-regular, $medium, $highlight-color);
+   // @include font($font-family-primary, $font-weight-regular, $medium, $highlight-color);
   }
   .approaches {
     .approach {
@@ -75,7 +82,8 @@
         }
       }
       .scenario {
-        @include font($font-family-primary, $font-weight-bold, $small, $highlight-color);
+        @include font($font-family-primary, $font-weight-bold, $small14, $highlight-color);
+        margin-bottom: 16px;
       }
       .title {
         .highlight {
@@ -86,8 +94,9 @@
         }
       }
       ul.features {
+        margin-top: 16px;
         li {
-          @include font($font-family-primary, $font-weight-regular, $small, $ground-color);
+          @include font($font-family-primary, $font-weight-regular, $small14, $para-color);
         }
       }
     }
