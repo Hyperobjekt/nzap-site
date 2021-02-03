@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Download } from 'react-bootstrap-icons'
 import PropTypes from "prop-types";
-import { Tabs, Pagination } from 'antd';
+import { Progress, Tabs, Pagination } from 'antd';
 import { loadScenarios, getAssembledQuery } from '../../redux/actions/ScenariosActions';
 import { setQuery } from '../../redux/actions/QueryActions';
 import { loadFilters } from '../../redux/actions/FiltersActions';
@@ -13,6 +13,7 @@ import ExploreFilter from './ExploreFilter';
 import { getQueryObject, getQueryString, convertToCSV, handleError } from '../../_helpers'
 import ExploreByPathway from './ExploreByPathway';
 import ExploreByYear from './ExploreByYear';
+import * as moment from 'moment-timezone';
 import './ExploreLoader.scss'
 const { TabPane } = Tabs;
 
@@ -20,6 +21,8 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
   const location = useLocation();
   const [explorer, setExplorer] = useState(localStorage.explorer || 'year');
   const [currentPage, setCurrentPage] = useState(1);
+  const [dlProgress, setDlProgress] = useState(0);
+  const [downloadingCSV, setDownloadingCSV] = useState(false)
   let sheetArr = [];
 
 
@@ -35,17 +38,30 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
 
   const downloadFullCSV = (sheetArr, headers) => {
     let csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...sheetArr].join('\n');
-    var encodeedUri = encodeURI(csvContent);
-    window.open(encodeedUri);
-
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `nzap-data-${moment().format()}.csv`);
+    document.body.appendChild(link); // Required for FF
+    link.click();
+    setTimeout(() => {
+      setDownloadingCSV(false);
+      setDlProgress(0)
+    }, 3000)
   }
   const downloadBatch = i => {
+    setDownloadingCSV(true);
     let downloadCount = Math.ceil(count / 200);
     let queryObject = { ...query, skip: i * 200, limit: 200 };
     scenariosApi.getScenarios(getAssembledQuery(queryObject)).then(dl => {
-      let converted = convertToCSV(dl.data, i === 1);
+      let data = dl.data.map(row => {
+        Object.keys(row).filter(cell => cell.charAt(0) === '_' || cell === 'id').forEach(key => delete row[key])
+        return row;
+      })
+      let converted = convertToCSV(data, i === 1);
       i++;
-      sheetArr = [...sheetArr, ...converted.csvArr];
+      setDlProgress(Math.round((i / downloadCount) * 100))
+      sheetArr = [...sheetArr, ...converted.csvArr]
       if (downloadCount > i) return downloadBatch(i);
       if (downloadCount === i) return downloadFullCSV(sheetArr, converted.headers)
     })
@@ -100,14 +116,31 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
         <div className="row">
 
           <div className="col-12 col-md-6 pt-4 pt-md-2 text-center text-md-left order-12 order-md-1 links">
-            <div className="d-block pt-2"><button className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius" onClick={() => { downloadBatch(0) }}><span className="pr-2">Download this table as csv </span><Download className="" /></button></div>
+
+
+            <div className="d-block pt-2">
+              <button className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius" onClick={() => { downloadBatch(0) }}>
+                {
+                  downloadingCSV
+                    ? <React.Fragment>
+                      {dlProgress === 100 ? <span className="pr-2">Done</span> : <span className="pr-2">Downloading...</span>}
+                      <Progress strokeColor={{ from: '#108ee9', to: '#ed6d08' }} type="circle" percent={dlProgress} width={30} />
+                    </React.Fragment>
+                    : <React.Fragment>
+                      <span className="pr-2">Download this table as csv </span>
+                      <Download className="" />
+                    </React.Fragment>
+
+                }
+              </button>
+            </div>
             <div className="d-block pt-3">
               <button className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius">
                 download the fact sheet for {filters.usStates.filter(e => e.slug === query.state)[0] ? filters.usStates.filter(e => e.slug === query.state)[0].label : ''}
               </button>
             </div>
-          </div>
 
+          </div>
           <div className="col-12 col-md-6 pt-3 pt-md-2 text-center text-md-right order-1 order-md-12 nzap-pagination">
             <Pagination total={count} current={currentPage} showSizeChanger={false} defaultPageSize={200} onChange={changePage} />
           </div>
