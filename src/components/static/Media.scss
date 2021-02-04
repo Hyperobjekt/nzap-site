@@ -1,5 +1,8 @@
+
 @import "../../_styles/variables";
 @import "../../_styles/mixins";
+
+
 
 //
 
@@ -13,5 +16,21 @@
     @include font($font-family-primary, $font-weight-light, $large, $highlight-color);
   }
   .snippet {
+    @media (min-width:992px) {
+      min-height: 88px;
+      max-height: 88px;
+    }
+    @media (min-width:1200px) {
+      min-height: 72px;
+      max-height: 72px;
+    }
+    color: $para-color;
+  }
+  .articleLink {
+    margin-top: 8px;
+    a {
+      color: $dark-accent-color;
+      font-weight: $font-weight-regular;
+    }
   }
 }
