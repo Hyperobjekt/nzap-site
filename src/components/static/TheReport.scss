@@ -5,9 +5,10 @@
   // .nzap-jumbotron {
   background: none;
   .intro-image {
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 240px;
     border-radius: 50%;
+    //margin-bottom: 32px;
   }
   .title {
     @include font($font-family-primary, $font-weight-light, $xxlarge, $highlight-color);
@@ -18,7 +19,7 @@
   }
   .introduction {
     p {
-      @include font($font-family-primary, $font-weight-regular, $medium, $ground-color);
+      @include font($font-family-primary, $font-weight-light, $medium, $ground-color);
       span.highlight {
         @include font($font-family-primary, $font-weight-semi-bold, $medium, $base-color);
       }
