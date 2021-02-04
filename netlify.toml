@@ -1,0 +1,23 @@
+[[redirects]]
+  from = "/about"
+  to = "/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/the-report"
+  to = "/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/fact-sheet"
+  to = "/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/media"
+  to = "/"
+  status = 200
+  force = true
