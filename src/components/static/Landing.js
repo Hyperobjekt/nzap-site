@@ -149,6 +149,20 @@ const LandingPage = () => (
               <li>No underground storage of CO2 allowed</li>
             </ul>
           </div>
+          <div className="col-md-4 pr-3 approach">
+            <div className="image-header position-relative">
+              <img className="position-absolute" src={scenarioImage5} alt="" />
+            </div>
+            <h4 className="scenario pt-2">Scenario 5</h4>
+            <h4 className="title">
+              <span className="highlight">REF</span><span className="pl-1 label"><br />Reference</span>
+            </h4>
+            <ul className="features ml-0 pl-3 pb-4">
+              <li>Based on US EIA, <i>Annual Energy Outlook 2019</i> (Reference case)</li>
+              <li>No greenhouse gas emission constraints imposed</li>
+              <li>Same (low) projected oil and gas prices as for net-zero pathways</li>
+            </ul>
+          </div>
         </div>
       </div>
 

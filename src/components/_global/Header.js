@@ -21,7 +21,7 @@ const Header = () => {
           <ul className="draw pt-5">
             <li className="pt-3"><NavLink className="pr-2 pl-2" to="/about" activeStyle={activeStyle} exact>About</NavLink></li>
             <li className="pt-3"><NavLink className="pr-2 pl-2" to="/the-report" activeStyle={activeStyle} exact>The Report</NavLink></li>
-            <li className="pt-3"><NavLink className="pr-2 pl-2" to="/fact-sheet" activeStyle={activeStyle} exact>Fact Sheet</NavLink></li>
+            <li className="pt-3"><NavLink className="pr-2 pl-2" to="/fact-sheet" activeStyle={activeStyle} exact>Fact Sheets</NavLink></li>
             <li className="pt-3"><NavLink className="pl-2" to="/media" activeStyle={activeStyle} exact>Media</NavLink></li>
           </ul>
         </div>
@@ -45,7 +45,7 @@ const Header = () => {
                 <nav aria-label="header-navigation" className="nzap-navigation" role="navigation">
                   <NavLink className="pr-2 pl-2" to="/about" activeStyle={activeStyle} exact>About</NavLink>
                   <NavLink className="pr-2 pl-2" to="/the-report" activeStyle={activeStyle} exact>The Report</NavLink>
-                  <NavLink className="pr-2 pl-2" to="/fact-sheet" activeStyle={activeStyle} exact>Fact Sheet</NavLink>
+                  <NavLink className="pr-2 pl-2" to="/fact-sheet" activeStyle={activeStyle} exact>Fact Sheets</NavLink>
                   <NavLink className="pl-2" to="/media" activeStyle={activeStyle} exact>Media</NavLink>
                 </nav>
               </div>
