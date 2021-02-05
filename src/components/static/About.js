@@ -13,7 +13,7 @@ const AboutPage = () => (
           <div className="col-12 col-lg-10 offset-lg-0 pt-5 atf the-report">
             <div className="row">
               <div className="col-12 pt-3 pt-md-5 col-md-8 position-relative">
-                <div className="d-block lead display-4 position-absolute subtitle">About the Project</div>
+                <div className="d-block lead display-4 position-absolute subtitle"><h1>About the Project</h1></div>
               </div>
               <div className="col-12 col-md-4 text-center">
                 <img className="intro-image d-none d-md-inline-block" src={aboutImage} alt="" />

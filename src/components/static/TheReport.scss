@@ -13,9 +13,11 @@
   .title {
     @include font($font-family-primary, $font-weight-light, $xxlarge, $highlight-color);
   }
-  .subtitle {
+  .subtitle  {
     bottom: 0;
-    @include font($font-family-primary, $font-weight-semi-bold, $xlarge, $base-color);
+    h1 {
+      @include font($font-family-primary, $font-weight-semi-bold, $xlarge, $base-color);
+    }
   }
   .introduction {
     p {
@@ -40,4 +42,8 @@
       @include font($font-family-primary, $font-weight-light, $large, $highlight-color);
     }
   }
+}
+
+a.nzap-button {
+  display: inline-block;
 }

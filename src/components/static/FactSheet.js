@@ -27,7 +27,7 @@ const FactSheetPage = ({ filters, loadFilters }) => {
           <div className="col-12 pt-5 atf the-report">
             <div className="row">
               <div className="col-12 pt-3 pt-md-5 col-md-7 position-relative">
-                <div className="d-block lead display-4 position-absolute subtitle">State-by-State Fact Sheets</div>
+                <div className="d-block lead display-4 position-absolute subtitle"><h1>State-by-State Fact Sheets</h1></div>
               </div>
               <div className="col-12 col-md-5 text-center">
                 <img className="intro-image d-none d-md-inline-block" src={introImage} alt="" />
