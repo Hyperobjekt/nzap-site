@@ -83,9 +83,9 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
   }
 
   return (<div>
-    <div className="nzap-explore-loader">
+    <div className="nzap-explore-loader" id="explore">
       <div className="row">
-        <div className="col-12 pt-3 filter-section-label" id="explore">
+        <div className="col-12 pt-3 filter-section-label">
           <h3>Explore the Data</h3>
         </div>
         <div className="col-12 pt-3">
