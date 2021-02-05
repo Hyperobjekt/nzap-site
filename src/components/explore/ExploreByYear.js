@@ -51,7 +51,7 @@ const ExploreByYear = ({ filters, scenarios }) => {
     setTable({ ...table, body: getTableBody(scenarios) })
   }, [scenarios])
 
-  const format = (data, unitData) => {
+  const format = (data) => { //data, unitData
     let isNumber = !isNaN(Number(data.value))
     if (isNumber) return Number(data.value).toFixed(3).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return data.value

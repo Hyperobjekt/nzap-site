@@ -2,7 +2,17 @@
 @import "../../_styles/mixins";
 
 .nzap-header {
-  border-top: 8px $ground-color solid;
+  .header-fixed {
+    border-top: 8px $ground-color solid;
+    position: fixed;
+    background: $light-color;
+    z-index: 2;
+  }
+  .header-fixed.open {
+    position: absolute;
+    background: $light-color;
+    z-index: initial;
+  }
   .project-title {
     a {
       @include font($font-family-primary-narrow, $font-weight-light, $medium, $base-color);
