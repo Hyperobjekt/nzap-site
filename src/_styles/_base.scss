@@ -22,6 +22,10 @@ h6,
   // color: $ground-color !important;
 }
 
+h3 {
+    @include font($font-family-primary, $font-weight-regular, $large, $highlight-color);
+}
+
 textarea.textarea,
 select,
 input,

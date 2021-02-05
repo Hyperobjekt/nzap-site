@@ -28,7 +28,7 @@
   }
 }
 .nzap-explore-loader {
-  .filter-section-label {
+  .filter-section-label h3 {
     @include font($font-family-primary, $font-weight-regular, $large, $highlight-color);
   }
   .filter-explore-by {
