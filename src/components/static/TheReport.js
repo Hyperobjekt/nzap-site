@@ -7,7 +7,7 @@ import './TheReport.scss';
 import { Download } from "react-bootstrap-icons";
 
 const TheReportPage = () => (
-  <div className="container mt-md-5 pt-md-5 pb-5">
+  <div className="container container-body mt-md-5 pt-md-5 pb-5">
     <div className="row">
       <div className="col-12 position-relative">
 
@@ -25,8 +25,11 @@ const TheReportPage = () => (
               <div className="col-12 col-lg-11">
                 <div className="d-block pr-3 pt-4 introduction">
                   <p className="pt-md-4">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto, quos dolorum? Repellendus impedit ab cum fugit ea delectus similique, reiciendis autem maxime repudiandae velit quis temporibus sunt nisi cumque laudantium?
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto, quos dolorum? Repellendus impedit ab cum fugit ea delectus similique, reiciendis autem maxime repudiandae velit quis temporibus sunt nisi cumque laudantium?
+                  This Net Zero America study aims to inform and ground political, business, and societal conversations regarding what it would take for the U.S. to achieve an
+economy-wide target of net-zero emissions of greenhouse gases by 2050. Achieving this goal, i.e. building an economy that emits no more greenhouse gases into
+the atmosphere than are permanently removed and stored each year, is essential to halt the buildup of climate-warming gases in the atmosphere and avert costly
+damages from climate change. A growing number of pledges are being made by major corporations, municipalities, states, and national governments to reach netzero emissions by 2050 or sooner. This study provides granular guidance on what getting to net-zero really requires and on the actions needed to translate these
+pledges into tangible progress. 
                   </p>
                 </div>
               </div>
@@ -53,7 +56,7 @@ const TheReportPage = () => (
     </div>
 
     <div className="row">
-      <div className="col-12 pt-4">
+      <div className="col-9 pt-4">
         <img className="w-100 d-block" src={reportCoverImage} alt="" />
       </div>
       <div className="col-12 pt-4">
