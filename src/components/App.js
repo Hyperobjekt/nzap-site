@@ -6,6 +6,7 @@ import TheReportPage from "./static/TheReport";
 import FactSheetPage from "./static/FactSheet";
 import MediaPage from "./static/Media";
 import AboutPage from "./static/About";
+import PublicationsPage from "./static/Publications";
 
 import Header from "./_global/Header";
 import Footer from "./_global/Footer";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/fact-sheet" component={FactSheetPage} />
         <Route path="/media" component={MediaPage} />
         <Route path="/about" component={AboutPage} />
+        <Route path="/publications" component={PublicationsPage} />
         <Route component={FourOhFour} />
       </Switch>
       <ToastContainer autoClose={3000} hideProgressBar />
