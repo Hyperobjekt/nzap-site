@@ -19,7 +19,7 @@ const FactSheetPage = ({ filters, loadFilters }) => {
     </div>)
   }
 
-  return <div className="container pb-5">
+  return <div className="container mt-md-5 pt-md-5 pb-5">
     <div className="row">
       <div className="col-12 position-relative">
 

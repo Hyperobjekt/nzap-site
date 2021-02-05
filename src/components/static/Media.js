@@ -11,7 +11,7 @@ import gristLogo from '../../assets/images/media/media-logos-grist.png';
 import './Media.scss';
 
 const MediaPage = () => (
-  <div className="container pb-5">
+  <div className="container mt-md-5 pt-md-5 pb-5">
     <div className="row">
       <div className="col-12 position-relative">
 
@@ -80,7 +80,7 @@ const MediaPage = () => (
           <img className="w-100" src={theInterchangeLogo} alt="The Interchange" />
         </div>
         <div className="pt-3 pb-2 publication">The Interchange</div>
-        <div className="snippet">&#8220;Paths to Net-Zero Emissions <br/>by 2050&#8221;</div>
+        <div className="snippet">&#8220;Paths to Net-Zero Emissions <br />by 2050&#8221;</div>
         <div className="articleLink"><a href="https://art19.com/shows/the-interchange/episodes/9ff3d1cc-7026-4b99-bdf1-380b4014da64" target="_blank" rel="noopener noreferrer">READ THE ARTICLE</a></div>
       </div>
       <div className="col-12 col-md-4 pb-3 pt-5">
