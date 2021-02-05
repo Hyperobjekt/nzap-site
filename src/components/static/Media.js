@@ -11,14 +11,14 @@ import gristLogo from '../../assets/images/media/media-logos-grist.png';
 import './Media.scss';
 
 const MediaPage = () => (
-  <div className="container mt-md-5 pt-md-5 pb-5">
+  <div className="container container-body mt-md-5 pt-md-5 pb-5">
     <div className="row">
       <div className="col-12 position-relative">
 
         <div className="row">
           <div className="col-12 pt-5 atf the-report">
             <div className="row">
-              <div className="col-12 pt-3 pt-md-5 col-md-7 position-relative">
+              <div className="col-12 pt-3 pt-md-5 col-md-6 position-relative">
                 <div className="d-block lead display-4 position-absolute subtitle"><h1>Net-Zero America <br />in the Media</h1></div>
               </div>
               <div className="col-12 col-md-5 text-center">

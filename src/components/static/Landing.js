@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 
 
 const LandingPage = () => (
-  <div className="container mt-md-5 pt-md-5 pb-5">
+  <div className="container container-body landing mt-md-5 pt-md-5 pb-5">
     <div className="row">
       <div className="col-12 pt-md-5 position-relative">
 
@@ -52,7 +52,7 @@ const LandingPage = () => (
             </div>
           </div>
 
-          <div className="col-12 col-md-11 col-lg-10 pl-4 pr-5 pt-2 pt-md-4 pb-4 mt-3 mb-5 quotable">
+          <div className="col-12 col-md-11 col-lg-10 pl-4 pr-5 pt-2 pt-md-5 pb-4 pb-md-5 mt-3 mb-5 quotable">
 
             <div className="d-none d-md-inline-block icon-holder align-top pt-2">
               <img src={blockquoteIcon} alt="" />

@@ -14,19 +14,19 @@ const FactSheetPage = ({ filters, loadFilters }) => {
 
 
   const loadStates = states => {
-    return states.map((state, i) => <div className="col-3 pt-2 pb-2 fact-state" key={i}>
+    return states.map((state, i) => <div className="col-6 col-md-3 pt-2 pb-2 fact-state" key={i}>
       <a href="/">{state.label}</a>
     </div>)
   }
 
-  return <div className="container mt-md-5 pt-md-5 pb-5">
+  return <div className="container container-body mt-md-5 pt-md-5 pb-5">
     <div className="row">
       <div className="col-12 position-relative">
 
         <div className="row">
           <div className="col-12 pt-5 atf the-report">
             <div className="row">
-              <div className="col-12 pt-3 pt-md-5 col-md-7 position-relative">
+              <div className="col-12 pt-3 pt-md-5 col-md-6 position-relative">
                 <div className="d-block lead display-4 position-absolute subtitle"><h1>State-by-State Fact Sheets</h1></div>
               </div>
               <div className="col-12 col-md-5 text-center">
@@ -37,8 +37,7 @@ const FactSheetPage = ({ filters, loadFilters }) => {
               <div className="col-12 col-lg-9">
                 <div className="d-block pr-3 pt-4 introduction">
                   <p className="pt-md-4">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto, quos dolorum? Repellendus impedit ab cum fugit ea delectus similique, reiciendis autem maxime repudiandae velit quis temporibus sunt nisi cumque laudantium?
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto, quos dolorum?
+                    Download PDFs featuring tables for each scenario and year featured in our study, for 48 states and the nation as a whole.
                   </p>
                 </div>
               </div>

@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="col-4 pl-1 pr-1 footer-logo">
           <img src={primcetonLogo} alt="" />
         </div>
-        <div className="col-8 pl-1 pr-1 pt-2 text-right">
+        <div className="col-8 pl-1 pr-1 pt-2 text-right d-none">
           <nav className="footer-navigation">
             <NavLink className="pr-2 pl-2" to="/#explore" activeStyle={activeStyle} exact>Legal</NavLink> |
             <NavLink className="pr-2 pl-2" to="/publications" activeStyle={activeStyle} exact>Contact</NavLink>|

@@ -46,4 +46,13 @@
 
 a.nzap-button {
   display: inline-block;
+  color: #385369;
+  text-decoration: none;
+  transition: background-color .3s ease;
+  &:hover {
+    background-color:#be5709;
+    color: white;
+    border-color: #be5709;
+    text-decoration: none;
+  }
 }

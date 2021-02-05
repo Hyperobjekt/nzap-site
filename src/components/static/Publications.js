@@ -8,7 +8,7 @@ import './Publications.scss';
 import { Download } from "react-bootstrap-icons";
 
 const PublicationsPage = () => (
-  <div className="container mt-md-5 pt-md-5 pb-5">
+  <div className="container container-body mt-md-5 pt-md-5 pb-5">
     <div className="row">
       <div className="col-12 position-relative">
 
