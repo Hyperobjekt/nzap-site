@@ -27,7 +27,7 @@ const AboutPage = () => (
             <p>This Net Zero America study as presented at this website aims to inform and ground political, business, and societal conversations regarding what it would take for the U.S. to achieve an economy-wide target of net-zero emissions of greenhouse gases by 2050.  Achieving this goal, i.e. building an economy that emits no more greenhouse gases into the atmosphere than are permanently removed and stored each year, is essential to halt the buildup of climate-warming gases in the atmosphere and avert costly damages from climate change. This study provides granular guidance on what getting to net-zero really requires and on the actions needed to translate pledges into tangible progress.</p>
           </div>  
             
-          <div className="col-12 col-md-11 col-lg-9 pl-4 pr-5 pt-2 pt-md-5 pb-4 mt-3 quotable">
+          <div className="col-12 col-md-11 col-lg-10 pl-4 pr-5 pt-2 pt-md-5 pb-4 pr-lg-3 mt-3 quotable">
         
             <div className="d-none d-md-inline-block icon-holder align-top pt-2">
               <img src={blockquoteIcon} alt="" />
