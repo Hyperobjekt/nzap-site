@@ -28,7 +28,7 @@ const Header = () => {
       <div className="row">
         <div className={drawOpen ? "col-12 header-fixed open" : "col-12 header-fixed"}>
           <div className="container">
-            <div className="row pt-2 pb-md-3">
+            <div className="row pt-3 pb-md-3">
               <div className="col-8 pl-0 col-md-4 project-title">
                 <NavLink className="pr-2 pl-md-2" to="/" exact>NET-ZERO AMERICA</NavLink>
               </div>

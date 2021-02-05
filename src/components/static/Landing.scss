@@ -3,11 +3,13 @@
 
 .explore-jump-holder {
   top: 65px;
+  top: 4px;
 }
 .to-data-explorer {
   @include font($font-family-primary, $font-weight-semi-bold, $small, $highlight-color);
   left: -100px;
   top: 40px;
+  top: 72px;
   img {
     width: 30px;
   }

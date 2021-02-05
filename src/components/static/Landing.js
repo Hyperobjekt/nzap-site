@@ -30,7 +30,7 @@ const LandingPage = () => (
         </div>
 
         <div className="row">
-          <div className="col-12 pt-5 atf">
+          <div className="col-12 pt-3 atf">
             <div className="row">
               <div className="col-12 pt-3 pt-md-5 col-md-7">
                 <h1 className="d-block display-3 text-uppercase pt-md-5 mt-md-5 title">Net-Zero America:</h1>
