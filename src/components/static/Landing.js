@@ -157,7 +157,7 @@ const LandingPage = () => (
                   <span className="highlight">REF</span><span className="pl-1 label"><br />Reference</span>
                 </h4>
                 <ul className="features ml-0 pl-3 pb-4">
-                  <li>Based on US EIA, <i>Annual Energy Outlook 2019</i> (Reference case)</li>
+                  <li>Based on US EIA, <i>Annual Energy Outlook 2019</i> (Reference case, no new policies)</li>
                   <li>No greenhouse gas emission constraints imposed</li>
                   <li>Same (low) projected oil and gas prices as for net-zero pathways</li>
                 </ul>
