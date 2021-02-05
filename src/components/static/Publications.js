@@ -24,6 +24,7 @@ const PublicationsPage = () => (
             </div>
             <div className="row page-content">
               <div className="col-12 col-lg-11">
+                <div className="d-block pr-3 pt-4 introduction">
                   <h2>Papers by Rob Socolow</h2>
                   <p className="pt-md-4">Rob Socolow published two related articles in 2020 while the Net Zero America project was under way, which we include here because they explore issues that enlarge the NZA discussion. Centrally, Socolow seeks domains where depolarization of the current fractious arguments around climate change can be reduced: he advocates “middle-building.”</p>
                   <p>Toward this end, Socolow urges vigilant attention to the downsides to rapid expansion of every low-carbon technology, as opposed to uncritical embrace: “we must leave room to say No.” NZA’s close examination of the land demands for wind, solar, and bioenergy are examples of what he is urging.</p>
