@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { loadFilters } from '../../redux/actions/FiltersActions';
 import { handleError } from '../../_helpers'
-import introImage from '../../assets/images/the-report/intro-image.jpg';
+import introImage from '../../assets/images/fact-sheets/page-header-fact sheets.png';
 
 import './FactSheet.scss';
 
@@ -27,14 +27,14 @@ const FactSheetPage = ({ filters, loadFilters }) => {
           <div className="col-12 pt-5 atf the-report">
             <div className="row">
               <div className="col-12 pt-3 pt-md-5 col-md-7 position-relative">
-                <div className="d-block lead display-4 position-absolute subtitle">Fact Sheet</div>
+                <div className="d-block lead display-4 position-absolute subtitle">State-by-State Fact Sheets</div>
               </div>
               <div className="col-12 col-md-5 text-center">
                 <img className="intro-image d-none d-md-inline-block" src={introImage} alt="" />
               </div>
             </div>
             <div className="row">
-              <div className="col-12">
+              <div className="col-12 col-lg-9">
                 <div className="d-block pr-3 pt-4 introduction">
                   <p className="pt-md-4">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto, quos dolorum? Repellendus impedit ab cum fugit ea delectus similique, reiciendis autem maxime repudiandae velit quis temporibus sunt nisi cumque laudantium?

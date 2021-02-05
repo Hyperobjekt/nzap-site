@@ -12,17 +12,17 @@ const TheReportPage = () => (
       <div className="col-12 position-relative">
 
         <div className="row">
-          <div className="col-12 pt-5 atf the-report">
+          <div className="col-12 col-lg-10 pt-5 atf the-report">
             <div className="row">
-              <div className="col-12 pt-3 pt-md-5 col-md-7 position-relative">
+              <div className="col-12 pt-3 pt-md-5 col-md-8 position-relative">
                 <div className="d-block lead display-4 position-absolute subtitle">Download The Report</div>
               </div>
-              <div className="col-12 col-md-5 text-center">
+              <div className="col-12 col-md-4 text-center">
                 <img className="intro-image d-none d-md-inline-block" src={introImage} alt="" />
               </div>
             </div>
             <div className="row">
-              <div className="col-12">
+              <div className="col-12 col-lg-11">
                 <div className="d-block pr-3 pt-4 introduction">
                   <p className="pt-md-4">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto, quos dolorum? Repellendus impedit ab cum fugit ea delectus similique, reiciendis autem maxime repudiandae velit quis temporibus sunt nisi cumque laudantium?
@@ -33,7 +33,7 @@ const TheReportPage = () => (
             </div>
           </div>
 
-          <div className="col-12 col-md-11 pl-3 pr-5 pt-2 pt-md-4 pb-5 quotable">
+          <div className="d-none col-12 col-md-11 pl-3 pr-5 pt-2 pt-md-4 pb-5 quotable">
 
             <div className="d-none d-md-inline-block icon-holder align-top pt-2">
               <img src={blockquoteIcon} alt="" />
@@ -53,7 +53,7 @@ const TheReportPage = () => (
     </div>
 
     <div className="row">
-      <div className="col-12 pt-3">
+      <div className="col-12 pt-4">
         <img className="w-100 d-block" src={reportCoverImage} alt="" />
       </div>
       <div className="col-12 pt-4">
