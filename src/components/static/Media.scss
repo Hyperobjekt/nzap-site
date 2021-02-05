@@ -14,8 +14,10 @@
   }
   .publication {
     @include font($font-family-primary, $font-weight-light, $large, $highlight-color);
+    display: none;
   }
   .snippet {
+    margin-top: 16px;
     @media (min-width:992px) {
       min-height: 88px;
       max-height: 88px;
