@@ -1,5 +1,5 @@
 import React from "react";
-import introImage from '../../assets/images/the-report/intro-image.jpg';
+import introImage from '../../assets/images/media/page-header-media.png';
 import fastCompanyLogo from '../../assets/images/media/fast-company.png';
 import howDoWeFixItLogo from '../../assets/images/media/how-do-we-fix-it.png';
 import theInterchangeLogo from '../../assets/images/media/the-interchange.png';
@@ -45,7 +45,7 @@ const MediaPage = () => (
     <div className="row name-drop pt-2">
       <div className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
-          <img className="w-100" src={theNewYorkTimesLogo} alt="" />
+          <img className="w-100" src={theNewYorkTimesLogo} alt="The New York Times" />
         </div>
         <div className="pt-3 pb-2 publication">New York Times</div>
         <div className="snippet">&#8220;To Cut Emissions to Zero, U.S. Needs to Make Big Changes in Next 10 Years&#8221;</div>
@@ -53,7 +53,7 @@ const MediaPage = () => (
       </div>
       <div className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
-          <img className="w-100" src={theWashingtonPostLogo} alt="" />
+          <img className="w-100" src={theWashingtonPostLogo} alt="The Washington Post" />
         </div>
         <div className="pt-3 pb-2 publication">Washington Post</div>
         <div className="snippet">&#8220;Biden wants the U.S. to stop contributing to climate change by 2050. Here’s what that would actually take.&#8221;</div>
@@ -61,7 +61,7 @@ const MediaPage = () => (
       </div>
       <div className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
-          <img className="w-100" src={fastCompanyLogo} alt="" />
+          <img className="w-100" src={fastCompanyLogo} alt="Fast Company" />
         </div>
         <div className="pt-3 pb-2 publication">Fast Company</div>
         <div className="snippet">&#8220;The U.S. can get to net-zero emissions by 2050. Here’s how&#8221;</div>
@@ -69,7 +69,7 @@ const MediaPage = () => (
       </div>
       <div className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
-          <img className="w-100" src={howDoWeFixItLogo} alt="" />
+          <img className="w-100" src={howDoWeFixItLogo} alt="How Do We Fix It?" />
         </div>
         <div className="pt-3 pb-2 publication">How do we fix it?</div>
         <div className="snippet">&#8220;Net-Zero America by 2050: Jesse Jenkins and Eric Larson&#8221;</div>
@@ -77,15 +77,15 @@ const MediaPage = () => (
       </div>
       <div className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
-          <img className="w-100" src={theInterchangeLogo} alt="" />
+          <img className="w-100" src={theInterchangeLogo} alt="The Interchange" />
         </div>
         <div className="pt-3 pb-2 publication">The Interchange</div>
-        <div className="snippet">&#8220;Paths to Net-Zero Emissions by 2050&#8221;</div>
+        <div className="snippet">&#8220;Paths to Net-Zero Emissions <br/>by 2050&#8221;</div>
         <div className="articleLink"><a href="https://art19.com/shows/the-interchange/episodes/9ff3d1cc-7026-4b99-bdf1-380b4014da64" target="_blank" rel="noopener noreferrer">READ THE ARTICLE</a></div>
       </div>
       <div className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
-          <img className="w-100" src={yahooFinanceLogo} alt="" />
+          <img className="w-100" src={yahooFinanceLogo} alt="Yahoo Finance" />
         </div>
         <div className="pt-3 pb-2 publication">Yahoo Finance</div>
         <div className="snippet">&#8220;The priorities are doubling down on wind and solar generation and accelerate electric vehicles&#8221;</div>
@@ -93,7 +93,7 @@ const MediaPage = () => (
       </div>
       <div className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
-          <img className="w-100" src={gristLogo} alt="" />
+          <img className="w-100" src={gristLogo} alt="Grist" />
         </div>
         <div className="pt-3 pb-2 publication">Grist</div>
         <div className="snippet">&#8220;The priorities are doubling down on wind and solar generation and accelerate electric vehicles&#8221;</div>

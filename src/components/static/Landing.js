@@ -7,6 +7,7 @@ import scenarioImage2 from '../../assets/images/home/scenario2.png'
 import scenarioImage3 from '../../assets/images/home/scenario3.png'
 import scenarioImage4 from '../../assets/images/home/scenario4.png'
 import scenarioImage5 from '../../assets/images/home/scenario5.png'
+import scenarioImage6 from '../../assets/images/home/scenario6.png'
 import scrollDownIcon from '../../assets/images/icons/scroll-down.svg'
 import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
 import { Link } from "react-router-dom";
@@ -151,7 +152,7 @@ const LandingPage = () => (
           </div>
           <div className="col-md-4 pr-3 approach">
             <div className="image-header position-relative">
-              <img className="position-absolute" src={scenarioImage5} alt="" />
+              <img className="position-absolute" src={scenarioImage6} alt="" />
             </div>
             <h4 className="scenario pt-2">Scenario 5</h4>
             <h4 className="title">
