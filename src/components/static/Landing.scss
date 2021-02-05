@@ -2,7 +2,7 @@
 @import "../../_styles/mixins";
 
 .explore-jump-holder {
-  top: 0;
+  top: 65px;
 }
 .to-data-explorer {
   @include font($font-family-primary, $font-weight-semi-bold, $small, $highlight-color);
@@ -70,7 +70,7 @@
 
 .solutions {
   h3.label {
-   // @include font($font-family-primary, $font-weight-regular, $medium, $highlight-color);
+    // @include font($font-family-primary, $font-weight-regular, $medium, $highlight-color);
   }
   .approaches {
     .approach {
