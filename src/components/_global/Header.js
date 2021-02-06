@@ -27,7 +27,7 @@ const Header = () => {
         </div>
       </Drawer>
       <div className="row">
-        <div className={drawOpen ? "col-12 header-fixed open" : "col-12 header-fixed"}>
+        <div className={drawOpen ? "col-12 nzap-shadow header-fixed open" : "col-12 nzap-shadow header-fixed"}>
           <div className="container">
             <div className="row py-2 pt-md-3 pb-md-3">
               <div className="col-8 pl-0 col-md-3 col-lg-4 d-flex align-items-center project-title">

@@ -23,7 +23,7 @@ h6,
 }
 
 h3 {
-    @include font($font-family-primary, $font-weight-regular, $large, $highlight-color);
+  @include font($font-family-primary, $font-weight-regular, $large, $highlight-color);
 }
 
 textarea.textarea,
@@ -314,7 +314,9 @@ span.close {
 }
 
 .nzap-shadow {
-  box-shadow: 0 4px 3px 3px $pianissimo-color !important;
+  // box-shadow: 0 4px 3px 3px $pianissimo-color !important;
+  -webkit-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .nzap-border {
