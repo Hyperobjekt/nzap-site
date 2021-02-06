@@ -32,12 +32,12 @@ const LandingPage = () => (
         <div className="row">
           <div className="col-12 pt-3 atf">
             <div className="row">
-              <div className="col-12 pt-3 pt-md-5 col-md-7">
+              <div className="headline-area col-12 pt-3 pt-md-5 col-md-7">
                 <h1 className="d-block display-3 text-uppercase pt-md-5 mt-md-5 title">Net-Zero America:</h1>
                 <h2 className="d-block lead display-4 subtitle">Potential Pathways, <br />Infrastructure, and Impacts</h2>
               </div>
-              <div className="col-12 col-md-5">
-                <img className="position-relative intro-image d-none d-md-block" src={introImage} alt="" />
+              <div className="hero-area col-12 col-md-5">
+                <img className="position-relative intro-image d-md-block" src={introImage} alt="" />
               </div>
             </div>
             <div className="row">
