@@ -22,7 +22,7 @@ const TheReportPage = () => (
               </div>
             </div>
             <div className="row">
-              <div className="col-12 col-lg-10 pr-lg-5 mb-lg-3">
+              <div className="col-12 col-lg-10 pr-lg-2 mb-lg-3">
                 <div className="d-block pr-2 pt-4 introduction">
                   <p className="pt-md-4">
                   This Net Zero America study aims to inform and ground political, business, and societal conversations regarding what it would take for the U.S. to achieve an
