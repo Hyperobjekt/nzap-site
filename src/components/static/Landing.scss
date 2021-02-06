@@ -21,13 +21,25 @@
   }
 }
 
+.headline-area {
+  order: 1;
+}
+@media (min-width: 768px) {
+  .headline-area {
+    order: 0;
+  }
+}
 .atf {
   // .nzap-jumbotron {
   background: none;
   .intro-image {
-    height: 320px;
-    left: -24px;
-    top: -42px;
+    max-width: 100%;
+    @media (min-width: 768px) {
+      max-width: unset;
+      height: 320px;
+      left: -24px;
+      top: -42px;
+    }
   }
   .title {
     @include font($font-family-primary, $font-weight-light, $xxlarge, $highlight-color);
