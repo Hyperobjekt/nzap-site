@@ -76,7 +76,7 @@
       font-style: italic;
     }
     .by {
-      @include font($font-family-primary, $font-weight-regular, $small14, $base-color);
+      @include font($font-family-primary, $font-weight-regular, $small, $base-color);
       padding-top: 16px;
     }
   }
@@ -96,7 +96,7 @@
         }
       }
       .scenario {
-        @include font($font-family-primary, $font-weight-bold, $small14, $highlight-color);
+        @include font($font-family-primary, $font-weight-bold, $small, $highlight-color);
         margin-bottom: 16px;
       }
       .title {
@@ -110,7 +110,7 @@
       ul.features {
         margin-top: 16px;
         li {
-          @include font($font-family-primary, $font-weight-regular, $small14, $para-color);
+          @include font($font-family-primary, $font-weight-regular, $small, $para-color);
         }
       }
     }
