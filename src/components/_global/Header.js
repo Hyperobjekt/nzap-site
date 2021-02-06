@@ -29,11 +29,11 @@ const Header = () => {
       <div className="row">
         <div className={drawOpen ? "col-12 header-fixed open" : "col-12 header-fixed"}>
           <div className="container">
-            <div className="row pt-3 pb-md-3">
-              <div className="col-8 pl-0 col-md-3 col-lg-4 project-title">
+            <div className="row py-2 pt-md-3 pb-md-3">
+              <div className="col-8 pl-0 col-md-3 col-lg-4 d-flex align-items-center project-title">
                 <NavLink className="pr-2 pl-md-2" to="/" exact>NET-ZERO AMERICA</NavLink>
               </div>
-              <div className="col-4 d-md-none text-right">
+              <div className="col-4 d-md-none text-right col-4 d-flex justify-content-end align-items-center d-md-none text-right">
                 <div className="d-inline-block">
                   <div role="button" tabIndex={0} className={drawOpen ? 'nav-icon tween position-relative active' : 'nav-icon tween position-relative'} onKeyDown={() => { toggleDraw(!drawOpen) }} onClick={() => { toggleDraw(!drawOpen) }}>
                     <div></div>
