@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <div className="container mt-5 nzap-footer">
       <div className="row pt-3 pb-5">
-        <div className="col-4 pl-1 pr-1 footer-logo">
+        <div className="col-4 pl-3 pl-md-1 pr-1 footer-logo">
           <img src={primcetonLogo} alt="" />
         </div>
         <div className="col-8 pl-1 pr-1 pt-2 text-right d-none">
