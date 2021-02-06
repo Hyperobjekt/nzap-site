@@ -1,6 +1,8 @@
 import React from "react";
 import introImage from '../../assets/images/publications/page-header-maps.png';
-import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
+// import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
+import socolowBulletinPdf from '../../assets/papers/socolow-bulletin-75-contending-with-climate-change-the-next-25-years-final-dec-10-2020.pdf';
+import socolowDaedalusPdf from '../../assets/papers/socolow-daedalus-witnessing-as-published-fall-2020.pdf';
 
 
 import './TheReport.scss';
@@ -43,11 +45,11 @@ const PublicationsPage = () => (
     <div className="row pl-3">
       <div className="pt-4 pr-4">
         <div className="d-block pb-3 tag">&#8220;Contending with climate change: <br />The next 25 years&#8221;</div>
-        <a target="blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1ndbWruheqTIe5mJULboCB0NXPtvzvYyJ/view?usp=sharing" className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download the paper </span><Download className="" /></a>
+        <a target="blank" rel="noopener noreferrer" href={socolowBulletinPdf} className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download the paper </span><Download className="" /></a>
       </div>
       <div className="pt-4">
         <div className="d-block pb-3 tag">&#8220;Witnessing for the Middle to Depolarize <br />the Climate Change Conversation&#8221;</div>
-        <a target="blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1yq-R8ubVbcPOVJlJQFMr67I75k475GDt/view?usp=sharing" className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download the paper </span><Download className="" /></a>
+        <a target="blank" rel="noopener noreferrer" href={socolowDaedalusPdf} className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download the paper </span><Download className="" /></a>
       </div>
     </div>
 
