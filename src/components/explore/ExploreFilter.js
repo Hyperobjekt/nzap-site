@@ -34,13 +34,9 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
     return window.history.replaceState(null, null, getQueryString(queryObject))
   }
 
-  function yearChange(year) {
-    let queryObject = { ...query, year };
-    setQuery(queryObject);
-    return window.history.replaceState(null, null, getQueryString(queryObject))
-  }
-  function yearPathway(pathway) {
-    let queryObject = { ...query, pathway };
+  function examineChange(tab) {
+    let queryObject = { ...query };
+    queryObject[explorer] = tab;
     setQuery(queryObject);
     return window.history.replaceState(null, null, getQueryString(queryObject))
   }
@@ -81,25 +77,48 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
     let reject = ['', 'high', 'low', 'yes']
     let years = [...filters.years].sort((a, b) => a.slug < b.slug ? -1 : 1);
     let pathways = [...filters.scenarios].sort((a, b) => a.slug < b.slug ? -1 : 1).filter(e => !reject.includes(e.slug))
+    let tempQuery = { ...query };
 
-    if (explorer === 'year') return <div className="d-none d-md-table text-center w-100 years">
-      {years.map((year, i) =>
-        <div role="button" tabIndex={0} key={i} className={(query.year || '2020') === year.slug ? 'd-table-cell pl-3 pr-3 clickable year active' : 'd-table-cell pl-3 pr-3 clickable year'} onKeyDown={() => { yearChange(year.slug) }} onClick={() => { yearChange(year.slug) }}>
-          <div className="tile tween pt-1">
-            {year.label}
+    let tabs;
+    if (explorer === 'year') {
+      tabs = years;
+      tempQuery[explorer] = tempQuery[explorer] || '2020'
+    }
+    if (explorer === 'pathway') {
+      tabs = pathways;
+      tempQuery[explorer] = tempQuery[explorer] || 'ref'
+    }
+
+    return <React.Fragment>
+      {/* Desktop */}
+      <div className="d-none d-md-table text-center w-100 tabs">
+        {tabs.map((tab, i) =>
+          <div
+            role="button"
+            tabIndex={0} key={i}
+            className={(tempQuery[explorer]) === tab.slug ? 'd-table-cell pl-3 pr-3 clickable tab active' : 'd-table-cell pl-3 pr-3 clickable tab'}
+            onKeyDown={() => { examineChange(tab.slug) }}
+            onClick={() => { examineChange(tab.slug) }}>
+            <div className="tile tween pt-1">
+              {tab.label}
+            </div>
           </div>
-        </div>
-      )}
-    </div>
-    if (explorer === 'pathway') return <div className="d-table text-center w-100 years">
-      {pathways.map((pathway, i) =>
-        <div role="button" tabIndex={0} key={i} className={(query.pathway || 'ref') === pathway.slug ? 'd-table-cell pl-3 pr-3 clickable year active' : 'd-table-cell pl-3 pr-3 clickable year'} onKeyDown={() => { yearPathway(pathway.slug) }} onClick={() => { yearPathway(pathway.slug) }}>
-          <div className="tile tween pt-1">
-            {pathway.label}
-          </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+      {/* Mobile */}
+      <label htmlFor="d-md-none explore-by-filter" className="d-block pb-2 scope">Scope (select to change {explorer})</label>
+      <Select
+        className="d-block d-md-none w-100 nzap-radius"
+        id="explore-by-filter"
+        showArrow={false}
+        defaultValue={tempQuery[explorer]}
+
+        onChange={examineChange}
+        aria-activedescendant={null}
+        aria-expanded="false">
+        {tabs.map((tab, i) => <Option key={i} id={tab.slug} value={tab.slug}>{tab.label}</Option>)}
+      </Select>
+    </React.Fragment>
   }
 
   return (
@@ -109,7 +128,7 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
           <label htmlFor="geo-scope" className="d-block pb-2 scope">
             Scope (select state or national)
           </label>
-          {query.state ? <Select className="nzap-radius" id="geo-scope" showArrow={false} defaultValue={query.state} style={{ width: 250 }} onChange={usStateChange} aria-activedescendant={null} aria-expanded="false">
+          {query.state ? <Select className="nzap-radius w-100 w-md-25" id="geo-scope" showArrow={false} defaultValue={query.state} onChange={usStateChange} aria-activedescendant={null} aria-expanded="false">
             {filters.usStates.map((usState, i) => <Option key={i} id={usState.slug} value={usState.slug}>{usState.label}</Option>)}
           </Select> : null}
         </div>
@@ -149,9 +168,9 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
             </Panel>
           </Collapse>
         </div>
-        <div className="col-12 pl-4 pr-4">
+        <div className="col-12 pl-md-4 pr-md-4">
           <div className="row">
-            <div className="d-none d-md-block col-12 pl-0 pr-0 examiner position-relative pt-3">
+            <div className="d-md-block col-12 pl-0 pr-0 examiner position-relative">
               <div className="d-none d-md-block position-absolute" id="top-left-corner"></div>
               <div className="d-none d-md-block position-absolute" id="top-right-corner"></div>
               {examiner()}
