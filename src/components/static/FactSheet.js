@@ -7,6 +7,7 @@ import introImage from '../../assets/images/fact-sheets/page-header-fact sheets.
 
 import './FactSheet.scss';
 
+
 const FactSheetPage = ({ filters, loadFilters }) => {
   useEffect(() => {
     loadFilters(null).catch(handleError);
@@ -14,8 +15,18 @@ const FactSheetPage = ({ filters, loadFilters }) => {
 
 
   const loadStates = states => {
+    let pdfs = {};
+    function importAll(r) {
+      return r.keys().map(r);
+    }
+    let pdfImports = importAll(require.context('../../assets/state-reports/', false, /\.pdf$/));
+    pdfImports.forEach(r => {
+      let key = r.replace('-report.pdf', '').replace('./nzap-', '').replace('/img/nzap-', '')
+      pdfs[key] = r;
+    });
+
     return states.map((state, i) => <div className="col-6 col-md-3 pt-2 pb-2 fact-state" key={i}>
-      <a href="/">{state.label}</a>
+      <a href={pdfs[state.slug]} target="blank">{state.label}</a>
     </div>)
   }
 
