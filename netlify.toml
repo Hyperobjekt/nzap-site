@@ -22,5 +22,9 @@
   status = 200
   force = true
 
-[context.jm-edits]
-command = "npm run build && cp _nzap_headers build/_headers"
+[[redirects]]
+  from = "/publications"
+  to = "/"
+  status = 200
+  force = true  
+
