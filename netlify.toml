@@ -21,3 +21,5 @@
   to = "/"
   status = 200
   force = true
+
+command = "npm run build && cp _nzap_headers build/_headers"
