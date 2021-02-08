@@ -106,7 +106,7 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
         )}
       </div>
       {/* Mobile */}
-      <label htmlFor="d-md-none explore-by-filter" className="d-block pb-2 scope">Scope (select to change {explorer})</label>
+      <label htmlFor="explore-by-filter" className="d-block d-md-none pb-2 scope">Scope ???(select to change {explorer})</label>
       <Select
         className="d-block d-md-none w-100 nzap-radius"
         id="explore-by-filter"
