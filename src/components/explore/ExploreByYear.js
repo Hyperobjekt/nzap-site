@@ -71,7 +71,7 @@ const ExploreByYear = ({ filters, scenarios }) => {
           unitData.unit_alt_equation = varNameRow.unit_alt_equation;
         }
 
-        if (i === 0) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 year-lead">{varNameRow.label} {unitData.unit ? `(${unitData.unit})` : null}</td>
+        if (i === 0) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 cell-lead">{varNameRow.label} {unitData.unit ? `(${unitData.unit})` : null}</td>
         if (!varNameRow[e] || varNameRow[e].value === 'NA') return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2">---</td>
         return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2">{format(varNameRow[e], unitData)}</td>
       })
@@ -81,7 +81,7 @@ const ExploreByYear = ({ filters, scenarios }) => {
       let varName = Object.keys(l2Row);
       return varName.map((varNameKey, varNameIndex) => {
         let varNameRow = l2Row[varNameKey]
-        return <tr key={varNameIndex} className="d-table-row nzap-table-row tween">
+        return <tr key={varNameIndex} className="nzap-table-row tween">
           {varNameKey !== 'label' ? renderCells(varNameRow) : null}
         </tr>
       })
@@ -93,8 +93,8 @@ const ExploreByYear = ({ filters, scenarios }) => {
         let l2Row = l1Row[l2Key]
         if (l2Key === "label") return;
         return <React.Fragment key={l2Index}>
-          <tr className="d-table-row position-relative text-uppercase pt-1 pb-1 pl-3 mb-2">
-            <td className="d-table-cell pb-2" colSpan={table.headers.filter(e => e.altName).length + 1}><div className="l2-label pl-2 pt-1 pb-1 nzap-radius year-lead">{l2Row.label}</div> </td>
+          <tr className="position-relative text-uppercase pt-1 pb-1 pl-3 mb-2">
+            <td className="d-table-cell pb-2" colSpan={table.headers.filter(e => e.altName).length + 1}><div className="l2-label pl-2 pt-1 pb-1 nzap-radius cell-lead">{l2Row.label}</div> </td>
           </tr>
           {renderVariableNames(l2Row)}
         </React.Fragment>
@@ -105,8 +105,8 @@ const ExploreByYear = ({ filters, scenarios }) => {
       let l1Row = table.body[l1Key];
       if (l1Key === "label") return;
       return <React.Fragment key={l1Index} >
-        <tr className="d-table-row position-relative text-uppercase pt-1 pb-1 pl-3 mb-2">
-          <td className="d-table-cell pb-2" colSpan={table.headers.filter(e => e.altName).length + 1}><div className="l1-label pl-2 pt-1 pb-1 nzap-radius year-lead">{l1Row.label}</div> </td>
+        <tr className="position-relative text-uppercase pt-1 pb-1 pl-3 mb-2">
+          <td className="d-table-cell pb-2" colSpan={table.headers.filter(e => e.altName).length + 1}><div className="l1-label pl-2 pt-1 pb-1 nzap-radius cell-lead">{l1Row.label}</div> </td>
         </tr>
         {renderLevelTwo(l1Row)}
       </React.Fragment>
@@ -116,24 +116,21 @@ const ExploreByYear = ({ filters, scenarios }) => {
 
   return (
     <React.Fragment>
-      <div className="table-header-holder position-sticky">
-        <table className="d-table w-100 nzap-table">
+      <div className="table-header-holder">
+        <table className="w-100 nzap-table position-relative">
           <thead>
-            <tr className="d-table-row nzap-table-header-row">
-              <th className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-table-cell align-base year-lead">Categories &amp; Subcategories</th>
-              {table.headers.filter(e => e.altName).map((header, i) => <th key={i} className="pt-2 pb-2 pl-2 pr-2 nzap-table-header-cell d-table-cell align-top"><span className="label">{header.label}</span> <span className="alt-name d-none d-md-inline-block">{header.altName}</span></th>)}
+            <tr className="nzap-table-header-row">
+              <th className="pt-2 pb-2 pl-2 pr-2 position-sticky nzap-table-header-cell d-table-cell align-base cell-lead">Categories &amp; Subcategories</th>
+              {table.headers.filter(e => e.altName).map((header, i) => <th key={i} className="pt-2 pb-2 pl-2 pr-2 position-sticky nzap-table-header-cell d-table-cell align-top"><span className="label">{header.label}</span> <span className="alt-name d-none d-md-inline-block">{header.altName}</span></th>)}
             </tr>
           </thead>
-        </table>
-      </div>
-
-      <div className="table-body-holder">
-        <table className="d-table w-100 nzap-table">
           <tbody>
             {table.body ? renderBody(table) : null}
           </tbody>
         </table>
       </div>
+
+
 
     </React.Fragment>
   )
