@@ -43,6 +43,18 @@ function getTableBody(scenarios) {
   return obj
 }
 
+const formatValue = value => {
+  let vNum = Number(value);
+  // Keep 3 numbers to right of decimal for numbers less than 1."
+  if (vNum < 1) return vNum.toFixed(3).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  // Keep 2 numbers to right of decimal for number >1 and <10. 
+  if (vNum < 10) return vNum.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  // Keep 1 number to right of decimal for numbers > 10 and < 100. 
+  if (vNum < 100) return vNum.toFixed(1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  // Remove completely for any number = 100 or higher. 
+  return vNum.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 
 const ExploreByYear = ({ filters, scenarios }) => {
 
@@ -53,7 +65,7 @@ const ExploreByYear = ({ filters, scenarios }) => {
 
   const format = (data) => { //data, unitData
     let isNumber = !isNaN(Number(data.value))
-    if (isNumber) return Number(data.value).toFixed(3).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if (isNumber) return formatValue(data.value)
     return data.value
   }
 
