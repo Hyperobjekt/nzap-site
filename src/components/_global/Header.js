@@ -15,17 +15,6 @@ const Header = () => {
 
   return (
     <div className="container-fluid nzap-header">
-      <Drawer placement='right' closable={false} onClose={closeDraw} visible={drawOpen} key='right'>
-        <div className="d-block text-right mt-5 pt-5">
-          <ul className="draw pt-5">
-            <li className="pt-3"><NavLink className="pr-2 pl-2" to="/about" activeStyle={activeStyle} exact>About</NavLink></li>
-            <li className="pt-3"><NavLink className="pr-2 pl-2" to="/the-report" activeStyle={activeStyle} exact>The Report</NavLink></li>
-            <li className="pt-3"><NavLink className="pr-2 pl-2" to="/fact-sheet" activeStyle={activeStyle} exact>Fact Sheets</NavLink></li>
-            <li className="pt-3"><NavLink className="pr-2 pl-2" to="/media" activeStyle={activeStyle} exact>Media</NavLink></li>
-            <li className="pt-3"><NavLink className="pl-2" to="/publications" activeStyle={activeStyle} exact>Publications</NavLink></li>
-          </ul>
-        </div>
-      </Drawer>
       <div className="row">
         <div className={drawOpen ? "col-12 nzap-shadow header-fixed open" : "col-12 nzap-shadow header-fixed"}>
           <div className="container">
@@ -35,10 +24,36 @@ const Header = () => {
               </div>
               <div className="col-4 d-md-none text-right col-4 d-flex justify-content-end align-items-center d-md-none text-right">
                 <div className="d-inline-block">
-                  <div role="button" tabIndex={0} className={drawOpen ? 'nav-icon tween position-relative active' : 'nav-icon tween position-relative'} onKeyDown={() => { toggleDraw(!drawOpen) }} onClick={() => { toggleDraw(!drawOpen) }}>
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    className={drawOpen ? 'nav-icon tween position-relative active' : 'nav-icon tween position-relative'}
+                    onKeyDown={() => { toggleDraw(!drawOpen) }}
+                    onClick={() => { toggleDraw(!drawOpen) }}>
                     <div></div>
                   </div>
                 </div>
+                <Drawer scrolllocker="true" placement='right' closable={false} onClose={closeDraw} visible={drawOpen} key='right'>
+                  <div className="d-block text-right">
+                    <div className="d-inline-block">
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        className={drawOpen ? 'nav-icon tween position-relative active' : 'nav-icon tween position-relative'}
+                        onKeyDown={() => { toggleDraw(!drawOpen) }}
+                        onClick={() => { toggleDraw(!drawOpen) }}>
+                        <div></div>
+                      </div>
+                    </div>
+                    <ul className="draw pt-5">
+                      <li className="pt-3"><NavLink onClick={closeDraw} className="pr-2 pl-2" to="/about" activeStyle={activeStyle} exact>About</NavLink></li>
+                      <li className="pt-3"><NavLink onClick={closeDraw} className="pr-2 pl-2" to="/the-report" activeStyle={activeStyle} exact>The Report</NavLink></li>
+                      <li className="pt-3"><NavLink onClick={closeDraw} className="pr-2 pl-2" to="/fact-sheet" activeStyle={activeStyle} exact>Fact Sheets</NavLink></li>
+                      <li className="pt-3"><NavLink onClick={closeDraw} className="pr-2 pl-2" to="/media" activeStyle={activeStyle} exact>Media</NavLink></li>
+                      <li className="pt-3"><NavLink onClick={closeDraw} className="pl-2" to="/publications" activeStyle={activeStyle} exact>Publications</NavLink></li>
+                    </ul>
+                  </div>
+                </Drawer>
               </div>
 
               <div className="d-none d-md-block col-md-9 col-lg-8 text-right">

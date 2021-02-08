@@ -9,6 +9,7 @@
 }
 
 .nzap-table {
+  .nzap-table-header-row,
   .nzap-table-row {
     white-space: nowrap;
     &:hover {
@@ -20,17 +21,19 @@
 .l1-label {
   background: $base-color;
 }
-.l1-label.year-lead {
+.l1-label.cell-lead {
   @include font($font-family-primary, $font-weight-semi-bold, $medium, $light-color);
 }
 .l2-label {
   background: $piano-color;
 }
-.l2-label.year-lead {
+.l2-label.cell-lead {
   @include font($font-family-primary, $font-weight-regular, $medium, $ground-color);
 }
 
-.nzap-table-header-cell.year-lead {
+.nzap-table-header-cell.cell-lead {
+  top: 0;
+  background: $light-color;
   width: 28%;
   white-space: normal;
   @include font($font-family-primary-narrow, $font-weight-light, $small, $base-color);
@@ -39,6 +42,8 @@
   }
 }
 .nzap-table-header-cell {
+  top: 0;
+  background: $light-color;
   width: 12%;
   white-space: normal;
   span.label {
@@ -48,7 +53,7 @@
     @include font($font-family-primary, $font-weight-regular, $small, $base-color);
   }
 }
-.nzap-table-cell.year-lead {
+.nzap-table-cell.cell-lead {
   @include font($font-family-primary-narrow, $font-weight-regular, $small, $base-color);
   white-space: break-spaces;
   width: 28%;

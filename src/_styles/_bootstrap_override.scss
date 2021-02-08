@@ -37,7 +37,7 @@ button:focus {
 
 .articleLink a {
   &::after {
-    content: url('/img/offsite-link.svg');
+    content: url("/img/offsite-link.svg");
     margin-left: 6px;
   }
 }
@@ -45,4 +45,14 @@ img.external-link {
   position: relative;
   top: -2px;
   margin-left: 3px;
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @each $size, $length in $sizes {
+    @include media-breakpoint-up($breakpoint) {
+      .w-#{$breakpoint}-#{$size} {
+        width: $length !important;
+      }
+    }
+  }
 }

@@ -34,8 +34,8 @@
 }
 
 .examiner {
-  .years {
-    .year {
+  .tabs {
+    .tab {
       border-bottom: 2px $piano-color solid;
       .tile {
         @include font($font-family-primary-wide, $font-weight-semi-bold, $large, $mezzoforte-color);
@@ -43,7 +43,7 @@
         border-top-right-radius: $default-corner-radius;
       }
     }
-    .year.active {
+    .tab.active {
       border-bottom: 2px $highlight-color solid;
       .tile {
         @include font($font-family-primary-wide, $font-weight-semi-bold, $large, $light-color);
