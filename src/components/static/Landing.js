@@ -126,7 +126,7 @@ const LandingPage = () => (
                   <li>Few other constraints on energy supply options</li>
                 </ul>
               </div>
-              <div data-aos="fade-in" data-aos-delay="800" data-aos-offset="0" className="col-md-4 pr-3 approach">
+              <div data-aos="fade-in" data-aos-delay="0" data-aos-offset="100" className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage4} alt="" />
                 </div>
@@ -141,7 +141,7 @@ const LandingPage = () => (
                   <li>Few other constraints on energy supply options</li>
                 </ul>
               </div>
-              <div data-aos="fade-in" data-aos-delay="1000" data-aos-offset="0" className="col-md-4 pr-3 approach">
+              <div data-aos="fade-in" data-aos-delay="100" data-aos-offset="100" className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage5} alt="" />
                 </div>
@@ -157,7 +157,7 @@ const LandingPage = () => (
                   <li>No underground storage of CO2 allowed</li>
                 </ul>
               </div>
-              <div data-aos="fade-in" data-aos-delay="1200" data-aos-offset="0"  className="col-md-4 pr-3 approach">
+              <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100"  className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage6} alt="" />
                 </div>
