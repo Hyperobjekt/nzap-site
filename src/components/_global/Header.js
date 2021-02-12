@@ -57,14 +57,16 @@ const Header = () => {
                 </Drawer>
               </div>
 
-              <div className="d-none d-md-block col-md-9 col-lg-8 text-right">
+              <div className="d-none d-md-block col-md-9 col-lg-8 text-right pr-0">
                 <nav aria-label="header-navigation" className="nzap-navigation" role="navigation">
-                  <NavLink className="pr-2 pl-2" to="/" activeStyle={activeStyle} exact>Home</NavLink>
-                  <NavLink className="pr-2 pl-2" to="/about" activeStyle={activeStyle} exact>About</NavLink>
-                  <NavLink className="pr-2 pl-2" to="/the-report" activeStyle={activeStyle} exact>The Report</NavLink>
-                  <NavLink className="pr-2 pl-2" to="/fact-sheet" activeStyle={activeStyle} exact>Fact Sheets</NavLink>
-                  <NavLink className="pr-2 pl-2" to="/media" activeStyle={activeStyle} exact>Media</NavLink>
-                  <NavLink className="pl-2" to="/publications" activeStyle={activeStyle} exact>Publications</NavLink>
+                  <ul>
+                    <li><NavLink className="pr-2 pl-2" to="/" activeStyle={activeStyle} exact>Home</NavLink></li>
+                    <li><NavLink className="pr-2 pl-2" to="/about" activeStyle={activeStyle} exact>About</NavLink></li>
+                    <li><NavLink className="pr-2 pl-2" to="/the-report" activeStyle={activeStyle} exact>The Report</NavLink></li>
+                    <li><NavLink className="pr-2 pl-2" to="/fact-sheet" activeStyle={activeStyle} exact>Fact Sheets</NavLink></li>
+                    <li><NavLink className="pr-2 pl-2" to="/media" activeStyle={activeStyle} exact>Media</NavLink></li>
+                    <li><NavLink className="pl-2" to="/publications" activeStyle={activeStyle} exact>Publications</NavLink></li>
+                  </ul>
                 </nav>
               </div>
             </div>

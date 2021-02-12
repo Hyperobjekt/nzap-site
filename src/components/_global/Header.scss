@@ -21,13 +21,39 @@
     }
   }
   .nzap-navigation {
-    a {
-      @include font($font-family-primary-wide, $font-weight-semi-bold, $medium, $base-color);
-      &:hover {
-        text-decoration: none;
+    ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0;
+      li {
+        display: inline-block;
+          a {
+            position: relative;
+            //transition: opacity .3s ease;
+            @include font($font-family-primary-wide, $font-weight-semi-bold, $medium, $base-color);
+            transition: color .3s ease;
+            &:hover {
+              text-decoration: none;
+              color: $dark-accent-color !important;
+            }
+            &.active:after {
+              content: "";
+              width: 48px;
+              height: 4px;
+              position: absolute;
+              bottom: -20px;
+              left: 8px;
+              border-bottom: 4px solid $accent-color;
+              transition: 150ms;
+              display: block;
+            }
+          }
+        }
       }
     }
-  }
 }
 
 ul.draw {
