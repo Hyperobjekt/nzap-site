@@ -1,6 +1,6 @@
 import React from "react";
 import introImage from '../../assets/images/the-report/intro-image-sm.jpg';
-import reportCoverImage from '../../assets/images/the-report/report-cover.png';
+import reportCoverImage from '../../assets/images/the-report/report-cover.jpg';
 import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
 
 import './TheReport.scss';
