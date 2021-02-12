@@ -60,6 +60,16 @@ a {
     text-decoration: none;
   }
 }
+p  {
+  a {
+    color: #be5709;
+    font-weight: 400;
+    &:hover {
+      color: #be5709;
+      text-decoration: underline;
+    }
+  }
+}
 pre {
   @include font(monospace, $font-weight-regular, $small, $base-color);
   text-align: left !important;
