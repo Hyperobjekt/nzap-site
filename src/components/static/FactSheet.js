@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { loadFilters } from '../../redux/actions/FiltersActions';
 import { handleError } from '../../_helpers'
-import introImage from '../../assets/images/fact-sheets/page-header-fact sheets.png';
+import introImage from '../../assets/images/fact-sheets/page-header-fact sheets.jpg';
 
 import './FactSheet.scss';
 
