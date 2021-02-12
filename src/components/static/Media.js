@@ -1,5 +1,5 @@
 import React from "react";
-import introImage from '../../assets/images/media/page-header-media.png';
+import introImage from '../../assets/images/media/page-header-media.jpg';
 import fastCompanyLogo from '../../assets/images/media/fast-company.png';
 import howDoWeFixItLogo from '../../assets/images/media/how-do-we-fix-it.png';
 import theInterchangeLogo from '../../assets/images/media/the-interchange.png';

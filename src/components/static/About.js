@@ -1,5 +1,5 @@
 import React from "react";
-import aboutImage from '../../assets/images/about/page-header-about.png';
+import aboutImage from '../../assets/images/about/page-header-about.jpg';
 import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
 
 import './About.scss';

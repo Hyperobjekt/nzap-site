@@ -1,7 +1,7 @@
 import React from "react";
 import ExploreLoader from "../explore/ExploreLoader";
 import './Landing.scss';
-import introImage from '../../assets/images/home/main-image.png';
+import introImage from '../../assets/images/home/main-image.jpg';
 import scenarioImage1 from '../../assets/images/home/scenario1.png'
 import scenarioImage2 from '../../assets/images/home/scenario2.png'
 import scenarioImage3 from '../../assets/images/home/scenario3.png'

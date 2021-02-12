@@ -1,5 +1,5 @@
 import React from "react";
-import introImage from '../../assets/images/publications/page-header-maps.png';
+import introImage from '../../assets/images/publications/page-header-maps.jpg';
 // import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
 import socolowBulletinPdf from '../../assets/papers/socolow-bulletin-75-contending-with-climate-change-the-next-25-years-final-dec-10-2020.pdf';
 import socolowDaedalusPdf from '../../assets/papers/socolow-daedalus-witnessing-as-published-fall-2020.pdf';
