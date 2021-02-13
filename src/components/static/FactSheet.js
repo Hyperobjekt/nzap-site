@@ -25,7 +25,7 @@ const FactSheetPage = ({ filters, loadFilters }) => {
       pdfs[key] = r;
     });
 
-    return states.map((state, i) => <div className="col-6 col-md-3 pt-2 pb-2 fact-state" key={i}>
+    return states.map((state, i) => <div data-aos="fade-in" data-aos-delay={i * 100} data-aos-offset="100" className="col-6 col-md-3 pt-2 pb-2 fact-state" key={i}>
       <a href={pdfs[state.slug]} target="blank">{state.label}</a>
     </div>)
   }
@@ -37,10 +37,10 @@ const FactSheetPage = ({ filters, loadFilters }) => {
         <div className="row">
           <div className="col-12 pt-5 atf the-report">
             <div className="row">
-              <div className="col-12 pt-3 pt-md-5 col-md-6 position-relative">
+              <div data-aos="fade-in" data-aos-delay="200" className="col-12 pt-3 pt-md-5 col-md-6 position-relative">
                 <div className="d-block lead display-4 position-absolute subtitle"><h1>State-by-State Fact Sheets</h1></div>
               </div>
-              <div className="col-12 col-md-5 text-center">
+              <div data-aos="fade-in" data-aos-delay="200" className="col-12 col-md-5 text-center">
                 <img className="intro-image d-none d-md-inline-block" src={introImage} alt="" />
               </div>
             </div>
