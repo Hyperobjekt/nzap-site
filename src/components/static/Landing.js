@@ -11,6 +11,15 @@ import scenarioImage6 from '../../assets/images/home/scenario6.png'
 import scrollDownIcon from '../../assets/images/icons/scroll-down.svg'
 import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init({
+  duration: 700, // values from 0 to 3000, with step 50ms
+  offset: 200,
+  once: true, // whether animation should happen only once - while scrolling down
+  mirror: false, // whether elements should animate out while scrolling past them
+});
 
 
 const LandingPage = () => (
@@ -18,7 +27,7 @@ const LandingPage = () => (
     <div className="row">
       <div className="col-12 pt-md-5 position-relative">
 
-        <div className="d-block position-sticky explore-jump-holder">
+        <div data-aos="fade-in" className="d-block position-sticky explore-jump-holder">
           <div className="d-block position-absolute text-center text-uppercase to-data-explorer">
             <div className="d-block">
               <a href="#explore">Explore<br />the data</a>
@@ -31,16 +40,16 @@ const LandingPage = () => (
 
         <div className="row">
           <div className="col-12 pt-3 atf">
-            <div className="row">
+            <div data-aos="fade-in" className="row">
               <div className="headline-area col-12 pt-3 pt-md-5 col-md-7">
                 <h1 className="d-block display-3 text-uppercase pt-md-5 mt-md-5 title">Net-Zero America:</h1>
                 <h2 className="d-block lead display-4 subtitle">Potential Pathways, <br />Infrastructure, and Impacts</h2>
               </div>
-              <div className="hero-area col-12 col-md-5">
+              <div data-aos="fade-in" className="hero-area col-12 col-md-5">
                 <img className="position-relative intro-image d-md-block" src={introImage} alt="" />
               </div>
             </div>
-            <div className="row">
+            <div data-aos="fade-in" className="row">
               <div className="col-12 col-lg-9">
                 <div className="d-block pr-3 pt-2 introduction">
                   <p className="pt-md-4">The Net-Zero America research quantifies five distinct technological pathways, all using technologies known today, by which the United States could decarbonize its entire economy. With multiple plausible and affordable pathways available, the societal conversation can now turn from “if” to “how” and focus on the choices the nation and its myriad stakeholders wish to make to shape the energy transition.</p>
@@ -52,7 +61,7 @@ const LandingPage = () => (
             </div>
           </div>
 
-          <div className="col-12 col-md-11 col-lg-10 pl-4 pr-md-5 pt-4 pt-md-5 pb-4 pb-md-5 mt-3 mb-5 quotable">
+          <div data-aos="fade-in" className="col-12 col-md-11 col-lg-10 pl-4 pr-md-5 pt-4 pt-md-5 pb-4 pb-md-5 mt-3 mb-5 quotable">
 
             <div className="d-none d-md-inline-block icon-holder align-top pt-2">
               <img src={blockquoteIcon} alt="" />
@@ -73,9 +82,9 @@ const LandingPage = () => (
 
         <div className="row">
           <div className="col-12 solutions">
-            <h3 className="label pb-4">Five Approaches <br></br>to Decarbonization:</h3>
+            <h3 data-aos="fade-in" className="label pb-4">Five Approaches <br></br>to Decarbonization:</h3>
             <div className="row approaches">
-              <div className="col-md-4 pr-3 approach">
+              <div data-aos="fade-in" data-aos-delay="200" className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage1} alt="" />
                 </div>
@@ -89,7 +98,7 @@ const LandingPage = () => (
                   <li>Few other constraints on energy supply options</li>
                 </ul>
               </div>
-              <div className="col-md-4 pr-3 approach">
+              <div data-aos="fade-in" data-aos-delay="400" className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage2} alt="" />
                 </div>
@@ -103,7 +112,7 @@ const LandingPage = () => (
                   <li>Few other constraints on energy supply options</li>
                 </ul>
               </div>
-              <div className="col-md-4 pr-3 approach">
+              <div data-aos="fade-in" data-aos-delay="600" className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage3} alt="" />
                 </div>
@@ -117,7 +126,7 @@ const LandingPage = () => (
                   <li>Few other constraints on energy supply options</li>
                 </ul>
               </div>
-              <div className="col-md-4 pr-3 approach">
+              <div data-aos="fade-in" data-aos-delay="0" data-aos-offset="100" className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage4} alt="" />
                 </div>
@@ -132,7 +141,7 @@ const LandingPage = () => (
                   <li>Few other constraints on energy supply options</li>
                 </ul>
               </div>
-              <div className="col-md-4 pr-3 approach">
+              <div data-aos="fade-in" data-aos-delay="100" data-aos-offset="100" className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage5} alt="" />
                 </div>
@@ -148,7 +157,7 @@ const LandingPage = () => (
                   <li>No underground storage of CO2 allowed</li>
                 </ul>
               </div>
-              <div className="col-md-4 pr-3 approach">
+              <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100"  className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage6} alt="" />
                 </div>
@@ -174,7 +183,7 @@ const LandingPage = () => (
 
 
 
-    <div className="row">
+    <div data-aos="fade-in" className="row">
       <div className="col-12"><ExploreLoader /></div>
     </div>
   </div>
