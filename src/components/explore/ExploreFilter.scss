@@ -2,6 +2,9 @@
 @import "../../_styles/mixins";
 
 .nzap-filters {
+  .filter-loader {
+    right: 0;
+  }
   .scope {
     @include font($font-family-primary-narrow, $font-weight-light, $small, $base-color);
   }

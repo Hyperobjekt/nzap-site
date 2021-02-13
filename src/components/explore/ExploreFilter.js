@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Select, Collapse } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { setQuery } from '../../redux/actions/QueryActions';
-import { setUsStateFilter, setLevelTwoFilter, loadFiltersActionSuccess } from '../../redux/actions/FiltersActions';
+import { setUsStateFilter, setLevelTwoFilter, loadFiltersAction } from '../../redux/actions/FiltersActions';
 import { loadScenarios } from '../../redux/actions/ScenariosActions';
 import { getQueryString } from '../../_helpers'
 import 'antd/dist/antd.css';
@@ -14,7 +14,7 @@ const { Option } = Select;
 const { Panel } = Collapse;
 
 
-const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, setLevelTwoFilter, loadFiltersActionSuccess, loadScenarios }) => {
+const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, setLevelTwoFilter, loadFiltersAction, loadScenarios }) => {
   const [isFilterDrawOpen, toggleFilterDraw] = useState(localStorage.isFilterDrawOpen === 'true');
   const filterHeader = <><span className="pl-0">Filter</span><DownOutlined rotate={isFilterDrawOpen ? 180 : 0} className="align-baseline pl-4 clickable" /> </>;
 
@@ -22,7 +22,7 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
     if (!query.state) setQuery({ ...query, state: 'national' })
     if (filters.levelOneFilters.length) {
       loadScenarios(query)
-      loadFiltersActionSuccess(filters, query)
+      loadFiltersAction(filters, query)
     }
   }, [query])
 
@@ -84,8 +84,11 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
       tabs = years;
       tempQuery[explorer] = tempQuery[explorer] || '2020'
     }
+
     if (explorer === 'pathway') {
-      tabs = pathways;
+      let sortOrder = ['ref', 'e-positive', 'e-negative', 'e-b-positive', 'ere-negative', 'ere-positive'];
+      tabs = [];
+      [...pathways].forEach(e => tabs[sortOrder.indexOf(e.slug)] = e)
       tempQuery[explorer] = tempQuery[explorer] || 'ref'
     }
 
@@ -132,7 +135,7 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
             {filters.usStates.map((usState, i) => <Option key={i} id={usState.slug} value={usState.slug}>{usState.label}</Option>)}
           </Select> : null}
         </div>
-        <div className="col-12 pb-3 pl-0">
+        <div className="col-12 position-relative pb-3 pl-0">
           <Collapse
             bordered={false}
             defaultActiveKey={isFilterDrawOpen ? ['1'] : []}
@@ -190,7 +193,7 @@ ExploreFilter.propTypes = {
   setQuery: PropTypes.func.isRequired,
   setUsStateFilter: PropTypes.func.isRequired,
   setLevelTwoFilter: PropTypes.func.isRequired,
-  loadFiltersActionSuccess: PropTypes.func.isRequired,
+  loadFiltersAction: PropTypes.func.isRequired,
   loadScenarios: PropTypes.func.isRequired
 }
 
@@ -202,6 +205,6 @@ function mapStateToProps(state) {
   }
 }
 
-const mapDispatchToProps = { setQuery, setUsStateFilter, setLevelTwoFilter, loadFiltersActionSuccess, loadScenarios }
+const mapDispatchToProps = { setQuery, setUsStateFilter, setLevelTwoFilter, loadFiltersAction, loadScenarios }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExploreFilter);

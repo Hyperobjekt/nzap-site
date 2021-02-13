@@ -5,19 +5,21 @@ import PropTypes from "prop-types";
 import './ExploreByYear.scss';
 
 function getTableHeader(filtersScenarios) {
+  let sortedScenarios = [];
+  let sortOrder = ['ref', 'e-positive', 'e-negative', 'e-b-positive', 'ere-negative', 'ere-positive'];
   let reject = ['yes', 'low', 'high', ''];
   let labels = {
-    ref: 'Business as usual',
+    ref: 'No new policies',
     'e-positive': "High Electrification",
-    'e-negative': 'Less high Electrification',
+    'e-negative': 'Less-high Electrification',
     'e-b-positive': 'High Biomass',
     'ere-negative': 'Renewable Constrained',
     'ere-positive': '100% Renewable'
   }
+  filtersScenarios.forEach(e => sortedScenarios[sortOrder.indexOf(e.slug)] = e)
   return {
-    headers: [...filtersScenarios]
+    headers: [...sortedScenarios]
       .filter(scenario => reject.indexOf(scenario.slug) === -1)
-      .sort((a, b) => a.slug > b.slug ? 1 : -1)
       .map(e => ({ ...e, altName: labels[e.slug] })),
   }
 }
@@ -45,19 +47,20 @@ function getTableBody(scenarios) {
 
 const formatValue = value => {
   let vNum = Number(value);
+  let sign = Math.sign(vNum)
+
   // Keep 3 numbers to right of decimal for numbers less than 1."
-  if (vNum < 1) return vNum.toFixed(3).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  if ((vNum * sign) < 1) return (vNum).toFixed(3).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   // Keep 2 numbers to right of decimal for number >1 and <10. 
-  if (vNum < 10) return vNum.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  if ((vNum * sign) < 10) return (vNum).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   // Keep 1 number to right of decimal for numbers > 10 and < 100. 
-  if (vNum < 100) return vNum.toFixed(1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  if ((vNum * sign) < 100) return (vNum).toFixed(1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   // Remove completely for any number = 100 or higher. 
-  return vNum.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return (vNum).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 
 const ExploreByYear = ({ filters, scenarios }) => {
-
   const [table, setTable] = useState(getTableHeader(filters.scenarios))
   useEffect(() => {
     setTable({ ...table, body: getTableBody(scenarios) })
@@ -141,8 +144,6 @@ const ExploreByYear = ({ filters, scenarios }) => {
           </tbody>
         </table>
       </div>
-
-
 
     </React.Fragment>
   )

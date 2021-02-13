@@ -52,6 +52,7 @@ export const getAssembledQuery = (query) => {
 
 
 export function loadScenarios(query) {
+  console.log("loading scenarios...")
   return function (dispatch) {
     dispatch(beginApiCall())
     let assembledQuery = getAssembledQuery(query);

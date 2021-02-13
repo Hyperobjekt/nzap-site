@@ -3,7 +3,8 @@ import initialState from "./initialState";
 
 const extractL1Filters = action => {
   if (!action.query) return [...action.filters.levelOneFilters];
-  let l1f = [...action.filters.levelOneFilters]
+  let filters = { ...action.filters };
+  let l1f = [...filters.levelOneFilters]
     .map(e => ({ ...e, active: action.query.categories.indexOf(e.slug) > -1 }))
   let impact = l1f.filter(e => e.slug === "impacts")
   let nonimpact = l1f.filter(e => e.slug !== "impacts")
@@ -27,7 +28,7 @@ const extractYears = action => {
 
 export default function filtersReducer(state = initialState.filters, action) {
   switch (action.type) {
-    case types.LOAD_FILTERS_ACTION_SUCCESS:
+    case types.LOAD_FILTERS_ACTION:
       return {
         ...state.filters,
         ...action.filters,
