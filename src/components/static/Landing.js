@@ -11,15 +11,7 @@ import scenarioImage6 from '../../assets/images/home/scenario6.png'
 import scrollDownIcon from '../../assets/images/icons/scroll-down.svg'
 import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
 import { Link } from "react-router-dom";
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
-// ..
-AOS.init({
-  duration: 700, // values from 0 to 3000, with step 50ms
-  offset: 200,
-  once: true, // whether animation should happen only once - while scrolling down
-  mirror: false, // whether elements should animate out while scrolling past them
-});
+
 
 
 const LandingPage = () => (
