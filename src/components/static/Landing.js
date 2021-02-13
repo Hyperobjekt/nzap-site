@@ -90,7 +90,7 @@ const LandingPage = () => (
                 </div>
                 <h4 className="scenario pt-2">Scenario 1</h4>
                 <h4 className="title">
-                  <span className="highlight">E+</span><span className="pl-1 label">High<br />Electrification</span>
+                  <span className="highlight">E+</span><span className="pl-1 d-block label">High Electrification</span>
                 </h4>
                 <ul className="features ml-0 pl-3 pb-4">
                   <li>Nearly full electrification of transport and buildings by 2050</li>
@@ -104,7 +104,7 @@ const LandingPage = () => (
                 </div>
                 <h4 className="scenario pt-2">Scenario 2</h4>
                 <h4 className="title">
-                  <span className="highlight">E-</span><span className="pl-1 label">Less-High<br />Electrification</span>
+                  <span className="highlight">E-</span><span className="pl-1 d-block label">Less-High Electrification</span>
                 </h4>
                 <ul className="features ml-0 pl-3 pb-4">
                   <li>Less-rapid electrification of transport and buildings</li>
@@ -118,7 +118,7 @@ const LandingPage = () => (
                 </div>
                 <h4 className="scenario pt-2">Scenario 3</h4>
                 <h4 className="title">
-                  <span className="highlight">E- B+</span><span className="pl-1 label">High<br />Biomass</span>
+                  <span className="highlight">E- B+</span><span className="pl-1 d-block label">High Biomass</span>
                 </h4>
                 <ul className="features ml-0 pl-3 pb-4">
                   <li>Less-rapid electrification of transport and buildings</li>
@@ -132,7 +132,7 @@ const LandingPage = () => (
                 </div>
                 <h4 className="scenario pt-2">Scenario 4</h4>
                 <h4 className="title">
-                  <span className="highlight">E+ RE-</span><span className="pl-1 label">Renewable<br />Constrained</span>
+                  <span className="highlight">E+ RE-</span><span className="pl-1 d-block label">Renewable Constrained</span>
                 </h4>
                 <ul className="features ml-0 pl-3 pb-4">
                   <li>Nearly full electrification of transport and buildings by 2050</li>
@@ -147,7 +147,7 @@ const LandingPage = () => (
                 </div>
                 <h4 className="scenario pt-2">Scenario 5</h4>
                 <h4 className="title">
-                  <span className="highlight">E+ RE+</span><span className="pl-1 label">100%<br />Renewable</span>
+                  <span className="highlight">E+ RE+</span><span className="pl-1 d-block label">100% Renewable</span>
                 </h4>
                 <ul className="features ml-0 pl-3 pb-4">
                   <li>Nearly full electrification of transport and buildings by 2050</li>
@@ -157,13 +157,13 @@ const LandingPage = () => (
                   <li>No underground storage of CO2 allowed</li>
                 </ul>
               </div>
-              <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100"  className="col-md-4 pr-3 approach">
+              <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage6} alt="" />
                 </div>
                 <h4 className="scenario pt-2">Scenario 6</h4>
                 <h4 className="title">
-                  <span className="highlight">REF</span><span className="pl-1 label"><br />Reference</span>
+                  <span className="highlight">REF</span><span className="pl-1 d-block label">Reference</span>
                 </h4>
                 <ul className="features ml-0 pl-3 pb-4">
                   <li>Based on US EIA, <i>Annual Energy Outlook 2019</i> (Reference case, no new policies)</li>

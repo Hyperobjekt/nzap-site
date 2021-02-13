@@ -84,8 +84,11 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
       tabs = years;
       tempQuery[explorer] = tempQuery[explorer] || '2020'
     }
+
     if (explorer === 'pathway') {
-      tabs = pathways;
+      let sortOrder = ['ref', 'e-positive', 'e-negative', 'e-b-positive', 'ere-negative', 'ere-positive'];
+      tabs = [];
+      [...pathways].forEach(e => tabs[sortOrder.indexOf(e.slug)] = e)
       tempQuery[explorer] = tempQuery[explorer] || 'ref'
     }
 
