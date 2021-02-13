@@ -102,6 +102,7 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
       <div className="col-12">
         {loading ? <Spinner /> : (
           <div className="row">
+            {loading}
             {scenarios.length ? <div className="col-12 nzap-table-holder" id="nzap-table-holder" role="button" tabIndex={0}>
               {explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
             </div> : null}

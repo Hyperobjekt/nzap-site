@@ -1,8 +1,7 @@
 import * as types from "./actionTypes";
 import * as filtersApi from "../../api/filtersApi";
-import { beginApiCall } from './apiStatusActions';
 
-export const loadFiltersActionSuccess = (filters, query) => ({ type: types.LOAD_FILTERS_ACTION_SUCCESS, filters, query });
+export const loadFiltersAction = (filters, query) => ({ type: types.LOAD_FILTERS_ACTION, filters, query });
 export const setUsStateFilter = usState => ({ type: types.SET_US_STATE_FILTER, usState });
 export const setLevelOneFilter = categorySlugs => ({ type: types.SET_LEVEL_ONE_FILTER, categorySlugs });
 export const unsetLevelOneFilter = categorySlugs => ({ type: types.UNSET_LEVEL_ONE_FILTER, categorySlugs });
@@ -15,15 +14,14 @@ export const setPathwayFilter = filters => ({ type: types.SET_PATHWAY_FILTER, fi
 
 export function loadFilters(query, filters = null) {
   return function (dispatch) {
-    dispatch(beginApiCall())
     if (!filters) {
       return filtersApi.getFilters().then(filters => {
-        dispatch(loadFiltersActionSuccess(filters, query))
+        dispatch(loadFiltersAction(filters, query))
       }).catch(err => {
         throw err;
       })
     }
-    return dispatch(loadFiltersActionSuccess(filters, query))
+    return dispatch(loadFiltersAction(filters, query))
   }
 }
 

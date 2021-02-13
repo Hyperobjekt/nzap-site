@@ -61,7 +61,6 @@ const formatValue = value => {
 
 
 const ExploreByYear = ({ filters, scenarios }) => {
-
   const [table, setTable] = useState(getTableHeader(filters.scenarios))
   useEffect(() => {
     setTable({ ...table, body: getTableBody(scenarios) })
@@ -145,8 +144,6 @@ const ExploreByYear = ({ filters, scenarios }) => {
           </tbody>
         </table>
       </div>
-
-
 
     </React.Fragment>
   )
