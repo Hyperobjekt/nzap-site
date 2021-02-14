@@ -17,14 +17,14 @@ const PublicationsPage = () => (
         <div className="row">
           <div className="col-12 col-lg-10 pt-5 atf the-report">
             <div className="row">
-              <div data-aos="fade-in" data-aos-delay="200" className="col-12 pt-3 pt-md-5 col-md-8 position-relative">
+              <div data-aos="fade-in" data-aos-delay="0" className="col-12 pt-3 pt-md-5 col-md-8 position-relative">
                 <div className="d-block lead display-4 position-absolute subtitle"><h1>Related Publications</h1></div>
               </div>
-              <div data-aos="fade-in" data-aos-delay="200" className="col-12 col-md-4 text-center">
+              <div data-aos="fade-in" data-aos-delay="0" className="col-12 col-md-4 text-center">
                 <img className="intro-image d-none d-md-inline-block" src={introImage} alt="" />
               </div>
             </div>
-            <div data-aos="fade-in" data-aos-delay="600" className="row page-content">
+            <div data-aos="fade-in" data-aos-delay="0" className="row page-content">
               <div className="col-12 col-lg-11">
                 <div className="d-block pr-3 pt-4 introduction">
                   <h2>Papers by Robert Socolow</h2>
@@ -44,11 +44,11 @@ const PublicationsPage = () => (
 
     <div className="row pl-3">
       <div className="col-12">
-        <div data-aos="fade-in" data-aos-delay="200" className="d-inline-block pt-4 pr-4">
+        <div data-aos="fade-in" data-aos-delay="0" className="d-inline-block pt-4 pr-4">
           <div className="d-block pb-3 tag">&#8220;Witnessing for the Middle to Depolarize <br />the Climate Change Conversation&#8221;</div>
           <a target="blank" rel="noopener noreferrer" href={socolowDaedalusPdf} className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download the paper </span><Download className="" /></a>
         </div>
-        <div data-aos="fade-in" data-aos-delay="200" className="d-inline-block pt-4 ">
+        <div data-aos="fade-in" data-aos-delay="100" className="d-inline-block pt-4 ">
           <div className="d-block pb-3 tag">&#8220;Contending with climate change: <br />The next 25 years&#8221;</div>
           <a target="blank" rel="noopener noreferrer" href={socolowBulletinPdf} className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download the paper </span><Download className="" /></a>
         </div>

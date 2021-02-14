@@ -37,7 +37,7 @@ const LandingPage = () => (
                 <h1 className="d-block display-3 text-uppercase pt-md-5 mt-md-5 title">Net-Zero America:</h1>
                 <h2 className="d-block lead display-4 subtitle">Potential Pathways, <br />Infrastructure, and Impacts</h2>
               </div>
-              <div data-aos="fade-in" className="hero-area col-12 col-md-5">
+              <div data-aos="fade-in" data-aos-delay="50" className="hero-area col-12 col-md-5">
                 <img className="position-relative intro-image d-md-block" src={introImage} alt="" />
               </div>
             </div>
@@ -76,7 +76,7 @@ const LandingPage = () => (
           <div className="col-12 solutions">
             <h3 data-aos="fade-in" className="label pb-4">Five Approaches <br></br>to Decarbonization:</h3>
             <div className="row approaches">
-              <div data-aos="fade-in" data-aos-delay="200" className="col-md-4 pr-3 approach">
+              <div data-aos="fade-in" data-aos-delay="0" className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage1} alt="" />
                 </div>
@@ -90,7 +90,7 @@ const LandingPage = () => (
                   <li>Few other constraints on energy supply options</li>
                 </ul>
               </div>
-              <div data-aos="fade-in" data-aos-delay="400" className="col-md-4 pr-3 approach">
+              <div data-aos="fade-in" data-aos-delay="100" className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage2} alt="" />
                 </div>
@@ -104,7 +104,7 @@ const LandingPage = () => (
                   <li>Few other constraints on energy supply options</li>
                 </ul>
               </div>
-              <div data-aos="fade-in" data-aos-delay="600" className="col-md-4 pr-3 approach">
+              <div data-aos="fade-in" data-aos-delay="200" className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage3} alt="" />
                 </div>
