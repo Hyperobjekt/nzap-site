@@ -7,6 +7,7 @@ import theNewYorkTimesLogo from '../../assets/images/media/the-new-york-times.pn
 import theWashingtonPostLogo from '../../assets/images/media/the-washington-post.png';
 import yahooFinanceLogo from '../../assets/images/media/yahoo-finance.png';
 import gristLogo from '../../assets/images/media/media-logos-grist.png';
+import offsiteIcon from '../../assets/images/icons/offsite-link.svg'
 
 import './Media.scss';
 

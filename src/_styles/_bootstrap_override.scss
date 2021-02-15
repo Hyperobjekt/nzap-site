@@ -39,6 +39,9 @@ button:focus {
   &::after {
     content: url("/img/offsite-link.svg");
     margin-left: 6px;
+    height: 12px;
+    width: 12px;
+    display: inline;
   }
 }
 img.external-link {
