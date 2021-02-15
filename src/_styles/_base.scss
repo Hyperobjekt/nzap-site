@@ -39,7 +39,7 @@ select:focus,
 input:focus,
 button:focus,
 a:focus {
-  outline: none;
+  outline: 1px dotted $base-color;
 }
 
 html,
