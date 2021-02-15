@@ -17,14 +17,14 @@ const PublicationsPage = () => (
         <div className="row">
           <div className="col-12 col-lg-10 pt-5 atf the-report">
             <div className="row">
-              <div data-aos="fade-in" data-aos-delay="0" className="col-12 pt-3 pt-md-5 col-md-8 position-relative">
+              <div data-aos="fade-in" data-aos-delay="200" className="col-12 pt-3 pt-md-5 col-md-8 position-relative">
                 <div className="d-block lead display-4 position-absolute subtitle"><h1>Related Publications</h1></div>
               </div>
-              <div data-aos="fade-in" data-aos-delay="0" className="col-12 col-md-4 text-center">
+              <div data-aos="fade-in" data-aos-delay="250" className="col-12 col-md-4 text-center">
                 <img className="intro-image d-none d-md-inline-block" src={introImage} alt="" />
               </div>
             </div>
-            <div data-aos="fade-in" data-aos-delay="0" className="row page-content">
+            <div data-aos="fade-in" data-aos-delay="200" className="row page-content">
               <div className="col-12 col-lg-11">
                 <div className="d-block pr-3 pt-4 introduction">
                   <h2>Papers by Robert Socolow</h2>

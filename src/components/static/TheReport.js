@@ -14,15 +14,15 @@ const TheReportPage = () => (
         <div className="row">
           <div className="col-12 col-lg-10 pt-5 atf the-report">
             <div className="row">
-              <div data-aos="fade-in" data-aos-delay="0" className="col-12 pt-3 pt-md-5 col-md-8 position-relative">
+              <div data-aos="fade-in" data-aos-delay="200" className="col-12 pt-3 pt-md-5 col-md-8 position-relative">
                 <div className="d-block lead display-4 position-absolute subtitle"><h1>Download The Report</h1></div>
               </div>
-              <div data-aos="fade-in" data-aos-delay="50" className="col-12 col-md-4 text-center">
+              <div data-aos="fade-in" data-aos-delay="250" className="col-12 col-md-4 text-center">
                 <img className="intro-image d-none d-md-inline-block" src={introImage} alt="" />
               </div>
             </div>
             <div className="row">
-              <div data-aos="fade-in" data-aos-delay="0" className="col-12 col-lg-10 pr-lg-2 mb-lg-3">
+              <div data-aos="fade-in" data-aos-delay="200" className="col-12 col-lg-10 pr-lg-2 mb-lg-3">
                 <div className="d-block pr-2 pt-4 introduction">
                   <p className="pt-md-4">
                     This Net Zero America study aims to inform and ground political, business, and societal conversations regarding what it would take for the U.S. to achieve an
@@ -56,7 +56,7 @@ const TheReportPage = () => (
     </div>
 
     <div className="row">
-      <div data-aos="fade-in" data-aos-delay="0" className="col-12 col-lg-11 pt-4">
+      <div data-aos="fade-in" data-aos-delay="200" className="col-12 col-lg-11 pt-4">
         <img className="w-100 d-block" src={reportCoverImage} alt="" />
       </div>
       <div className="col-12 pt-4">

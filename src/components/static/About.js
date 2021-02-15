@@ -13,10 +13,10 @@ const AboutPage = () => (
         <div className="row">
           <div className="col-12 col-lg-10 offset-lg-0 pt-5 atf the-report">
             <div className="row">
-              <div data-aos="fade-in" data-aos-delay="0" className="col-12 pt-3 pt-md-5 col-md-8 position-relative">
+              <div data-aos="fade-in" data-aos-delay="200" className="col-12 pt-3 pt-md-5 col-md-8 position-relative">
                 <div className="d-block lead display-4 position-absolute subtitle"><h1>About the Project</h1></div>
               </div>
-              <div data-aos="fade-in" data-aos-delay="50" className="col-12 col-md-4 text-center">
+              <div data-aos="fade-in" data-aos-delay="250" className="col-12 col-md-4 text-center">
                 <img className="intro-image d-none d-md-inline-block" src={aboutImage} alt="" />
               </div>
             </div>
@@ -24,11 +24,11 @@ const AboutPage = () => (
         </div>
 
         <div className="row">
-          <div data-aos="fade-in" data-aos-delay="0" className="col-12 col-lg-9 offset-lg-0 pt-5 section-a">
+          <div data-aos="fade-in" data-aos-delay="200" className="col-12 col-lg-9 offset-lg-0 pt-5 section-a">
             <p>The Net-Zero America study <a href="https://environmenthalfcentury.princeton.edu/research/2020/big-affordable-effort-needed-america-reach-net-zero-emissions-2050-princeton-study" target="_blank" rel="noopener noreferrer" >was released </a>December 15, 2020. The work aims to inform and ground political, business, and societal conversations regarding what it would take for the U.S. to achieve an economy-wide target of net-zero emissions of greenhouse gases by 2050.  Achieving this goal, i.e. building an economy that emits no more greenhouse gases into the atmosphere than are permanently removed and stored each year, is essential to halt the buildup of climate-warming gases in the atmosphere and avert costly damages from climate change. This study provides granular guidance on what getting to net-zero really requires and on the actions needed to translate pledges into tangible progress.</p>
           </div>
 
-          <div data-aos="fade-in" data-aos-delay="0" className="col-12 col-md-11 col-lg-10 pl-4 pr-5 pt-2 pt-md-5 pb-4 pr-lg-3 mt-3 quotable">
+          <div data-aos="fade-in" data-aos-delay="200" className="col-12 col-md-11 col-lg-10 pl-4 pr-5 pt-2 pt-md-5 pb-4 pr-lg-3 mt-3 quotable">
 
             <div className="d-none d-md-inline-block icon-holder align-top pt-2">
               <img src={blockquoteIcon} alt="" />

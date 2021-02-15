@@ -10,13 +10,22 @@
   left: -100px;
   top: 40px;
   top: 72px;
+  transition: color .3s ease;
+
+  &:hover {
+    a {
+      color: $dark-accent-color !important;
+    }
+  }
   img {
     width: 30px;
   }
   a {
     @include font($font-family-primary, $font-weight-semi-bold, $small, $highlight-color);
+    display: block;
     &:hover {
       text-decoration: none;
+
     }
   }
 }

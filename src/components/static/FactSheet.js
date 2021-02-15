@@ -37,14 +37,14 @@ const FactSheetPage = ({ filters, loadFilters }) => {
         <div className="row">
           <div className="col-12 pt-5 atf the-report">
             <div className="row">
-              <div data-aos="fade-in" data-aos-delay="0" className="col-12 pt-3 pt-md-5 col-md-6 position-relative">
+              <div data-aos="fade-in" data-aos-delay="200" className="col-12 pt-3 pt-md-5 col-md-6 position-relative">
                 <div className="d-block lead display-4 position-absolute subtitle"><h1>State-by-State Fact Sheets</h1></div>
               </div>
-              <div data-aos="fade-in" data-aos-delay="50" className="col-12 col-md-5 text-center">
+              <div data-aos="fade-in" data-aos-delay="250" className="col-12 col-md-5 text-center">
                 <img className="intro-image d-none d-md-inline-block" src={introImage} alt="" />
               </div>
             </div>
-            <div data-aos="fade-in" data-aos-delay="0" className="row">
+            <div data-aos="fade-in" data-aos-delay="200" className="row">
               <div className="col-12 col-lg-9">
                 <div className="d-block pr-3 pt-4 introduction">
                   <p className="pt-md-4">
@@ -57,7 +57,7 @@ const FactSheetPage = ({ filters, loadFilters }) => {
           </div>
         </div>
 
-        <div  data-aos="fade-in" data-aos-delay="0" className="row pt-5 fact-states">
+        <div  data-aos="fade-in" data-aos-delay="200" className="row pt-5 fact-states">
           {loadStates(filters.usStates)}
         </div>
       </div>

@@ -18,10 +18,10 @@ const MediaPage = () => (
         <div className="row">
           <div className="col-12 pt-5 atf the-report">
             <div className="row">
-              <div data-aos="fade-in" data-aos-delay="0" className="col-12 pt-3 pt-md-5 col-md-6 position-relative">
+              <div data-aos="fade-in" data-aos-delay="200" className="col-12 pt-3 pt-md-5 col-md-6 position-relative">
                 <div className="d-block lead display-4 position-absolute subtitle"><h1>Featured Media</h1></div>
               </div>
-              <div data-aos="fade-in" data-aos-delay="50" className="col-12 col-md-5 text-center">
+              <div data-aos="fade-in" data-aos-delay="250" className="col-12 col-md-5 text-center">
                 <img className="intro-image d-none d-md-inline-block" src={introImage} alt="" />
               </div>
             </div>
@@ -43,7 +43,7 @@ const MediaPage = () => (
     </div>
 
     <div className="row name-drop pt-2">
-      <div data-aos="fade-in" data-aos-delay="0" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
+      <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
           <img className="w-100" src={theNewYorkTimesLogo} alt="The New York Times" />
         </div>
@@ -51,7 +51,7 @@ const MediaPage = () => (
         <div className="snippet">&#8220;To Cut Emissions to Zero, U.S. Needs to Make Big Changes in Next 10 Years&#8221;</div>
         <div className="articleLink"><a href="https://www.nytimes.com/2020/12/15/climate/america-next-decade-climate.html" target="_blank" rel="noopener noreferrer">READ THE ARTICLE</a></div>
       </div>
-      <div data-aos="fade-in" data-aos-delay="100" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
+      <div data-aos="fade-in" data-aos-delay="300" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
           <img className="w-100" src={theWashingtonPostLogo} alt="The Washington Post" />
         </div>
@@ -59,7 +59,7 @@ const MediaPage = () => (
         <div className="snippet">&#8220;Biden wants the U.S. to stop contributing to climate change by 2050. Here’s what that would actually take.&#8221;</div>
         <div className="articleLink"><a href="https://www.washingtonpost.com/climate-environment/2020/12/15/biden-wants-halt-all-us-climate-emissions-by-2050-heres-what-that-would-actually-take/" target="_blank" rel="noopener noreferrer">READ THE ARTICLE</a></div>
       </div>
-      <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
+      <div data-aos="fade-in" data-aos-delay="400" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
           <img className="w-100" src={fastCompanyLogo} alt="Fast Company" />
         </div>

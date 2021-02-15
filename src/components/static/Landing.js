@@ -19,7 +19,7 @@ const LandingPage = () => (
     <div className="row">
       <div className="col-12 pt-md-5 position-relative">
 
-        <div data-aos="fade-in" className="d-block position-sticky explore-jump-holder">
+        <div data-aos="fade-in" data-aos-delay="200" className="d-block position-sticky explore-jump-holder">
           <div className="d-block position-absolute text-center text-uppercase to-data-explorer">
             <div className="d-block">
               <a href="#explore">Explore<br />the data</a>
@@ -32,16 +32,16 @@ const LandingPage = () => (
 
         <div className="row">
           <div className="col-12 pt-3 atf">
-            <div data-aos="fade-in" className="row">
+            <div data-aos="fade-in" data-aos-delay="200" className="row">
               <div className="headline-area col-12 pt-3 pt-md-5 col-md-7">
                 <h1 className="d-block display-3 text-uppercase pt-md-5 mt-md-5 title">Net-Zero America:</h1>
                 <h2 className="d-block lead display-4 subtitle">Potential Pathways, <br />Infrastructure, and Impacts</h2>
               </div>
-              <div data-aos="fade-in" data-aos-delay="50" className="hero-area col-12 col-md-5">
+              <div data-aos="fade-in" data-aos-delay="250" className="hero-area col-12 col-md-5">
                 <img className="position-relative intro-image d-md-block" src={introImage} alt="" />
               </div>
             </div>
-            <div data-aos="fade-in" className="row">
+            <div data-aos="fade-in" data-aos-delay="200" className="row">
               <div className="col-12 col-lg-9">
                 <div className="d-block pr-3 pt-2 introduction">
                   <p className="pt-md-4">The Net-Zero America research quantifies five distinct technological pathways, all using technologies known today, by which the United States could decarbonize its entire economy. With multiple plausible and affordable pathways available, the societal conversation can now turn from “if” to “how” and focus on the choices the nation and its myriad stakeholders wish to make to shape the energy transition.</p>
