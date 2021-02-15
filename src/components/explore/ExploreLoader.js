@@ -130,7 +130,7 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
                       <Progress strokeColor={{ from: '#108ee9', to: '#ed6d08' }} type="circle" percent={dlProgress} width={30} />
                     </React.Fragment>
                     : <React.Fragment>
-                      <span className="pr-2">Download this table as csv </span>
+                      <span className="pr-2">Download this table as a csv </span>
                       <Download className="" />
                     </React.Fragment>
 
@@ -139,7 +139,7 @@ const ExploreLoader = ({ loading, count, setQuery, loadFilters, loadScenarios, s
             </div>
             <div className="d-block pt-3">
               <button className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius">
-                download the fact sheet for {filters.usStates.filter(e => e.slug === query.state)[0] ? filters.usStates.filter(e => e.slug === query.state)[0].label : ''}
+                Download the fact sheet for {filters.usStates.filter(e => e.slug === query.state)[0] ? filters.usStates.filter(e => e.slug === query.state)[0].label : ''}
               </button>
             </div>
 
