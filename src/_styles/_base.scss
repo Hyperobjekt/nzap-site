@@ -38,8 +38,14 @@ textarea:focus,
 select:focus,
 input:focus,
 button:focus,
-a:focus {
+a:focus,
+div[role=button]:focus,
+div[role=tab]:focus {
   outline: 2px dotted $base-color;
+}
+nav a:focus {
+  outline: 0;
+  color: $dark-accent-color !important;
 }
 
 html,
@@ -99,7 +105,7 @@ span.close {
 }
 [role="button"]:focus {
   // outline: thin solid lighten($piano-color, 4%);
-  outline: none;
+ // outline: none;
 }
 .color-dark {
   color: $ground-color;

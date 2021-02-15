@@ -39,16 +39,30 @@
               text-decoration: none;
               color: $dark-accent-color !important;
             }
-            &.active:after {
-              content: "";
-              width: 48px;
-              height: 4px;
-              position: absolute;
-              bottom: -20px;
-              left: 8px;
-              border-bottom: 4px solid $accent-color;
-              transition: 150ms;
-              display: block;
+            &:focus:after {
+                content: "";
+                width: 48px;
+                height: 4px;
+                position: absolute;
+                bottom: -20px;
+                left: 8px;
+                border-bottom: 4px solid $accent-color;
+                transition: 150ms;
+                display: block;
+            }
+            &.active {
+              color: $base-color !important;
+             &:after {
+                content: "";
+                width: 48px;
+                height: 4px;
+                position: absolute;
+                bottom: -20px;
+                left: 8px;
+                border-bottom: 4px solid $accent-color;
+                transition: 150ms;
+                display: block;
+             }
             }
           }
         }
