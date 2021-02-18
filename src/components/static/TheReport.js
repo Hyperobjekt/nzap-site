@@ -5,6 +5,7 @@ import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
 
 import './TheReport.scss';
 import { Download } from "react-bootstrap-icons";
+import annexR from "../../assets/papers/Annex R. (NZA) Labor transitions methodology draft 2-17-21.pdf"
 
 const TheReportPage = () => (
   <div className="container container-body mt-md-5 pt-md-5 pb-5">
@@ -55,16 +56,24 @@ const TheReportPage = () => (
       </div>
     </div>
 
-    <div className="row">
+    <div className="row page-content">
       <div data-aos="fade-in" data-aos-delay="200" className="col-12 col-lg-11 pt-4">
         <img className="w-100 d-block" src={reportCoverImage} alt="" />
       </div>
-      <div className="col-12 pt-4">
+      <div className="col-12 pt-4 pb-3 pb-lg-4">
         <a target="blank" rel="noopener noreferrer" href="https://environmenthalfcentury.princeton.edu/sites/g/files/toruqf331/files/2020-12/Princeton_NZA_Interim_Report_15_Dec_2020_FINAL.pdf" className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download the Full Report </span><Download className="" /></a>
       </div>
-      <div data-aos="fade-in" data-aos-delay="0" className="col-12 col-lg-11 pt-5">
+      <div data-aos="fade-in" data-aos-delay="200" className="col-12 col-lg-10 pr-lg-2 mb-3 mb-lg-4">
+          <div className="d-block pr-2 pt-4 introduction">
+            <h2>Get the data from our maps and images</h2>
+            <p className="pt-md-4 section-a">
+            The data underlying many of the maps and images in the Net-Zero America report may be freely downloaded in shapefile or other formats from <a className="extlink" href="https://maps.princeton.edu/?bbox=-138.955078+-3.425692+-27.861328+62.995158&q=netzeroamerica&search_field=all_fields&utf8=%E2%9C%93" target="_blank" rel="noreferrer noopener">Princeton University’s Digital Maps and Geospatial Data Library</a>.
+            </p>
+          </div>
+        </div>
+      <div data-aos="fade-in" data-aos-delay="0" className="col-12 col-lg-11">
         <div className="row">
-          <div className="col-12 annexes-label">Download the Annexes</div>
+          <div className="col-12 annexes-label pb-2"><h2>Download the Annexes</h2></div>
         </div>
         <div className="row annexes">
           <div className="col-12 col-md-6 pt-3 pb-3 annex">
@@ -184,6 +193,13 @@ const TheReportPage = () => (
             <div className="d-block pb-1 title">Agricultural sink potentials</div>
             <div className="d-block button-holder">
               <a target="blank" rel="noopener noreferrer" href="https://www.dropbox.com/sh/j1rmqf6dxpi0n1v/AAB39x1MDBEDpLfCKAx2zSRWa/Princeton%20NZA%20Annexes/Annex%20Q%20%28NZA%29.%20Agricultural%20sink%20potentials%20DRAFT.pdf?dl=0" className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download </span><Download className="" /></a>
+            </div>
+          </div>
+          <div className="col-12 col-md-6 pt-3 pb-3 annex">
+            <div className="d-block pb-1 tag">Annex R (NZA)</div>
+            <div className="d-block pb-1 title"> Employment Transition (Methods)</div>
+            <div className="d-block button-holder">
+              <a target="blank" rel="noopener noreferrer" href={annexR} className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download </span><Download className="" /></a>
             </div>
           </div>
         </div>

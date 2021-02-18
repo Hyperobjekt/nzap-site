@@ -35,7 +35,7 @@ button:focus {
   }
 }
 
-.articleLink a {
+.articleLink a, a.extlink {
   &::after {
     content: url("/img/offsite-link.svg");
     margin-left: 6px;
