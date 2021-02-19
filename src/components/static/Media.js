@@ -7,7 +7,8 @@ import theNewYorkTimesLogo from '../../assets/images/media/the-new-york-times.pn
 import theWashingtonPostLogo from '../../assets/images/media/the-washington-post.png';
 import yahooFinanceLogo from '../../assets/images/media/yahoo-finance.png';
 import gristLogo from '../../assets/images/media/media-logos-grist.png';
-// import offsiteIcon from '../../assets/images/icons/offsite-link.svg'
+import economistLogo from '../../assets/images/media/the-economist.png';
+import offsiteIcon from '../../assets/images/icons/offsite-link.svg'
 
 import './Media.scss';
 
@@ -44,6 +45,14 @@ const MediaPage = () => (
     </div>
 
     <div className="row name-drop pt-2">
+    <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
+        <div className="image">
+          <img className="w-100" src={economistLogo} alt="The New York Times" />
+        </div>
+        <div className="pt-3 pb-2 publication">New York Times</div>
+        <div className="snippet">&#8220;How America can rid itself of both carbon and blackouts&#8221;</div>
+        <div className="articleLink">READ THE <a href="https://www.economist.com/leaders/2021/02/20/how-america-can-rid-itself-of-both-carbon-and-blackouts" target="_blank" rel="noopener noreferrer">LEADER</a> | <a href="https://www.economist.com/briefing/2021/02/20/joe-bidens-climate-friendly-energy-revolution" target="_blank" rel="noopener noreferrer">BRIEFING</a></div>
+      </div>
       <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
           <img className="w-100" src={theNewYorkTimesLogo} alt="The New York Times" />
@@ -84,7 +93,7 @@ const MediaPage = () => (
         <div className="snippet">&#8220;Paths to Net-Zero Emissions <br />by 2050&#8221;</div>
         <div className="articleLink"><a href="https://art19.com/shows/the-interchange/episodes/9ff3d1cc-7026-4b99-bdf1-380b4014da64" target="_blank" rel="noopener noreferrer">READ THE ARTICLE</a></div>
       </div>
-      <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
+      <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="d-none col-12 col-md-4 pb-3 pt-5">
         <div className="image">
           <img className="w-100" src={yahooFinanceLogo} alt="Yahoo Finance" />
         </div>
