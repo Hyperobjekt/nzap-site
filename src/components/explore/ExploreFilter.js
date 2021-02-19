@@ -5,7 +5,7 @@ import { Select, Collapse } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { setFilterAction } from '../../redux/actions/FiltersActions';
 // import { loadScenarios } from '../../redux/actions/ScenariosActions';
-// import { getQueryString } from '../../_helpers'
+import { generateUrl } from '../../_helpers'
 import 'antd/dist/antd.css';
 import './ExploreFilter.scss';
 
@@ -28,17 +28,17 @@ const ExploreFilter = ({ filters, setFilterAction }) => {
 
   function usStateChange(usStateSlug) {
     let usStates = [...filters.usStates].map(state => ({ ...state, active: state.slug === usStateSlug }));
-    return setFilterAction({ ...filters, usStates })
+    return setFilterAction({ ...filters, usStates, url: generateUrl({ ...filters, usStates }) })
   }
 
   function examineChange(tab) {
     if (filters.explorer === 'year') {
       let years = [...filters.years].map(year => ({ ...year, active: year.slug === tab }))
-      return setFilterAction({ ...filters, table: tab, years })
+      return setFilterAction({ ...filters, table: tab, years, url: generateUrl({ ...filters, table: tab, years }) })
     }
     if (filters.explorer === 'pathway') {
       let scenarios = [...filters.scenarios].map(scenario => ({ ...scenario, active: scenario.slug === tab }))
-      return setFilterAction({ ...filters, table: tab, scenarios })
+      return setFilterAction({ ...filters, table: tab, scenarios, url: generateUrl({ ...filters, table: tab, scenarios }) })
     }
   }
 
@@ -46,15 +46,14 @@ const ExploreFilter = ({ filters, setFilterAction }) => {
     let activeSlugs = [...filters.levelOneFilters].filter(category => category.active).map(category => category.slug);
     activeSlugs.includes(slug) ? activeSlugs.splice(activeSlugs.indexOf(slug), 1) : activeSlugs.push(slug)
     let levelOneFilters = [...filters.levelOneFilters].map(category => ({ ...category, active: activeSlugs.includes(category.slug) }));
-    return setFilterAction({ ...filters, levelOneFilters })
+    return setFilterAction({ ...filters, levelOneFilters, url: generateUrl({ ...filters, levelOneFilters }) })
   }
 
   function updateSubcategories(slug) {
-    const getL2 = category => ({ ...category, levelTwoFilters: [...category.levelTwoFilters].map(subcategory => ({ ...subcategory, active: activeSlugs.includes(subcategory.slug) })) })
-    let activeSlugs = [...filters.levelOneFilters].map(category => category.levelTwoFilters).flat().filter(subcategory => subcategory.active).map(subcategory => subcategory.slug);
+    let activeSlugs = [...filters.levelTwoFilters].filter(subcategory => subcategory.active).map(subcategory => subcategory.slug);
     activeSlugs.includes(slug) ? activeSlugs.splice(activeSlugs.indexOf(slug), 1) : activeSlugs.push(slug);
-    let levelOneFilters = [...filters.levelOneFilters].map(getL2);
-    return setFilterAction({ ...filters, levelOneFilters })
+    let levelTwoFilters = [...filters.levelTwoFilters].map(subcategory => ({ ...subcategory, active: activeSlugs.includes(subcategory.slug) }));
+    return setFilterAction({ ...filters, levelTwoFilters, url: generateUrl({ ...filters, levelTwoFilters }) })
   }
 
   function updateFilterDraw(isActive) {
@@ -106,20 +105,6 @@ const ExploreFilter = ({ filters, setFilterAction }) => {
     </React.Fragment>
   }
 
-  const loadSubcategories = () => {
-    let subcategories = [...filters.levelOneFilters].map(category => category.levelTwoFilters).flat();
-    return <>
-      { subcategories.filter(subcategory => subcategory.slug).length ? <div className="d-block filter-label pl-2 pb-2">Subcategories</div> : null}
-      <div className="d-block pl-2 filter-data">
-        {subcategories.filter(subcategory => subcategory.slug).map((subcategory, i) => {
-          const subcategoryClass = subcategory.active
-            ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-2 mr-2 nzap-radius clickable filter-category active"
-            : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-2 mr-2 nzap-radius clickable filter-category"
-          return <div role="button" tabIndex={0} key={i} className={subcategoryClass} onKeyDown={() => { return updateSubcategories(subcategory.slug) }} onClick={() => { return updateSubcategories(subcategory.slug) }}>{subcategory.label}</div>
-        })}
-      </div>
-    </>
-  }
 
   const loadUI = () => {
     let activeUsState = filters.usStates.filter(state => state.active)[0].slug;
@@ -154,7 +139,15 @@ const ExploreFilter = ({ filters, setFilterAction }) => {
                     </div>
                   </div>
                   <div className="col-12 filter-categories">
-                    {loadSubcategories()}
+                    <div className="d-block pl-2 filter-label pb-2">Subcategories</div>
+                    <div className="d-block pl-2 filter-data">
+                      {filters.levelTwoFilters.map((category, i) => {
+                        const categoryClass = category.active
+                          ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category active"
+                          : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category";
+                        return <div role="button" tabIndex={0} key={i} className={categoryClass} onKeyDown={() => { return updateSubcategories(category.slug) }} onClick={() => { return updateSubcategories(category.slug) }}>{category.label}</div>
+                      })}
+                    </div>
                   </div>
                 </div>
               </div>

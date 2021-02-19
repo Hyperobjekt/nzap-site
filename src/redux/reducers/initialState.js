@@ -11,10 +11,11 @@ export default {
     levelOneFilters: [{
       label: '',
       slug: '', // active: boolean
-      levelTwoFilters: [{
-        label: '',
-        slug: '',// active: boolean
-      }]
+    }],
+    levelTwoFilters: [{
+      levelOneSlug: '',
+      label: '',
+      slug: '',// active: boolean
     }],
     table: '',
     page: 0,

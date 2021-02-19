@@ -3,6 +3,7 @@
 
 // Filters
 // export const LOAD_FILTERS_ACTION = 'LOAD_FILTERS_ACTION';
+export const LOAD_FILTER_ACTION = 'LOAD_FILTER_ACTION';
 export const SET_FILTER_ACTION = 'SET_FILTER_ACTION';
 // export const SET_YEAR_FILTER = 'SET_YEAR_FILTER';
 // export const SET_PATHWAY_FILTER = 'SET_PATHWAY_FILTER';

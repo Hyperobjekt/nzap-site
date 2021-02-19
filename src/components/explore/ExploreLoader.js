@@ -4,7 +4,9 @@ import { useLocation } from "react-router-dom";
 import { Progress, Tabs, Pagination } from 'antd';
 import { loadScenarios } from '../../redux/actions/ScenariosActions';
 import { loadFilters, setFilterAction } from '../../redux/actions/FiltersActions';
-import { getQueryObject, getQueryString, convertToCSV, handleError } from '../../_helpers'
+import * as filtersApi from "../../api/filtersApi";
+import { generateUrl, getQueryObject, convertToCSV, assembleFilters, updateFiltersFromQuery, handleError } from '../../_helpers'
+import initialState from "../../redux/reducers/initialState";
 import Spinner from '../_global/Spinner';
 import PropTypes from "prop-types";
 import ExploreByPathway from './ExploreByPathway';
@@ -17,16 +19,27 @@ const { TabPane } = Tabs;
 const ExploreLoader = ({ loading, loadFilters, setFilterAction, filters, loadScenarios, scenarios }) => {
   const location = useLocation();
 
+
+
   useEffect(() => {
+    if (!location.search) {
+      loadFilters().catch(handleError);
+      loadScenarios(filters.url).catch(handleError);
+      return;
+    }
     let queryObject = getQueryObject(location);
-    loadFilters(queryObject).catch(handleError);
-    loadScenarios(filters.url).catch(handleError);
+    loadScenarios(location.search).catch(handleError);
+    filtersApi.getFilters().then(fdata => {
+      let freshfilters = updateFiltersFromQuery(assembleFilters(initialState.filters, fdata), queryObject);
+      setFilterAction({ ...freshfilters, url: generateUrl(freshfilters) })
+    })
+
   }, []);
 
 
   const changeExplorer = tab => {
     localStorage.setItem('explorer', tab);
-    setFilterAction({ ...filters, explorer: tab })
+    setFilterAction({ ...filters, explorer: tab, url: generateUrl({ ...filters, explorer: tab }) })
   }
 
 
