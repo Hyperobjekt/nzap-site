@@ -93,7 +93,7 @@ const MediaPage = () => (
         <div className="snippet">&#8220;Paths to Net-Zero Emissions <br />by 2050&#8221;</div>
         <div className="articleLink"><a href="https://art19.com/shows/the-interchange/episodes/9ff3d1cc-7026-4b99-bdf1-380b4014da64" target="_blank" rel="noopener noreferrer">READ THE ARTICLE</a></div>
       </div>
-      <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
+      <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="d-none col-12 col-md-4 pb-3 pt-5">
         <div className="image">
           <img className="w-100" src={yahooFinanceLogo} alt="Yahoo Finance" />
         </div>
