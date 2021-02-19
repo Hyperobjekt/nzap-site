@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Select, Collapse } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import { setQuery } from '../../redux/actions/QueryActions';
-import { setUsStateFilter, setLevelTwoFilter, loadFiltersAction } from '../../redux/actions/FiltersActions';
+import { setFilterAction } from '../../redux/actions/FiltersActions';
 import { loadScenarios } from '../../redux/actions/ScenariosActions';
-import { getQueryString } from '../../_helpers'
+import { generateUrl, handleError } from '../../_helpers'
 import 'antd/dist/antd.css';
 import './ExploreFilter.scss';
 
@@ -14,56 +13,48 @@ const { Option } = Select;
 const { Panel } = Collapse;
 
 
-const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, setLevelTwoFilter, loadFiltersAction, loadScenarios }) => {
+const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
   const [isFilterDrawOpen, toggleFilterDraw] = useState(localStorage.isFilterDrawOpen === 'true');
   const filterHeader = <><span className="pl-0">Filter</span><DownOutlined rotate={isFilterDrawOpen ? 180 : 0} className="align-baseline pl-4 clickable" /> </>;
 
   useEffect(() => {
-    if (!query.state) setQuery({ ...query, state: 'national' })
-    if (filters.levelOneFilters.length) {
-      loadScenarios(query)
-      loadFiltersAction(filters, query)
-    }
-  }, [query])
-
+    window.history.replaceState(null, null, filters.url)
+    loadScenarios(filters.url || location.search).catch(handleError);
+    // if (!query.state) setQuery({ ...query, state: 'national' })
+    // if (filters.levelOneFilters.length) {
+    //   loadScenarios(query)
+    //   loadFiltersAction(filters, query)
+    // }
+  }, [filters])
 
   function usStateChange(usStateSlug) {
-    let queryObject = { ...query, state: usStateSlug };
-    setQuery(queryObject)
-    setUsStateFilter(usStateSlug)
-    return window.history.replaceState(null, null, getQueryString(queryObject))
+    let usStates = [...filters.usStates].map(state => ({ ...state, active: state.slug === usStateSlug }));
+    return setFilterAction({ ...filters, usStates, url: generateUrl({ ...filters, usStates }) })
   }
 
   function examineChange(tab) {
-    let queryObject = { ...query };
-    queryObject[explorer] = tab;
-    setQuery(queryObject);
-    return window.history.replaceState(null, null, getQueryString(queryObject))
+    if (filters.explorer === 'year') {
+      let years = [...filters.years].map(year => ({ ...year, active: year.slug === tab }))
+      return setFilterAction({ ...filters, table: tab, years, url: generateUrl({ ...filters, table: tab, years }) })
+    }
+    if (filters.explorer === 'pathway') {
+      let scenarios = [...filters.scenarios].map(scenario => ({ ...scenario, active: scenario.slug === tab }))
+      return setFilterAction({ ...filters, table: tab, scenarios, url: generateUrl({ ...filters, table: tab, scenarios }) })
+    }
   }
 
   function updateCategories(slug) {
-    let categorySlugs;
-    if (!query.categories.includes(slug)) categorySlugs = [...query.categories, slug];
-    if (query.categories.includes(slug)) {
-      categorySlugs = [...query.categories]
-      categorySlugs.splice(query.categories.indexOf(slug), 1)
-    }
-    let queryObject = { ...query, categories: categorySlugs };
-    setQuery(queryObject)
-    return window.history.replaceState(null, null, getQueryString(queryObject))
+    let activeSlugs = [...filters.levelOneFilters].filter(category => category.active).map(category => category.slug);
+    activeSlugs.includes(slug) ? activeSlugs.splice(activeSlugs.indexOf(slug), 1) : activeSlugs.push(slug)
+    let levelOneFilters = [...filters.levelOneFilters].map(category => ({ ...category, active: activeSlugs.includes(category.slug) }));
+    return setFilterAction({ ...filters, levelOneFilters, url: generateUrl({ ...filters, levelOneFilters }) })
   }
 
   function updateSubcategories(slug) {
-    let subcategorySlugs;
-    if (!query.subcategories.includes(slug)) subcategorySlugs = [...query.subcategories, slug];
-    if (query.subcategories.includes(slug)) {
-      subcategorySlugs = [...query.subcategories]
-      subcategorySlugs.splice(query.subcategories.indexOf(slug), 1)
-    }
-    let queryObject = { ...query, subcategories: subcategorySlugs };
-    setQuery(queryObject);
-    setLevelTwoFilter(queryObject.subcategories);
-    return window.history.replaceState(null, null, getQueryString(queryObject));
+    let activeSlugs = [...filters.levelTwoFilters].filter(subcategory => subcategory.active).map(subcategory => subcategory.slug);
+    activeSlugs.includes(slug) ? activeSlugs.splice(activeSlugs.indexOf(slug), 1) : activeSlugs.push(slug);
+    let levelTwoFilters = [...filters.levelTwoFilters].map(subcategory => ({ ...subcategory, active: activeSlugs.includes(subcategory.slug) }));
+    return setFilterAction({ ...filters, levelTwoFilters, url: generateUrl({ ...filters, levelTwoFilters }) })
   }
 
   function updateFilterDraw(isActive) {
@@ -73,23 +64,15 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
 
   const examiner = () => {
     if (!filters.years || !filters.scenarios) return;
-
     let reject = ['', 'high', 'low', 'yes']
     let years = [...filters.years].sort((a, b) => a.slug < b.slug ? -1 : 1);
-    let pathways = [...filters.scenarios].sort((a, b) => a.slug < b.slug ? -1 : 1).filter(e => !reject.includes(e.slug))
-    let tempQuery = { ...query };
-
+    let pathways = [...filters.scenarios].filter(e => !reject.includes(e.slug))
     let tabs;
-    if (explorer === 'year') {
-      tabs = years;
-      tempQuery[explorer] = tempQuery[explorer] || '2020'
-    }
-
-    if (explorer === 'pathway') {
+    if (filters.explorer === 'year') tabs = years;
+    if (filters.explorer === 'pathway') {
       let sortOrder = ['ref', 'e-positive', 'e-negative', 'e-b-positive', 'ere-negative', 'ere-positive'];
       tabs = [];
       [...pathways].forEach(e => tabs[sortOrder.indexOf(e.slug)] = e)
-      tempQuery[explorer] = tempQuery[explorer] || 'ref'
     }
 
     return <React.Fragment>
@@ -99,7 +82,7 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
           <div
             role="button"
             tabIndex={0} key={i}
-            className={(tempQuery[explorer]) === tab.slug ? 'd-table-cell pl-3 pr-3 clickable tab active' : 'd-table-cell pl-3 pr-3 clickable tab'}
+            className={filters.table === tab.slug ? 'd-table-cell pl-3 pr-3 clickable tab active' : 'd-table-cell pl-3 pr-3 clickable tab'}
             onKeyDown={() => { examineChange(tab.slug) }}
             onClick={() => { examineChange(tab.slug) }}>
             <div className="tile tween pt-1">
@@ -109,13 +92,12 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
         )}
       </div>
       {/* Mobile */}
-      <label htmlFor="explore-by-filter" className="d-block d-md-none pb-2 scope">Scope ???(select to change {explorer})</label>
+      <label htmlFor="explore-by-filter" className="d-block d-md-none pb-2 scope">Scope ???(select to change {filters.table})</label>
       <Select
         className="d-block d-md-none w-100 nzap-radius"
         id="explore-by-filter"
         showArrow={false}
-        defaultValue={tempQuery[explorer]}
-
+        defaultValue={filters.table}
         onChange={examineChange}
         aria-activedescendant={null}
         aria-expanded="false">
@@ -124,16 +106,27 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
     </React.Fragment>
   }
 
-  return (
-    <div className="container nzap-filters">
+  const loadSubcategories = (filters) => {
+    let activeCategories = [...filters.levelOneFilters].filter(category => category.active).map(category => category.slug)
+    return filters.levelTwoFilters.filter(subcategory => activeCategories.includes(subcategory.levelOneSlug)).map((category, i) => {
+      const categoryClass = category.active
+        ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category active"
+        : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category";
+      return <div role="button" tabIndex={0} key={i} className={categoryClass} onKeyDown={() => { return updateSubcategories(category.slug) }} onClick={() => { return updateSubcategories(category.slug) }}>{category.label}</div>
+    })
+  }
+
+  const loadUI = () => {
+    let activeUsState = filters.usStates.filter(state => state.active)[0].slug;
+    return <div className="container nzap-filters">
       <div className="row">
         <div className="col-12 pl-0 pt-4 pb-3">
           <label htmlFor="geo-scope" className="d-block pb-2 scope">
             Scope (select state or national)
-          </label>
-          {query.state ? <Select className="nzap-radius w-100 w-md-25" id="geo-scope" showArrow={false} defaultValue={query.state} onChange={usStateChange} aria-activedescendant={null} aria-expanded="false">
+        </label>
+          <Select className="nzap-radius w-100 w-md-25" id="geo-scope" showArrow={false} defaultValue={activeUsState} onChange={usStateChange} aria-activedescendant={null} aria-expanded="false">
             {filters.usStates.map((usState, i) => <Option key={i} id={usState.slug} value={usState.slug}>{usState.label}</Option>)}
-          </Select> : null}
+          </Select>
         </div>
         <div className="col-12 position-relative pb-3 pl-0">
           <Collapse
@@ -155,17 +148,15 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
                       })}
                     </div>
                   </div>
-                  <div className="col-12 filter-categories">
-                    {filters.levelTwoFilters.filter(subcategory => subcategory.slug).length ? <div className="d-block filter-label pl-2 pb-2">Subcategories</div> : null}
-                    <div className="d-block pl-2 filter-data">
-                      {filters.levelTwoFilters.filter(subcategory => subcategory.slug).map((subcategory, i) => {
-                        const subcategoryClass = subcategory.active
-                          ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-2 mr-2 nzap-radius clickable filter-category active"
-                          : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-2 mr-2 nzap-radius clickable filter-category"
-                        return <div role="button" tabIndex={0} key={i} className={subcategoryClass} onKeyDown={() => { return updateSubcategories(subcategory.slug) }} onClick={() => { return updateSubcategories(subcategory.slug) }}>{subcategory.label}</div>
-                      })}
-                    </div>
-                  </div>
+                  {
+                    loadSubcategories(filters).length ? <div className="col-12 filter-categories">
+                      <div className="d-block pl-2 filter-label pb-2">Subcategories</div>
+                      <div className="d-block pl-2 filter-data">
+                        {loadSubcategories(filters)}
+                      </div>
+                    </div> : null
+                  }
+
                 </div>
               </div>
             </Panel>
@@ -182,29 +173,25 @@ const ExploreFilter = ({ explorer, query, setQuery, filters, setUsStateFilter, s
         </div>
 
       </div>
-    </div>
-  )
+    </div >
+
+  }
+  return (<>{filters ? loadUI() : null}</>)
 }
 
 ExploreFilter.propTypes = {
-  explorer: PropTypes.string.isRequired,
   filters: PropTypes.object.isRequired,
-  query: PropTypes.object.isRequired,
-  setQuery: PropTypes.func.isRequired,
-  setUsStateFilter: PropTypes.func.isRequired,
-  setLevelTwoFilter: PropTypes.func.isRequired,
-  loadFiltersAction: PropTypes.func.isRequired,
+  setFilterAction: PropTypes.func.isRequired,
   loadScenarios: PropTypes.func.isRequired
 }
 
 
 function mapStateToProps(state) {
   return {
-    filters: state.filters,
-    query: state.query
+    filters: state.filters
   }
 }
 
-const mapDispatchToProps = { setQuery, setUsStateFilter, setLevelTwoFilter, loadFiltersAction, loadScenarios }
+const mapDispatchToProps = { setFilterAction, loadScenarios }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExploreFilter);
