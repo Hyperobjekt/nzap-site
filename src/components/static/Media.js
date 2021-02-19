@@ -8,7 +8,7 @@ import theWashingtonPostLogo from '../../assets/images/media/the-washington-post
 import yahooFinanceLogo from '../../assets/images/media/yahoo-finance.png';
 import gristLogo from '../../assets/images/media/media-logos-grist.png';
 import economistLogo from '../../assets/images/media/the-economist.png';
-import offsiteIcon from '../../assets/images/icons/offsite-link.svg'
+// import offsiteIcon from '../../assets/images/icons/offsite-link.svg'
 
 import './Media.scss';
 
@@ -45,7 +45,7 @@ const MediaPage = () => (
     </div>
 
     <div className="row name-drop pt-2">
-    <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
+      <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
           <img className="w-100" src={economistLogo} alt="The New York Times" />
         </div>
