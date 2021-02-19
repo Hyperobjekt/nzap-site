@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { Progress, Tabs, Pagination } from 'antd';
 import { loadScenarios } from '../../redux/actions/ScenariosActions';
 import { loadFilters, setFilterAction } from '../../redux/actions/FiltersActions';
-import { getQueryString, convertToCSV, handleError } from '../../_helpers'
+import { getQueryObject, getQueryString, convertToCSV, handleError } from '../../_helpers'
 import Spinner from '../_global/Spinner';
 import PropTypes from "prop-types";
 import ExploreByPathway from './ExploreByPathway';
@@ -14,13 +15,13 @@ import ExploreFilter from "./ExploreFilter";
 
 const { TabPane } = Tabs;
 const ExploreLoader = ({ loading, loadFilters, setFilterAction, filters, loadScenarios, scenarios }) => {
-
+  const location = useLocation();
 
   useEffect(() => {
-    loadFilters().catch(handleError);
-    if (!filters.url) return;
+    let queryObject = getQueryObject(location);
+    loadFilters(queryObject).catch(handleError);
     loadScenarios(filters.url).catch(handleError);
-  }, [filters.url]);
+  }, []);
 
 
   const changeExplorer = tab => {
