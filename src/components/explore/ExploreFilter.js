@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import { Select, Collapse } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { setFilterAction } from '../../redux/actions/FiltersActions';
-// import { loadScenarios } from '../../redux/actions/ScenariosActions';
-import { generateUrl } from '../../_helpers'
+import { loadScenarios } from '../../redux/actions/ScenariosActions';
+import { generateUrl, handleError } from '../../_helpers'
 import 'antd/dist/antd.css';
 import './ExploreFilter.scss';
 
@@ -13,12 +13,13 @@ const { Option } = Select;
 const { Panel } = Collapse;
 
 
-const ExploreFilter = ({ filters, setFilterAction }) => {
+const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
   const [isFilterDrawOpen, toggleFilterDraw] = useState(localStorage.isFilterDrawOpen === 'true');
   const filterHeader = <><span className="pl-0">Filter</span><DownOutlined rotate={isFilterDrawOpen ? 180 : 0} className="align-baseline pl-4 clickable" /> </>;
 
   useEffect(() => {
     window.history.replaceState(null, null, filters.url)
+    loadScenarios(filters.url || location.search).catch(handleError);
     // if (!query.state) setQuery({ ...query, state: 'national' })
     // if (filters.levelOneFilters.length) {
     //   loadScenarios(query)
@@ -81,7 +82,7 @@ const ExploreFilter = ({ filters, setFilterAction }) => {
           <div
             role="button"
             tabIndex={0} key={i}
-            className={filters.explorer === tab.slug ? 'd-table-cell pl-3 pr-3 clickable tab active' : 'd-table-cell pl-3 pr-3 clickable tab'}
+            className={filters.table === tab.slug ? 'd-table-cell pl-3 pr-3 clickable tab active' : 'd-table-cell pl-3 pr-3 clickable tab'}
             onKeyDown={() => { examineChange(tab.slug) }}
             onClick={() => { examineChange(tab.slug) }}>
             <div className="tile tween pt-1">
@@ -91,12 +92,12 @@ const ExploreFilter = ({ filters, setFilterAction }) => {
         )}
       </div>
       {/* Mobile */}
-      <label htmlFor="explore-by-filter" className="d-block d-md-none pb-2 scope">Scope ???(select to change {filters.explorer})</label>
+      <label htmlFor="explore-by-filter" className="d-block d-md-none pb-2 scope">Scope ???(select to change {filters.table})</label>
       <Select
         className="d-block d-md-none w-100 nzap-radius"
         id="explore-by-filter"
         showArrow={false}
-        defaultValue={filters.explorer}
+        defaultValue={filters.table}
         onChange={examineChange}
         aria-activedescendant={null}
         aria-expanded="false">
@@ -105,6 +106,15 @@ const ExploreFilter = ({ filters, setFilterAction }) => {
     </React.Fragment>
   }
 
+  const loadSubcategories = (filters) => {
+    let activeCategories = [...filters.levelOneFilters].filter(category => category.active).map(category => category.slug)
+    return filters.levelTwoFilters.filter(subcategory => activeCategories.includes(subcategory.levelOneSlug)).map((category, i) => {
+      const categoryClass = category.active
+        ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category active"
+        : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category";
+      return <div role="button" tabIndex={0} key={i} className={categoryClass} onKeyDown={() => { return updateSubcategories(category.slug) }} onClick={() => { return updateSubcategories(category.slug) }}>{category.label}</div>
+    })
+  }
 
   const loadUI = () => {
     let activeUsState = filters.usStates.filter(state => state.active)[0].slug;
@@ -138,17 +148,15 @@ const ExploreFilter = ({ filters, setFilterAction }) => {
                       })}
                     </div>
                   </div>
-                  <div className="col-12 filter-categories">
-                    <div className="d-block pl-2 filter-label pb-2">Subcategories</div>
-                    <div className="d-block pl-2 filter-data">
-                      {filters.levelTwoFilters.map((category, i) => {
-                        const categoryClass = category.active
-                          ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category active"
-                          : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category";
-                        return <div role="button" tabIndex={0} key={i} className={categoryClass} onKeyDown={() => { return updateSubcategories(category.slug) }} onClick={() => { return updateSubcategories(category.slug) }}>{category.label}</div>
-                      })}
-                    </div>
-                  </div>
+                  {
+                    loadSubcategories(filters).length ? <div className="col-12 filter-categories">
+                      <div className="d-block pl-2 filter-label pb-2">Subcategories</div>
+                      <div className="d-block pl-2 filter-data">
+                        {loadSubcategories(filters)}
+                      </div>
+                    </div> : null
+                  }
+
                 </div>
               </div>
             </Panel>
@@ -173,7 +181,8 @@ const ExploreFilter = ({ filters, setFilterAction }) => {
 
 ExploreFilter.propTypes = {
   filters: PropTypes.object.isRequired,
-  setFilterAction: PropTypes.func.isRequired
+  setFilterAction: PropTypes.func.isRequired,
+  loadScenarios: PropTypes.func.isRequired
 }
 
 
@@ -183,6 +192,6 @@ function mapStateToProps(state) {
   }
 }
 
-const mapDispatchToProps = { setFilterAction }
+const mapDispatchToProps = { setFilterAction, loadScenarios }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExploreFilter);

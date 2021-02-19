@@ -1,23 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Progress, Tabs, Pagination } from 'antd';
+import { Download } from 'react-bootstrap-icons'
 import { loadScenarios } from '../../redux/actions/ScenariosActions';
 import { loadFilters, setFilterAction } from '../../redux/actions/FiltersActions';
 import * as filtersApi from "../../api/filtersApi";
-import { generateUrl, getQueryObject, convertToCSV, assembleFilters, updateFiltersFromQuery, handleError } from '../../_helpers'
-import initialState from "../../redux/reducers/initialState";
+import * as scenariosApi from "../../api/scenariosApi";
+import { generateUrl, getQueryObject, convertToCSV, assembleFilters, assembleQuery, updateFiltersFromQuery, handleError } from '../../_helpers'
+// import initialState from "../../redux/reducers/initialState";
 import Spinner from '../_global/Spinner';
 import PropTypes from "prop-types";
 import ExploreByPathway from './ExploreByPathway';
 import ExploreByYear from './ExploreByYear';
 import './ExploreLoader.scss'
+import * as moment from 'moment-timezone';
 import ExploreFilter from "./ExploreFilter";
 
 
 const { TabPane } = Tabs;
-const ExploreLoader = ({ loading, loadFilters, setFilterAction, filters, loadScenarios, scenarios }) => {
+const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, loadScenarios, scenarios }) => {
+  let sheetArr = [];
   const location = useLocation();
+  const [downloadingCSV, setDownloadingCSV] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dlProgress, setDlProgress] = useState(0);
 
 
 
@@ -28,12 +35,12 @@ const ExploreLoader = ({ loading, loadFilters, setFilterAction, filters, loadSce
       return;
     }
     let queryObject = getQueryObject(location);
+    setCurrentPage(Number(queryObject.page) || 1)
     loadScenarios(location.search).catch(handleError);
     filtersApi.getFilters().then(fdata => {
-      let freshfilters = updateFiltersFromQuery(assembleFilters(initialState.filters, fdata), queryObject);
+      let freshfilters = updateFiltersFromQuery(assembleFilters(filters, fdata), queryObject);
       setFilterAction({ ...freshfilters, url: generateUrl(freshfilters) })
     })
-
   }, []);
 
 
@@ -41,7 +48,44 @@ const ExploreLoader = ({ loading, loadFilters, setFilterAction, filters, loadSce
     localStorage.setItem('explorer', tab);
     setFilterAction({ ...filters, explorer: tab, url: generateUrl({ ...filters, explorer: tab }) })
   }
-
+  const changePage = page => {
+    var myDiv = document.getElementById('nzap-table-holder');
+    myDiv.scrollTop = 0;
+    setCurrentPage(page)
+    setFilterAction({ ...filters, page, url: generateUrl({ ...filters, page }) })
+    // let queryObject = { ...query, skip: page * 200, limit: 200 };
+    // setQuery(queryObject);
+  }
+  const downloadFullCSV = (sheetArr, headers) => {
+    let csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...sheetArr].join('\n');
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `nzap-data-${moment().format()}.csv`);
+    document.body.appendChild(link); // Required for FF
+    link.click();
+    setTimeout(() => {
+      setDownloadingCSV(false);
+      setDlProgress(0)
+    }, 3000)
+  }
+  const downloadBatch = i => {
+    setDownloadingCSV(true);
+    let downloadCount = Math.ceil(count / 200);
+    let queryObject = { ...assembleQuery(filters.url), skip: i * 200, limit: 200 }
+    scenariosApi.getScenarios(queryObject).then(dl => {
+      let data = dl.data.map(row => {
+        Object.keys(row).filter(cell => cell.charAt(0) === '_' || cell === 'id').forEach(key => delete row[key])
+        return row;
+      })
+      let converted = convertToCSV(data, i === 1);
+      i++;
+      setDlProgress(Math.round((i / downloadCount) * 100))
+      sheetArr = [...sheetArr, ...converted.csvArr]
+      if (downloadCount > i) return downloadBatch(i);
+      if (downloadCount === i) return downloadFullCSV(sheetArr, converted.headers)
+    })
+  }
 
   const loadUI = () => {
     return <React.Fragment>
@@ -53,7 +97,7 @@ const ExploreLoader = ({ loading, loadFilters, setFilterAction, filters, loadSce
           <div className="col-12 pt-3">
             <div className="d-block mb-3 filter-explore-by">Examine by</div>
             <Tabs defaultActiveKey={localStorage.explorer || filters.explorer} onChange={changeExplorer}>
-              <TabPane tab="YEAR" key="year" />
+              <TabPane className="pl-1" tab="YEAR" key="year" />
               <TabPane tab="PATHWAY" key="pathway" />
             </Tabs>
           </div>
@@ -82,7 +126,7 @@ const ExploreLoader = ({ loading, loadFilters, setFilterAction, filters, loadSce
               <div className="d-none d-md-block position-absolute" id="bottom-right-corner"></div>
             </div>
           </div>
-          {/* <div className="row">
+          <div className="row">
             <div className="col-12 col-md-6 pt-4 pt-md-2 text-center text-md-left order-12 order-md-1 links">
               <div className="d-block pt-2">
                 <button className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius" onClick={() => { downloadBatch(0) }}>
@@ -101,14 +145,14 @@ const ExploreLoader = ({ loading, loadFilters, setFilterAction, filters, loadSce
               </div>
               <div className="d-block pt-3">
                 <button className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius">
-                  Download the fact sheet for {filters.usStates.filter(e => e.slug === query.state)[0] ? filters.usStates.filter(e => e.slug === query.state)[0].label : ''}
+                  Download the fact sheet for {filters.usStates.filter(e => e.active)[0].label}
                 </button>
               </div>
             </div>
             <div className="col-12 col-md-6 pt-3 pt-md-2 text-center text-md-right order-1 order-md-12 nzap-pagination">
               <Pagination total={count} current={currentPage} showSizeChanger={false} defaultPageSize={200} onChange={changePage} />
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
 
@@ -128,6 +172,7 @@ const ExploreLoader = ({ loading, loadFilters, setFilterAction, filters, loadSce
 ExploreLoader.propTypes = {
   scenarios: PropTypes.array.isRequired,
   filters: PropTypes.object.isRequired,
+  count: PropTypes.number.isRequired,
   loadFilters: PropTypes.func.isRequired,
   loadScenarios: PropTypes.func.isRequired,
   setFilterAction: PropTypes.func.isRequired,
