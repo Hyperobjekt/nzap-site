@@ -7,7 +7,7 @@ import theNewYorkTimesLogo from '../../assets/images/media/the-new-york-times.pn
 import theWashingtonPostLogo from '../../assets/images/media/the-washington-post.png';
 import yahooFinanceLogo from '../../assets/images/media/yahoo-finance.png';
 import gristLogo from '../../assets/images/media/media-logos-grist.png';
-import offsiteIcon from '../../assets/images/icons/offsite-link.svg'
+// import offsiteIcon from '../../assets/images/icons/offsite-link.svg'
 
 import './Media.scss';
 
@@ -100,15 +100,15 @@ const MediaPage = () => (
         <div className="snippet">&#8220;The priorities are doubling down on wind and solar generation and accelerate electric vehicles&#8221;</div>
         <div className="articleLink"><a href="https://finance.yahoo.com/video/priorities-doubling-down-wind-solar-170022720.html" target="_blank" rel="noopener noreferrer">READ THE ARTICLE</a></div>
       </div>
-      
+
     </div>
-    
+
     <div className="row pt-2">
       <div data-aos="fade-in" data-aos-delay="0" className="col-12 col-lg-9 offset-lg-0 pt-5 section-a">
         <h3 data-aos="fade-in" className="label pb-4">Read more</h3>
         <p>For more links to the Net Zero America Project in the news, please visit <a href="https://acee.princeton.edu/rapidswitch/projects/net-zero-america-project/news" target="_blank" rel="noopener noreferrer">this collection of articles</a> at the Andlinger Center for Energy and the Environment&apos;s website.</p>
       </div>
-     </div>
+    </div>
 
   </div>
 
