@@ -7,7 +7,7 @@
     position: fixed;
     top: 0;
     background: $light-color;
-    z-index: 2;
+    z-index: 10;
   }
   .header-fixed.open {
     border-top: 8px $accent-color solid;
@@ -30,44 +30,44 @@
       padding: 0;
       li {
         display: inline-block;
-          a {
-            position: relative;
-            //transition: opacity .3s ease;
-            @include font($font-family-primary-wide, $font-weight-semi-bold, $medium, $base-color);
-            transition: color .3s ease;
-            &:hover {
-              text-decoration: none;
-              color: $dark-accent-color !important;
-            }
-            &:focus:after {
-                content: "";
-                width: 48px;
-                height: 4px;
-                position: absolute;
-                bottom: -20px;
-                left: 8px;
-                border-bottom: 4px solid $accent-color;
-                transition: 150ms;
-                display: block;
-            }
-            &.active {
-              color: $base-color !important;
-             &:after {
-                content: "";
-                width: 48px;
-                height: 4px;
-                position: absolute;
-                bottom: -20px;
-                left: 8px;
-                border-bottom: 4px solid $accent-color;
-                transition: 150ms;
-                display: block;
-             }
+        a {
+          position: relative;
+          //transition: opacity .3s ease;
+          @include font($font-family-primary-wide, $font-weight-semi-bold, $medium, $base-color);
+          transition: color 0.3s ease;
+          &:hover {
+            text-decoration: none;
+            color: $dark-accent-color !important;
+          }
+          &:focus:after {
+            content: "";
+            width: 48px;
+            height: 4px;
+            position: absolute;
+            bottom: -20px;
+            left: 8px;
+            border-bottom: 4px solid $accent-color;
+            transition: 150ms;
+            display: block;
+          }
+          &.active {
+            color: $base-color !important;
+            &:after {
+              content: "";
+              width: 48px;
+              height: 4px;
+              position: absolute;
+              bottom: -20px;
+              left: 8px;
+              border-bottom: 4px solid $accent-color;
+              transition: 150ms;
+              display: block;
             }
           }
         }
       }
     }
+  }
 }
 
 ul.draw {
