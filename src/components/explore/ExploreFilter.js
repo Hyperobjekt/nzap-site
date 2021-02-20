@@ -34,7 +34,11 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
     return setFilterAction({ ...newFilters, url: generateUrl(newFilters) })
   }
 
-  function examineChange(tab) {
+  function examineChange(tab, e) {
+    let key = e ? e.key : ''
+    if (key !== ' ' && key !== 'Enter' && e) return
+    if (key === ' ') e.preventDefault();
+    if (key === 'Enter') e.preventDefault();
     let newFilters;
     let page = null;
     if (filters.explorer === 'year') {
@@ -48,7 +52,12 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
     return setFilterAction({ ...newFilters, url: generateUrl(newFilters) })
   }
 
-  function updateCategories(slug) {
+  function updateCategories(slug, e) {
+    let key = e ? e.key : ''
+    if (key !== ' ' && key !== 'Enter' && e) return
+    if (key === ' ') e.preventDefault();
+    if (key === 'Enter') e.preventDefault();
+
     let page = null;
     let activeSlugs = [...filters.levelOneFilters].filter(category => category.active).map(category => category.slug);
     activeSlugs.includes(slug) ? activeSlugs.splice(activeSlugs.indexOf(slug), 1) : activeSlugs.push(slug)
@@ -57,7 +66,12 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
     return setFilterAction({ ...newFilters, url: generateUrl(newFilters) })
   }
 
-  function updateSubcategories(slug) {
+  function updateSubcategories(slug, e) {
+    let key = e ? e.key : ''
+    if (key !== ' ' && key !== 'Enter' && e) return
+    if (key === ' ') e.preventDefault();
+    if (key === 'Enter') e.preventDefault();
+
     let page = null;
     let activeSlugs = [...filters.levelTwoFilters].filter(subcategory => subcategory.active).map(subcategory => subcategory.slug);
     activeSlugs.includes(slug) ? activeSlugs.splice(activeSlugs.indexOf(slug), 1) : activeSlugs.push(slug);
@@ -92,7 +106,7 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
             role="button"
             tabIndex={0} key={i}
             className={filters.table === tab.slug ? 'd-table-cell pl-3 pr-3 clickable tab active' : 'd-table-cell pl-3 pr-3 clickable tab'}
-            onKeyDown={() => { examineChange(tab.slug) }}
+            onKeyDown={(e) => { examineChange(tab.slug, e) }}
             onClick={() => { examineChange(tab.slug) }}>
             <div className="tile tween pt-1">
               {tab.label}
@@ -121,7 +135,7 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
       const categoryClass = category.active
         ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category active"
         : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category";
-      return <div role="button" tabIndex={0} key={i} className={categoryClass} onKeyDown={() => { return updateSubcategories(category.slug) }} onClick={() => { return updateSubcategories(category.slug) }}>{category.label}</div>
+      return <div role="button" tabIndex={0} key={i} className={categoryClass} onKeyDown={(e) => { return updateSubcategories(category.slug, e) }} onClick={() => { return updateSubcategories(category.slug) }}>{category.label}</div>
     })
   }
 
@@ -153,7 +167,7 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
                         const categoryClass = category.active
                           ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category active"
                           : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category";
-                        return <div role="button" tabIndex={0} key={i} className={categoryClass} onKeyDown={() => { return updateCategories(category.slug) }} onClick={() => { return updateCategories(category.slug) }}>{category.label}</div>
+                        return <div role="button" tabIndex={0} key={i} className={categoryClass} onKeyDown={(e) => { return updateCategories(category.slug, e) }} onClick={() => { return updateCategories(category.slug) }}>{category.label}</div>
                       })}
                     </div>
                   </div>
