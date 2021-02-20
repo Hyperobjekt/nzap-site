@@ -23,7 +23,6 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
   let sheetArr = [];
   const location = useLocation();
   const [downloadingCSV, setDownloadingCSV] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1);
   const [dlProgress, setDlProgress] = useState(0);
 
 
@@ -35,7 +34,6 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
       return;
     }
     let queryObject = getQueryObject(location);
-    setCurrentPage(Number(queryObject.page) || 1)
     loadScenarios(location.search).catch(handleError);
     filtersApi.getFilters().then(fdata => {
       let freshfilters = updateFiltersFromQuery(assembleFilters(filters, fdata), queryObject);
@@ -46,12 +44,17 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
 
   const changeExplorer = tab => {
     localStorage.setItem('explorer', tab);
-    setFilterAction({ ...filters, explorer: tab, url: generateUrl({ ...filters, explorer: tab }) })
+    let newFilters = {
+      ...filters,
+      explorer: tab,
+      table: tab === 'year' ? '2020' : 'ref',
+      page: null
+    }
+    setFilterAction({ ...newFilters, url: generateUrl(newFilters) })
   }
   const changePage = page => {
     var myDiv = document.getElementById('nzap-table-holder');
     myDiv.scrollTop = 0;
-    setCurrentPage(page)
     setFilterAction({ ...filters, page, url: generateUrl({ ...filters, page }) })
     // let queryObject = { ...query, skip: page * 200, limit: 200 };
     // setQuery(queryObject);
@@ -109,11 +112,10 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
 
       {/* */}
       <div className="row">
-        <div className="col-12">
+        <div className="col-12 nzap-table-holder">
           {loading ? <Spinner /> : (
             <div className="row">
-              {loading}
-              {scenarios.length ? <div className="col-12 nzap-table-holder" id="nzap-table-holder" role="button" tabIndex={0}>
+              {scenarios.length ? <div className="col-12" id="nzap-table-holder" role="button" tabIndex={0}>
                 {filters.explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
               </div> : null}
             </div>
@@ -150,7 +152,7 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
               </div>
             </div>
             <div className="col-12 col-md-6 pt-3 pt-md-2 text-center text-md-right order-1 order-md-12 nzap-pagination">
-              <Pagination total={count} current={currentPage} showSizeChanger={false} defaultPageSize={200} onChange={changePage} />
+              <Pagination total={count} current={Number(filters.page) || 1} showSizeChanger={false} defaultPageSize={200} onChange={changePage} />
             </div>
           </div>
         </div>

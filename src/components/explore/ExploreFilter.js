@@ -28,33 +28,42 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
   }, [filters])
 
   function usStateChange(usStateSlug) {
+    let page = null;
     let usStates = [...filters.usStates].map(state => ({ ...state, active: state.slug === usStateSlug }));
-    return setFilterAction({ ...filters, usStates, url: generateUrl({ ...filters, usStates }) })
+    let newFilters = { ...filters, usStates, page }
+    return setFilterAction({ ...newFilters, url: generateUrl(newFilters) })
   }
 
   function examineChange(tab) {
+    let newFilters;
+    let page = null;
     if (filters.explorer === 'year') {
       let years = [...filters.years].map(year => ({ ...year, active: year.slug === tab }))
-      return setFilterAction({ ...filters, table: tab, years, url: generateUrl({ ...filters, table: tab, years }) })
+      newFilters = { ...filters, table: tab, years, page };
     }
     if (filters.explorer === 'pathway') {
       let scenarios = [...filters.scenarios].map(scenario => ({ ...scenario, active: scenario.slug === tab }))
-      return setFilterAction({ ...filters, table: tab, scenarios, url: generateUrl({ ...filters, table: tab, scenarios }) })
+      newFilters = { ...filters, table: tab, scenarios, page }
     }
+    return setFilterAction({ ...newFilters, url: generateUrl(newFilters) })
   }
 
   function updateCategories(slug) {
+    let page = null;
     let activeSlugs = [...filters.levelOneFilters].filter(category => category.active).map(category => category.slug);
     activeSlugs.includes(slug) ? activeSlugs.splice(activeSlugs.indexOf(slug), 1) : activeSlugs.push(slug)
     let levelOneFilters = [...filters.levelOneFilters].map(category => ({ ...category, active: activeSlugs.includes(category.slug) }));
-    return setFilterAction({ ...filters, levelOneFilters, url: generateUrl({ ...filters, levelOneFilters }) })
+    let newFilters = { ...filters, levelOneFilters, page }
+    return setFilterAction({ ...newFilters, url: generateUrl(newFilters) })
   }
 
   function updateSubcategories(slug) {
+    let page = null;
     let activeSlugs = [...filters.levelTwoFilters].filter(subcategory => subcategory.active).map(subcategory => subcategory.slug);
     activeSlugs.includes(slug) ? activeSlugs.splice(activeSlugs.indexOf(slug), 1) : activeSlugs.push(slug);
     let levelTwoFilters = [...filters.levelTwoFilters].map(subcategory => ({ ...subcategory, active: activeSlugs.includes(subcategory.slug) }));
-    return setFilterAction({ ...filters, levelTwoFilters, url: generateUrl({ ...filters, levelTwoFilters }) })
+    let newFilters = { ...filters, levelTwoFilters, page };
+    return setFilterAction({ ...newFilters, url: generateUrl(newFilters) })
   }
 
   function updateFilterDraw(isActive) {
