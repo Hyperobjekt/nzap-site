@@ -21,21 +21,22 @@ const getUsStates = filters => {
   })
   return [...filters.usStates];
 }
-const getTableExamBy = filters => {
+const getTableExamBy = (filters, explorer) => {
   if (filters.table) return filters.table;
-  if (filters.explorer === 'year' || !filters.explorer) return '2020';
-  return 'ref'
+  if (explorer === 'year') return '2020';
+  if (explorer === 'pathway') return 'ref';
 }
 export const assembleFilters = (stateFilters, actionFilters) => {
+  let explorer = localStorage.getItem('explorer') || actionFilters.explorer || 'year';
   let filter = {
     ...stateFilters,
     years: actionFilters.years,
     scenarios: actionFilters.scenarios,
-    explorer: actionFilters.explorer || 'pathway',
+    explorer: explorer,
     usStates: getUsStates(actionFilters),
     levelOneFilters: getCategories(actionFilters),
     levelTwoFilters: getSubcategories(actionFilters),
-    table: getTableExamBy(actionFilters),
+    table: getTableExamBy(actionFilters, explorer),
     page: actionFilters.page || 0
   }
   filter.url = generateUrl(filter);
