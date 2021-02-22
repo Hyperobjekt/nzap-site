@@ -16,7 +16,12 @@ function getTableBody(scenarios) {
   scenarios.forEach(e => {
     obj[e._filter_level_1] = obj[e._filter_level_1] || { label: e.filter_level_1 }
     obj[e._filter_level_1][e._filter_level_2] = obj[e._filter_level_1][e._filter_level_2] || { label: e.filter_level_2 }
-    obj[e._filter_level_1][e._filter_level_2][e._variable_name] = obj[e._filter_level_1][e._filter_level_2][e._variable_name] || { label: e.variable_name }
+    obj[e._filter_level_1][e._filter_level_2][e._variable_name] = obj[e._filter_level_1][e._filter_level_2][e._variable_name] || {
+      label: e.variable_name,
+      unit: e.unit,
+      unit_alt: e._unit_alt ? e.unit_alt : '',
+      unit_alt_equation: e.unit_alt_equation
+    }
     obj[e._filter_level_1][e._filter_level_2][e._variable_name][e._year] = obj[e._filter_level_1][e._filter_level_2][e._variable_name][e._year] || {
       category: e.filter_level_1,
       subcategory: e.filter_level_2,
@@ -28,6 +33,19 @@ function getTableBody(scenarios) {
   return obj
 }
 
+const formatValue = value => {
+  let vNum = Number(value);
+  let sign = Math.sign(vNum)
+
+  // Keep 3 numbers to right of decimal for numbers less than 1."
+  if ((vNum * sign) < 1) return (vNum).toFixed(3).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  // Keep 2 numbers to right of decimal for number >1 and <10. 
+  if ((vNum * sign) < 10) return (vNum).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  // Keep 1 number to right of decimal for numbers > 10 and < 100. 
+  if ((vNum * sign) < 100) return (vNum).toFixed(1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  // Remove completely for any number = 100 or higher. 
+  return (vNum).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 const ExploreByPathway = ({ filters, scenarios }) => {
 
@@ -38,7 +56,7 @@ const ExploreByPathway = ({ filters, scenarios }) => {
 
   const format = (data) => { // data, unitData
     let isNumber = !isNaN(Number(data.value))
-    if (isNumber) return Number(data.value).toFixed(3).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if (isNumber) return formatValue(data.value)
     return data.value;
   }
 
