@@ -7,7 +7,7 @@ export const assembleQuery = (filterUrl) => {
       ? query[e.split('=')[0]] = e.split('=')[1].split(',')
       : query[e.split('=')[0]] = e.split('=')[1]
   })
-
+  if (!query.page) query.page = 1
 
   let categories = query.categories ? { $or: query.categories.map(category => ({ _filter_level_1: category })) } : null
   let subcategories = query.subcategories ? { $or: query.subcategories.map(category => ({ _filter_level_2: category })) } : null
@@ -16,6 +16,7 @@ export const assembleQuery = (filterUrl) => {
   if (categories && categories.$or.length) assembled.$and.push(categories)
   if (subcategories && subcategories.$or.length) assembled.$and.push(subcategories)
   if (query.limit) assembled.limit = query.limit;
-  if (query.page) assembled.skip = query.page;
+  if (query.page) assembled.skip = (Number(query.page) - 1) * 200;
+  assembled.sort = 'filter_level_1,filter_level_2,filter_level_3,variable_name'
   return assembled;
 }
