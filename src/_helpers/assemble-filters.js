@@ -1,16 +1,23 @@
 import { generateUrl } from './get-query-string'
 
 const getCategories = filters => {
-  return [...filters.levelOneFilters].map(e => {
+  let order = ['macro-results', 'pillar-1-efficiencyelectrification', 'pillar-2-clean-electricity', 'pillar-3-clean-fuels', 'pillar-4-ccus', 'pillar-5-non-co2-emissions', 'pillar-6-land-sinks', 'impacts'];
+  [...filters.levelOneFilters].forEach(e => {
     let category = { ...e };
     delete category.levelTwoFilters
+    order[order.indexOf(category.slug)] = category;
     return category;
   })
+  return order
 }
 const getSubcategories = filters => {
-  return [...filters.levelOneFilters]
-    .map(e => e.levelTwoFilters.map(ee => ({ ...ee, levelOneSlug: e.slug })))
-    .flat()
+  // let order = []
+  let duplicates = [];
+  let l2f = [...filters.levelOneFilters]
+    .map(e => e.levelTwoFilters.map(ee => ({ ...ee, levelOneSlug: e.slug }))).flat()
+    .map(e => { if (!duplicates.includes(e.slug)) { duplicates.push(e.slug); return { ...e } } })
+    .filter(e => e)
+  return l2f
 }
 
 const getUsStates = filters => {
