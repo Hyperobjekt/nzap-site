@@ -78,10 +78,10 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
     let queryObject = { ...assembleQuery(filters.url), skip: i * 200, limit: 200 }
     scenariosApi.getScenarios(queryObject).then(dl => {
       let data = dl.data.map(row => {
-        Object.keys(row).filter(cell => cell.charAt(0) === '_' || cell === 'id').forEach(key => delete row[key])
+        Object.keys(row).filter(cell => cell.charAt(0) === '_' || cell === 'id' || cell.substring(0, 4) === 'alt_').forEach(key => delete row[key])
         return row;
       })
-      let converted = convertToCSV(data, i === 1);
+      let converted = convertToCSV(data);
       i++;
       setDlProgress(Math.round((i / downloadCount) * 100))
       sheetArr = [...sheetArr, ...converted.csvArr]
