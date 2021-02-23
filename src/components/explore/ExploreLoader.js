@@ -117,7 +117,13 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
             <div className="row">
               {scenarios.length ? <div className="col-12" id="nzap-table-holder" role="button" tabIndex={0}>
                 {filters.explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
-              </div> : null}
+              </div> : <div className="col-12 text-center pt-5 pl-5 pr-5 no-data-holder">
+                  <div className="message nzap-deep-radius">
+                    <h3>Sorry! No matching data found.</h3>
+                    <p style={{ 'color': '#385369' }}>Adjust the filters and try again.</p>
+                  </div>
+                </div>
+              }
             </div>
           )}
         </div>
