@@ -17,6 +17,6 @@ export const assembleQuery = (filterUrl) => {
   if (subcategories && subcategories.$or.length) assembled.$and.push(subcategories)
   if (query.limit) assembled.limit = query.limit;
   if (query.page) assembled.skip = (Number(query.page) - 1) * 200;
-  assembled.sort = 'filter_level_1,filter_level_2,filter_level_3,variable_name'
+  assembled.sort = 'alt_l1,alt_l2,alt_v'
   return assembled;
 }
