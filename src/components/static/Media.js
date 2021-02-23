@@ -116,7 +116,7 @@ const MediaPage = () => (
     <div className="row pt-2">
       <div data-aos="fade-in" data-aos-delay="0" className="col-12 col-lg-9 offset-lg-0 pt-5 section-a">
         <h3 data-aos="fade-in" className="label pb-4">Read more</h3>
-        <p>For more links to the Net Zero America Project in the news, please visit <a href="https://acee.princeton.edu/rapidswitch/projects/net-zero-america-project/news" target="_blank" rel="noopener noreferrer">this collection of articles</a> at the Princeton's Andlinger Center for Energy and the Environment&apos;s website.</p>
+        <p>For more links to the Net Zero America Project in the news, please visit <a href="https://acee.princeton.edu/rapidswitch/projects/net-zero-america-project/news" target="_blank" rel="noopener noreferrer">this collection of articles</a> at the Princeton University&apos;s Andlinger Center for Energy and the Environment&apos;s website.</p>
       </div>
     </div>
 
