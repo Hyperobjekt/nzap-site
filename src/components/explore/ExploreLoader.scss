@@ -5,6 +5,18 @@
   height: 600px;
   // min-height: 400px;
   overflow: auto;
+  .no-data-holder {
+    .message {
+      padding: 100px 0;
+      background-color: $background-color;
+      h3 {
+        color: $accent-color !important;
+      }
+      p {
+        $color: $highlight-color;
+      }
+    }
+  }
 }
 .nzap-table-footer {
   border-top: 2px $piano-color solid;

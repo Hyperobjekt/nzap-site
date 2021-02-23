@@ -8,6 +8,8 @@ export default function scenariosReducer(state = initialState.scenarios, action)
       return [...state, { ...action.scenario }];
     case types.LOAD_SCENARIOS_ACTION_SUCCESS:
       return [...action.scenarios]
+    case types.LOAD_SCENARIOS_ACTION_FAILURE:
+      return []
     case types.UPDATE_SCENARIO_ACTION:
       return state.map(scenario => scenario.id === action.course.id ? action.action : action);
     case types.DELETE_SCENARIO_ACTION:
