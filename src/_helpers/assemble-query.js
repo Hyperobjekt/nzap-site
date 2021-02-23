@@ -10,7 +10,13 @@ export const assembleQuery = (filterUrl) => {
   if (!query.page) query.page = 1
 
   let categories = query.categories ? { $or: query.categories.map(category => ({ _filter_level_1: category })) } : null
-  let subcategories = query.subcategories ? { $or: query.subcategories.map(category => ({ _filter_level_2: category })) } : null
+  let subcategories = query.subcategories ? {
+    $or: query.subcategories.map(category => {
+      let catArr = category.split('_');
+      if (catArr.length === 1) return { _filter_level_2: category }
+      if (catArr.length === 2) return { _filter_level_2: catArr[1] }
+    })
+  } : null
   let examiner = query.explorer === 'pathway' ? { _scenario: query.table } : { _year: query.table }
   let assembled = { $and: [{ _geo: query.state || 'national' }, examiner] }
   if (categories && categories.$or.length) assembled.$and.push(categories)
