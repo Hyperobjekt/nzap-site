@@ -8,6 +8,7 @@ import theWashingtonPostLogo from '../../assets/images/media/the-washington-post
 import yahooFinanceLogo from '../../assets/images/media/yahoo-finance.png';
 import gristLogo from '../../assets/images/media/media-logos-grist.png';
 import economistLogo from '../../assets/images/media/the-economist.png';
+import economistPaper from '../../assets/papers/The Economist NZA briefing story, 2-20-21.pdf'
 // import offsiteIcon from '../../assets/images/icons/offsite-link.svg'
 
 import './Media.scss';
@@ -47,11 +48,11 @@ const MediaPage = () => (
     <div className="row name-drop pt-2">
       <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
-          <img className="w-100" src={economistLogo} alt="The New York Times" />
+          <img className="w-100" src={economistLogo} alt="The Economist" />
         </div>
-        <div className="pt-3 pb-2 publication">New York Times</div>
+        <div className="pt-3 pb-2 publication">The Economist</div>
         <div className="snippet">&#8220;How America can rid itself of both carbon and blackouts&#8221;</div>
-        <div className="articleLink">READ THE <a href="https://www.economist.com/leaders/2021/02/20/how-america-can-rid-itself-of-both-carbon-and-blackouts" target="_blank" rel="noopener noreferrer">LEADER</a> | <a href="https://www.economist.com/briefing/2021/02/20/joe-bidens-climate-friendly-energy-revolution" target="_blank" rel="noopener noreferrer">BRIEFING</a></div>
+        <div className="articleLink"><a href={economistPaper} target="_blank" rel="noopener noreferrer">READ THE ARTICLE</a></div>
       </div>
       <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
@@ -85,7 +86,7 @@ const MediaPage = () => (
         <div className="snippet">&#8220;Net-Zero America by 2050: Jesse Jenkins and Eric Larson&#8221;</div>
         <div className="articleLink"><a href="https://www.howdowefixit.me/new-blog-3/netzerousa" target="_blank" rel="noopener noreferrer">READ THE ARTICLE</a></div>
       </div>
-      <div data-aos="fade-in" data-aos-delay="100" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
+      <div data-aos="fade-in" data-aos-delay="100" data-aos-offset="100" className="d-none col-12 col-md-4 pb-3 pt-5">
         <div className="image">
           <img className="w-100" src={theInterchangeLogo} alt="The Interchange" />
         </div>
@@ -93,7 +94,7 @@ const MediaPage = () => (
         <div className="snippet">&#8220;Paths to Net-Zero Emissions <br />by 2050&#8221;</div>
         <div className="articleLink"><a href="https://art19.com/shows/the-interchange/episodes/9ff3d1cc-7026-4b99-bdf1-380b4014da64" target="_blank" rel="noopener noreferrer">READ THE ARTICLE</a></div>
       </div>
-      <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="d-none col-12 col-md-4 pb-3 pt-5">
+      <div data-aos="fade-in" data-aos-delay="200" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
           <img className="w-100" src={yahooFinanceLogo} alt="Yahoo Finance" />
         </div>
@@ -115,7 +116,7 @@ const MediaPage = () => (
     <div className="row pt-2">
       <div data-aos="fade-in" data-aos-delay="0" className="col-12 col-lg-9 offset-lg-0 pt-5 section-a">
         <h3 data-aos="fade-in" className="label pb-4">Read more</h3>
-        <p>For more links to the Net Zero America Project in the news, please visit <a href="https://acee.princeton.edu/rapidswitch/projects/net-zero-america-project/news" target="_blank" rel="noopener noreferrer">this collection of articles</a> at the Andlinger Center for Energy and the Environment&apos;s website.</p>
+        <p>For more links to the Net Zero America Project in the news, please visit <a href="https://acee.princeton.edu/rapidswitch/projects/net-zero-america-project/news" target="_blank" rel="noopener noreferrer">this collection of articles</a> at Princeton University&apos;s Andlinger Center for Energy and the Environment&apos;s website.</p>
       </div>
     </div>
 
