@@ -86,7 +86,10 @@ const ExploreByYear = ({ filters, scenarios }) => {
           unitData.unit_alt_equation = varNameRow.unit_alt_equation;
         }
 
-        if (i === 0) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 cell-lead">{varNameRow.label} {unitData.unit ? `(${unitData.unit})` : null}</td>
+        if (i === 0) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 cell-lead">
+          {varNameRow.label} {unitData.unit ? `(${unitData.unit})` : null}
+          {/* <pre>{JSON.stringify(varNameRow, 0, 2)}</pre> */}
+        </td>
         if (!varNameRow[e] || varNameRow[e].value === 'NA') return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2">---</td>
         return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2">{format(varNameRow[e], unitData)}</td>
       })
