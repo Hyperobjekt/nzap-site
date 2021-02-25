@@ -52,27 +52,10 @@ const LandingPage = () => (
               </div>
             </div>
           </div>
-
-          <div data-aos="fade-in" className="col-12 col-md-11 col-lg-10 pl-4 pr-md-5 pt-4 pt-md-5 pb-4 pb-md-5 mt-3 mb-5 quotable">
-
-            <div className="d-none d-md-inline-block icon-holder align-top pt-2">
-              <img src={blockquoteIcon} alt="" />
-            </div>
-            <div className="d-inline-block quote-holder pl-md-4">
-              <div className="d-block quote">
-                “Net Zero America ... sets an entirely new standard in this genre ... to provide an unprecedented degree of clarity and granularity about possible pathways to mid-century “net zero” for this country ... Everybody seriously interested in the crucial question of this country’s energy-climate future—not least the new Biden-Harris administration—needs to understand the findings of this extraordinary study.”
-              </div>
-              <div className="d-block pt-3 by">
-                <span><b>John P. Holdren,</b> <br className="d-md-none d-block" />Science Advisor to President Obama</span>
-              </div>
-            </div>
-
-
-          </div>
         </div>
 
 
-        <div className="row">
+        <div className="row pt-4">
           <div className="col-12 solutions">
             <h3 data-aos="fade-in" className="label pb-4">Five Approaches <br></br>to Decarbonization:</h3>
             <div className="row approaches">
