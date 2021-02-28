@@ -76,7 +76,7 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
     let queryObject = { ...assembleQuery(filters.url), skip: i * 210, limit: 210 }
     scenariosApi.getScenarios(queryObject).then(dl => {
       let data = dl.data.map(row => {
-        Object.keys(row).filter(cell => cell.charAt(0) === '_' || cell === 'id' || cell.substring(0, 4) === 'alt_').forEach(key => delete row[key])
+        Object.keys(row).filter(cell => cell.charAt(0) === '_' || cell === 'id' || cell.substring(0, 4) === 'alt_' || cell.substring(0, 5) === 'unit_').forEach(key => delete row[key])
         return row;
       })
       let converted = convertToCSV(data);
