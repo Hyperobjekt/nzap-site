@@ -56,8 +56,6 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
     var myDiv = document.getElementById('nzap-table-holder');
     myDiv.scrollTop = 0;
     setFilterAction({ ...filters, page, url: generateUrl({ ...filters, page }) })
-    // let queryObject = { ...query, skip: page * 204, limit: 204 };
-    // setQuery(queryObject);
   }
   const downloadFullCSV = (sheetArr, headers) => {
     let csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...sheetArr].join('\n');
@@ -74,8 +72,8 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
   }
   const downloadBatch = i => {
     setDownloadingCSV(true);
-    let downloadCount = Math.ceil(count / 204);
-    let queryObject = { ...assembleQuery(filters.url), skip: i * 204, limit: 204 }
+    let downloadCount = Math.ceil(count / 210);
+    let queryObject = { ...assembleQuery(filters.url), skip: i * 210, limit: 210 }
     scenariosApi.getScenarios(queryObject).then(dl => {
       let data = dl.data.map(row => {
         Object.keys(row).filter(cell => cell.charAt(0) === '_' || cell === 'id' || cell.substring(0, 4) === 'alt_').forEach(key => delete row[key])
@@ -158,7 +156,7 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
               </div>
             </div>
             <div className="col-12 col-md-6 pt-3 pt-md-2 text-center text-md-right order-1 order-md-12 nzap-pagination">
-              <Pagination total={count} current={Number(filters.page) || 1} showSizeChanger={false} defaultPageSize={204} onChange={changePage} />
+              <Pagination total={count} current={Number(filters.page) || 1} showSizeChanger={false} defaultPageSize={210} onChange={changePage} />
             </div>
           </div>
         </div>

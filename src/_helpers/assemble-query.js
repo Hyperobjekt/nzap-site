@@ -22,7 +22,7 @@ export const assembleQuery = (filterUrl) => {
   if (categories && categories.$or.length) assembled.$and.push(categories)
   if (subcategories && subcategories.$or.length) assembled.$and.push(subcategories)
   if (query.limit) assembled.limit = query.limit;
-  if (query.page) assembled.skip = (Number(query.page) - 1) * 204;
+  if (query.page) assembled.skip = (Number(query.page) - 1) * 210;
   assembled.sort = 'alt_l1,alt_l2,alt_v,_variable_name'
   return assembled;
 }
