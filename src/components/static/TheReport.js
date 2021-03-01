@@ -4,7 +4,10 @@ import reportCoverImage from '../../assets/images/the-report/report-cover.jpg';
 import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
 
 import './TheReport.scss';
+import reportPDF from '../../assets/papers/Princeton_NZA_Interim_Report_15_Dec_2020_FINAL.pdf'
 import { Download } from "react-bootstrap-icons";
+import annexR from "../../assets/papers/Annex R. (NZA) Labor transitions methodology draft 2-17-21.pdf"
+import { Link } from "react-router-dom";
 
 const TheReportPage = () => (
   <div className="container container-body mt-md-5 pt-md-5 pb-5">
@@ -59,8 +62,8 @@ const TheReportPage = () => (
       <div data-aos="fade-in" data-aos-delay="0" className="col-12 col-lg-11 pt-4">
         <img className="w-100 d-block" src={reportCoverImage} alt="" />
       </div>
-      <div className="col-12 pt-4">
-        <a target="blank" rel="noopener noreferrer" href="https://environmenthalfcentury.princeton.edu/sites/g/files/toruqf331/files/2020-12/Princeton_NZA_Interim_Report_15_Dec_2020_FINAL.pdf" className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download the Full Report </span><Download className="" /></a>
+      <div className="col-12 pt-4 pb-3 pb-lg-4">
+        <a target="blank" rel="noopener noreferrer" href={reportPDF} className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius"><span className="pr-2">Download the Full Report </span><Download className="" /></a>
       </div>
       <div data-aos="fade-in" data-aos-delay="0" className="col-12 col-lg-11 pt-5">
         <div className="row">
