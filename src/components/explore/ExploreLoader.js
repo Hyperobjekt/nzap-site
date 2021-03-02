@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Progress, Tabs, Pagination } from 'antd';
-import { Download } from 'react-bootstrap-icons'
+import { BoxArrowUpRight, Download } from 'react-bootstrap-icons'
 import { loadScenarios } from '../../redux/actions/ScenariosActions';
 import { loadFilters, setFilterAction } from '../../redux/actions/FiltersActions';
 import * as filtersApi from "../../api/filtersApi";
@@ -16,6 +16,10 @@ import ExploreByYear from './ExploreByYear';
 import './ExploreLoader.scss'
 import * as moment from 'moment-timezone';
 import ExploreFilter from "./ExploreFilter";
+import offsiteIcon from '../../assets/images/icons/offsite-link.svg'
+import dataGuidePDF from '../../assets/papers/data-guide.pdf';
+
+
 
 
 const { TabPane } = Tabs;
@@ -73,7 +77,7 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
   const downloadBatch = i => {
     setDownloadingCSV(true);
     let downloadCount = Math.ceil(count / 210);
-    let queryObject = { ...assembleQuery(filters.url), skip: i * 210, limit: 210 }
+    let queryObject = { ...assembleQuery(filters.url), skip: i * 210, limit: 210, sort: '_alt_l1,_alt_l2,_alt_l3,_alt_v,_variabl_name,_year' }
     scenariosApi.getScenarios(queryObject).then(dl => {
       let data = dl.data.map(row => {
         Object.keys(row).filter(cell => cell.charAt(0) === '_' || cell === 'id' || cell.substring(0, 4) === 'alt_' || cell.substring(0, 5) === 'unit_').forEach(key => delete row[key])
@@ -97,10 +101,22 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
           </div>
           <div className="col-12 pt-3">
             <div className="d-block mb-3 filter-explore-by">Examine by</div>
+          </div>
+          <div className="col-12 col-md-9 pr-md-0">
             <Tabs defaultActiveKey={localStorage.explorer || filters.explorer} onChange={changeExplorer}>
               <TabPane className="pl-1" tab="YEAR" key="year" />
               <TabPane tab="PATHWAY" key="pathway" />
             </Tabs>
+          </div>
+          <div className="col-12 col-md-3 pl-md-0 text-center text-md-right">
+            <div className="d-block pb-2 mb-3 data-guidelines">
+              <a target="blank" rel="noopener noreferrer" href={dataGuidePDF}>
+                <span className="pr-2">Read our data guide (PDF)</span>
+                <span>
+                  <img src={offsiteIcon} style={{ width: '16px' }} alt="" />
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

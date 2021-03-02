@@ -46,6 +46,13 @@
   .filter-explore-by {
     @include font($font-family-primary, $font-weight-regular, $small, $ground-color);
   }
+  .data-guidelines {
+    @include font($font-family-primary, $font-weight-semi-bold, $medium, $dark-accent-color);
+    border-bottom: 2px $dark-accent-color solid;
+    a {
+      color: inherit;
+    }
+  }
 }
 
 .ant-tabs-nav-list {
