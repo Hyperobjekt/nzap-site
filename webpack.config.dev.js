@@ -8,12 +8,7 @@ module.exports = {
   mode: 'development',
   target: 'web',
   devtool: 'cheep-module-source-map',
-  entry: {
-    bundle: [
-      'url-search-params-polyfill',
-      './src/index'
-    ]
-  },
+  entry: './src/index',
   output: {
     path: path.resolve(__dirname, "build"),
     publicPath: '/',
