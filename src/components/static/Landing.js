@@ -9,7 +9,7 @@ import scenarioImage4 from '../../assets/images/home/scenario4.png'
 import scenarioImage5 from '../../assets/images/home/scenario5.png'
 import scenarioImage6 from '../../assets/images/home/scenario6.png'
 import scrollDownIcon from '../../assets/images/icons/scroll-down.svg'
-import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
+// import blockquoteIcon from '../../assets/images/icons/blockquote.svg'
 import { Link } from "react-router-dom";
 
 
