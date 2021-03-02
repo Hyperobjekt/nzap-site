@@ -77,7 +77,7 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
   const downloadBatch = i => {
     setDownloadingCSV(true);
     let downloadCount = Math.ceil(count / 210);
-    let queryObject = { ...assembleQuery(filters.url), skip: i * 210, limit: 210 }
+    let queryObject = { ...assembleQuery(filters.url), skip: i * 210, limit: 210, sort: '_alt_l1,_alt_l2,_alt_l3,_alt_v,_variabl_name,_year' }
     scenariosApi.getScenarios(queryObject).then(dl => {
       let data = dl.data.map(row => {
         Object.keys(row).filter(cell => cell.charAt(0) === '_' || cell === 'id' || cell.substring(0, 4) === 'alt_' || cell.substring(0, 5) === 'unit_').forEach(key => delete row[key])
