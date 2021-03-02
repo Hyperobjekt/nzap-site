@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Progress, Tabs, Pagination } from 'antd';
-import { BoxArrowUpRight, Download } from 'react-bootstrap-icons'
+import { Download } from 'react-bootstrap-icons'
 import { loadScenarios } from '../../redux/actions/ScenariosActions';
 import { loadFilters, setFilterAction } from '../../redux/actions/FiltersActions';
 import * as filtersApi from "../../api/filtersApi";
