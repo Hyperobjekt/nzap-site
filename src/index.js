@@ -19,16 +19,6 @@ function _ScrollToTop(props) {
 }
 const ScrollToTop = withRouter(_ScrollToTop)
 
-String.prototype.includes = function (str) {
-  var returnValue = false;
-
-  if (this.indexOf(str) !== -1) {
-    returnValue = true;
-  }
-
-  return returnValue;
-}
-
 render(
   <ReduxProvider store={store}>
     <Router>
