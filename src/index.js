@@ -1,4 +1,3 @@
-import 'react-app-polyfill/ie11';
 import React, { useEffect } from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router, useLocation, withRouter } from "react-router-dom";
