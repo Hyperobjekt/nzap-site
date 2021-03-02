@@ -3,7 +3,7 @@ export const assembleQuery = (filterUrl) => {
   if (!filterUrl) return query
   filterUrl.substring(1).split('&').forEach(e => {
     let arrays = ['categories', 'subcategories'];
-    arrays.includes(e.split('=')[0])
+    arrays.indexOf(e.split('=')[0]) > -1
       ? query[e.split('=')[0]] = e.split('=')[1].split(',')
       : query[e.split('=')[0]] = e.split('=')[1]
   })

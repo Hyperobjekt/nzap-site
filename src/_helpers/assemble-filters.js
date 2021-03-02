@@ -11,14 +11,6 @@ const getSubcategories = filters => {
     let category = { ...e };
     return category;
   })
-  // console.log(filters)
-  // // let order = []
-  // let duplicates = [];
-  // let l2f = [...filters.levelOneFilters]
-  //   .map(e => e.levelTwoFilters.map(ee => ({ ...ee, levelOneSlug: e.slug }))).flat()
-  //   .map(e => { if (!duplicates.includes(e.slug)) { duplicates.push(e.slug); return { ...e } } })
-  //   .filter(e => e)
-  // return l2f
 }
 
 const getUsStates = filters => {
