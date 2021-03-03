@@ -60,8 +60,8 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
 
     let page = null;
     let activeSlugs = [...filters.levelOneFilters].filter(category => category.active).map(category => category.slug);
-    activeSlugs.indexOf(slug) > -1 ? activeSlugs.splice(activeSlugs.indexOf(slug), 1) : activeSlugs.push(slug)
-    let levelOneFilters = [...filters.levelOneFilters].map(category => ({ ...category, active: activeSlugs.indexOf(category.slug) > -1 }));
+    activeSlugs.includes(slug) ? activeSlugs.splice(activeSlugs.indexOf(slug), 1) : activeSlugs.push(slug)
+    let levelOneFilters = [...filters.levelOneFilters].map(category => ({ ...category, active: activeSlugs.includes(category.slug) }));
     let newFilters = { ...filters, levelOneFilters, page }
     return setFilterAction({ ...newFilters, url: generateUrl(newFilters) })
   }
@@ -74,8 +74,8 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
 
     let page = null;
     let activeSlugs = [...filters.levelTwoFilters].filter(subcategory => subcategory.active).map(subcategory => subcategory.slug);
-    activeSlugs.indexOf(slug) > -1 ? activeSlugs.splice(activeSlugs.indexOf(slug), 1) : activeSlugs.push(slug);
-    let levelTwoFilters = [...filters.levelTwoFilters].map(subcategory => ({ ...subcategory, active: activeSlugs.indexOf(subcategory.slug) > -1 }));
+    activeSlugs.includes(slug) ? activeSlugs.splice(activeSlugs.indexOf(slug), 1) : activeSlugs.push(slug);
+    let levelTwoFilters = [...filters.levelTwoFilters].map(subcategory => ({ ...subcategory, active: activeSlugs.includes(subcategory.slug) }));
     let newFilters = { ...filters, levelTwoFilters, page };
     return setFilterAction({ ...newFilters, url: generateUrl(newFilters) })
   }
@@ -89,7 +89,7 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
     if (!filters.years || !filters.scenarios) return;
     let reject = ['', 'high', 'low', 'yes']
     let years = [...filters.years].sort((a, b) => a.slug < b.slug ? -1 : 1);
-    let pathways = [...filters.scenarios].filter(e => !reject.indexOf(e.slug) > -1)
+    let pathways = [...filters.scenarios].filter(e => !reject.includes(e.slug))
     let tabs;
     if (filters.explorer === 'year') tabs = years;
     if (filters.explorer === 'pathway') {
@@ -131,7 +131,7 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
 
   const loadSubcategories = (filters) => {
     let activeCategories = [...filters.levelOneFilters].filter(category => category.active).map(category => category.slug)
-    return filters.levelTwoFilters.filter(subcategory => activeCategories.indexOf(subcategory.levelOneSlug) > -1).map((category, i) => {
+    return filters.levelTwoFilters.filter(subcategory => activeCategories.includes(subcategory.levelOneSlug)).map((category, i) => {
       const categoryClass = category.active
         ? "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category active"
         : "d-inline-block pl-2 pr-2 pt-1 pb-1 mb-3 mr-2 nzap-radius clickable filter-category";
