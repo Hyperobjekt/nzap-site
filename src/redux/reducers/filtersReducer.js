@@ -7,7 +7,7 @@ const resetLevelTwo = filters => {
   let activeCategories = [...filters.levelOneFilters].filter(e => e.active).map(e => e.slug);
   let levelTwoFilters = [...filters.levelTwoFilters].map(e => {
     let subcategory = { ...e }
-    if (!activeCategories.indexOf(e.levelOneSlug) > -1) { subcategory.active = false }
+    if (!activeCategories.includes(e.levelOneSlug)) { subcategory.active = false }
     return subcategory;
   })
   let newFilters = { ...filters, levelTwoFilters }

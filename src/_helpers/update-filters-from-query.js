@@ -3,9 +3,9 @@ export const updateFiltersFromQuery = (filters, query) => {
   // Explorer
   data.explorer = query.explorer || data.explorer
   // levelOneFilters - categories
-  data.levelOneFilters = [...filters.levelOneFilters].map(category => ({ ...category, active: query.categories.indexOf(category.slug) > -1 }))
+  data.levelOneFilters = [...filters.levelOneFilters].map(category => ({ ...category, active: query.categories.includes(category.slug) }))
   // levelTwoFilters - subcategories
-  data.levelTwoFilters = [...filters.levelTwoFilters].map(subcategory => ({ ...subcategory, active: query.subcategories.indexOf(subcategory.slug) > -1 }))
+  data.levelTwoFilters = [...filters.levelTwoFilters].map(subcategory => ({ ...subcategory, active: query.subcategories.includes(subcategory.slug) }))
   // page
   data.page = query.page || data.page
   // scenarios
