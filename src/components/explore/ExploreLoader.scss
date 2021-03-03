@@ -46,20 +46,31 @@
   .filter-explore-by {
     @include font($font-family-primary, $font-weight-regular, $small, $ground-color);
   }
-  .data-guidelines {
-    @include font($font-family-primary, $font-weight-semi-bold, $medium, $dark-accent-color);
-    border-bottom: 2px $dark-accent-color solid;
+  .filter-data-guidelines {
+    @include font($font-family-primary, $font-weight-regular, $small, $dark-accent-color);
     a {
       color: inherit;
     }
   }
+  .explore-tabs-holder {
+    border-bottom: 2px $dark-accent-color solid;
+    .data-guidelines {
+      @include font($font-family-primary, $font-weight-semi-bold, $medium, $dark-accent-color);
+      a {
+        color: inherit;
+      }
+    }
+  }
 }
 
+.ant-tabs-top > .ant-tabs-nav {
+  margin: 0 !important;
+}
 .ant-tabs-nav-list {
   margin-left: 30px;
 }
 .ant-tabs-nav-wrap {
-  border-bottom: 2px $dark-accent-color solid;
+  border-bottom: none;
   overflow: inherit !important;
 }
 .ant-tabs-tab {
