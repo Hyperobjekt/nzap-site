@@ -24,7 +24,7 @@ const LandingPage = () => (
             <div className="d-block">
               <a href="#explore">Explore<br />the data</a>
             </div>
-            <div className="d-block">
+            <div className="d-block explore-anchor">
               <a href="#explore"><img src={scrollDownIcon} alt="explore the data anchor" /></a>
             </div>
           </div>

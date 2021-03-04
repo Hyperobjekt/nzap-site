@@ -4,6 +4,9 @@
 .explore-jump-holder {
   top: 65px;
   top: 4px;
+  .explore-anchor img {
+    height: 24px // so IE 11 will show entire arrow
+  }
 }
 .to-data-explorer {
   @include font($font-family-primary, $font-weight-semi-bold, $small, $highlight-color);
