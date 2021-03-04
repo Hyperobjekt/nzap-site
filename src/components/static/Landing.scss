@@ -4,8 +4,8 @@
 .explore-jump-holder {
   top: 65px;
   top: 4px;
-  .explore-anchor {
-    height: 30px // so IE 11 will show entire arrow
+  .explore-anchor img {
+    height: 24px // so IE 11 will show entire arrow
   }
 }
 .to-data-explorer {
