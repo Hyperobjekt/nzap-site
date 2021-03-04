@@ -41,6 +41,20 @@ function App() {
       <Footer />
     </>
   );
-}
+};
+
+function msieversion() {
+  var ua = window.navigator.userAgent;
+  var msie = ua.indexOf("MSIE ");
+  
+  if (msie > 0)
+  {
+      $("[data-aos^=fade][data-aos^=fade]").css("opacity", "1");
+  }
+  }
+  
+  $(document).ready(function (){
+  msieversion()
+  });
 
 export default App;
