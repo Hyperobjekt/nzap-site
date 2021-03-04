@@ -115,13 +115,13 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
 
               <div className="col-12 explore-tabs-holder">
                 <div className="row">
-                  <div className="col-12 col-md-9 pr-md-0">
+                  <div className="col-12 col-md-5 pr-md-0">
                     <Tabs defaultActiveKey={localStorage.explorer || filters.explorer} onChange={changeExplorer}>
                       <TabPane className="pl-1" tab="YEAR" key="year" />
                       <TabPane tab="PATHWAY" key="pathway" />
                     </Tabs>
                   </div>
-                  <div className="col-12 d-none d-md-block col-md-3 pl-md-0 text-center text-md-right">
+                  <div className="col-12 d-none d-md-block col-md-7 pl-md-0 text-center text-md-right">
                     <div className="d-block pb-2 data-guidelines">
                       <a target="blank" rel="noopener noreferrer" href={dataGuidePDF}>
                         <span className="pr-2">Read our data guide (PDF)</span>
@@ -151,11 +151,11 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
               {scenarios.length ? <div className="col-12" id="nzap-table-holder" role="button" tabIndex={0}>
                 {filters.explorer === 'pathway' ? <ExploreByPathway /> : <ExploreByYear />}
               </div> : <div className="col-12 text-center pt-5 pl-5 pr-5 no-data-holder">
-                  <div className="message nzap-deep-radius">
-                    <h3>Sorry! No matching data found.</h3>
-                    <p style={{ 'color': '#385369' }}>Adjust the filters and try again.</p>
-                  </div>
+                <div className="message nzap-deep-radius">
+                  <h3>Sorry! No matching data found.</h3>
+                  <p style={{ 'color': '#385369' }}>Adjust the filters and try again.</p>
                 </div>
+              </div>
               }
             </div>
           )}
