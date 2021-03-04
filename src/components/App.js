@@ -41,7 +41,7 @@ function App() {
       <Footer />
     </>
   );
-};
+}
 
 function msieversion() {
   var ua = window.navigator.userAgent;
@@ -49,12 +49,12 @@ function msieversion() {
   
   if (msie > 0)
   {
-      $("[data-aos^=fade][data-aos^=fade]").css("opacity", "1");
+    document.querySelectorAll("[data-aos^=fade][data-aos^=fade]").style.opacity = "1";
   }
   }
   
-  $(document).ready(function (){
-  msieversion()
-  });
+ 
+  msieversion();
+  
 
 export default App;
