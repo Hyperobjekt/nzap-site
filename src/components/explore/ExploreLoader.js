@@ -99,9 +99,6 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
           <div className="col-12 pt-3 filter-section-label">
             <h3>Explore the Data</h3>
           </div>
-          <div className="col-12 col-md-12 pt-3">
-            <div className="d-block mb-md-3 filter-explore-by">Examine by</div>
-          </div>
           <div className="col-12 mb-4 d-md-none d-block filter-data-guidelines">
             <a target="blank" rel="noopener noreferrer" href={dataGuidePDF}>
               <span className="pr-2">Read our data guide (PDF)</span>
@@ -110,23 +107,27 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
               </span>
             </a>
           </div>
+          <div className="col-12 col-md-12 pt-3">
+            <div className="d-block mb-3 filter-explore-by">Examine by</div>
+          </div>
+          
           <div className="col-12">
             <div className="row pl-3 pr-3">
 
               <div className="col-12 explore-tabs-holder">
                 <div className="row">
-                  <div className="col-12 col-md-9 pr-md-0">
+                  <div className="col-12 col-md-6 pr-md-0">
                     <Tabs defaultActiveKey={localStorage.explorer || filters.explorer} onChange={changeExplorer}>
                       <TabPane className="pl-1" tab="YEAR" key="year" />
                       <TabPane tab="PATHWAY" key="pathway" />
                     </Tabs>
                   </div>
-                  <div className="col-12 d-none d-md-block col-md-3 pl-md-0 text-center text-md-right">
-                    <div className="d-block pb-2 data-guidelines">
+                  <div className="col-12 d-none d-md-flex justify-content-end align-items-end col-md-6 pl-md-0 text-center text-md-right">
+                    <div className="d-block pb-1 data-guidelines">
                       <a target="blank" rel="noopener noreferrer" href={dataGuidePDF}>
                         <span className="pr-2">Read our data guide (PDF)</span>
                         <span>
-                          <img src={offsiteIcon} style={{ width: '16px' }} alt="" />
+                          <img src={offsiteIcon} style={{ width: '16px', position: 'relative', top: '-2px' }} alt="" />
                         </span>
                       </a>
                     </div>
