@@ -36,7 +36,7 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
 
   function examineChange(tab, e) {
     let key = e ? e.key : ''
-    if (key !== ' ' && key !== 'Enter' && e) return
+    if (key !== ' ' && key !== 'Enter' && e && isNaN(key)) return
     if (key === ' ') e.preventDefault();
     if (key === 'Enter') e.preventDefault();
     let newFilters;
