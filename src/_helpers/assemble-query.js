@@ -1,5 +1,5 @@
 export const assembleQuery = (filterUrl) => {
-  let query = {}
+  let query = {}, skip, limit;
   if (!filterUrl) return query
   filterUrl.substring(1).split('&').forEach(e => {
     let arrays = ['categories', 'subcategories'];
@@ -21,8 +21,10 @@ export const assembleQuery = (filterUrl) => {
   let assembled = { $and: [{ _geo: query.state || 'national' }, examiner] }
   if (categories && categories.$or.length) assembled.$and.push(categories)
   if (subcategories && subcategories.$or.length) assembled.$and.push(subcategories)
-  if (query.limit) assembled.limit = query.limit;
-  if (query.page) assembled.skip = (Number(query.page) - 1) * 210;
+  if (query.page) skip = (Number(query.page) - 1) * (Number(query.limit) || window.PAGE_LIMIT);
+  limit = query.limit ? query.limit : window.PAGE_LIMIT;
+  assembled.limit = limit + 4;
+  assembled.skip = skip > 0 ? skip - 3 : skip;
   assembled.sort = 'alt_l1,alt_l2,alt_v,_variable_name'
   return assembled;
 }
