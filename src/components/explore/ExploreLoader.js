@@ -76,8 +76,8 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
   }
   const downloadBatch = i => {
     setDownloadingCSV(true);
-    let downloadCount = Math.ceil(count / 210);
-    let queryObject = { ...assembleQuery(filters.url), skip: i * 210, limit: 210, sort: '_alt_l1,_alt_l2,_alt_l3,_alt_v,_variabl_name,_year' }
+    let downloadCount = Math.ceil(count / window.PAGE_LIMIT);
+    let queryObject = { ...assembleQuery(filters.url), skip: i * window.PAGE_LIMIT, limit: window.PAGE_LIMIT, sort: '_alt_l1,_alt_l2,_alt_l3,_alt_v,_variabl_name,_year' }
     scenariosApi.getScenarios(queryObject).then(dl => {
       let data = dl.data.map(row => {
         Object.keys(row).filter(cell => cell.charAt(0) === '_' || cell === 'id' || cell.substring(0, 4) === 'alt_' || cell.substring(0, 5) === 'unit_').forEach(key => delete row[key])
@@ -110,7 +110,7 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
           <div className="col-12 col-md-12 pt-3">
             <div className="d-block mb-3 filter-explore-by">Examine by</div>
           </div>
-          
+
           <div className="col-12">
             <div className="row pl-3 pr-3">
 
@@ -192,7 +192,7 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
               </div>
             </div>
             <div className="col-12 col-md-6 pt-3 pt-md-2 text-center text-md-right order-1 order-md-12 nzap-pagination">
-              <Pagination total={count} current={Number(filters.page) || 1} showSizeChanger={false} defaultPageSize={210} onChange={changePage} />
+              <Pagination total={count} current={Number(filters.page) || 1} showSizeChanger={false} defaultPageSize={window.PAGE_LIMIT} onChange={changePage} />
             </div>
           </div>
         </div>

@@ -65,8 +65,11 @@ const ExploreByPathway = ({ filters, scenarios }) => {
     let headerKeys = headers.map(e => e.slug)
     headerKeys.unshift("")
     let l1 = Object.keys(table.body);
-    const renderCells = varNameRow => {
-      return headerKeys.map((e, i) => {
+    const renderCells = (varNameRow, index, length) => {
+      let rowLength = []
+      headerKeys.filter(e => e).forEach(e => !varNameRow[e] || varNameRow[e].value.toLowerCase() === 'na' ? rowLength.push(true) : null);
+
+      let rowData = headerKeys.map((e, i) => {
         let unitData = {};
         if (varNameRow) {
           unitData.unit = varNameRow.unit;
@@ -78,6 +81,7 @@ const ExploreByPathway = ({ filters, scenarios }) => {
         if (!varNameRow[e] || varNameRow[e].value === 'NA') return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pathway pb-2">---</td>
         return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pathway pb-2">{format(varNameRow[e], unitData)}</td>
       })
+      return ((rowLength.length > 0) && (index === length - 1 || index === 1)) ? null : rowData;
     }
 
     const renderVariableNames = l2Row => {
@@ -85,7 +89,7 @@ const ExploreByPathway = ({ filters, scenarios }) => {
       return varName.map((varNameKey, varNameIndex) => {
         let varNameRow = l2Row[varNameKey]
         return <tr key={varNameIndex} className="nzap-table-row tween">
-          {varNameKey !== 'label' ? renderCells(varNameRow) : null}
+          {varNameKey !== 'label' ? renderCells(varNameRow, varNameIndex, varName.length) : null}
         </tr>
       })
     }
