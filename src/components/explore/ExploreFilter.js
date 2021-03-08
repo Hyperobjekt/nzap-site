@@ -115,7 +115,7 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
         )}
       </div>
       {/* Mobile */}
-      <label htmlFor="explore-by-filter" className="d-block d-md-none pb-2 scope">Scope (select to change {filters.table})</label>
+      <label htmlFor="explore-by-filter" className="d-block d-md-none pb-2 scope">Scope (select to change {filters.explorer})</label>
       <Select
         className="d-block d-md-none w-100 nzap-radius"
         id="explore-by-filter"
