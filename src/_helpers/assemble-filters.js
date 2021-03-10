@@ -37,7 +37,8 @@ export const assembleFilters = (stateFilters, actionFilters) => {
     levelOneFilters: getCategories(actionFilters),
     levelTwoFilters: getSubcategories(actionFilters),
     table: getTableExamBy(actionFilters, explorer),
-    page: actionFilters.page || 0
+    page: actionFilters.page || 0,
+    limit: actionFilters.limit || window.PAGE_LIMIT
   }
   filter.url = generateUrl(filter);
   return { ...filter }

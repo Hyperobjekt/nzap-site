@@ -22,8 +22,9 @@ export const assembleQuery = (filterUrl) => {
   if (categories && categories.$or.length) assembled.$and.push(categories)
   if (subcategories && subcategories.$or.length) assembled.$and.push(subcategories)
   if (query.page) skip = (Number(query.page) - 1) * (Number(query.limit) || window.PAGE_LIMIT);
+  console.log(query)
   limit = query.limit ? query.limit : window.PAGE_LIMIT;
-  assembled.limit = limit + 4;
+  assembled.limit = Number(limit) + 4;
   assembled.skip = skip > 0 ? skip - 3 : skip;
   assembled.sort = 'alt_l1,alt_l2,alt_v,_variable_name'
   return assembled;

@@ -8,6 +8,8 @@ export const updateFiltersFromQuery = (filters, query) => {
   data.levelTwoFilters = [...filters.levelTwoFilters].map(subcategory => ({ ...subcategory, active: query.subcategories.includes(subcategory.slug) }))
   // page
   data.page = query.page || data.page
+  // limit
+  data.limit = query.limit || data.limit
   // scenarios
   // table
   data.table = query.table || data.table

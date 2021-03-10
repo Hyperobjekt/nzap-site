@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Progress, Tabs, Pagination } from 'antd';
 import { Download } from 'react-bootstrap-icons'
-import { loadScenarios } from '../../redux/actions/ScenariosActions';
+// import { loadScenarios } from '../../redux/actions/ScenariosActions';
 import { loadFilters, setFilterAction } from '../../redux/actions/FiltersActions';
 import * as filtersApi from "../../api/filtersApi";
 import * as scenariosApi from "../../api/scenariosApi";
@@ -23,7 +23,7 @@ import dataGuidePDF from '../../assets/papers/data-guide.pdf';
 
 
 const { TabPane } = Tabs;
-const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, loadScenarios, scenarios }) => {
+const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, scenarios }) => {
   let sheetArr = [];
   const location = useLocation();
   const [downloadingCSV, setDownloadingCSV] = useState(false)
@@ -34,13 +34,14 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
   useEffect(() => {
     if (!location.search) {
       loadFilters().catch(handleError);
-      loadScenarios(filters.url).catch(handleError);
+      // loadScenarios(filters.url).catch(handleError);
       return;
     }
     let queryObject = getQueryObject(location);
-    loadScenarios(location.search).catch(handleError);
+    // loadScenarios(location.search).catch(handleError);
     filtersApi.getFilters().then(fdata => {
       let freshfilters = updateFiltersFromQuery(assembleFilters(filters, fdata), queryObject);
+      console.log(freshfilters)
       setFilterAction({ ...freshfilters, url: generateUrl(freshfilters) })
     })
   }, []);
@@ -56,10 +57,12 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
     }
     setFilterAction({ ...newFilters, url: generateUrl(newFilters) })
   }
-  const changePage = page => {
+  const changePage = (page, pageSize) => {
+    let limit = window.PAGE_LIMIT;
     var myDiv = document.getElementById('nzap-table-holder');
     myDiv.scrollTop = 0;
-    setFilterAction({ ...filters, page, url: generateUrl({ ...filters, page }) })
+    if (pageSize) limit = pageSize;
+    setFilterAction({ ...filters, page, limit, url: generateUrl({ ...filters, page, limit }) })
   }
   const downloadFullCSV = (sheetArr, headers) => {
     let csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...sheetArr].join('\n');
@@ -192,7 +195,8 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
               </div>
             </div>
             <div className="col-12 col-md-6 pt-3 pt-md-2 text-center text-md-right order-1 order-md-12 nzap-pagination">
-              <Pagination total={count} current={Number(filters.page) || 1} showSizeChanger={false} defaultPageSize={window.PAGE_LIMIT} onChange={changePage} />
+              {/* showSizeChanger={false} */}
+              <Pagination total={count} current={Number(filters.page) || 1} pageSizeOptions={[200, 500, 1000, 1500, 2000]} defaultPageSize={Number(filters.limit) || window.PAGE_LIMIT} onChange={changePage} />
             </div>
           </div>
         </div>
@@ -216,7 +220,7 @@ ExploreLoader.propTypes = {
   filters: PropTypes.object.isRequired,
   count: PropTypes.number.isRequired,
   loadFilters: PropTypes.func.isRequired,
-  loadScenarios: PropTypes.func.isRequired,
+  // loadScenarios: PropTypes.func.isRequired,
   setFilterAction: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired
 }
@@ -230,7 +234,7 @@ function mapStateToProps(state) {
   }
 }
 
-const mapDispatchToProps = { loadScenarios, loadFilters, setFilterAction }
+const mapDispatchToProps = { loadFilters, setFilterAction }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExploreLoader);
 

@@ -8,7 +8,7 @@ import configureStore from "./redux/configureStore";
 import { Provider as ReduxProvider } from "react-redux";
 
 const store = configureStore();
-window.PAGE_LIMIT = 2000;
+window.PAGE_LIMIT = 200;
 
 function _ScrollToTop(props) {
   const { pathname } = useLocation();
