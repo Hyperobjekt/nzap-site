@@ -28,3 +28,10 @@
   status = 200
   force = true  
 
+[[redirects]]
+  from = "/contact"
+  to = "/"
+  status = 200
+  force = true  
+
+
