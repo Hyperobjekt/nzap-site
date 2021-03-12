@@ -1,5 +1,5 @@
 import React from "react";
-import introImage from '../../assets/images/publications/page-header-maps.jpg';
+import introImage from '../../assets/images/contact/page-header-contact.jpg';
 
 import './TheReport.scss';
 import './ContactUs.scss';
