@@ -7,6 +7,7 @@ import FactSheetPage from "./static/FactSheet";
 import MediaPage from "./static/Media";
 import AboutPage from "./static/About";
 import PublicationsPage from "./static/Publications";
+import ContactUsPage from './static/ContactUs';
 
 import Header from "./_global/Header";
 import Footer from "./_global/Footer";
@@ -16,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+
 // ..
 AOS.init({
   duration: 700, // values from 0 to 3000, with step 50ms
@@ -35,6 +37,7 @@ function App() {
         <Route path="/media" component={MediaPage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/publications" component={PublicationsPage} />
+        <Route path="/contact" component={ContactUsPage} />
         <Route component={FourOhFour} />
       </Switch>
       <ToastContainer autoClose={3000} hideProgressBar />
