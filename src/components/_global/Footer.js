@@ -9,15 +9,19 @@ const Footer = () => {
   const activeStyle = { color: sg.colors.primary };
   return (
     <div className="container mt-5 nzap-footer">
-      <div className="row pt-3 pb-5">
-        <div className="col-4 pl-3 pl-md-1 pr-1 footer-logo">
-          <img src={primcetonLogo} alt="" />
+      <div className="row pt-3 pb-5 flex-column-reverse flex-md-row">
+        <div className="col-md-3 mx-md-0 pt-5 pt-md-0 pl-md-1 pr-md-1 footer-logo">
+          <img src={primcetonLogo} className="d-block mx-auto mx-md-0" alt="" />
         </div>
-        <div className="col-8 pl-1 pr-1 pt-2 text-right d-none">
-          <nav className="footer-navigation">
-            <NavLink className="pr-2 pl-2" to="/#explore" activeStyle={activeStyle} exact>Legal</NavLink> |
-            <NavLink className="pr-2 pl-2" to="/publications" activeStyle={activeStyle} exact>Contact</NavLink>|
-            <NavLink className="pr-2 pl-2" to="/media" activeStyle={activeStyle} exact>Copyright</NavLink>
+        <div className="col-md-9 px-0 py-0 py-md-2 text-right">
+          <nav className="footer-navigation d-flex justify-content-center justify-content-md-end d-md-block flex-wrap">
+            <NavLink className="pt-3 pt-md-0 px-3 px-md-2 px-lg-3" to="/the-report" activeStyle={activeStyle} exact>The Report</NavLink>
+            <NavLink className="pt-3 pt-md-0 px-3 px-md-2 px-lg-3" to="/#explore" activeStyle={activeStyle} exact>Maps</NavLink>
+            <NavLink className="pt-3 pt-md-0 px-3 px-md-2 px-lg-3" to="/fact-sheet" activeStyle={activeStyle} exact>Fact Sheets</NavLink>
+            <NavLink className="pt-3 pt-md-0 px-3 px-md-2 px-lg-3" to="/publications" activeStyle={activeStyle} exact>Publications</NavLink>
+            <NavLink className="pt-3 pt-md-0 px-3 px-md-2 px-lg-3" to="/media" activeStyle={activeStyle} exact>Media</NavLink>
+            <NavLink className="pt-3 pt-md-0 px-3 px-md-2 px-lg-3" to="/about" activeStyle={activeStyle} exact>About</NavLink>
+            <NavLink className="pt-3 pt-md-0 px-3 pr-md-0 pl-md-2 pl-lg-3" to="/contact" activeStyle={activeStyle} exact>Contact</NavLink>
           </nav>
         </div>
       </div>
