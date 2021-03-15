@@ -48,7 +48,7 @@ const FactSheetPage = ({ filters, loadFilters }) => {
               <div className="col-12 col-lg-9">
                 <div className="d-block pr-3 pt-4 introduction">
                   <p className="pt-md-4">
-                    Download PDFs featuring tables for each scenario and year featured in our study, for 48 states and the nation as a whole.
+                    Download PDFs featuring tables for each scenario and year featured in our study, for 48 states and the nation as a whole. These fact sheets include curated subsets of all data available for a state or the nation in the online data explorer. 
                   </p>
                 </div>
               </div>
