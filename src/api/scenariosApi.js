@@ -2,7 +2,6 @@ import { handleResponse, handleError } from "./apiUtils";
 
 
 export function getScenarios(query = null) {
-  console.log(query)
   let baseUrl = `${process.env.API_URL}/scenarios?limit=${query.limit}&skip=${query.skip || 0}&sort=${query.sort || 'filter_level_1'}`;
   delete query.limit;
   delete query.skip;

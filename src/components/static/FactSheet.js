@@ -24,7 +24,7 @@ const FactSheetPage = ({ filters, loadFilters }) => {
       let key = r.replace('-report.pdf', '').replace('./nzap-', '').replace('/img/nzap-', '')
       pdfs[key] = r;
     });
-
+    // console.log(pdfs)
     return states.map((state, i) => <div data-aos-delay={i * 100} data-aos-offset="100" className="col-6 col-md-3 pt-2 pb-2 fact-state" key={i}>
       <a href={pdfs[state.slug]} target="blank">{state.label}</a>
     </div>)
@@ -48,7 +48,7 @@ const FactSheetPage = ({ filters, loadFilters }) => {
               <div className="col-12 col-lg-9">
                 <div className="d-block pr-3 pt-4 introduction">
                   <p className="pt-md-4">
-                    Download PDFs featuring tables for each scenario and year featured in our study, for 48 states and the nation as a whole. These fact sheets include curated subsets of all data available for a state or the nation in the online data explorer. 
+                    Download PDFs featuring tables for each scenario and year featured in our study, for 48 states and the nation as a whole. These fact sheets include curated subsets of all data available for a state or the nation in the online data explorer.
                   </p>
                 </div>
               </div>
@@ -57,7 +57,7 @@ const FactSheetPage = ({ filters, loadFilters }) => {
           </div>
         </div>
 
-        <div  data-aos="fade-in" data-aos-delay="200" className="row pt-5 fact-states">
+        <div data-aos="fade-in" data-aos-delay="200" className="row pt-5 fact-states">
           {loadStates(filters.usStates)}
         </div>
       </div>

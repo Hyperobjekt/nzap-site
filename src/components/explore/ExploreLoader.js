@@ -26,10 +26,18 @@ const { TabPane } = Tabs;
 const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, scenarios }) => {
   let sheetArr = [];
   const location = useLocation();
+  const [statePDF, setStatePDF] = useState([])
   const [downloadingCSV, setDownloadingCSV] = useState(false)
   const [dlProgress, setDlProgress] = useState(0);
 
-
+  const loadPDFs = () => {
+    function importAll(r) {
+      return r.keys().map(r);
+    }
+    if (statePDF.length) return;
+    let pdfImports = importAll(require.context('../../assets/state-reports/', false, /\.pdf$/));
+    return setStatePDF(pdfImports)
+  }
 
   useEffect(() => {
     if (!location.search) {
@@ -41,10 +49,21 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
     // loadScenarios(location.search).catch(handleError);
     filtersApi.getFilters().then(fdata => {
       let freshfilters = updateFiltersFromQuery(assembleFilters(filters, fdata), queryObject);
-      console.log(freshfilters)
       setFilterAction({ ...freshfilters, url: generateUrl(freshfilters) })
     })
+    loadPDFs();
+
   }, []);
+
+
+  const loadStateButton = states => {
+    if (!statePDF.length) loadPDFs();
+    let activeState = states.filter(e => e.active)[0];
+    let pdf = statePDF.filter(e => e.includes(activeState.slug))[0]
+    return <a href={pdf} target="blank" className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius">
+      Download the fact sheet for {filters.usStates.filter(e => e.active)[0].label}
+    </a>
+  }
 
 
   const changeExplorer = tab => {
@@ -189,9 +208,7 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
                 </button>
               </div>
               <div className="d-block pt-3">
-                <button className="nzap-button pt-2 pb-2 pr-3 pl-3 nzap-radius">
-                  Download the fact sheet for {filters.usStates.filter(e => e.active)[0].label}
-                </button>
+                {loadStateButton(filters.usStates)}
               </div>
             </div>
             <div className="col-12 col-md-6 pt-3 pt-md-2 text-center text-md-right order-1 order-md-12 nzap-pagination">
