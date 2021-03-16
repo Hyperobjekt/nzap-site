@@ -42,12 +42,12 @@ const LandingPage = () => (
               </div>
             </div>
             <div data-aos="fade-in" data-aos-delay="200" className="row">
-              <div className="col-12 col-lg-9">
+              <div className="col-12 col-md-10 col-lg-9">
                 <div className="d-block pr-3 pt-2 introduction">
                   <p className="pt-md-4">The Net-Zero America research quantifies five distinct technological pathways, all using technologies known today, by which the United States could decarbonize its entire economy. With multiple plausible and affordable pathways available, the societal conversation can now turn from “if” to “how” and focus on the choices the nation and its myriad stakeholders wish to make to shape the energy transition.</p>
                   <p className="d-none">The study is the first to map with high geographic specificity the infrastructure that needs to be built and the investments required to run the country without emitting more greenhouse gases into the atmosphere than are removed from it each year. It quantifies inherent challenges and opportunities with different pathways, and the granularity allows state-level assessments of implications for land use, employment, air pollution-related health impacts, capital mobilization, incumbent fossil fuel industries, and new clean-energy industries.</p>
                   <p className="d-none">Insights from this study can inform this conversation.  </p>
-                  <p className="pt-2">This website presents the pathways in an interactive context to enable policy makers and other stakeholders to extract specific results that are most useful to them. The site should be used in conjunction with <Link to="/the-report">the Net-Zero America final report</Link> to fully understand the data contained herein.</p>
+                  <p className="pt-2">This website presents the pathways in an interactive context to enable policy makers and other stakeholders to extract specific results that are most useful to them. The site should be used in conjunction with <Link to="/the-report">the Net-Zero America report</Link> to fully understand the data contained herein.</p>
                 </div>
               </div>
             </div>
