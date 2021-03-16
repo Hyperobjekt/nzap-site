@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Switch, useHistory } from "react-router-dom";
 
 import LandingPage from "./static/Landing";
 import TheReportPage from "./static/TheReport";
@@ -26,7 +26,29 @@ AOS.init({
   mirror: false, // whether elements should animate out while scrolling past them
 });
 
+export const useTracking = (trackingId) => {
+  const { listen } = useHistory()
+
+  useEffect(() => {
+    const unlisten = listen((location) => {
+      if (!window.gtag) return
+      if (!trackingId) {
+        console.log(
+          'Tracking not enabled, as `trackingId` was not given and there is no `GA_MEASUREMENT_ID`.'
+        )
+        return
+      }
+
+      window.gtag('config', trackingId, { page_path: location.pathname })
+    })
+
+    return unlisten
+  }, [trackingId, listen])
+}
+
 function App() {
+  useTracking('G-3ZWH8D57MB')
+
   return (
     <>
       <Header />
