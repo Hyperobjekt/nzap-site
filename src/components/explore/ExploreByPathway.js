@@ -81,7 +81,7 @@ const ExploreByPathway = ({ filters, scenarios }) => {
         if (!varNameRow[e] || varNameRow[e].value === 'NA') return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pathway pb-2">---</td>
         return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pathway pb-2">{format(varNameRow[e], unitData)}</td>
       })
-      return ((rowLength.length > 0) && (index === length - 1 || index === 1)) ? null : rowData;
+      return ((rowLength.length > 0) && index === length - 1) ? null : rowData;
     }
 
     const renderVariableNames = l2Row => {

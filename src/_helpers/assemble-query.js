@@ -25,6 +25,7 @@ export const assembleQuery = (filterUrl) => {
   limit = query.limit ? query.limit : window.PAGE_LIMIT;
   assembled.limit = Number(limit) + 4;
   assembled.skip = skip > 0 ? skip - 3 : skip;
-  assembled.sort = 'alt_l1,alt_l2,alt_v,_variable_name'
+  assembled.sort = 'alt_l1,alt_l2,alt_v'
+  // assembled.sort = '_filter_level_1,_filter_level_2,_variable_name'
   return assembled;
 }
