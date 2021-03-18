@@ -1,6 +1,6 @@
 import React from "react";
 import introImage from '../../assets/images/media/page-header-media.jpg';
-import fastCompanyLogo from '../../assets/images/media/fast-company.png';
+import theGuardianLogo from '../../assets/images/media/the-guardian.png';
 import howDoWeFixItLogo from '../../assets/images/media/how-do-we-fix-it.png';
 import theInterchangeLogo from '../../assets/images/media/the-interchange.png';
 import theNewYorkTimesLogo from '../../assets/images/media/the-new-york-times.png';
@@ -72,11 +72,11 @@ const MediaPage = () => (
       </div>
       <div data-aos="fade-in" data-aos-delay="400" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
-          <img className="w-100" src={fastCompanyLogo} alt="Fast Company" />
+          <img className="w-100" src={theGuardianLogo} alt="The Guardian" />
         </div>
-        <div className="pt-3 pb-2 publication">Fast Company</div>
-        <div className="snippet">&#8220;The U.S. can get to net-zero emissions by 2050. Here’s how&#8221;</div>
-        <div className="articleLink"><a href="https://www.fastcompany.com/90589586/the-u-s-can-get-to-net-zero-emissions-by-2050-heres-how" target="_blank" rel="noopener noreferrer">READ THE ARTICLE</a></div>
+        <div className="pt-3 pb-2 publication">The Guardian</div>
+        <div className="snippet">&#8220;The race to zero: can America reach net-zero emissions by 2050?&#8221;</div>
+        <div className="articleLink"><a href="https://www.theguardian.com/us-news/2021/mar/15/race-to-zero-america-emissions-climate-crisis" target="_blank" rel="noopener noreferrer">READ THE ARTICLE</a></div>
       </div>
       <div data-aos="fade-in" data-aos-delay="0" data-aos-offset="100" className="col-12 col-md-4 pb-3 pt-5">
         <div className="image">
