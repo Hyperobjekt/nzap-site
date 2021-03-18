@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "../../_styles/_stylesGuide";
 import primcetonLogo from '../../assets/images/footer/princeton-logo.svg'
+import ccIcon from '../../assets/images/icons/cc-by-nc.svg'
 import './Footer.scss';
 
 const Footer = () => {
@@ -24,6 +25,11 @@ const Footer = () => {
             <NavLink className="pt-3 pt-md-0 px-3 pr-md-0 pl-md-2 pl-lg-3" to="/contact" activeStyle={activeStyle} exact>Contact</NavLink>
           </nav>
         </div>
+      </div>
+      <div className="nzap-footer__cc row pb-5">
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" className="d-block pt-4 pt-md-0 mx-auto mr-md-0">
+          <img src={ccIcon} className="" alt="Creative Commons Attribution-NonCommercial" />
+        </a>
       </div>
     </div>
 
