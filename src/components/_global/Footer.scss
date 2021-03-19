@@ -14,4 +14,11 @@
       @include font($font-family-primary, $font-weight-regular, $small, $base-color);
     }
   }
+
+  &__cc {
+
+    img {
+      max-width: 70px;
+    }
+  }
 }
