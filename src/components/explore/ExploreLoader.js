@@ -71,7 +71,7 @@ const ExploreLoader = ({ loading, count, loadFilters, setFilterAction, filters, 
     let newFilters = {
       ...filters,
       explorer: tab,
-      table: tab === 'year' ? '2020' : 'ref',
+      table: tab === 'year' ? '2020' : 'e-positive',
       page: null
     }
     setFilterAction({ ...newFilters, url: generateUrl(newFilters) })

@@ -24,7 +24,7 @@ const getUsStates = filters => {
 const getTableExamBy = (filters, explorer) => {
   if (filters.table) return filters.table;
   if (explorer === 'year') return '2020';
-  if (explorer === 'pathway') return 'ref';
+  if (explorer === 'pathway') return 'e-positive';
 }
 export const assembleFilters = (stateFilters, actionFilters) => {
   let explorer = localStorage.getItem('explorer') || actionFilters.explorer || 'year';
