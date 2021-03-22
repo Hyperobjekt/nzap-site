@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import { Drawer } from 'antd';
 import styles from "../../_styles/_stylesGuide";
 import './Header.scss';
-
+require('../../assets/images/home/nza-social.png');
+ 
 const Header = () => {
   const sg = styles();
   const activeStyle = { color: sg.colors.primary };
