@@ -1,11 +1,12 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import styles from "../../_styles/_stylesGuide";
 import primcetonLogo from '../../assets/images/footer/princeton-logo.svg'
 import ccIcon from '../../assets/images/icons/cc-by-nc.svg'
 import './Footer.scss';
 
 const Footer = () => {
+  const { pathname } = useLocation();
   const sg = styles();
   const activeStyle = { color: sg.colors.primary };
   return (
@@ -26,11 +27,13 @@ const Footer = () => {
           </nav>
         </div>
       </div>
-      <div className="nzap-footer__cc row pb-5">
-        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" className="d-block pt-4 pt-md-0 mx-auto mr-md-0">
-          <img src={ccIcon} className="" alt="Creative Commons Attribution-NonCommercial" />
-        </a>
-      </div>
+      {pathname == '/' && 
+        <div className="nzap-footer__cc row pb-5w-100 w-md-auto">
+          <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" className="d-block pt-md-0 mx-auto mr-md-0">
+            <img src={ccIcon} className="" alt="Creative Commons Attribution-NonCommercial" />
+          </a>
+        </div>
+      }
     </div>
 
   );
