@@ -98,6 +98,13 @@
 .nzap-button {
   background: $light-color;
   border: 1px $ground-color solid;
+  transition: background-color .3s ease;
+  &:hover {
+    background-color:#be5709;
+    color: white;
+    border-color: #be5709;
+    text-decoration: none;
+  }
 }
 
 .ant-pagination-item {
