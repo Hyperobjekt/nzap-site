@@ -79,7 +79,7 @@ const ExploreByYear = ({ filters, scenarios }) => {
     let l1 = Object.keys(table.body);
     const renderCells = (varNameRow, index, length) => {
       let rowLength = []
-      headerKeys.filter(e => e).forEach(e => !varNameRow[e] || varNameRow[e].value.toLowerCase() === 'na' ? rowLength.push(true) : null);
+      headerKeys.filter(e => e).forEach(e => !varNameRow[e] ? rowLength.push(true) : null);
 
       let rowData = headerKeys.map((e, i) => {
         let unitData = {};
