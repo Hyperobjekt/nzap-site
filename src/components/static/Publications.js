@@ -59,8 +59,20 @@ const PublicationsPage = () => (
                 <div className="d-block pb-3 tag">High Road Labor and Renewable Energy</div>
                 <p className="pt-md-2">Achieving an economy-wide net-zero greenhouse gas emissions goal by mid-century in the United States entails transforming the energy workforce.</p>
                 <Accordion>
-                  <p>Toward this end, Socolow urges vigilant attention to the downsides to rapid expansion of every low-carbon technology, as opposed to uncritical embrace: “we must leave room to say No.” NZA’s close examination of the land demands for wind, solar, and bioenergy are examples of what he is urging.</p>
-                  <p>Socolow notes that middle-building will also be promoted by an inclusive discussion of the underlying rationale for sustainability. The sustainability objective derives from the nearly universal belief that the flourishing of the human species is a moral imperative.</p>
+                  <p>In this study, we focus on the
+                      influence of increased labor compensation and domestic manufacturing shares on (1)
+                      renewable energy technology costs, (2) the costs of transitioning the U.S. economy to netzero emissions, and (3) labor outcomes, including total employment and wage benefits,
+                      associated with the deployment of utility-scale solar photovoltaics (PV) and land based and
+                      offshore wind power. We find that manufacturing and installation labor cost premiums as
+                      well as increases in domestic content shares across wind and utility-scale solar photovoltatic
+                      supply chains result in relatively modest increases in total capital and operating costs. These
+                      small increases in technology costs may be partially or fully offset by increases in labor
+                      productivity. We also show that solar and wind technology cost premiums associated with
+                      high road labor policies have a minimal effect on the pace and scale of renewable energy
+                      deployment and the total cost of transitioning to a net-zero emissions economy. Public
+                      policies such as tax credits, workforce development support, and other instruments can
+                      redistribute technology cost premiums associated with high road labor policies to support
+                      both firms and workers.</p>
                 </Accordion>
                 <a target="blank" rel="noopener noreferrer" href={workingPaperPdf} className="nzap-button pt-2 pb-2 pr-3 pl-3 mt-3 nzap-radius"><span className="pr-2">Download the paper </span><Download className="" /></a>
               </div>
@@ -69,7 +81,7 @@ const PublicationsPage = () => (
               <div className="col-12 col-lg-11">
                 <div className="d-block pr-3 pt-4 introduction">
                   <h2>Papers by Robert Socolow</h2>
-                  <p className="pt-md-4">Robert Socolow published two related articles in 2020 while the Net Zero America project was under way, which we include here because they explore issues that enlarge the NZA discussion. Centrally, Socolow seeks domains where depolarization of the current fractious arguments around climate change can be reduced: he advocates “middle-building.”</p>
+                  <p className="pt-4">Robert Socolow published two related articles in 2020 while the Net Zero America project was under way, which we include here because they explore issues that enlarge the NZA discussion. Centrally, Socolow seeks domains where depolarization of the current fractious arguments around climate change can be reduced: he advocates “middle-building.”</p>
                   <Accordion>
                     <p>Toward this end, Socolow urges vigilant attention to the downsides to rapid expansion of every low-carbon technology, as opposed to uncritical embrace: “we must leave room to say No.” NZA’s close examination of the land demands for wind, solar, and bioenergy are examples of what he is urging.</p>
                     <p>Middle-building may also be fostered, Socolow suggests, on behalf of a much more ambitious climate science effort – one that focuses on the most worrisome risks and that is enhanced by contributions from many disciplines.  The daunting tasks set forth in NZA should be pursued under the strongest possible searchlights.</p>
