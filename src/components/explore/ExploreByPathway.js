@@ -17,6 +17,7 @@ function getTableBody(scenarios) {
     obj[e._filter_level_1] = obj[e._filter_level_1] || { label: e.filter_level_1 }
     obj[e._filter_level_1][e._filter_level_2] = obj[e._filter_level_1][e._filter_level_2] || { label: e.filter_level_2 }
     obj[e._filter_level_1][e._filter_level_2][e._variable_name] = obj[e._filter_level_1][e._filter_level_2][e._variable_name] || {
+      sortVals: `${e.alt_l1}.${e.alt_l2}.${e.alt_v}`,
       label: e.variable_name,
       unit: e.unit,
       unit_alt: e._unit_alt ? e.unit_alt : '',
@@ -67,8 +68,7 @@ const ExploreByPathway = ({ filters, scenarios }) => {
     let l1 = Object.keys(table.body);
     const renderCells = (varNameRow, index, length) => {
       let rowLength = []
-      headerKeys.filter(e => e).forEach(e => !varNameRow[e] || varNameRow[e].value.toLowerCase() === 'na' ? rowLength.push(true) : null);
-
+      headerKeys.filter(e => e).forEach(e => !varNameRow[e] ? rowLength.push(true) : null);
       let rowData = headerKeys.map((e, i) => {
         let unitData = {};
         if (varNameRow) {
@@ -76,8 +76,10 @@ const ExploreByPathway = ({ filters, scenarios }) => {
           unitData.unit_alt = varNameRow.unit_alt;
           unitData.unit_alt_equation = varNameRow.unit_alt_equation;
         }
-
-        if (i === 0) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 pathway cell-lead">{varNameRow.label} {unitData.unit ? `(${unitData.unit})` : null}</td>
+        if (i === 0) return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pb-2 pathway cell-lead">
+          <b className="pr-2" style={{ color: "#ed6d0a", fontFamily: 'monospace' }}>{varNameRow.sortVals}</b>
+          {varNameRow.label} {unitData.unit ? `(${unitData.unit})` : null}
+        </td>
         if (!varNameRow[e] || varNameRow[e].value === 'NA') return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pathway pb-2">---</td>
         return <td key={i} className="d-table-cell nzap-table-cell pl-2 pr-2 pt-2 pathway pb-2">{format(varNameRow[e], unitData)}</td>
       })
@@ -107,7 +109,6 @@ const ExploreByPathway = ({ filters, scenarios }) => {
         </React.Fragment>
       })
     }
-
     return l1.map((l1Key, l1Index) => {
       let l1Row = table.body[l1Key];
       if (l1Key === "label") return;
