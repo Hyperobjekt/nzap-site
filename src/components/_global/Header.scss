@@ -52,9 +52,6 @@
           }
           &.active {
             color: $base-color !important;
-            &.nav-explore:after {
-              border-bottom: none;
-            }
             &:after {
               content: "";
               width: 48px;
