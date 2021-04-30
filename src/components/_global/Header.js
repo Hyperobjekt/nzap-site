@@ -47,7 +47,15 @@ const Header = () => {
                       </div>
                     </div>
                     <ul className="draw pt-5">
-                      <li className="pt-3"><NavLink onClick={closeDraw} className="pr-2 pl-2" to="/" activeStyle={activeStyle} exact>Home</NavLink></li>
+                      <li className="pt-3">
+                        <NavLink 
+                        onClick={closeDraw} 
+                        className="pr-2 pl-2" 
+                        to="/#explore" 
+                        activeStyle={activeStyle} 
+                        exact 
+                        isActive={(_, location) => location.hash === "#explore"}>Explore Data</NavLink>
+                      </li>
                       <li className="pt-3"><NavLink onClick={closeDraw} className="pr-2 pl-2" to="/about" activeStyle={activeStyle} exact>About</NavLink></li>
                       <li className="pt-3"><NavLink onClick={closeDraw} className="pr-2 pl-2" to="/the-report" activeStyle={activeStyle} exact>The Report</NavLink></li>
                       <li className="pt-3"><NavLink onClick={closeDraw} className="pr-2 pl-2" to="/fact-sheet" activeStyle={activeStyle} exact>Fact Sheets</NavLink></li>
@@ -61,7 +69,14 @@ const Header = () => {
               <div className="d-none d-md-block col-md-9 col-lg-8 text-right pr-0">
                 <nav aria-label="header-navigation" className="nzap-navigation" role="navigation">
                   <ul>
-                    <li><NavLink className="pr-2 pl-2" to="/" activeStyle={activeStyle} exact>Home</NavLink></li>
+                    <li>
+                      <NavLink 
+                      className="pr-2 pl-2" 
+                      to="/#explore" 
+                      activeStyle={activeStyle} 
+                      exact 
+                      isActive={(_, location) => location.hash === "#explore"}>Explore Data</NavLink>
+                    </li>
                     <li><NavLink className="pr-2 pl-2" to="/about" activeStyle={activeStyle} exact>About</NavLink></li>
                     <li><NavLink className="pr-2 pl-2" to="/the-report" activeStyle={activeStyle} exact>The Report</NavLink></li>
                     <li><NavLink className="pr-2 pl-2" to="/fact-sheet" activeStyle={activeStyle} exact>Fact Sheets</NavLink></li>
