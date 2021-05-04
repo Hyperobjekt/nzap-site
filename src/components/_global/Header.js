@@ -70,12 +70,12 @@ const Header = () => {
                 <nav aria-label="header-navigation" className="nzap-navigation" role="navigation">
                   <ul>
                     <li>
-                      <NavLink 
+                      <a 
                       className="pr-2 pl-2" 
-                      to="/#explore" 
+                      href="/#explore" 
                       activeStyle={activeStyle} 
                       exact 
-                      isActive={(_, location) => location.hash === "#explore"}>Explore Data</NavLink>
+                      isActive={(_, location) => location.hash === "#explore"}>Explore Data</a>
                     </li>
                     <li><NavLink className="pr-2 pl-2" to="/about" activeStyle={activeStyle} exact>About</NavLink></li>
                     <li><NavLink className="pr-2 pl-2" to="/the-report" activeStyle={activeStyle} exact>The Report</NavLink></li>
