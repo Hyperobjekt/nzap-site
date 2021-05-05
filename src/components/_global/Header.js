@@ -72,7 +72,7 @@ const Header = () => {
                     <li>
                       <a 
                       className="pr-2 pl-2" 
-                      href="/#explore" 
+                      href="/#approaches" 
                       activeStyle={activeStyle} 
                       exact 
                       isActive={(_, location) => location.hash === "#explore"}>Explore Data</a>
