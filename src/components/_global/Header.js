@@ -51,7 +51,7 @@ const Header = () => {
                         <NavLink 
                         onClick={closeDraw} 
                         className="pr-2 pl-2" 
-                        to="#explore" 
+                        to="/#explore" 
                         activeStyle={activeStyle} 
                         exact 
                         isActive={(_, location) => location.hash === "#explore"}>Explore Data</NavLink>
