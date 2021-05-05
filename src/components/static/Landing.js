@@ -159,7 +159,7 @@ const LandingPage = () => (
 
 
     <div data-aos="fade-in" className="row">
-      <div className="col-12"><ExploreLoader /></div>
+      <div id="explore-data" className="col-12"><ExploreLoader /></div>
     </div>
   </div>
 
