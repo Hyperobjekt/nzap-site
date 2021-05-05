@@ -58,7 +58,7 @@ const LandingPage = () => (
         <div className="row pt-4">
           <div className="col-12 solutions">
             <h3 data-aos="fade-in" className="label pb-4">Five Approaches <br></br>to Decarbonization:</h3>
-            <div className="row approaches">
+            <div id="approaches" className="row approaches">
               <div data-aos="fade-in" data-aos-delay="0" className="col-md-4 pr-3 approach">
                 <div className="image-header position-relative">
                   <img className="position-absolute" src={scenarioImage1} alt="" />
