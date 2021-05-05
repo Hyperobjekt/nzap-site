@@ -28,14 +28,8 @@
       justify-content: flex-end;
       align-items: center;
       padding: 0;
-      display: flex;
       li {
-        display: flex;
-        max-width: 80px;
-        @media (min-width: 1200px) {
-          display: inline-block;
-          max-width: unset;
-        }
+        display: inline-block;
         a {
           position: relative;
           //transition: opacity .3s ease;
