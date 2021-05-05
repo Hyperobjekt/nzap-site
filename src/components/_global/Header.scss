@@ -28,12 +28,17 @@
       justify-content: flex-end;
       align-items: center;
       padding: 0;
+      display: flex;
       li {
-        display: inline-block;
+        display: flex;
+        @media (min-width: 1200px) {
+          display: inline-block;
+          max-width: unset;
+        }
         a {
           position: relative;
-          //transition: opacity .3s ease;
-          @include font($font-family-primary-wide, $font-weight-semi-bold, $medium, $base-color);
+          //transition: opacity .3s ease;          
+            @include font($font-family-primary-wide, $font-weight-semi-bold, $medium, $base-color);
           transition: color 0.3s ease;
           &:hover {
             text-decoration: none;
