@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { HashLink } from 'react-router-hash-link';
 import { Drawer } from 'antd';
 import styles from "../../_styles/_stylesGuide";
 import './Header.scss';
 require('../../assets/images/home/nza-social.png');
- 
+
 const Header = () => {
   const sg = styles();
   const activeStyle = { color: sg.colors.primary };
@@ -23,7 +24,7 @@ const Header = () => {
               <div className="col-8 pl-0 col-md-3 col-lg-4 d-flex align-items-center project-title">
                 <NavLink className="pr-2 pl-md-2" to="/" exact>NET-ZERO AMERICA</NavLink>
               </div>
-              <div className="col-4 col-md-9 d-mmd-none text-right col-4 d-flex justify-content-end align-items-center text-right">
+              <div className="col-4 d-md-none text-right col-4 d-flex justify-content-end align-items-center d-md-none text-right">
                 <div className="d-inline-block">
                   <div
                     role="button"
@@ -48,13 +49,7 @@ const Header = () => {
                     </div>
                     <ul className="draw pt-5">
                       <li className="pt-3">
-                        <NavLink 
-                        onClick={closeDraw} 
-                        className="pr-2 pl-2" 
-                        to="/#explore" 
-                        activeStyle={activeStyle} 
-                        exact 
-                        isActive={(_, location) => location.hash === "#explore"}>Explore Data</NavLink>
+                        <HashLink className="pr-2 pl-2" onClick={closeDraw} to="/#explore">Explore Data</HashLink>
                       </li>
                       <li className="pt-3"><NavLink onClick={closeDraw} className="pr-2 pl-2" to="/about" activeStyle={activeStyle} exact>About</NavLink></li>
                       <li className="pt-3"><NavLink onClick={closeDraw} className="pr-2 pl-2" to="/the-report" activeStyle={activeStyle} exact>The Report</NavLink></li>
@@ -66,16 +61,11 @@ const Header = () => {
                 </Drawer>
               </div>
 
-              <div className="d-none d-mmd-block col-md-9 col-lg-8 text-xl-right pr-0">
+              <div className="d-none d-md-block col-md-9 col-lg-8 text-right pr-0">
                 <nav aria-label="header-navigation" className="nzap-navigation" role="navigation">
                   <ul>
                     <li>
-                      <a 
-                      className="pr-2 pl-2" 
-                      href="/#explore-data" 
-                      activeStyle={activeStyle} 
-                      exact 
-                      isActive={(_, location) => location.hash === "#explore"}>Explore Data</a>
+                      <HashLink className="pr-2 pl-2" to="/#explore">Explore Data</HashLink>
                     </li>
                     <li><NavLink className="pr-2 pl-2" to="/about" activeStyle={activeStyle} exact>About</NavLink></li>
                     <li><NavLink className="pr-2 pl-2" to="/the-report" activeStyle={activeStyle} exact>The Report</NavLink></li>
@@ -91,6 +81,7 @@ const Header = () => {
         </div>
       </div>
     </div >
+
   );
 };
 
