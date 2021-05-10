@@ -61,7 +61,7 @@ const Header = () => {
                 </Drawer>
               </div>
 
-              <div className="d-none d-md-block col-md-9 col-lg-8 text-right pr-0">
+              <div className="d-none d-mmd-block col-md-9 col-lg-8 text-right pr-0">
                 <nav aria-label="header-navigation" className="nzap-navigation" role="navigation">
                   <ul>
                     <li>
