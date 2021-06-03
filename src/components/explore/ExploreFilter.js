@@ -147,7 +147,7 @@ const ExploreFilter = ({ filters, setFilterAction, loadScenarios }) => {
           <label htmlFor="geo-scope" className="d-block pb-2 scope">
             Scope (select state or national)
         </label>
-          <Select className="nzap-radius w-100 w-md-25" id="geo-scope" showArrow={false} defaultValue={activeUsState} onChange={usStateChange} aria-activedescendant={null} aria-expanded="false">
+          <Select className="nzap-radius w-100 w-md-25" id="geo-scope" showArrow={true} defaultValue={activeUsState} onChange={usStateChange} aria-activedescendant={null} aria-expanded="false">
             {filters.usStates.map((usState, i) => <Option key={i} id={usState.slug} value={usState.slug}>{usState.label}</Option>)}
           </Select>
         </div>
