@@ -1,6 +1,10 @@
 @import "_variables";
 @import "_mixins";
 
+.ant-select .ant-select-arrow {
+  color: #fff;
+}
+
 .ant-collapse-header {
   padding-left: 0 !important;
 }
@@ -22,3 +26,4 @@
 .ant-spin {
   color: $accent-color;
 }
+
