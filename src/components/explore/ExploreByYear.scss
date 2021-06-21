@@ -12,9 +12,17 @@
   .nzap-table-header-row,
   .nzap-table-row {
     white-space: nowrap;
+    position: relative;
+
     &:hover {
       background: $pianissimo-color;
     }
+  }
+  .nzap-table-header-row{
+    z-index: 3;
+  }
+  .nzap-table-row{
+    z-index: 2;
   }
 }
 
